@@ -1,0 +1,55 @@
+name: Deploy to Cloudflare
+
+# Ships CODE on push. Predictions are computed live inside the Worker on its own
+# race-weekend cron — this workflow does NOT touch them at runtime, it only
+# (re)deploys the Worker + the static dashboard when the source changes.
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch: {}   # allow manual "Run workflow" from the Actions tab
+
+# Avoid overlapping deploys if you push twice quickly.
+concurrency:
+  group: cf-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Worker deps
+        working-directory: cloudflare/worker
+        run: npm install
+
+      # Gate the deploy on the parity + harmony tests (champion=piastri, contract keys, etc).
+      - name: Test (parity + harmony)
+        working-directory: cloudflare/worker
+        run: npm test
+
+      # 1) Deploy the Worker (API + cron + KV binding from wrangler.toml).
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: cloudflare/worker
+          command: deploy
+
+      # 2) Deploy the static dashboard to Cloudflare Pages.
+      #    The Pages project "f1-2026" must exist once (created on first deploy or
+      #    via the Cloudflare dashboard). No build step — dashboard/ is plain static.
+      - name: Deploy Pages (dashboard)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dashboard --project-name=f1-2026 --branch=main

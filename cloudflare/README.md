@@ -74,6 +74,34 @@ Pages build settings: **no build command**, **output directory = `dashboard`**.
 
 ---
 
+## 4. Auto-deploy with GitHub Actions
+
+`.github/workflows/deploy.yml` redeploys on every push to `main`/`master` (and on manual
+"Run workflow"). It installs deps, runs `npm test` (parity + harmony gate), then deploys the
+Worker and the dashboard to Pages.
+
+> This ships **code**, not data. Predictions are computed live inside the Worker on its
+> race-weekend cron — the workflow never touches them at runtime. It only fires when source changes.
+
+**One-time setup:**
+
+1. Push the repo to GitHub.
+2. Create a Cloudflare API token (My Profile → API Tokens → Create Token). Permissions:
+   - Account · **Workers Scripts** · Edit
+   - Account · **Cloudflare Pages** · Edit
+   - Account · **Workers KV Storage** · Edit
+   - Account · **Account Settings** · Read
+3. In the GitHub repo → Settings → Secrets and variables → Actions, add:
+   - `CLOUDFLARE_API_TOKEN` — the token above
+   - `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard URL / Workers overview
+4. Ensure the Pages project **`f1-2026`** exists (create it once via the dashboard or a first
+   `wrangler pages deploy dashboard --project-name=f1-2026`). The KV namespace ids must already be
+   filled into `wrangler.toml` (step 1).
+
+After that, `git push` → tests run → Worker + Pages redeploy automatically.
+
+---
+
 ## Notes & limits
 
 - **f1.com scraping** may be blocked by Cloudflare bot protection from a Worker. The scraper
