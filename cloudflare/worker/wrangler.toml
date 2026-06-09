@@ -8,8 +8,8 @@ workers_dev = true
 # then paste the returned id below (and a separate preview_id for `wrangler dev`).
 [[kv_namespaces]]
 binding = "F1_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
-preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
+id = "fb89bda487fc4d388d54737f0682505a"
+preview_id = "b8eba4a02d394fa39d768d101f5a5379"
 
 # Daily cron; the Worker self-gates to race weekends (Thu–Mon) in scheduled().
 # 06:00 UTC daily.
