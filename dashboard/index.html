@@ -2311,15 +2311,21 @@
        or leave blank to use the Pages /api/* proxy (_redirects).
     ─────────────────────────────────────────────────────────────────── */
     const WORKER_BASE = (typeof window !== 'undefined' && window.F1_WORKER_URL) ? window.F1_WORKER_URL : '';
-    async function bootstrapData() {
+    // Fetch live data from the Worker WITHOUT blocking first paint. Returns true if
+    // fresh data was loaded into F1. A timeout prevents a slow/cold Worker (which may
+    // run the Monte Carlo on a KV miss) from ever stalling the page.
+    async function fetchLiveData() {
+      if (!WORKER_BASE) return false;
       try {
-        const res = await fetch(WORKER_BASE + '/api/data', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.driver_standings_2026) { F1 = data; window.F1_DATA = data; }
-        }
-      } catch (e) { /* offline → keep committed data.js seed */ }
-      normalizeF1();
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 7000);
+        const res = await fetch(WORKER_BASE + '/api/data', { cache: 'no-store', signal: ctrl.signal });
+        clearTimeout(timer);
+        if (!res.ok) return false;
+        const data = await res.json();
+        if (data && data.driver_standings_2026) { F1 = data; window.F1_DATA = data; return true; }
+      } catch (e) { /* offline / slow / blocked → keep committed data.js seed */ }
+      return false;
     }
 
     /* TEAM_COLORS and teamColor() defined earlier, before normalization adapter */
@@ -3342,44 +3348,56 @@
     /* ═══════════════════════════════════════════════════════════════
        INIT
     ═══════════════════════════════════════════════════════════════ */
-    document.addEventListener('DOMContentLoaded', async () => {
-      await bootstrapData();
-      renderRaceCenter();
-      renderNews();
-      renderDriverCards();
-      renderDriverStandings();
-      renderConstructorChart();
-      renderStandingsTable();
-      renderChampionshipBattle();
-      renderHistoryLines();
-      renderConstructorArea();
-      initYearExplorer();
-      renderRaceCalendar();
-      populateDriverSelect();
-      renderRegulationShift();
-      initFadeIn();
-      initProbBars();
+    // Render every section from the current F1 object. Safe to call more than once
+    // (renderers replace their content), so we paint the seed first, then re-paint
+    // when live Worker data arrives. Each call is wrapped so one failing section
+    // never blanks the whole page.
+    function renderAll() {
+      const steps = [
+        renderRaceCenter, renderNews, renderDriverCards, renderDriverStandings,
+        renderConstructorChart, renderStandingsTable, renderChampionshipBattle,
+        renderHistoryLines, renderConstructorArea, initYearExplorer, renderRaceCalendar,
+        populateDriverSelect, renderRegulationShift, initFadeIn, initProbBars,
+      ];
+      for (const fn of steps) {
+        try { fn(); } catch (e) { console.error('[render] ' + fn.name + ' failed:', e); }
+      }
 
       // Populate dynamic hero stats
-      const maeEl = document.querySelector('.hero-stat .stat-val');
-      if (maeEl && F1.model_cv_mae) maeEl.textContent = F1.model_cv_mae.toFixed(2);
-      const statVals = document.querySelectorAll('.hero-stat .stat-val');
-      if (statVals[1] && F1.races_completed_2026 !== undefined)
-        statVals[1].textContent = F1.races_completed_2026 + ' done';
-      if (statVals[2])
-        statVals[2].textContent = (F1.race_predictions || []).length;
+      try {
+        const maeEl = document.querySelector('.hero-stat .stat-val');
+        if (maeEl && F1.model_cv_mae) maeEl.textContent = F1.model_cv_mae.toFixed(2);
+        const statVals = document.querySelectorAll('.hero-stat .stat-val');
+        if (statVals[1] && F1.races_completed_2026 !== undefined)
+          statVals[1].textContent = F1.races_completed_2026 + ' done';
+        if (statVals[2])
+          statVals[2].textContent = (F1.race_predictions || []).length;
+      } catch (e) { console.error('[render] hero stats failed:', e); }
+
+      // Init new game sections
+      try {
+        buildPodiumSection(F1.drivers, F1.driver_images, TEAM_COLORS);
+        buildGauges(F1.drivers, TEAM_COLORS);
+        buildH2H(F1.drivers, F1.driver_images, TEAM_COLORS);
+        buildTimeline(F1.races, F1.drivers, TEAM_COLORS);
+        buildConstructorWar(F1.constructors, TEAM_COLORS);
+      } catch (e) { console.error('[render] game sections failed:', e); }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Paint immediately from the committed seed (no network dependency).
+      try { normalizeF1(); renderAll(); } catch (e) { console.error('[init] seed render failed:', e); }
 
       // Trigger hero fade-in immediately
       setTimeout(() => {
-        document.querySelector('#hero .fade-in').classList.add('visible');
+        const hero = document.querySelector('#hero .fade-in');
+        if (hero) hero.classList.add('visible');
       }, 100);
 
-      // Init new game sections
-      buildPodiumSection(F1.drivers, F1.driver_images, TEAM_COLORS);
-      buildGauges(F1.drivers, TEAM_COLORS);
-      buildH2H(F1.drivers, F1.driver_images, TEAM_COLORS);
-      buildTimeline(F1.races, F1.drivers, TEAM_COLORS);
-      buildConstructorWar(F1.constructors, TEAM_COLORS);
+      // 2. Upgrade to live Worker data in the background; re-paint if it arrives.
+      fetchLiveData().then(updated => {
+        if (updated) { try { normalizeF1(); renderAll(); } catch (e) { console.error('[init] live re-render failed:', e); } }
+      });
     });
 
     /* ═══════════════════════════════════════════════════════════════
