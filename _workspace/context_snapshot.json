@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-06-08T00:00:00Z",
+  "project": {
+    "path": "C:\\Users\\prath\\f1-2026-analysis",
+    "platform": "Windows 11",
+    "entry_point": "python src/data/pipeline.py",
+    "enrich_entry_point": "python src/data/enrich_dashboard.py",
+    "dashboard": "dashboard/index.html"
+  },
+  "pipeline": {
+    "last_run_date": "2026-06-07",
+    "cv_mae": "not stored in predictions.json — check pipeline stdout",
+    "generated_at": "2026-06-07",
+    "driver_count": 20,
+    "constructor_count": 10,
+    "race_predictions_count": 24,
+    "historical_seasons": [2020, 2021, 2022, 2023, 2024, 2025],
+    "features_csv_rows": 2171,
+    "real_2026_races_in_training": 6
+  },
+  "predictions_top5": [
+    {"rank": 1, "driver_id": "norris", "team": "mclaren", "predicted_points": 414.0, "win_probability": 0.862, "podium_probability": 0.7383, "avg_predicted_position": 3.0},
+    {"rank": 2, "driver_id": "piastri", "team": "mclaren", "predicted_points": 399.0, "win_probability": 0.09, "podium_probability": 0.6282, "avg_predicted_position": 2.96},
+    {"rank": 3, "driver_id": "verstappen", "team": "red_bull", "predicted_points": 302.0, "win_probability": 0.048, "podium_probability": 0.5015, "avg_predicted_position": 4.54},
+    {"rank": 4, "driver_id": "russell", "team": "mercedes", "predicted_points": 292.0, "win_probability": 0.0, "podium_probability": 0.3811, "avg_predicted_position": 4.38},
+    {"rank": 5, "driver_id": "antonelli", "team": "mercedes", "predicted_points": 237.0, "win_probability": 0.0, "podium_probability": 0.2682, "avg_predicted_position": 5.83}
+  ],
+  "real_standings": {
+    "source": "formula1.com",
+    "scraped_at": "2026-06-07T18:22:38Z",
+    "races_completed": 6,
+    "last_race": "Monaco Grand Prix (Round 6, 2026-06-07)",
+    "driver_standings_top10": [
+      {"pos": 1, "driver_id": "antonelli", "team": "Mercedes", "points": 156, "wins": 5},
+      {"pos": 2, "driver_id": "hamilton", "team": "Ferrari", "points": 90, "wins": 0},
+      {"pos": 3, "driver_id": "russell", "team": "Mercedes", "points": 88, "wins": 1},
+      {"pos": 4, "driver_id": "leclerc", "team": "Ferrari", "points": 75, "wins": 0},
+      {"pos": 5, "driver_id": "piastri", "team": "McLaren", "points": 60, "wins": 0},
+      {"pos": 6, "driver_id": "norris", "team": "McLaren", "points": 58, "wins": 0},
+      {"pos": 7, "driver_id": "max_verstappen", "team": "Red Bull Racing", "points": 43, "wins": 0},
+      {"pos": 8, "driver_id": "hadjar", "team": "Red Bull Racing", "points": 29, "wins": 0},
+      {"pos": 9, "driver_id": "lawson", "team": "Racing Bulls", "points": 26, "wins": 0},
+      {"pos": 10, "driver_id": "gasly", "team": "Alpine", "points": 26, "wins": 0}
+    ],
+    "constructor_standings": [
+      {"pos": 1, "team": "Mercedes", "points": 244},
+      {"pos": 2, "team": "Ferrari", "points": 165},
+      {"pos": 3, "team": "McLaren", "points": 118},
+      {"pos": 4, "team": "Red Bull Racing", "points": 72},
+      {"pos": 5, "team": "Alpine", "points": 41}
+    ],
+    "race_winners": [
+      {"round": 1, "circuit": "Australian GP", "date": "2026-03-08", "winner": "russell"},
+      {"round": 2, "circuit": "Chinese GP", "date": "2026-03-15", "winner": "antonelli"},
+      {"round": 3, "circuit": "Japanese GP", "date": "2026-03-29", "winner": "antonelli"},
+      {"round": 4, "circuit": "Miami GP", "date": "2026-05-03", "winner": "antonelli"},
+      {"round": 5, "circuit": "Canadian GP", "date": "2026-05-24", "winner": "antonelli"},
+      {"round": 6, "circuit": "Monaco GP", "date": "2026-06-07", "winner": "antonelli"}
+    ]
+  },
+  "dashboard": {
+    "data_js_path": "dashboard/data.js",
+    "data_js_size_bytes": 95794,
+    "data_js_size_kb": 93.55,
+    "data_js_last_published": "2026-06-07T18:40:08Z",
+    "index_html_path": "dashboard/index.html",
+    "index_html_size_bytes": 139096,
+    "index_html_size_kb": 135.8,
+    "driver_images_count": 22,
+    "track_layouts_count": 24,
+    "game_ui_section_ids": [
+      "f1g-podium",
+      "f1g-gauges",
+      "f1g-h2h",
+      "f1g-timeline",
+      "f1g-constructors"
+    ]
+  },
+  "publish_log": {
+    "published_at": "2026-06-07T18:40:08Z",
+    "sources_used": ["predictions", "scraped"],
+    "races_reconciled": 6,
+    "all_races_used_scraped_source": true,
+    "driver_images_preserved": 22,
+    "track_layouts_preserved": 24
+  },
+  "harness": {
+    "agent_count": 12,
+    "skill_count": 12,
+    "agents": [
+      {"name": "data-pipeline", "role": "Fetch race data from Jolpica/OpenF1/synthetic; build features.csv"},
+      {"name": "prediction-engine", "role": "Train XGBoost, run Monte Carlo 500-iter simulation, output predictions.json"},
+      {"name": "live-monitor", "role": "Poll OpenF1 for new 2026 sessions; signal orchestrator on new data"},
+      {"name": "dashboard-updater", "role": "Legacy: write data.js from predictions.json (superseded by data-publisher)"},
+      {"name": "qa-validator", "role": "Gate 1: validate features.csv. Gate 2: validate predictions.json. Block on critical violations."},
+      {"name": "media-fetcher", "role": "Fetch driver images + track layouts from Wikipedia; write to data.js"},
+      {"name": "ui-enhancer", "role": "Add next-race widget, driver grid, year explorer, season summary to index.html"},
+      {"name": "f1-results-scraper", "role": "Scrape race results and standings from formula1.com; write f1_scraped_results.json"},
+      {"name": "f1-media-scraper", "role": "Fetch official F1 driver images (f1.com) and track layouts (media.formula1.com CDN)"},
+      {"name": "data-publisher", "role": "Atomic merge of predictions + scraped + existing media into data.js; preserves images"},
+      {"name": "ui-designer", "role": "Add 5 game-like sections to index.html: podium, gauges, H2H, timeline, constructor war"},
+      {"name": "context-snapshot", "role": "Read project state from disk; write portable context_snapshot.md + .json"}
+    ],
+    "skills": [
+      {"name": "fetch-race-data", "used_by": "data-pipeline"},
+      {"name": "train-predict", "used_by": "prediction-engine"},
+      {"name": "live-race-monitor", "used_by": "live-monitor"},
+      {"name": "update-dashboard", "used_by": "dashboard-updater"},
+      {"name": "enhance-ui", "used_by": "ui-enhancer"},
+      {"name": "fetch-media", "used_by": "media-fetcher"},
+      {"name": "scrape-f1-results", "used_by": "f1-results-scraper"},
+      {"name": "scrape-f1-official-media", "used_by": "f1-media-scraper"},
+      {"name": "publish-dashboard-data", "used_by": "data-publisher"},
+      {"name": "design-f1-ui", "used_by": "ui-designer"},
+      {"name": "f1-orchestrator", "used_by": "orchestrator (all agents)"},
+      {"name": "capture-context", "used_by": "context-snapshot"}
+    ]
+  },
+  "calendar_2026": [
+    {"round": 1, "circuit_id": "albert_park", "name": "Australian Grand Prix", "date": "2026-03-15", "sprint": false, "status": "completed"},
+    {"round": 2, "circuit_id": "shanghai", "name": "Chinese Grand Prix", "date": "2026-03-22", "sprint": false, "status": "completed"},
+    {"round": 3, "circuit_id": "bahrain", "name": "Bahrain Grand Prix", "date": "2026-04-05", "sprint": false, "status": "completed"},
+    {"round": 4, "circuit_id": "jeddah", "name": "Saudi Arabian Grand Prix", "date": "2026-04-19", "sprint": false, "status": "completed"},
+    {"round": 5, "circuit_id": "villeneuve", "name": "Canadian Grand Prix", "date": "2026-05-24", "sprint": false, "status": "completed"},
+    {"round": 6, "circuit_id": "monaco", "name": "Monaco Grand Prix", "date": "2026-06-07", "sprint": false, "status": "completed"},
+    {"round": 7, "circuit_id": "catalunya", "name": "Spanish Grand Prix", "date": "2026-06-14", "sprint": false, "status": "upcoming_next"},
+    {"round": 8, "circuit_id": "red_bull_ring", "name": "Austrian Grand Prix", "date": "2026-06-28", "sprint": false, "status": "future"},
+    {"round": 9, "circuit_id": "silverstone", "name": "British Grand Prix", "date": "2026-07-05", "sprint": true, "status": "future"},
+    {"round": 10, "circuit_id": "spa", "name": "Belgian Grand Prix", "date": "2026-07-19", "sprint": false, "status": "future"},
+    {"round": 11, "circuit_id": "hungaroring", "name": "Hungarian Grand Prix", "date": "2026-07-26", "sprint": false, "status": "future"},
+    {"round": 12, "circuit_id": "zandvoort", "name": "Dutch Grand Prix", "date": "2026-08-23", "sprint": true, "status": "future"},
+    {"round": 13, "circuit_id": "monza", "name": "Italian Grand Prix", "date": "2026-09-06", "sprint": false, "status": "future"},
+    {"round": 14, "circuit_id": "madrid", "name": "Spanish Grand Prix (Madrid)", "date": "2026-09-13", "sprint": false, "status": "future"},
+    {"round": 15, "circuit_id": "baku", "name": "Azerbaijan Grand Prix", "date": "2026-09-26", "sprint": false, "status": "future"},
+    {"round": 16, "circuit_id": "marina_bay", "name": "Singapore Grand Prix", "date": "2026-10-11", "sprint": true, "status": "future"},
+    {"round": 17, "circuit_id": "americas", "name": "United States Grand Prix", "date": "2026-10-25", "sprint": false, "status": "future"},
+    {"round": 18, "circuit_id": "rodriguez", "name": "Mexico City Grand Prix", "date": "2026-11-01", "sprint": false, "status": "future"},
+    {"round": 19, "circuit_id": "interlagos", "name": "Sao Paulo Grand Prix", "date": "2026-11-08", "sprint": false, "status": "future"},
+    {"round": 20, "circuit_id": "las_vegas", "name": "Las Vegas Grand Prix", "date": "2026-11-22", "sprint": false, "status": "future"},
+    {"round": 21, "circuit_id": "losail", "name": "Qatar Grand Prix", "date": "2026-11-29", "sprint": false, "status": "future"},
+    {"round": 22, "circuit_id": "yas_marina", "name": "Abu Dhabi Grand Prix", "date": "2026-12-06", "sprint": false, "status": "future"}
+  ],
+  "pending_items": [
+    "Re-run pipeline after Spanish GP (Round 7, 2026-06-14) to incorporate real results",
+    "Model predicts Norris champion but Antonelli leads 156-58 — rolling features will update with more 2026 data",
+    "predictions.json lacks cv_mae field — add to pipeline output for QA tracking",
+    "Verify driver image URLs are still live (CDN paths may change mid-season)",
+    "Calendar mismatch: predictions.json has 24 race entries vs 22 in CALENDAR_2026 (cosmetic)"
+  ]
+}

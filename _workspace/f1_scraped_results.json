@@ -1,0 +1,1489 @@
+{
+  "scraped_at": "2026-06-07T18:22:38.877148+00:00",
+  "source": "formula1.com",
+  "mostly_blocked": false,
+  "races": [
+    {
+      "round_slug": "australia",
+      "name": "Australian Grand Prix",
+      "date": "2026-03-08",
+      "results": [
+        {
+          "pos": 1,
+          "driver_id": "russell",
+          "driver_display": "George Russell RUS",
+          "team": "Mercedes",
+          "time_or_gap": "1:23:06.801",
+          "fastest_lap": null,
+          "points": 25
+        },
+        {
+          "pos": 2,
+          "driver_id": "antonelli",
+          "driver_display": "Kimi Antonelli ANT",
+          "team": "Mercedes",
+          "time_or_gap": "+2.974s",
+          "fastest_lap": null,
+          "points": 18
+        },
+        {
+          "pos": 3,
+          "driver_id": "leclerc",
+          "driver_display": "Charles Leclerc LEC",
+          "team": "Ferrari",
+          "time_or_gap": "+15.519s",
+          "fastest_lap": null,
+          "points": 15
+        },
+        {
+          "pos": 4,
+          "driver_id": "hamilton",
+          "driver_display": "Lewis Hamilton HAM",
+          "team": "Ferrari",
+          "time_or_gap": "+16.144s",
+          "fastest_lap": null,
+          "points": 12
+        },
+        {
+          "pos": 5,
+          "driver_id": "norris",
+          "driver_display": "Lando Norris NOR",
+          "team": "McLaren",
+          "time_or_gap": "+51.741s",
+          "fastest_lap": null,
+          "points": 10
+        },
+        {
+          "pos": 6,
+          "driver_id": "max_verstappen",
+          "driver_display": "Max Verstappen VER",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+54.617s",
+          "fastest_lap": null,
+          "points": 8
+        },
+        {
+          "pos": 7,
+          "driver_id": "bearman",
+          "driver_display": "Oliver Bearman BEA",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 6
+        },
+        {
+          "pos": 8,
+          "driver_id": "arvid_lindblad",
+          "driver_display": "Arvid Lindblad LIN",
+          "team": "Racing Bulls",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 4
+        },
+        {
+          "pos": 9,
+          "driver_id": "bortoleto",
+          "driver_display": "Gabriel Bortoleto BOR",
+          "team": "Audi",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 2
+        },
+        {
+          "pos": 10,
+          "driver_id": "gasly",
+          "driver_display": "Pierre Gasly GAS",
+          "team": "Alpine",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 1
+        },
+        {
+          "pos": 11,
+          "driver_id": "ocon",
+          "driver_display": "Esteban Ocon OCO",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 12,
+          "driver_id": "albon",
+          "driver_display": "Alexander Albon ALB",
+          "team": "Williams",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 13,
+          "driver_id": "lawson",
+          "driver_display": "Liam Lawson LAW",
+          "team": "Racing Bulls",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 14,
+          "driver_id": "colapinto",
+          "driver_display": "Franco Colapinto COL",
+          "team": "Alpine",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 15,
+          "driver_id": "sainz",
+          "driver_display": "Carlos Sainz SAI",
+          "team": "Williams",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 16,
+          "driver_id": "perez",
+          "driver_display": "Sergio Perez PER",
+          "team": "Cadillac",
+          "time_or_gap": "+3 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "stroll",
+          "driver_display": "Lance Stroll STR",
+          "team": "Aston Martin",
+          "time_or_gap": "+15 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "alonso",
+          "driver_display": "Fernando Alonso ALO",
+          "team": "Aston Martin",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "bottas",
+          "driver_display": "Valtteri Bottas BOT",
+          "team": "Cadillac",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "hadjar",
+          "driver_display": "Isack Hadjar HAD",
+          "team": "Red Bull Racing",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "piastri",
+          "driver_display": "Oscar Piastri PIA",
+          "team": "McLaren",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "hulkenberg",
+          "driver_display": "Nico Hulkenberg HUL",
+          "team": "Audi",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        }
+      ],
+      "blocked": false
+    },
+    {
+      "round_slug": "china",
+      "name": "Chinese Grand Prix",
+      "date": "2026-03-15",
+      "results": [
+        {
+          "pos": 1,
+          "driver_id": "antonelli",
+          "driver_display": "Kimi Antonelli ANT",
+          "team": "Mercedes",
+          "time_or_gap": "1:33:15.607",
+          "fastest_lap": null,
+          "points": 25
+        },
+        {
+          "pos": 2,
+          "driver_id": "russell",
+          "driver_display": "George Russell RUS",
+          "team": "Mercedes",
+          "time_or_gap": "+5.515s",
+          "fastest_lap": null,
+          "points": 18
+        },
+        {
+          "pos": 3,
+          "driver_id": "hamilton",
+          "driver_display": "Lewis Hamilton HAM",
+          "team": "Ferrari",
+          "time_or_gap": "+25.267s",
+          "fastest_lap": null,
+          "points": 15
+        },
+        {
+          "pos": 4,
+          "driver_id": "leclerc",
+          "driver_display": "Charles Leclerc LEC",
+          "team": "Ferrari",
+          "time_or_gap": "+28.894s",
+          "fastest_lap": null,
+          "points": 12
+        },
+        {
+          "pos": 5,
+          "driver_id": "bearman",
+          "driver_display": "Oliver Bearman BEA",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+57.268s",
+          "fastest_lap": null,
+          "points": 10
+        },
+        {
+          "pos": 6,
+          "driver_id": "gasly",
+          "driver_display": "Pierre Gasly GAS",
+          "team": "Alpine",
+          "time_or_gap": "+59.647s",
+          "fastest_lap": null,
+          "points": 8
+        },
+        {
+          "pos": 7,
+          "driver_id": "lawson",
+          "driver_display": "Liam Lawson LAW",
+          "team": "Racing Bulls",
+          "time_or_gap": "+80.588s",
+          "fastest_lap": null,
+          "points": 6
+        },
+        {
+          "pos": 8,
+          "driver_id": "hadjar",
+          "driver_display": "Isack Hadjar HAD",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+87.247s",
+          "fastest_lap": null,
+          "points": 4
+        },
+        {
+          "pos": 9,
+          "driver_id": "sainz",
+          "driver_display": "Carlos Sainz SAI",
+          "team": "Williams",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 2
+        },
+        {
+          "pos": 10,
+          "driver_id": "colapinto",
+          "driver_display": "Franco Colapinto COL",
+          "team": "Alpine",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 1
+        },
+        {
+          "pos": 11,
+          "driver_id": "hulkenberg",
+          "driver_display": "Nico Hulkenberg HUL",
+          "team": "Audi",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 12,
+          "driver_id": "arvid_lindblad",
+          "driver_display": "Arvid Lindblad LIN",
+          "team": "Racing Bulls",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 13,
+          "driver_id": "bottas",
+          "driver_display": "Valtteri Bottas BOT",
+          "team": "Cadillac",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 14,
+          "driver_id": "ocon",
+          "driver_display": "Esteban Ocon OCO",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 15,
+          "driver_id": "perez",
+          "driver_display": "Sergio Perez PER",
+          "team": "Cadillac",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "max_verstappen",
+          "driver_display": "Max Verstappen VER",
+          "team": "Red Bull Racing",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "alonso",
+          "driver_display": "Fernando Alonso ALO",
+          "team": "Aston Martin",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "stroll",
+          "driver_display": "Lance Stroll STR",
+          "team": "Aston Martin",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "piastri",
+          "driver_display": "Oscar Piastri PIA",
+          "team": "McLaren",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "norris",
+          "driver_display": "Lando Norris NOR",
+          "team": "McLaren",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "bortoleto",
+          "driver_display": "Gabriel Bortoleto BOR",
+          "team": "Audi",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "albon",
+          "driver_display": "Alexander Albon ALB",
+          "team": "Williams",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        }
+      ],
+      "blocked": false
+    },
+    {
+      "round_slug": "japan",
+      "name": "Japanese Grand Prix",
+      "date": "2026-03-29",
+      "results": [
+        {
+          "pos": 1,
+          "driver_id": "antonelli",
+          "driver_display": "Kimi Antonelli ANT",
+          "team": "Mercedes",
+          "time_or_gap": "1:28:03.403",
+          "fastest_lap": null,
+          "points": 25
+        },
+        {
+          "pos": 2,
+          "driver_id": "piastri",
+          "driver_display": "Oscar Piastri PIA",
+          "team": "McLaren",
+          "time_or_gap": "+13.722s",
+          "fastest_lap": null,
+          "points": 18
+        },
+        {
+          "pos": 3,
+          "driver_id": "leclerc",
+          "driver_display": "Charles Leclerc LEC",
+          "team": "Ferrari",
+          "time_or_gap": "+15.270s",
+          "fastest_lap": null,
+          "points": 15
+        },
+        {
+          "pos": 4,
+          "driver_id": "russell",
+          "driver_display": "George Russell RUS",
+          "team": "Mercedes",
+          "time_or_gap": "+15.754s",
+          "fastest_lap": null,
+          "points": 12
+        },
+        {
+          "pos": 5,
+          "driver_id": "norris",
+          "driver_display": "Lando Norris NOR",
+          "team": "McLaren",
+          "time_or_gap": "+23.479s",
+          "fastest_lap": null,
+          "points": 10
+        },
+        {
+          "pos": 6,
+          "driver_id": "hamilton",
+          "driver_display": "Lewis Hamilton HAM",
+          "team": "Ferrari",
+          "time_or_gap": "+25.037s",
+          "fastest_lap": null,
+          "points": 8
+        },
+        {
+          "pos": 7,
+          "driver_id": "gasly",
+          "driver_display": "Pierre Gasly GAS",
+          "team": "Alpine",
+          "time_or_gap": "+32.340s",
+          "fastest_lap": null,
+          "points": 6
+        },
+        {
+          "pos": 8,
+          "driver_id": "max_verstappen",
+          "driver_display": "Max Verstappen VER",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+32.677s",
+          "fastest_lap": null,
+          "points": 4
+        },
+        {
+          "pos": 9,
+          "driver_id": "lawson",
+          "driver_display": "Liam Lawson LAW",
+          "team": "Racing Bulls",
+          "time_or_gap": "+50.180s",
+          "fastest_lap": null,
+          "points": 2
+        },
+        {
+          "pos": 10,
+          "driver_id": "ocon",
+          "driver_display": "Esteban Ocon OCO",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+51.216s",
+          "fastest_lap": null,
+          "points": 1
+        },
+        {
+          "pos": 11,
+          "driver_id": "hulkenberg",
+          "driver_display": "Nico Hulkenberg HUL",
+          "team": "Audi",
+          "time_or_gap": "+52.280s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 12,
+          "driver_id": "hadjar",
+          "driver_display": "Isack Hadjar HAD",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+56.154s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 13,
+          "driver_id": "bortoleto",
+          "driver_display": "Gabriel Bortoleto BOR",
+          "team": "Audi",
+          "time_or_gap": "+59.078s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 14,
+          "driver_id": "arvid_lindblad",
+          "driver_display": "Arvid Lindblad LIN",
+          "team": "Racing Bulls",
+          "time_or_gap": "+59.848s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 15,
+          "driver_id": "sainz",
+          "driver_display": "Carlos Sainz SAI",
+          "team": "Williams",
+          "time_or_gap": "+65.008s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 16,
+          "driver_id": "colapinto",
+          "driver_display": "Franco Colapinto COL",
+          "team": "Alpine",
+          "time_or_gap": "+65.773s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 17,
+          "driver_id": "perez",
+          "driver_display": "Sergio Perez PER",
+          "team": "Cadillac",
+          "time_or_gap": "+92.453s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 18,
+          "driver_id": "alonso",
+          "driver_display": "Fernando Alonso ALO",
+          "team": "Aston Martin",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 19,
+          "driver_id": "bottas",
+          "driver_display": "Valtteri Bottas BOT",
+          "team": "Cadillac",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 20,
+          "driver_id": "albon",
+          "driver_display": "Alexander Albon ALB",
+          "team": "Williams",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "stroll",
+          "driver_display": "Lance Stroll STR",
+          "team": "Aston Martin",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "bearman",
+          "driver_display": "Oliver Bearman BEA",
+          "team": "Haas F1 Team",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        }
+      ],
+      "blocked": false
+    },
+    {
+      "round_slug": "miami",
+      "name": "Miami Grand Prix",
+      "date": "2026-05-03",
+      "results": [
+        {
+          "pos": 1,
+          "driver_id": "antonelli",
+          "driver_display": "Kimi Antonelli ANT",
+          "team": "Mercedes",
+          "time_or_gap": "1:33:19.273",
+          "fastest_lap": null,
+          "points": 25
+        },
+        {
+          "pos": 2,
+          "driver_id": "norris",
+          "driver_display": "Lando Norris NOR",
+          "team": "McLaren",
+          "time_or_gap": "+3.264s",
+          "fastest_lap": null,
+          "points": 18
+        },
+        {
+          "pos": 3,
+          "driver_id": "piastri",
+          "driver_display": "Oscar Piastri PIA",
+          "team": "McLaren",
+          "time_or_gap": "+27.092s",
+          "fastest_lap": null,
+          "points": 15
+        },
+        {
+          "pos": 4,
+          "driver_id": "russell",
+          "driver_display": "George Russell RUS",
+          "team": "Mercedes",
+          "time_or_gap": "+43.051s",
+          "fastest_lap": null,
+          "points": 12
+        },
+        {
+          "pos": 5,
+          "driver_id": "max_verstappen",
+          "driver_display": "Max Verstappen VER",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+48.949s",
+          "fastest_lap": null,
+          "points": 10
+        },
+        {
+          "pos": 6,
+          "driver_id": "hamilton",
+          "driver_display": "Lewis Hamilton HAM",
+          "team": "Ferrari",
+          "time_or_gap": "+53.753s",
+          "fastest_lap": null,
+          "points": 8
+        },
+        {
+          "pos": 7,
+          "driver_id": "colapinto",
+          "driver_display": "Franco Colapinto COL",
+          "team": "Alpine",
+          "time_or_gap": "+61.871s",
+          "fastest_lap": null,
+          "points": 6
+        },
+        {
+          "pos": 8,
+          "driver_id": "leclerc",
+          "driver_display": "Charles Leclerc LEC",
+          "team": "Ferrari",
+          "time_or_gap": "+64.245s",
+          "fastest_lap": null,
+          "points": 4
+        },
+        {
+          "pos": 9,
+          "driver_id": "sainz",
+          "driver_display": "Carlos Sainz SAI",
+          "team": "Williams",
+          "time_or_gap": "+82.072s",
+          "fastest_lap": null,
+          "points": 2
+        },
+        {
+          "pos": 10,
+          "driver_id": "albon",
+          "driver_display": "Alexander Albon ALB",
+          "team": "Williams",
+          "time_or_gap": "+90.972s",
+          "fastest_lap": null,
+          "points": 1
+        },
+        {
+          "pos": 11,
+          "driver_id": "bearman",
+          "driver_display": "Oliver Bearman BEA",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 12,
+          "driver_id": "bortoleto",
+          "driver_display": "Gabriel Bortoleto BOR",
+          "team": "Audi",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 13,
+          "driver_id": "ocon",
+          "driver_display": "Esteban Ocon OCO",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 14,
+          "driver_id": "arvid_lindblad",
+          "driver_display": "Arvid Lindblad LIN",
+          "team": "Racing Bulls",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 15,
+          "driver_id": "alonso",
+          "driver_display": "Fernando Alonso ALO",
+          "team": "Aston Martin",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 16,
+          "driver_id": "perez",
+          "driver_display": "Sergio Perez PER",
+          "team": "Cadillac",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 17,
+          "driver_id": "stroll",
+          "driver_display": "Lance Stroll STR",
+          "team": "Aston Martin",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 18,
+          "driver_id": "bottas",
+          "driver_display": "Valtteri Bottas BOT",
+          "team": "Cadillac",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "hulkenberg",
+          "driver_display": "Nico Hulkenberg HUL",
+          "team": "Audi",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "lawson",
+          "driver_display": "Liam Lawson LAW",
+          "team": "Racing Bulls",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "gasly",
+          "driver_display": "Pierre Gasly GAS",
+          "team": "Alpine",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "hadjar",
+          "driver_display": "Isack Hadjar HAD",
+          "team": "Red Bull Racing",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        }
+      ],
+      "blocked": false
+    },
+    {
+      "round_slug": "canada",
+      "name": "Canadian Grand Prix",
+      "date": "2026-05-24",
+      "results": [
+        {
+          "pos": 1,
+          "driver_id": "antonelli",
+          "driver_display": "Kimi Antonelli ANT",
+          "team": "Mercedes",
+          "time_or_gap": "1:28:15.758",
+          "fastest_lap": null,
+          "points": 25
+        },
+        {
+          "pos": 2,
+          "driver_id": "hamilton",
+          "driver_display": "Lewis Hamilton HAM",
+          "team": "Ferrari",
+          "time_or_gap": "+10.768s",
+          "fastest_lap": null,
+          "points": 18
+        },
+        {
+          "pos": 3,
+          "driver_id": "max_verstappen",
+          "driver_display": "Max Verstappen VER",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+11.276s",
+          "fastest_lap": null,
+          "points": 15
+        },
+        {
+          "pos": 4,
+          "driver_id": "leclerc",
+          "driver_display": "Charles Leclerc LEC",
+          "team": "Ferrari",
+          "time_or_gap": "+44.151s",
+          "fastest_lap": null,
+          "points": 12
+        },
+        {
+          "pos": 5,
+          "driver_id": "hadjar",
+          "driver_display": "Isack Hadjar HAD",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 10
+        },
+        {
+          "pos": 6,
+          "driver_id": "colapinto",
+          "driver_display": "Franco Colapinto COL",
+          "team": "Alpine",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 8
+        },
+        {
+          "pos": 7,
+          "driver_id": "lawson",
+          "driver_display": "Liam Lawson LAW",
+          "team": "Racing Bulls",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 6
+        },
+        {
+          "pos": 8,
+          "driver_id": "gasly",
+          "driver_display": "Pierre Gasly GAS",
+          "team": "Alpine",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 4
+        },
+        {
+          "pos": 9,
+          "driver_id": "sainz",
+          "driver_display": "Carlos Sainz SAI",
+          "team": "Williams",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 2
+        },
+        {
+          "pos": 10,
+          "driver_id": "bearman",
+          "driver_display": "Oliver Bearman BEA",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+1 lap",
+          "fastest_lap": null,
+          "points": 1
+        },
+        {
+          "pos": 11,
+          "driver_id": "piastri",
+          "driver_display": "Oscar Piastri PIA",
+          "team": "McLaren",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 12,
+          "driver_id": "hulkenberg",
+          "driver_display": "Nico Hulkenberg HUL",
+          "team": "Audi",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 13,
+          "driver_id": "bortoleto",
+          "driver_display": "Gabriel Bortoleto BOR",
+          "team": "Audi",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 14,
+          "driver_id": "ocon",
+          "driver_display": "Esteban Ocon OCO",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+2 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 15,
+          "driver_id": "stroll",
+          "driver_display": "Lance Stroll STR",
+          "team": "Aston Martin",
+          "time_or_gap": "+4 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 16,
+          "driver_id": "bottas",
+          "driver_display": "Valtteri Bottas BOT",
+          "team": "Cadillac",
+          "time_or_gap": "+4 laps",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "perez",
+          "driver_display": "Sergio Perez PER",
+          "team": "Cadillac",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "norris",
+          "driver_display": "Lando Norris NOR",
+          "team": "McLaren",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "russell",
+          "driver_display": "George Russell RUS",
+          "team": "Mercedes",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "alonso",
+          "driver_display": "Fernando Alonso ALO",
+          "team": "Aston Martin",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "albon",
+          "driver_display": "Alexander Albon ALB",
+          "team": "Williams",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "arvid_lindblad",
+          "driver_display": "Arvid Lindblad LIN",
+          "team": "Racing Bulls",
+          "time_or_gap": "DNS",
+          "fastest_lap": null,
+          "points": 0
+        }
+      ],
+      "blocked": false
+    },
+    {
+      "round_slug": "monaco",
+      "name": "Monaco Grand Prix",
+      "date": "2026-06-07",
+      "results": [
+        {
+          "pos": 1,
+          "driver_id": "antonelli",
+          "driver_display": "Kimi Antonelli ANT",
+          "team": "Mercedes",
+          "time_or_gap": "2:23:31.243",
+          "fastest_lap": null,
+          "points": 25
+        },
+        {
+          "pos": 2,
+          "driver_id": "hamilton",
+          "driver_display": "Lewis Hamilton HAM",
+          "team": "Ferrari",
+          "time_or_gap": "+6.271s",
+          "fastest_lap": null,
+          "points": 18
+        },
+        {
+          "pos": 3,
+          "driver_id": "hadjar",
+          "driver_display": "Isack Hadjar HAD",
+          "team": "Red Bull Racing",
+          "time_or_gap": "+23.394s",
+          "fastest_lap": null,
+          "points": 15
+        },
+        {
+          "pos": 4,
+          "driver_id": "piastri",
+          "driver_display": "Oscar Piastri PIA",
+          "team": "McLaren",
+          "time_or_gap": "+24.261s",
+          "fastest_lap": null,
+          "points": 12
+        },
+        {
+          "pos": 5,
+          "driver_id": "lawson",
+          "driver_display": "Liam Lawson LAW",
+          "team": "Racing Bulls",
+          "time_or_gap": "+26.553s",
+          "fastest_lap": null,
+          "points": 10
+        },
+        {
+          "pos": 6,
+          "driver_id": "arvid_lindblad",
+          "driver_display": "Arvid Lindblad LIN",
+          "team": "Racing Bulls",
+          "time_or_gap": "+29.010s",
+          "fastest_lap": null,
+          "points": 8
+        },
+        {
+          "pos": 7,
+          "driver_id": "gasly",
+          "driver_display": "Pierre Gasly GAS",
+          "team": "Alpine",
+          "time_or_gap": "+30.369s",
+          "fastest_lap": null,
+          "points": 6
+        },
+        {
+          "pos": 8,
+          "driver_id": "albon",
+          "driver_display": "Alexander Albon ALB",
+          "team": "Williams",
+          "time_or_gap": "+33.413s",
+          "fastest_lap": null,
+          "points": 4
+        },
+        {
+          "pos": 9,
+          "driver_id": "ocon",
+          "driver_display": "Esteban Ocon OCO",
+          "team": "Haas F1 Team",
+          "time_or_gap": "+37.140s",
+          "fastest_lap": null,
+          "points": 2
+        },
+        {
+          "pos": 10,
+          "driver_id": "perez",
+          "driver_display": "Sergio Perez PER",
+          "team": "Cadillac",
+          "time_or_gap": "+39.153s",
+          "fastest_lap": null,
+          "points": 1
+        },
+        {
+          "pos": 11,
+          "driver_id": "alonso",
+          "driver_display": "Fernando Alonso ALO",
+          "team": "Aston Martin",
+          "time_or_gap": "+41.899s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 12,
+          "driver_id": "bortoleto",
+          "driver_display": "Gabriel Bortoleto BOR",
+          "team": "Audi",
+          "time_or_gap": "+42.748s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 13,
+          "driver_id": "russell",
+          "driver_display": "George Russell RUS",
+          "team": "Mercedes",
+          "time_or_gap": "+43.353s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 14,
+          "driver_id": "hulkenberg",
+          "driver_display": "Nico Hulkenberg HUL",
+          "team": "Audi",
+          "time_or_gap": "+44.102s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 15,
+          "driver_id": "colapinto",
+          "driver_display": "Franco Colapinto COL",
+          "team": "Alpine",
+          "time_or_gap": "+48.964s",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": 16,
+          "driver_id": "sainz",
+          "driver_display": "Carlos Sainz SAI",
+          "team": "Williams",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "leclerc",
+          "driver_display": "Charles Leclerc LEC",
+          "team": "Ferrari",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "stroll",
+          "driver_display": "Lance Stroll STR",
+          "team": "Aston Martin",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "norris",
+          "driver_display": "Lando Norris NOR",
+          "team": "McLaren",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "bearman",
+          "driver_display": "Oliver Bearman BEA",
+          "team": "Haas F1 Team",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "bottas",
+          "driver_display": "Valtteri Bottas BOT",
+          "team": "Cadillac",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        },
+        {
+          "pos": "NC",
+          "driver_id": "max_verstappen",
+          "driver_display": "Max Verstappen VER",
+          "team": "Red Bull Racing",
+          "time_or_gap": "DNF",
+          "fastest_lap": null,
+          "points": 0
+        }
+      ],
+      "blocked": false
+    }
+  ],
+  "driver_standings": [
+    {
+      "pos": 1,
+      "driver_id": "antonelli",
+      "driver_display": "Kimi Antonelli ANT",
+      "nationality": "ITA",
+      "team": "Mercedes",
+      "points": 156
+    },
+    {
+      "pos": 2,
+      "driver_id": "hamilton",
+      "driver_display": "Lewis Hamilton HAM",
+      "nationality": "GBR",
+      "team": "Ferrari",
+      "points": 90
+    },
+    {
+      "pos": 3,
+      "driver_id": "russell",
+      "driver_display": "George Russell RUS",
+      "nationality": "GBR",
+      "team": "Mercedes",
+      "points": 88
+    },
+    {
+      "pos": 4,
+      "driver_id": "leclerc",
+      "driver_display": "Charles Leclerc LEC",
+      "nationality": "MON",
+      "team": "Ferrari",
+      "points": 75
+    },
+    {
+      "pos": 5,
+      "driver_id": "piastri",
+      "driver_display": "Oscar Piastri PIA",
+      "nationality": "AUS",
+      "team": "McLaren",
+      "points": 60
+    },
+    {
+      "pos": 6,
+      "driver_id": "norris",
+      "driver_display": "Lando Norris NOR",
+      "nationality": "GBR",
+      "team": "McLaren",
+      "points": 58
+    },
+    {
+      "pos": 7,
+      "driver_id": "max_verstappen",
+      "driver_display": "Max Verstappen VER",
+      "nationality": "NED",
+      "team": "Red Bull Racing",
+      "points": 43
+    },
+    {
+      "pos": 8,
+      "driver_id": "hadjar",
+      "driver_display": "Isack Hadjar HAD",
+      "nationality": "FRA",
+      "team": "Red Bull Racing",
+      "points": 29
+    },
+    {
+      "pos": 9,
+      "driver_id": "lawson",
+      "driver_display": "Liam Lawson LAW",
+      "nationality": "NZL",
+      "team": "Racing Bulls",
+      "points": 26
+    },
+    {
+      "pos": 10,
+      "driver_id": "gasly",
+      "driver_display": "Pierre Gasly GAS",
+      "nationality": "FRA",
+      "team": "Alpine",
+      "points": 26
+    },
+    {
+      "pos": 11,
+      "driver_id": "bearman",
+      "driver_display": "Oliver Bearman BEA",
+      "nationality": "GBR",
+      "team": "Haas F1 Team",
+      "points": 18
+    },
+    {
+      "pos": 12,
+      "driver_id": "colapinto",
+      "driver_display": "Franco Colapinto COL",
+      "nationality": "ARG",
+      "team": "Alpine",
+      "points": 15
+    },
+    {
+      "pos": 13,
+      "driver_id": "arvid_lindblad",
+      "driver_display": "Arvid Lindblad LIN",
+      "nationality": "GBR",
+      "team": "Racing Bulls",
+      "points": 13
+    },
+    {
+      "pos": 14,
+      "driver_id": "sainz",
+      "driver_display": "Carlos Sainz SAI",
+      "nationality": "ESP",
+      "team": "Williams",
+      "points": 6
+    },
+    {
+      "pos": 15,
+      "driver_id": "albon",
+      "driver_display": "Alexander Albon ALB",
+      "nationality": "THA",
+      "team": "Williams",
+      "points": 5
+    },
+    {
+      "pos": 16,
+      "driver_id": "ocon",
+      "driver_display": "Esteban Ocon OCO",
+      "nationality": "FRA",
+      "team": "Haas F1 Team",
+      "points": 3
+    },
+    {
+      "pos": 17,
+      "driver_id": "bortoleto",
+      "driver_display": "Gabriel Bortoleto BOR",
+      "nationality": "BRA",
+      "team": "Audi",
+      "points": 2
+    },
+    {
+      "pos": 18,
+      "driver_id": "perez",
+      "driver_display": "Sergio Perez PER",
+      "nationality": "MEX",
+      "team": "Cadillac",
+      "points": 1
+    },
+    {
+      "pos": 19,
+      "driver_id": "hulkenberg",
+      "driver_display": "Nico Hulkenberg HUL",
+      "nationality": "GER",
+      "team": "Audi",
+      "points": 0
+    },
+    {
+      "pos": 20,
+      "driver_id": "alonso",
+      "driver_display": "Fernando Alonso ALO",
+      "nationality": "ESP",
+      "team": "Aston Martin",
+      "points": 0
+    },
+    {
+      "pos": 21,
+      "driver_id": "bottas",
+      "driver_display": "Valtteri Bottas BOT",
+      "nationality": "FIN",
+      "team": "Cadillac",
+      "points": 0
+    },
+    {
+      "pos": 22,
+      "driver_id": "stroll",
+      "driver_display": "Lance Stroll STR",
+      "nationality": "CAN",
+      "team": "Aston Martin",
+      "points": 0
+    }
+  ],
+  "constructor_standings": [
+    {
+      "pos": 1,
+      "team": "mercedes",
+      "team_display": "Mercedes",
+      "points": 244
+    },
+    {
+      "pos": 2,
+      "team": "ferrari",
+      "team_display": "Ferrari",
+      "points": 165
+    },
+    {
+      "pos": 3,
+      "team": "mclaren",
+      "team_display": "McLaren",
+      "points": 118
+    },
+    {
+      "pos": 4,
+      "team": "red bull racing",
+      "team_display": "Red Bull Racing",
+      "points": 72
+    },
+    {
+      "pos": 5,
+      "team": "alpine",
+      "team_display": "Alpine",
+      "points": 41
+    },
+    {
+      "pos": 6,
+      "team": "racing bulls",
+      "team_display": "Racing Bulls",
+      "points": 39
+    },
+    {
+      "pos": 7,
+      "team": "haas f1 team",
+      "team_display": "Haas F1 Team",
+      "points": 21
+    },
+    {
+      "pos": 8,
+      "team": "williams",
+      "team_display": "Williams",
+      "points": 11
+    },
+    {
+      "pos": 9,
+      "team": "audi",
+      "team_display": "Audi",
+      "points": 2
+    },
+    {
+      "pos": 10,
+      "team": "cadillac",
+      "team_display": "Cadillac",
+      "points": 1
+    },
+    {
+      "pos": 11,
+      "team": "aston martin",
+      "team_display": "Aston Martin",
+      "points": 0
+    }
+  ]
+}

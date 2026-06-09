@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process \"C:\\\\Users\\\\prath\\\\f1-2026-analysis\\\\dashboard\\\\index.html\")",
+      "Skill(update-config)",
+      "Bash(curl -s \"https://openf1.org/v1/sessions?year=2026&session_type=Race\" --max-time 15)",
+      "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); print\\(f'Sessions found: {len\\(data\\)}'\\); [print\\(f'  Round {i+1}: {s.get\\(\\\\\"circuit_short_name\\\\\",\\\\\"?\\\\\"\\)} | key={s.get\\(\\\\\"session_key\\\\\"\\)} | {s.get\\(\\\\\"date_start\\\\\",\\\\\"\\\\\"\\)[:10]}'\\) for i,s in enumerate\\(data[:10]\\)]\")",
+      "Bash(curl -s -w \"\\\\nHTTP_STATUS:%{http_code}\" \"https://openf1.org/v1/sessions?year=2026&session_type=Race\" --max-time 15)",
+      "Bash(curl -s -w \"\\\\nHTTP_STATUS:%{http_code}\" \"https://api.openf1.org/v1/sessions?year=2026&session_type=Race\" --max-time 15)",
+      "Bash(python -m http.server 8765 --directory dashboard)",
+      "PowerShell(Start-Process \"http://localhost:8765\")",
+      "PowerShell(netstat *)",
+      "Bash(python *)",
+      "Bash(Start-Process *)",
+      "WebFetch(domain:ics.ecal.com)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\prath\\\\f1-2026-analysis\\\\.claude\\\\skills\\\\scrape-f1-results\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\prath\\\\f1-2026-analysis\\\\.claude\\\\skills\\\\scrape-f1-official-media\")",
+      "WebFetch(domain:www.formula1.com)",
+      "Bash(powershell *)",
+      "Bash(python3 *)",
+      "Bash(start *)",
+      "Skill(run)",
+      "Bash(node -e \"global.window={}; require\\('./dashboard/data.js'\\); console.log\\('TOP-LEVEL KEYS:'\\); console.log\\(Object.keys\\(window.F1_DATA\\).join\\('\\\\n'\\)\\);\")"
+    ]
+  }
+}

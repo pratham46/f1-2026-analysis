@@ -1,0 +1,18 @@
+{
+  "name": "f1-2026-data-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker: fetches/scrapes 2026 F1 data, computes predictions, serves /api/data for the dashboard.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "kv:create": "wrangler kv namespace create F1_KV",
+    "test": "node test/predict.test.mjs && node test/assemble.test.mjs",
+    "seed": "node scripts/gen-seed.mjs",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.80.0"
+  }
+}

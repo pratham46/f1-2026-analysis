@@ -1,0 +1,20 @@
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/raw/
+data/processed/
+reports/figures/
+*.egg-info/
+dist/
+.venv/
+venv/
+
+# Node / Cloudflare Worker
+node_modules/
+.wrangler/
+*.log
+.dev.vars
+
+# Workspace scratch (regenerable)
+_workspace/_extracted_constants.json

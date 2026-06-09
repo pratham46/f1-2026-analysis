@@ -1,0 +1,20 @@
+name = "f1-2026-data"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+workers_dev = true
+
+# KV namespace for the assembled dashboard payload + run health.
+# Create with:  wrangler kv namespace create F1_KV
+# then paste the returned id below (and a separate preview_id for `wrangler dev`).
+[[kv_namespaces]]
+binding = "F1_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
+
+# Daily cron; the Worker self-gates to race weekends (Thu–Mon) in scheduled().
+# 06:00 UTC daily.
+[triggers]
+crons = ["0 6 * * *"]
+
+[observability]
+enabled = true

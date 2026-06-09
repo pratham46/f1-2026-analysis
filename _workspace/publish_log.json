@@ -1,0 +1,379 @@
+{
+  "published_at": "2026-06-07T18:40:08.778286+00:00",
+  "sources": {
+    "predictions": "C:\\Users\\prath\\f1-2026-analysis\\_workspace\\predictions.json",
+    "scraped": "C:\\Users\\prath\\f1-2026-analysis\\_workspace\\f1_scraped_results.json",
+    "existing_data_js": "C:\\Users\\prath\\f1-2026-analysis\\dashboard\\data.js"
+  },
+  "output": "C:\\Users\\prath\\f1-2026-analysis\\dashboard\\data.js",
+  "size_kb": 93.55,
+  "races_completed_2026": 6,
+  "driver_reconciliation": [
+    {
+      "driver_id": "antonelli",
+      "old_points": 131.0,
+      "new_points": 156.0,
+      "source": "scraped",
+      "delta": 25.0
+    },
+    {
+      "driver_id": "russell",
+      "old_points": 88.0,
+      "new_points": 88.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "norris",
+      "old_points": 58.0,
+      "new_points": 58.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "hamilton",
+      "old_points": 72.0,
+      "new_points": 90.0,
+      "source": "scraped",
+      "delta": 18.0
+    },
+    {
+      "driver_id": "leclerc",
+      "old_points": 75.0,
+      "new_points": 75.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "max_verstappen",
+      "old_points": 43.0,
+      "new_points": 43.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "piastri",
+      "old_points": 48.0,
+      "new_points": 60.0,
+      "source": "scraped",
+      "delta": 12.0
+    },
+    {
+      "driver_id": "hadjar",
+      "old_points": 14.0,
+      "new_points": 29.0,
+      "source": "scraped",
+      "delta": 15.0
+    },
+    {
+      "driver_id": "colapinto",
+      "old_points": 15.0,
+      "new_points": 15.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "lawson",
+      "old_points": 16.0,
+      "new_points": 26.0,
+      "source": "scraped",
+      "delta": 10.0
+    },
+    {
+      "driver_id": "gasly",
+      "old_points": 20.0,
+      "new_points": 26.0,
+      "source": "scraped",
+      "delta": 6.0
+    },
+    {
+      "driver_id": "sainz",
+      "old_points": 6.0,
+      "new_points": 6.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "bearman",
+      "old_points": 18.0,
+      "new_points": 18.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "arvid_lindblad",
+      "old_points": 5.0,
+      "new_points": 13.0,
+      "source": "scraped",
+      "delta": 8.0
+    },
+    {
+      "driver_id": "albon",
+      "old_points": 1.0,
+      "new_points": 5.0,
+      "source": "scraped",
+      "delta": 4.0
+    },
+    {
+      "driver_id": "bortoleto",
+      "old_points": 2.0,
+      "new_points": 2.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "ocon",
+      "old_points": 1.0,
+      "new_points": 3.0,
+      "source": "scraped",
+      "delta": 2.0
+    },
+    {
+      "driver_id": "hulkenberg",
+      "old_points": 0.0,
+      "new_points": 0.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "bottas",
+      "old_points": 0.0,
+      "new_points": 0.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "perez",
+      "old_points": 0.0,
+      "new_points": 1.0,
+      "source": "scraped",
+      "delta": 1.0
+    },
+    {
+      "driver_id": "stroll",
+      "old_points": 0.0,
+      "new_points": 0.0,
+      "source": "scraped",
+      "delta": 0.0
+    },
+    {
+      "driver_id": "alonso",
+      "old_points": 0.0,
+      "new_points": 0.0,
+      "source": "scraped",
+      "delta": 0.0
+    }
+  ],
+  "race_reconciliation": [
+    {
+      "race": "albert_park",
+      "slug": "australia",
+      "used_source": "scraped"
+    },
+    {
+      "race": "shanghai",
+      "slug": "china",
+      "used_source": "scraped"
+    },
+    {
+      "race": "suzuka",
+      "slug": "japan",
+      "used_source": "scraped"
+    },
+    {
+      "race": "miami",
+      "slug": "miami",
+      "used_source": "scraped"
+    },
+    {
+      "race": "villeneuve",
+      "slug": "canada",
+      "used_source": "scraped"
+    },
+    {
+      "race": "monaco",
+      "slug": "monaco",
+      "used_source": "scraped"
+    }
+  ],
+  "driver_images_preserved": 22,
+  "track_layouts_preserved": 24,
+  "scraped_driver_standings": [
+    {
+      "pos": 1,
+      "driver_id": "antonelli",
+      "driver_display": "Kimi Antonelli ANT",
+      "nationality": "ITA",
+      "team": "Mercedes",
+      "points": 156
+    },
+    {
+      "pos": 2,
+      "driver_id": "hamilton",
+      "driver_display": "Lewis Hamilton HAM",
+      "nationality": "GBR",
+      "team": "Ferrari",
+      "points": 90
+    },
+    {
+      "pos": 3,
+      "driver_id": "russell",
+      "driver_display": "George Russell RUS",
+      "nationality": "GBR",
+      "team": "Mercedes",
+      "points": 88
+    },
+    {
+      "pos": 4,
+      "driver_id": "leclerc",
+      "driver_display": "Charles Leclerc LEC",
+      "nationality": "MON",
+      "team": "Ferrari",
+      "points": 75
+    },
+    {
+      "pos": 5,
+      "driver_id": "piastri",
+      "driver_display": "Oscar Piastri PIA",
+      "nationality": "AUS",
+      "team": "McLaren",
+      "points": 60
+    },
+    {
+      "pos": 6,
+      "driver_id": "norris",
+      "driver_display": "Lando Norris NOR",
+      "nationality": "GBR",
+      "team": "McLaren",
+      "points": 58
+    },
+    {
+      "pos": 7,
+      "driver_id": "max_verstappen",
+      "driver_display": "Max Verstappen VER",
+      "nationality": "NED",
+      "team": "Red Bull Racing",
+      "points": 43
+    },
+    {
+      "pos": 8,
+      "driver_id": "hadjar",
+      "driver_display": "Isack Hadjar HAD",
+      "nationality": "FRA",
+      "team": "Red Bull Racing",
+      "points": 29
+    },
+    {
+      "pos": 9,
+      "driver_id": "lawson",
+      "driver_display": "Liam Lawson LAW",
+      "nationality": "NZL",
+      "team": "Racing Bulls",
+      "points": 26
+    },
+    {
+      "pos": 10,
+      "driver_id": "gasly",
+      "driver_display": "Pierre Gasly GAS",
+      "nationality": "FRA",
+      "team": "Alpine",
+      "points": 26
+    },
+    {
+      "pos": 11,
+      "driver_id": "bearman",
+      "driver_display": "Oliver Bearman BEA",
+      "nationality": "GBR",
+      "team": "Haas F1 Team",
+      "points": 18
+    },
+    {
+      "pos": 12,
+      "driver_id": "colapinto",
+      "driver_display": "Franco Colapinto COL",
+      "nationality": "ARG",
+      "team": "Alpine",
+      "points": 15
+    },
+    {
+      "pos": 13,
+      "driver_id": "arvid_lindblad",
+      "driver_display": "Arvid Lindblad LIN",
+      "nationality": "GBR",
+      "team": "Racing Bulls",
+      "points": 13
+    },
+    {
+      "pos": 14,
+      "driver_id": "sainz",
+      "driver_display": "Carlos Sainz SAI",
+      "nationality": "ESP",
+      "team": "Williams",
+      "points": 6
+    },
+    {
+      "pos": 15,
+      "driver_id": "albon",
+      "driver_display": "Alexander Albon ALB",
+      "nationality": "THA",
+      "team": "Williams",
+      "points": 5
+    },
+    {
+      "pos": 16,
+      "driver_id": "ocon",
+      "driver_display": "Esteban Ocon OCO",
+      "nationality": "FRA",
+      "team": "Haas F1 Team",
+      "points": 3
+    },
+    {
+      "pos": 17,
+      "driver_id": "bortoleto",
+      "driver_display": "Gabriel Bortoleto BOR",
+      "nationality": "BRA",
+      "team": "Audi",
+      "points": 2
+    },
+    {
+      "pos": 18,
+      "driver_id": "perez",
+      "driver_display": "Sergio Perez PER",
+      "nationality": "MEX",
+      "team": "Cadillac",
+      "points": 1
+    },
+    {
+      "pos": 19,
+      "driver_id": "hulkenberg",
+      "driver_display": "Nico Hulkenberg HUL",
+      "nationality": "GER",
+      "team": "Audi",
+      "points": 0
+    },
+    {
+      "pos": 20,
+      "driver_id": "alonso",
+      "driver_display": "Fernando Alonso ALO",
+      "nationality": "ESP",
+      "team": "Aston Martin",
+      "points": 0
+    },
+    {
+      "pos": 21,
+      "driver_id": "bottas",
+      "driver_display": "Valtteri Bottas BOT",
+      "nationality": "FIN",
+      "team": "Cadillac",
+      "points": 0
+    },
+    {
+      "pos": 22,
+      "driver_id": "stroll",
+      "driver_display": "Lance Stroll STR",
+      "nationality": "CAN",
+      "team": "Aston Martin",
+      "points": 0
+    }
+  ]
+}

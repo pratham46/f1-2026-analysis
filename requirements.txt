@@ -1,0 +1,15 @@
+fastf1>=3.4
+requests>=2.32
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+xgboost>=2.1
+lightgbm>=4.4
+matplotlib>=3.9
+seaborn>=0.13
+plotly>=5.22
+jupyter>=1.1
+ipykernel>=6.29
+python-dotenv>=1.0
+tqdm>=4.66
+pytest>=8.0

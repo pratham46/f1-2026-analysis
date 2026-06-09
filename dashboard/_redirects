@@ -1,0 +1,4 @@
+# Cloudflare Pages proxy: forward /api/* to the deployed Worker so the dashboard
+# can use same-origin fetches (keeps config.js F1_WORKER_URL empty, avoids CORS).
+# Replace the destination with your Worker URL after `wrangler deploy`.
+/api/*  https://f1-2026-data.YOUR-SUBDOMAIN.workers.dev/api/:splat  200
