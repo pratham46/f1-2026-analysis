@@ -7,4 +7,7 @@
 //
 // The dashboard fetches `${F1_WORKER_URL}/api/data` and falls back to the
 // committed data.js seed if the Worker is unreachable, so the page always renders.
-window.F1_WORKER_URL = "https://f1-2026-data.prathammewada46.workers.dev";
+// Empty → the dashboard renders the local/committed data.js directly (the Python
+// pipeline's accurate output). Set this back to the Worker URL to re-enable live
+// auto-updating data.
+window.F1_WORKER_URL = "";
