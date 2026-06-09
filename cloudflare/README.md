@@ -45,13 +45,14 @@ wrangler deploy
 
 ## 2. Point the dashboard at the Worker
 
-**Option A — same-origin proxy (recommended, no CORS):**
-Edit `dashboard/_redirects`, set the destination to your Worker URL, and leave
-`dashboard/config.js` `F1_WORKER_URL = ""`. Pages will proxy `/api/*` → Worker.
+Set `window.F1_WORKER_URL` in `dashboard/config.js` to your Worker URL, e.g.
+`"https://f1-2026-data.<subdomain>.workers.dev"`. The dashboard fetches the Worker directly;
+CORS is already enabled on the Worker (`Access-Control-Allow-Origin: *`).
 
-**Option B — direct cross-origin:**
-Set `window.F1_WORKER_URL = "https://f1-2026-data.<subdomain>.workers.dev"` in `dashboard/config.js`.
-CORS is already enabled on the Worker.
+> Note: Cloudflare Pages `_redirects` can only proxy (status 200) to **internal** paths, not to an
+> external `workers.dev` domain — so a same-origin `/api/*` proxy is **not** an option here. Use the
+> direct `F1_WORKER_URL` approach above. (If you later put the Worker on a custom route under the same
+> domain as Pages, you could switch to a relative `/api` path.)
 
 If the Worker is unreachable, the dashboard renders the committed `dashboard/data.js` seed — so the
 page never breaks. Regenerate the seed any time with:

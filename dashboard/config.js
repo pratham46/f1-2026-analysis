@@ -7,4 +7,4 @@
 //
 // The dashboard fetches `${F1_WORKER_URL}/api/data` and falls back to the
 // committed data.js seed if the Worker is unreachable, so the page always renders.
-window.F1_WORKER_URL = "";
+window.F1_WORKER_URL = "https://f1-2026-data.prathammewada46.workers.dev";
