@@ -1,69 +1,66 @@
 // ============================================================================
-// media.js — Driver headshot URLs (f1.com) + 2026 track layout URLs (F1 CDN).
+// media.js — Real formula1.com driver headshots + 2026 track layout images.
 //
-// We only build *URLs* — the browser loads the images directly, so the Worker
-// never proxies image bytes. URL patterns follow formula1.com conventions; if a
-// pattern 404s the frontend already falls back to CSS placeholders.
+// URLs harvested + HEAD-verified against formula1.com / media.formula1.com
+// (the same source the legacy Python dashboard used; see scrape_media.py).
+// Driver photos and track maps don't change mid-season, so these are baked in
+// as verified constants — no live scraping needed (f1.com blocks the Worker).
+//
+// Shapes match what dashboard/index.html consumes:
+//   driver_images[driver_id]            -> string URL
+//   track_layouts[circuit_id].img_url   -> string URL   (NOTE the .img_url wrapper)
 // ============================================================================
 
-import { DRIVER_INFO, CALENDAR_2026 } from "./seed.js";
-
-const CDN = "https://media.formula1.com/image/upload";
-const DRIVERS_BASE = "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers";
-
-// driver_id → f1.com headshot filename stem (FirstnameLastname style varies; we
-// build the common "F/FIRSTLAST01_Firstname_Lastname/..." pattern f1.com uses).
-const HEADSHOT_STEM = {
-  piastri: "O/OSCPIA01_Oscar_Piastri",
-  norris: "L/LANNOR01_Lando_Norris",
-  leclerc: "C/CHALEC01_Charles_Leclerc",
-  hamilton: "L/LEWHAM01_Lewis_Hamilton",
-  max_verstappen: "M/MAXVER01_Max_Verstappen",
-  tsunoda: "Y/YUKTSU01_Yuki_Tsunoda",
-  russell: "G/GEORUS01_George_Russell",
-  antonelli: "A/ANDANT01_Andrea Kimi_Antonelli",
-  sainz: "C/CARSAI01_Carlos_Sainz",
-  albon: "A/ALEALB01_Alexander_Albon",
-  lawson: "L/LIALAW01_Liam_Lawson",
-  hadjar: "I/ISAHAD01_Isack_Hadjar",
-  alonso: "F/FERALO01_Fernando_Alonso",
-  stroll: "L/LANSTR01_Lance_Stroll",
-  bearman: "O/OLIBEA01_Oliver_Bearman",
-  ocon: "E/ESTOCO01_Esteban_Ocon",
-  gasly: "P/PIEGAS01_Pierre_Gasly",
-  doohan: "J/JACDOO01_Jack_Doohan",
-  hulkenberg: "N/NICHUL01_Nico_Hulkenberg",
-  bortoleto: "G/GABBOR01_Gabriel_Bortoleto",
+// driver_id -> "teamFolder/code" on the f1.com CDN. doohan is omitted (not on the
+// f1.com 2026 grid — Colapinto holds the Alpine seat there).
+const DRIVER_CODE = {
+  piastri: "mclaren/oscpia01",
+  norris: "mclaren/lannor01",
+  leclerc: "ferrari/chalec01",
+  hamilton: "ferrari/lewham01",
+  max_verstappen: "redbullracing/maxver01",
+  russell: "mercedes/georus01",
+  antonelli: "mercedes/andant01",
+  sainz: "williams/carsai01",
+  albon: "williams/alealb01",
+  alonso: "astonmartin/feralo01",
+  stroll: "astonmartin/lanstr01",
+  bearman: "haasf1team/olibea01",
+  ocon: "haasf1team/estoco01",
+  gasly: "alpine/piegas01",
+  hadjar: "redbullracing/isahad01",
+  lawson: "racingbulls/lialaw01",
+  hulkenberg: "audi/nichul01",
+  bortoleto: "audi/gabbor01",
+  tsunoda: "racingbulls/yuktsu01",
 };
 
-// Circuit id → f1.com circuit-map image slug (the "Circuit name" carbon images).
+const driverHeadshot = (tc) =>
+  `https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/${tc}/2026${tc.replace("/", "")}right.webp`;
+
+// circuit_id (our calendar) -> f1.com CDN track slug (all HEAD-verified 200).
 const TRACK_SLUG = {
-  australia: "Australia", china: "China", japan: "Japan", bahrain: "Bahrain",
-  saudi_arabia: "Saudi_Arabia", miami: "Miami", canada: "Canada", monaco: "Monaco",
-  spain: "Spain", austria: "Austria", britain: "Great_Britain", belgium: "Belgium",
-  hungary: "Hungary", netherlands: "Netherlands", italy: "Italy", azerbaijan: "Baku",
-  singapore: "Singapore", americas: "United_States", mexico: "Mexico", brazil: "Brazil",
-  las_vegas: "Las_Vegas", qatar: "Qatar", abu_dhabi: "Abu_Dhabi",
+  australia: "melbourne", china: "shanghai", japan: "suzuka", bahrain: "sakhir",
+  saudi_arabia: "jeddah", miami: "miami", canada: "montreal", monaco: "montecarlo",
+  spain: "catalunya", austria: "spielberg", britain: "silverstone", belgium: "spafrancorchamps",
+  hungary: "hungaroring", netherlands: "zandvoort", italy: "monza", azerbaijan: "baku",
+  singapore: "singapore", americas: "austin", mexico: "mexicocity", brazil: "interlagos",
+  las_vegas: "lasvegas", qatar: "lusail", abu_dhabi: "yasmarina",
 };
+
+const trackLayout = (slug) =>
+  `https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026track${slug}detailed.webp`;
 
 export function buildDriverImages() {
   const out = {};
-  for (const id of Object.keys(DRIVER_INFO)) {
-    const stem = HEADSHOT_STEM[id];
-    out[id] = stem
-      ? `${DRIVERS_BASE}/${encodeURI(stem)}.png.transform/2col/image.png`
-      : null;
-  }
+  for (const [id, tc] of Object.entries(DRIVER_CODE)) out[id] = driverHeadshot(tc);
   return out;
 }
 
 export function buildTrackLayouts() {
   const out = {};
-  for (const race of CALENDAR_2026) {
-    const slug = TRACK_SLUG[race.id];
-    if (slug && !out[race.id]) {
-      out[race.id] = `${CDN}/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${slug}_Circuit.png`;
-    }
+  for (const [cid, slug] of Object.entries(TRACK_SLUG)) {
+    out[cid] = { img_url: trackLayout(slug) };
   }
   return out;
 }

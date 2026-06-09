@@ -28,8 +28,10 @@ for (const f of ["rank", "driver_id", "name", "short", "team", "color", "number"
 ok(d.constructor_standings_2026.length === 10, "10 constructors");
 ok(d.race_predictions.length === 24, `24 race_predictions (got ${d.race_predictions.length})`);
 ok(d.race_predictions[0].top5.length === 5, "race_predictions top5 has 5 drivers");
-ok(Object.keys(d.driver_images).length === 20, "20 driver_images");
-ok(Object.keys(d.track_layouts).length > 0, "track_layouts populated");
+ok(Object.keys(d.driver_images).length >= 18, `driver_images populated (${Object.keys(d.driver_images).length})`);
+ok(Object.values(d.driver_images).every(u => typeof u === "string" && u.startsWith("https://")), "driver_images are URLs");
+ok(Object.keys(d.track_layouts).length >= 20, `track_layouts populated (${Object.keys(d.track_layouts).length})`);
+ok(Object.values(d.track_layouts).every(t => t && typeof t.img_url === "string"), "track_layouts have .img_url");
 ok(Array.isArray(d.news), "news is an array (last-good preserved if scrape blocked)");
 ok(d._sanity.passed, "prediction sanity passed");
 console.log("\nhealth:", JSON.stringify(d._health));

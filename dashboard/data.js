@@ -1,5 +1,5 @@
 // AUTO-GENERATED dashboard seed (offline fallback).
-// Source: cloudflare/worker assemble() — regenerate with: npm run seed (see cloudflare/README.md).
+// Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
   "generated_at": "2026-06-09",
@@ -2315,57 +2315,102 @@ window.F1_DATA = {
     }
   ],
   "driver_images": {
-    "piastri": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/O/OSCPIA01_Oscar_Piastri.png.transform/2col/image.png",
-    "norris": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/L/LANNOR01_Lando_Norris.png.transform/2col/image.png",
-    "leclerc": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/C/CHALEC01_Charles_Leclerc.png.transform/2col/image.png",
-    "hamilton": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/L/LEWHAM01_Lewis_Hamilton.png.transform/2col/image.png",
-    "max_verstappen": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/M/MAXVER01_Max_Verstappen.png.transform/2col/image.png",
-    "tsunoda": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/Y/YUKTSU01_Yuki_Tsunoda.png.transform/2col/image.png",
-    "russell": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/G/GEORUS01_George_Russell.png.transform/2col/image.png",
-    "antonelli": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/A/ANDANT01_Andrea%20Kimi_Antonelli.png.transform/2col/image.png",
-    "sainz": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/C/CARSAI01_Carlos_Sainz.png.transform/2col/image.png",
-    "albon": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/A/ALEALB01_Alexander_Albon.png.transform/2col/image.png",
-    "lawson": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/L/LIALAW01_Liam_Lawson.png.transform/2col/image.png",
-    "hadjar": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/I/ISAHAD01_Isack_Hadjar.png.transform/2col/image.png",
-    "alonso": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/F/FERALO01_Fernando_Alonso.png.transform/2col/image.png",
-    "stroll": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/L/LANSTR01_Lance_Stroll.png.transform/2col/image.png",
-    "bearman": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/O/OLIBEA01_Oliver_Bearman.png.transform/2col/image.png",
-    "ocon": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/E/ESTOCO01_Esteban_Ocon.png.transform/2col/image.png",
-    "gasly": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/P/PIEGAS01_Pierre_Gasly.png.transform/2col/image.png",
-    "doohan": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/J/JACDOO01_Jack_Doohan.png.transform/2col/image.png",
-    "hulkenberg": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/N/NICHUL01_Nico_Hulkenberg.png.transform/2col/image.png",
-    "bortoleto": "https://www.formula1.com/content/dam/fom-website/drivers/2026Drivers/G/GABBOR01_Gabriel_Bortoleto.png.transform/2col/image.png"
+    "piastri": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/mclaren/oscpia01/2026mclarenoscpia01right.webp",
+    "norris": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/mclaren/lannor01/2026mclarenlannor01right.webp",
+    "leclerc": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/ferrari/chalec01/2026ferrarichalec01right.webp",
+    "hamilton": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/ferrari/lewham01/2026ferrarilewham01right.webp",
+    "max_verstappen": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/redbullracing/maxver01/2026redbullracingmaxver01right.webp",
+    "russell": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/mercedes/georus01/2026mercedesgeorus01right.webp",
+    "antonelli": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/mercedes/andant01/2026mercedesandant01right.webp",
+    "sainz": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/williams/carsai01/2026williamscarsai01right.webp",
+    "albon": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/williams/alealb01/2026williamsalealb01right.webp",
+    "alonso": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/astonmartin/feralo01/2026astonmartinferalo01right.webp",
+    "stroll": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/astonmartin/lanstr01/2026astonmartinlanstr01right.webp",
+    "bearman": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/haasf1team/olibea01/2026haasf1teamolibea01right.webp",
+    "ocon": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/haasf1team/estoco01/2026haasf1teamestoco01right.webp",
+    "gasly": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/alpine/piegas01/2026alpinepiegas01right.webp",
+    "hadjar": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/redbullracing/isahad01/2026redbullracingisahad01right.webp",
+    "lawson": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/racingbulls/lialaw01/2026racingbullslialaw01right.webp",
+    "hulkenberg": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/audi/nichul01/2026audinichul01right.webp",
+    "bortoleto": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/audi/gabbor01/2026audigabbor01right.webp",
+    "tsunoda": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/racingbulls/yuktsu01/2026racingbullsyuktsu01right.webp"
   },
   "track_layouts": {
-    "australia": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.png",
-    "china": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/China_Circuit.png",
-    "japan": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Japan_Circuit.png",
-    "bahrain": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Bahrain_Circuit.png",
-    "saudi_arabia": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Saudi_Arabia_Circuit.png",
-    "miami": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Miami_Circuit.png",
-    "canada": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Canada_Circuit.png",
-    "monaco": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Monaco_Circuit.png",
-    "spain": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Spain_Circuit.png",
-    "austria": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.png",
-    "britain": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Great_Britain_Circuit.png",
-    "belgium": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.png",
-    "hungary": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Hungary_Circuit.png",
-    "netherlands": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Netherlands_Circuit.png",
-    "italy": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.png",
-    "azerbaijan": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Baku_Circuit.png",
-    "singapore": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Singapore_Circuit.png",
-    "americas": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/United_States_Circuit.png",
-    "mexico": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Mexico_Circuit.png",
-    "brazil": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit.png",
-    "las_vegas": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Las_Vegas_Circuit.png",
-    "qatar": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Qatar_Circuit.png",
-    "abu_dhabi": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.png"
+    "australia": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmelbournedetailed.webp"
+    },
+    "china": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackshanghaidetailed.webp"
+    },
+    "japan": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksuzukadetailed.webp"
+    },
+    "bahrain": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksakhirdetailed.webp"
+    },
+    "saudi_arabia": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackjeddahdetailed.webp"
+    },
+    "miami": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmiamidetailed.webp"
+    },
+    "canada": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmontrealdetailed.webp"
+    },
+    "monaco": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmontecarlodetailed.webp"
+    },
+    "spain": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackcatalunyadetailed.webp"
+    },
+    "austria": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackspielbergdetailed.webp"
+    },
+    "britain": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksilverstonedetailed.webp"
+    },
+    "belgium": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackspafrancorchampsdetailed.webp"
+    },
+    "hungary": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackhungaroringdetailed.webp"
+    },
+    "netherlands": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackzandvoortdetailed.webp"
+    },
+    "italy": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmonzadetailed.webp"
+    },
+    "azerbaijan": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackbakudetailed.webp"
+    },
+    "singapore": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksingaporedetailed.webp"
+    },
+    "americas": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackaustindetailed.webp"
+    },
+    "mexico": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmexicocitydetailed.webp"
+    },
+    "brazil": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackinterlagosdetailed.webp"
+    },
+    "las_vegas": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracklasvegasdetailed.webp"
+    },
+    "qatar": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracklusaildetailed.webp"
+    },
+    "abu_dhabi": {
+      "img_url": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackyasmarinadetailed.webp"
+    }
   },
   "news": [],
   "_health": {
     "live": "jolpica:6rounds",
     "news": "empty_kept_last_good",
-    "scrapedAt": "2026-06-09T18:01:56.088Z"
+    "scrapedAt": "2026-06-09T19:20:36.608Z"
   },
   "_sanity": {
     "drivers_20": true,
