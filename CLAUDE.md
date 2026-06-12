@@ -27,3 +27,5 @@
 | 2026-06-08 | Added ui-designer agent + design-f1-ui skill | agents/ skills/ | Game-like F1 dashboard: podium hero, speedometer gauges, head-to-head battle panel, race timeline, constructor war bars |
 | 2026-06-08 | Updated f1-orchestrator: Phase 7 (data-publisher) + Phase 8 (ui-designer) | skills/f1-orchestrator | Route merge/publish and UI redesign requests to new agents |
 | 2026-06-08 | Added context-snapshot agent + capture-context skill | agents/ skills/ | Portable session handoff file — paste into any AI to resume work |
+| 2026-06-12 | Real-season data refresh: 22-round calendar (Bahrain+Saudi cancelled), 22-driver/11-team grid (Cadillac, Audi), real race results + team_cars in payload, news scraper fixed | worker src/ tests | Predictions now match live 2026 reality (champion Antonelli 99.8%) |
+| 2026-06-12 | Racing-theme dashboard rebuild ("Race Control") + car showcase + safe reveal pattern + live-API schema/freshness guards | dashboard/ | Fix graphs stuck invisible on Pages; official 2026 car renders in team cards; stale KV can no longer clobber the seed |
