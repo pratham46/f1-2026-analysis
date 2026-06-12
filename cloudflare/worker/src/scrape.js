@@ -38,29 +38,29 @@ const decode = (s = "") =>
  * @returns {{ok:boolean, blocked?:boolean, news?:Array<{title,url,image,date,tag}>}}
  */
 export async function scrapeNews(limit = 8) {
-  const r = await getHTML(`${F1}/en/latest/all.html`);
+  // f1.com dropped the .html suffix in 2025; fetch() follows the 301 anyway,
+  // but requesting the canonical URL avoids the extra hop.
+  const r = await getHTML(`${F1}/en/latest/all`);
   if (!r.ok) return { ok: false, blocked: !!r.blocked, status: r.status };
 
   const html = r.html;
   const items = [];
   const seen = new Set();
 
-  // f1.com article cards: anchors to /en/latest/article/... with a nearby <img>.
-  const linkRe = /<a[^>]+href="(\/en\/latest\/article[^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
+  // Current f1.com card markup: the title is the anchor's direct text content
+  // (class ArticleListCard-module_title…), no inner heading tags.
+  const linkRe = /<a[^>]+href="(\/en\/latest\/article\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
   let m;
   while ((m = linkRe.exec(html)) && items.length < limit) {
     const href = m[1];
     if (seen.has(href)) continue;
-    const inner = m[2];
-    const titleM = inner.match(/<(?:h\d|span|p)[^>]*>([^<]{12,140})<\/(?:h\d|span|p)>/);
-    const imgM = inner.match(/<img[^>]+(?:data-src|src)="([^"]+)"/);
-    const title = titleM ? decode(titleM[1]) : null;
-    if (!title) continue;
+    const title = decode(m[2].replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim());
+    if (title.length < 12 || title.length > 160) continue;
     seen.add(href);
     items.push({
       title,
       url: href.startsWith("http") ? href : F1 + href,
-      image: imgM ? imgM[1] : null,
+      image: null,
       date: null,
       tag: "F1 News",
     });
@@ -83,7 +83,7 @@ export async function scrapeNews(limit = 8) {
  * Jolpica (sources.js) is the authoritative standings source, this adds podium/news flavor.
  */
 export async function scrapeRaceLinks() {
-  const r = await getHTML(`${F1}/en/racing/2026.html`);
+  const r = await getHTML(`${F1}/en/racing/2026`);
   if (!r.ok) return { ok: false, blocked: !!r.blocked, status: r.status };
   const links = new Set();
   const re = /href="(\/en\/racing\/2026\/[a-z0-9_-]+\/race-result[^"]*)"/g;

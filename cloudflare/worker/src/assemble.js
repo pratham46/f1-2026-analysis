@@ -7,18 +7,19 @@
 // driver_info, team_colors, seasons_used, + live real_* fields + media + news.
 //
 // Order of trust: predictions (always) → live standings (override "real_*" +
-// blend into base positions) → scraped news/media (best-effort) → last-good KV.
+// blend into base positions) → real per-race results (completed rounds show the
+// actual podium, not a forecast) → scraped news/media (best-effort) → last-good KV.
 // ============================================================================
 
 import {
   DRIVER_INFO, TEAM_COLORS, REGULATION_IMPACT_2026, SEASONS_USED,
   HISTORICAL_DRIVER_POINTS, HISTORICAL_CONSTRUCTOR_POINTS, DRIVER_ROLLING_FORM,
-  CALENDAR_2026,
+  CALENDAR_2026, CANCELLED_2026,
 } from "./seed.js";
 import { predict } from "./predict.js";
-import { fetchLiveStandings } from "./sources.js";
+import { fetchLiveStandings, fetchRaceResults } from "./sources.js";
 import { scrapeNews } from "./scrape.js";
-import { buildDriverImages, buildTrackLayouts } from "./media.js";
+import { buildDriverImages, buildTrackLayouts, buildTeamCars } from "./media.js";
 
 // team slug → display name (from the grid info).
 function teamNames() {
@@ -27,9 +28,10 @@ function teamNames() {
   return out;
 }
 
-function toDriverStandings2026(pred) {
+function toDriverStandings2026(pred, liveByDriver) {
   return pred.driver_standings.map((d) => {
     const info = DRIVER_INFO[d.driver] || {};
+    const live = liveByDriver[d.driver] || {};
     return {
       rank: d.position,
       driver_id: d.driver,
@@ -44,12 +46,17 @@ function toDriverStandings2026(pred) {
       championship_win_probability: d.championship_win_probability,
       podium_probability: d.podium_rate,
       avg_predicted_position: d.base_predicted_position,
+      current_real_points: live.points || 0,
+      current_real_position: live.position || null,
+      current_wins: live.wins || 0,
     };
   });
 }
 
-function toConstructorStandings2026(pred) {
+function toConstructorStandings2026(pred, liveConstructors) {
   const names = teamNames();
+  const liveByTeam = {};
+  for (const c of liveConstructors || []) liveByTeam[c.constructor_id] = c;
   return pred.constructor_standings.map((c) => ({
     rank: c.position,
     constructor_id: c.constructor,
@@ -57,23 +64,47 @@ function toConstructorStandings2026(pred) {
     color: TEAM_COLORS[c.constructor] || "#888",
     predicted_points: c.predicted_points,
     championship_win_probability: c.championship_win_probability,
+    current_real_points: (liveByTeam[c.constructor] || {}).points || 0,
+    current_wins: (liveByTeam[c.constructor] || {}).wins || 0,
   }));
 }
 
-// Build race_predictions for the full 2026 calendar (top-5 per round).
-function toRacePredictions(pred) {
-  const top5 = pred.race_predictions[0].drivers
+// Per-round race cards: completed rounds carry the REAL result (from Jolpica),
+// future rounds carry the model's forecast top-5. Emits both `name`/`date` and
+// the legacy `race_name`/`race_date` aliases the dashboard normalizer reads.
+function toRacePredictions(pred, realRaces, racesCompleted) {
+  const predictedTop5 = pred.race_predictions[0].drivers
     .slice()
     .sort((a, b) => b.win_probability - a.win_probability)
     .slice(0, 5)
     .map((d) => ({ driver_id: d.driver, win_prob: d.win_probability }));
-  return CALENDAR_2026.map((race) => ({
-    round: race.round,
-    circuit_id: race.id,
-    name: race.name,
-    date: race.date,
-    top5,
-  }));
+
+  const realByRound = {};
+  for (const r of realRaces || []) realByRound[r.round] = r;
+
+  return CALENDAR_2026.map((race) => {
+    const real = realByRound[race.round];
+    const completed = !!real || race.round <= racesCompleted;
+    const top5 = real
+      ? real.results.slice(0, 5).map((res) => ({
+          driver_id: res.driver_id,
+          win_prob: null,            // actual result — no forecast probability
+          position: res.position,
+        }))
+      : predictedTop5;
+    return {
+      round: race.round,
+      circuit_id: race.id,
+      name: race.name,
+      race_name: race.name,
+      date: race.date,
+      race_date: race.date,
+      sprint: !!race.sprint,
+      completed,
+      winner: top5[0] ? top5[0].driver_id : null,
+      top5,
+    };
+  });
 }
 
 function toRealDriverStandings(live) {
@@ -95,13 +126,22 @@ function toRealDriverStandings(live) {
   });
 }
 
+// Upcoming-race convenience block for the dashboard hero (next on the calendar).
+function toNextRace(racesCompleted, now = new Date()) {
+  const upcoming = CALENDAR_2026.find((r) => r.round === racesCompleted + 1)
+    || CALENDAR_2026.find((r) => new Date(r.date + "T23:59:59Z") >= now);
+  if (!upcoming) return null;
+  const days = Math.max(0, Math.ceil((new Date(upcoming.date + "T14:00:00Z") - now) / 86400000));
+  return { ...upcoming, circuit_id: upcoming.id, days_until: days };
+}
+
 /**
  * Assemble the full dashboard payload.
  * @param {object} opts { lastGood } — previous KV payload for graceful fallback
  */
 export async function assemble(opts = {}) {
   const lastGood = opts.lastGood || {};
-  const health = { live: "skipped", news: "skipped", scrapedAt: new Date().toISOString() };
+  const health = { live: "skipped", results: "skipped", news: "skipped", scrapedAt: new Date().toISOString() };
 
   // 1. Live 2026 standings (authoritative for real_* + base-position blend).
   let live = { ok: false };
@@ -110,11 +150,21 @@ export async function assemble(opts = {}) {
 
   const racesCompleted = live.ok ? (live.racesCompleted || 0) : 0;
   const liveForBlend = live.ok ? (live.driverStandings || []) : [];
+  const liveByDriver = {};
+  for (const s of liveForBlend) liveByDriver[s.driver_id] = s;
 
-  // 2. Predictions (always succeeds; blends live standings when present).
+  // 2. Real per-race results for completed rounds (graceful; last-good fallback).
+  let realRaces = lastGood.real_race_results_2026 || [];
+  try {
+    const rr = await fetchRaceResults(racesCompleted);
+    if (rr.ok && rr.races?.length >= realRaces.length) { realRaces = rr.races; health.results = `jolpica:${rr.races.length}races`; }
+    else health.results = "kept_last_good";
+  } catch { health.results = "error_kept_last_good"; }
+
+  // 3. Predictions (always succeeds; blends live standings when present).
   const pred = predict({ liveStandings: liveForBlend, racesCompleted });
 
-  // 3. News (best-effort; keep last-good on block).
+  // 4. News (best-effort; keep last-good on block).
   let news = lastGood.news || [];
   try {
     const n = await scrapeNews(8);
@@ -122,9 +172,10 @@ export async function assemble(opts = {}) {
     else health.news = n.blocked ? "blocked_kept_last_good" : "empty_kept_last_good";
   } catch { health.news = "error_kept_last_good"; }
 
-  // 4. Media URLs (deterministic; cheap).
+  // 5. Media URLs (deterministic; cheap).
   const driver_images = buildDriverImages();
   const track_layouts = buildTrackLayouts();
+  const team_cars = buildTeamCars();
 
   const payload = {
     generated_at: pred.metadata.generated_at,
@@ -136,21 +187,25 @@ export async function assemble(opts = {}) {
     team_colors: TEAM_COLORS,
     regulation_impact_2026: REGULATION_IMPACT_2026,
 
-    driver_standings_2026: toDriverStandings2026(pred),
-    constructor_standings_2026: toConstructorStandings2026(pred),
-    race_predictions: toRacePredictions(pred),
+    driver_standings_2026: toDriverStandings2026(pred, liveByDriver),
+    constructor_standings_2026: toConstructorStandings2026(pred, live.ok ? live.constructorStandings : []),
+    race_predictions: toRacePredictions(pred, realRaces, racesCompleted),
 
     historical_driver_points: HISTORICAL_DRIVER_POINTS,
     historical_constructor_points: HISTORICAL_CONSTRUCTOR_POINTS,
     driver_rolling_form: DRIVER_ROLLING_FORM,
 
     calendar_2026: CALENDAR_2026,
+    cancelled_races_2026: CANCELLED_2026,
     races_completed_2026: racesCompleted,
+    next_race: toNextRace(racesCompleted),
     real_driver_standings_2026: live.ok ? toRealDriverStandings(live) : [],
     real_constructor_standings_2026: live.ok ? (live.constructorStandings || []) : [],
+    real_race_results_2026: realRaces,
 
     driver_images,
     track_layouts,
+    team_cars,
     news,
 
     _health: health,

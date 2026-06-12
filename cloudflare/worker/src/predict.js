@@ -267,16 +267,18 @@ export function predict(opts = {}) {
 function round4(x) { return Math.round(x * 1e4) / 1e4; }
 
 function runSanityChecks(p) {
+  const gridSize = Object.keys(MODEL_BASE_2026).length; // 22 on the 2026 grid
   const probSum = p.driver_standings.reduce((s, d) => s + d.championship_win_probability, 0);
   const maxPts = Math.max(...p.driver_standings.map((d) => d.predicted_points));
   const checks = {
-    drivers_20: p.driver_standings.length === 20,
+    drivers_full_grid: p.driver_standings.length === gridSize,
+    grid_size: gridSize,
     prob_sum_ok: probSum >= 0.95 && probSum <= 1.05,
     points_cap_ok: maxPts <= 600,
     champion_prob_ok: p.driver_standings[0].championship_win_probability > 0.1,
     prob_sum: round4(probSum),
     max_points: maxPts,
   };
-  checks.passed = checks.drivers_20 && checks.prob_sum_ok && checks.points_cap_ok;
+  checks.passed = checks.drivers_full_grid && checks.prob_sum_ok && checks.points_cap_ok;
   return checks;
 }
