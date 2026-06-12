@@ -9,6 +9,7 @@ const REQUIRED_KEYS = [
   "generated_at", "model_cv_mae", "seasons_used", "driver_info", "team_colors",
   "driver_standings_2026", "constructor_standings_2026",
   "historical_driver_points", "historical_constructor_points",
+  "historical_driver_teams", "driver_names",
   "race_predictions", "driver_rolling_form", "regulation_impact_2026",
   "calendar_2026", "cancelled_races_2026", "next_race",
   "races_completed_2026", "real_driver_standings_2026", "real_constructor_standings_2026",
@@ -39,6 +40,17 @@ ok(Object.values(d.track_layouts).every(t => t && typeof t.img_url === "string")
 ok(Object.keys(d.team_cars).length === 11, `team_cars has all 11 teams (${Object.keys(d.team_cars).length})`);
 ok(Object.values(d.team_cars).every(u => typeof u === "string" && u.includes("carright.webp")), "team_cars are f1.com car renders");
 ok(Array.isArray(d.real_race_results_2026), "real_race_results_2026 is an array");
+
+// History correctness: final 2020-2025 standings, not mid-season snapshots.
+const h25 = d.historical_driver_points[2025] || d.historical_driver_points["2025"] || {};
+const top25 = Object.entries(h25).sort((a, b) => b[1] - a[1])[0] || [];
+ok(top25[0] === "norris" && top25[1] === 423, `2025 history champion is norris @ 423 (got ${top25[0]} @ ${top25[1]})`);
+const hc25 = d.historical_constructor_points[2025] || d.historical_constructor_points["2025"] || {};
+ok(hc25.mclaren === 833, `2025 constructors: mclaren 833 (got ${hc25.mclaren})`);
+const h20 = d.historical_driver_points[2020] || d.historical_driver_points["2020"] || {};
+ok(h20.hamilton === 347, `2020 history: hamilton 347 (got ${h20.hamilton})`);
+ok((d.historical_driver_teams["2025"] || d.historical_driver_teams[2025] || {}).norris === "mclaren", "historical_driver_teams maps 2025 norris→mclaren");
+ok((d.driver_names || {}).vettel === "Sebastian Vettel", "driver_names covers past drivers");
 ok(Array.isArray(d.news), "news is an array (last-good preserved if scrape blocked)");
 ok(d._sanity.passed, "prediction sanity passed");
 

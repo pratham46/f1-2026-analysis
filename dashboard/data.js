@@ -1495,249 +1495,414 @@ window.F1_DATA = {
   ],
   "historical_driver_points": {
     "2020": {
-      "albon": 36,
-      "bottas": 73,
-      "gasly": 12,
-      "giovinazzi": 2,
-      "hamilton": 107,
-      "hulkenberg": 6,
+      "hamilton": 347,
+      "bottas": 223,
+      "max_verstappen": 214,
+      "perez": 125,
+      "ricciardo": 119,
+      "sainz": 105,
+      "albon": 105,
+      "leclerc": 98,
+      "norris": 97,
+      "gasly": 75,
+      "stroll": 75,
+      "ocon": 62,
+      "vettel": 33,
+      "kvyat": 32,
+      "hulkenberg": 10,
+      "raikkonen": 4,
+      "giovinazzi": 4,
+      "russell": 3,
+      "grosjean": 2,
       "kevin_magnussen": 1,
-      "kvyat": 2,
-      "leclerc": 45,
-      "max_verstappen": 77,
-      "norris": 38,
-      "ocon": 16,
-      "perez": 22,
-      "ricciardo": 20,
-      "sainz": 15,
-      "stroll": 28,
-      "vettel": 10
+      "latifi": 0,
+      "aitken": 0,
+      "pietro_fittipaldi": 0
     },
     "2021": {
-      "alonso": 5,
-      "bottas": 47,
-      "gasly": 16,
-      "giovinazzi": 1,
-      "hamilton": 101,
-      "leclerc": 40,
-      "max_verstappen": 105,
-      "norris": 56,
-      "ocon": 12,
-      "perez": 44,
-      "ricciardo": 24,
-      "sainz": 38,
-      "stroll": 9,
-      "tsunoda": 2,
-      "vettel": 10
+      "max_verstappen": 395.5,
+      "hamilton": 387.5,
+      "bottas": 226,
+      "perez": 190,
+      "sainz": 164.5,
+      "norris": 160,
+      "leclerc": 159,
+      "ricciardo": 115,
+      "gasly": 110,
+      "alonso": 81,
+      "ocon": 74,
+      "vettel": 43,
+      "stroll": 34,
+      "tsunoda": 32,
+      "russell": 16,
+      "raikkonen": 10,
+      "latifi": 7,
+      "giovinazzi": 3,
+      "mick_schumacher": 0,
+      "kubica": 0,
+      "mazepin": 0
     },
     "2022": {
-      "albon": 3,
-      "alonso": 2,
-      "bottas": 28,
-      "gasly": 6,
-      "hamilton": 36,
-      "kevin_magnussen": 14,
-      "leclerc": 97,
-      "max_verstappen": 77,
-      "norris": 31,
-      "ocon": 24,
-      "perez": 60,
-      "ricciardo": 8,
-      "russell": 59,
-      "sainz": 48,
-      "stroll": 2,
-      "tsunoda": 10,
-      "vettel": 4,
-      "zhou": 1
+      "max_verstappen": 454,
+      "leclerc": 308,
+      "perez": 305,
+      "russell": 275,
+      "sainz": 246,
+      "hamilton": 240,
+      "norris": 122,
+      "ocon": 92,
+      "alonso": 81,
+      "bottas": 49,
+      "ricciardo": 37,
+      "vettel": 37,
+      "kevin_magnussen": 25,
+      "gasly": 23,
+      "stroll": 18,
+      "mick_schumacher": 12,
+      "tsunoda": 12,
+      "zhou": 6,
+      "albon": 4,
+      "latifi": 2,
+      "de_vries": 2,
+      "hulkenberg": 0
     },
     "2023": {
-      "albon": 13,
-      "alonso": 156,
-      "bottas": 5,
-      "gasly": 17,
-      "hamilton": 147,
-      "hulkenberg": 14,
-      "leclerc": 127,
-      "magnussen": 2,
-      "norris": 70,
-      "ocon": 47,
-      "perez": 224,
-      "piastri": 37,
-      "russell": 116,
-      "sainz": 114,
-      "stroll": 65,
-      "tsunoda": 6,
-      "verstappen": 351,
-      "zho": 4
+      "max_verstappen": 575,
+      "perez": 285,
+      "hamilton": 234,
+      "alonso": 206,
+      "leclerc": 206,
+      "norris": 205,
+      "sainz": 200,
+      "russell": 175,
+      "piastri": 97,
+      "stroll": 74,
+      "gasly": 62,
+      "ocon": 58,
+      "albon": 27,
+      "tsunoda": 17,
+      "bottas": 10,
+      "hulkenberg": 9,
+      "ricciardo": 6,
+      "zhou": 6,
+      "kevin_magnussen": 3,
+      "lawson": 2,
+      "sargeant": 1,
+      "de_vries": 0
     },
     "2024": {
-      "albon": 2,
-      "alonso": 44,
-      "bearman": 6,
+      "max_verstappen": 437,
+      "norris": 374,
+      "leclerc": 356,
+      "piastri": 292,
+      "sainz": 290,
+      "russell": 245,
+      "hamilton": 223,
+      "perez": 152,
+      "alonso": 70,
+      "gasly": 42,
+      "hulkenberg": 41,
+      "tsunoda": 30,
+      "stroll": 24,
+      "ocon": 23,
+      "kevin_magnussen": 16,
+      "albon": 12,
+      "ricciardo": 12,
+      "bearman": 7,
       "colapinto": 5,
-      "gasly": 7,
-      "hamilton": 79,
-      "hulkenberg": 10,
-      "leclerc": 164,
-      "magnussen": 2,
-      "norris": 154,
-      "ocon": 3,
-      "perez": 127,
-      "piastri": 96,
-      "ric": 16,
-      "russell": 83,
-      "sainz": 130,
-      "sar": 1,
-      "stroll": 15,
-      "tsunoda": 20,
-      "verstappen": 251,
-      "zho": 2
+      "zhou": 4,
+      "lawson": 4,
+      "bottas": 0,
+      "sargeant": 0,
+      "doohan": 0
     },
     "2025": {
-      "albon": 20,
-      "antonelli": 36,
-      "bearman": 6,
-      "gasly": 6,
-      "hadjar": 5,
-      "hamilton": 23,
-      "hulkenberg": 6,
-      "leclerc": 43,
-      "max_verstappen": 81,
-      "norris": 88,
-      "ocon": 14,
-      "piastri": 92,
-      "russell": 68,
-      "sainz": 5,
-      "stroll": 10,
-      "tsunoda": 2
+      "norris": 423,
+      "max_verstappen": 421,
+      "piastri": 410,
+      "russell": 319,
+      "leclerc": 242,
+      "hamilton": 156,
+      "antonelli": 150,
+      "albon": 73,
+      "sainz": 64,
+      "alonso": 56,
+      "hulkenberg": 51,
+      "hadjar": 51,
+      "bearman": 41,
+      "lawson": 38,
+      "ocon": 38,
+      "stroll": 33,
+      "tsunoda": 33,
+      "gasly": 22,
+      "bortoleto": 19,
+      "colapinto": 0,
+      "doohan": 0
     }
   },
   "historical_constructor_points": {
     "2020": {
-      "red_bull": 113,
-      "mercedes": 180,
-      "alphatauri": 14,
-      "alfa": 2,
-      "haas": 1,
-      "racing_point": 56,
-      "ferrari": 55,
-      "mclaren": 53,
-      "renault": 36
+      "mercedes": 573,
+      "red_bull": 319,
+      "mclaren": 202,
+      "racing_point": 195,
+      "renault": 181,
+      "ferrari": 131,
+      "alphatauri": 107,
+      "alfa": 8,
+      "haas": 3,
+      "williams": 0
     },
     "2021": {
-      "alpine": 17,
-      "mercedes": 148,
-      "alphatauri": 18,
-      "alfa": 1,
-      "ferrari": 78,
-      "red_bull": 149,
-      "mclaren": 80,
-      "aston_martin": 19
+      "mercedes": 613.5,
+      "red_bull": 585.5,
+      "ferrari": 323.5,
+      "mclaren": 275,
+      "alpine": 155,
+      "alphatauri": 142,
+      "aston_martin": 77,
+      "williams": 23,
+      "alfa": 13,
+      "haas": 0
     },
     "2022": {
-      "williams": 3,
-      "alpine": 26,
-      "alfa": 29,
-      "alphatauri": 16,
-      "mercedes": 95,
-      "aston_martin": 6,
-      "haas": 14,
-      "ferrari": 145,
-      "red_bull": 137,
-      "mclaren": 39
+      "red_bull": 759,
+      "ferrari": 554,
+      "mercedes": 515,
+      "alpine": 173,
+      "mclaren": 159,
+      "alfa": 55,
+      "aston_martin": 55,
+      "haas": 37,
+      "alphatauri": 35,
+      "williams": 8
     },
     "2023": {
-      "williams": 13,
-      "aston_martin": 221,
-      "unknown": 110,
-      "rb": 6,
-      "alpine": 64,
-      "mercedes": 263,
-      "haas": 16,
-      "ferrari": 241,
-      "mclaren": 107,
-      "red_bull": 575
+      "red_bull": 860,
+      "mercedes": 409,
+      "ferrari": 406,
+      "mclaren": 302,
+      "aston_martin": 280,
+      "alpine": 120,
+      "williams": 28,
+      "alphatauri": 25,
+      "alfa": 16,
+      "haas": 12
     },
     "2024": {
-      "williams": 3,
-      "aston_martin": 59,
-      "ferrari": 300,
-      "sauber": 2,
-      "alpine": 10,
-      "mercedes": 162,
-      "haas": 12,
-      "mclaren": 250,
-      "red_bull": 378,
-      "rb": 36
+      "mclaren": 666,
+      "ferrari": 652,
+      "red_bull": 589,
+      "mercedes": 468,
+      "aston_martin": 94,
+      "alpine": 65,
+      "haas": 58,
+      "rb": 46,
+      "williams": 17,
+      "sauber": 4
     },
     "2025": {
-      "williams": 25,
-      "aston_martin": 10,
-      "mercedes": 104,
-      "haas": 20,
-      "sauber": 6,
-      "alpine": 6,
-      "rb": 5,
-      "ferrari": 66,
-      "red_bull": 83,
-      "mclaren": 180
+      "mclaren": 833,
+      "mercedes": 469,
+      "red_bull": 451,
+      "ferrari": 398,
+      "williams": 137,
+      "rb": 92,
+      "aston_martin": 89,
+      "haas": 79,
+      "sauber": 70,
+      "alpine": 22
     }
   },
+  "historical_driver_teams": {
+    "2020": {
+      "hamilton": "mercedes",
+      "bottas": "mercedes",
+      "max_verstappen": "red_bull",
+      "perez": "racing_point",
+      "ricciardo": "renault",
+      "sainz": "mclaren",
+      "albon": "red_bull",
+      "leclerc": "ferrari",
+      "norris": "mclaren",
+      "gasly": "alphatauri",
+      "stroll": "racing_point",
+      "ocon": "renault",
+      "vettel": "ferrari",
+      "kvyat": "alphatauri",
+      "hulkenberg": "racing_point",
+      "raikkonen": "alfa",
+      "giovinazzi": "alfa",
+      "russell": "mercedes",
+      "grosjean": "haas",
+      "kevin_magnussen": "haas",
+      "latifi": "williams",
+      "aitken": "williams",
+      "pietro_fittipaldi": "haas"
+    },
+    "2021": {
+      "max_verstappen": "red_bull",
+      "hamilton": "mercedes",
+      "bottas": "mercedes",
+      "perez": "red_bull",
+      "sainz": "ferrari",
+      "norris": "mclaren",
+      "leclerc": "ferrari",
+      "ricciardo": "mclaren",
+      "gasly": "alphatauri",
+      "alonso": "alpine",
+      "ocon": "alpine",
+      "vettel": "aston_martin",
+      "stroll": "aston_martin",
+      "tsunoda": "alphatauri",
+      "russell": "williams",
+      "raikkonen": "alfa",
+      "latifi": "williams",
+      "giovinazzi": "alfa",
+      "mick_schumacher": "haas",
+      "kubica": "alfa",
+      "mazepin": "haas"
+    },
+    "2022": {
+      "max_verstappen": "red_bull",
+      "leclerc": "ferrari",
+      "perez": "red_bull",
+      "russell": "mercedes",
+      "sainz": "ferrari",
+      "hamilton": "mercedes",
+      "norris": "mclaren",
+      "ocon": "alpine",
+      "alonso": "alpine",
+      "bottas": "alfa",
+      "ricciardo": "mclaren",
+      "vettel": "aston_martin",
+      "kevin_magnussen": "haas",
+      "gasly": "alphatauri",
+      "stroll": "aston_martin",
+      "mick_schumacher": "haas",
+      "tsunoda": "alphatauri",
+      "zhou": "alfa",
+      "albon": "williams",
+      "latifi": "williams",
+      "de_vries": "williams",
+      "hulkenberg": "aston_martin"
+    },
+    "2023": {
+      "max_verstappen": "red_bull",
+      "perez": "red_bull",
+      "hamilton": "mercedes",
+      "alonso": "aston_martin",
+      "leclerc": "ferrari",
+      "norris": "mclaren",
+      "sainz": "ferrari",
+      "russell": "mercedes",
+      "piastri": "mclaren",
+      "stroll": "aston_martin",
+      "gasly": "alpine",
+      "ocon": "alpine",
+      "albon": "williams",
+      "tsunoda": "alphatauri",
+      "bottas": "alfa",
+      "hulkenberg": "haas",
+      "ricciardo": "alphatauri",
+      "zhou": "alfa",
+      "kevin_magnussen": "haas",
+      "lawson": "alphatauri",
+      "sargeant": "williams",
+      "de_vries": "alphatauri"
+    },
+    "2024": {
+      "max_verstappen": "red_bull",
+      "norris": "mclaren",
+      "leclerc": "ferrari",
+      "piastri": "mclaren",
+      "sainz": "ferrari",
+      "russell": "mercedes",
+      "hamilton": "mercedes",
+      "perez": "red_bull",
+      "alonso": "aston_martin",
+      "gasly": "alpine",
+      "hulkenberg": "haas",
+      "tsunoda": "rb",
+      "stroll": "aston_martin",
+      "ocon": "alpine",
+      "kevin_magnussen": "haas",
+      "albon": "williams",
+      "ricciardo": "rb",
+      "bearman": "haas",
+      "colapinto": "williams",
+      "zhou": "sauber",
+      "lawson": "rb",
+      "bottas": "sauber",
+      "sargeant": "williams",
+      "doohan": "alpine"
+    },
+    "2025": {
+      "norris": "mclaren",
+      "max_verstappen": "red_bull",
+      "piastri": "mclaren",
+      "russell": "mercedes",
+      "leclerc": "ferrari",
+      "hamilton": "ferrari",
+      "antonelli": "mercedes",
+      "albon": "williams",
+      "sainz": "williams",
+      "alonso": "aston_martin",
+      "hulkenberg": "sauber",
+      "hadjar": "rb",
+      "bearman": "haas",
+      "lawson": "rb",
+      "ocon": "haas",
+      "stroll": "aston_martin",
+      "tsunoda": "red_bull",
+      "gasly": "alpine",
+      "bortoleto": "sauber",
+      "colapinto": "alpine",
+      "doohan": "alpine"
+    }
+  },
+  "driver_names": {
+    "aitken": "Jack Aitken",
+    "albon": "Alexander Albon",
+    "alonso": "Fernando Alonso",
+    "antonelli": "Andrea Kimi Antonelli",
+    "bearman": "Oliver Bearman",
+    "bortoleto": "Gabriel Bortoleto",
+    "bottas": "Valtteri Bottas",
+    "colapinto": "Franco Colapinto",
+    "de_vries": "Nyck de Vries",
+    "doohan": "Jack Doohan",
+    "gasly": "Pierre Gasly",
+    "giovinazzi": "Antonio Giovinazzi",
+    "grosjean": "Romain Grosjean",
+    "hadjar": "Isack Hadjar",
+    "hamilton": "Lewis Hamilton",
+    "hulkenberg": "Nico Hülkenberg",
+    "kevin_magnussen": "Kevin Magnussen",
+    "kubica": "Robert Kubica",
+    "kvyat": "Daniil Kvyat",
+    "latifi": "Nicholas Latifi",
+    "lawson": "Liam Lawson",
+    "leclerc": "Charles Leclerc",
+    "max_verstappen": "Max Verstappen",
+    "mazepin": "Nikita Mazepin",
+    "mick_schumacher": "Mick Schumacher",
+    "norris": "Lando Norris",
+    "ocon": "Esteban Ocon",
+    "perez": "Sergio Pérez",
+    "piastri": "Oscar Piastri",
+    "pietro_fittipaldi": "Pietro Fittipaldi",
+    "raikkonen": "Kimi Räikkönen",
+    "ricciardo": "Daniel Ricciardo",
+    "russell": "George Russell",
+    "sainz": "Carlos Sainz",
+    "sargeant": "Logan Sargeant",
+    "stroll": "Lance Stroll",
+    "tsunoda": "Yuki Tsunoda",
+    "vettel": "Sebastian Vettel",
+    "zhou": "Guanyu Zhou"
+  },
   "driver_rolling_form": {
-    "max_verstappen": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        77,
-        105,
-        77,
-        351,
-        251,
-        81
-      ]
-    },
-    "norris": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        38,
-        56,
-        31,
-        70,
-        154,
-        88
-      ]
-    },
-    "leclerc": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        45,
-        40,
-        97,
-        127,
-        164,
-        43
-      ]
-    },
     "piastri": {
       "seasons": [
         2020,
@@ -1751,12 +1916,12 @@ window.F1_DATA = {
         0,
         0,
         0,
-        37,
-        96,
-        92
+        97,
+        292,
+        410
       ]
     },
-    "sainz": {
+    "norris": {
       "seasons": [
         2020,
         2021,
@@ -1766,12 +1931,30 @@ window.F1_DATA = {
         2025
       ],
       "points": [
-        15,
-        38,
-        48,
-        114,
-        130,
-        5
+        97,
+        160,
+        122,
+        205,
+        374,
+        423
+      ]
+    },
+    "leclerc": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        98,
+        159,
+        308,
+        206,
+        356,
+        242
       ]
     },
     "hamilton": {
@@ -1784,15 +1967,15 @@ window.F1_DATA = {
         2025
       ],
       "points": [
-        107,
-        101,
-        36,
-        147,
-        79,
-        23
+        347,
+        387.5,
+        240,
+        234,
+        223,
+        156
       ]
     },
-    "russell": {
+    "max_verstappen": {
       "seasons": [
         2020,
         2021,
@@ -1802,174 +1985,12 @@ window.F1_DATA = {
         2025
       ],
       "points": [
-        0,
-        0,
-        59,
-        116,
-        83,
-        68
-      ]
-    },
-    "antonelli": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        36
-      ]
-    },
-    "alonso": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        0,
-        5,
-        2,
-        156,
-        44,
-        0
-      ]
-    },
-    "stroll": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        28,
-        9,
-        2,
-        65,
-        15,
-        10
-      ]
-    },
-    "lawson": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    "albon": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        36,
-        0,
-        3,
-        13,
-        2,
-        20
-      ]
-    },
-    "gasly": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        12,
-        16,
-        6,
-        17,
-        7,
-        6
-      ]
-    },
-    "ocon": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        16,
-        12,
-        24,
-        47,
-        3,
-        14
-      ]
-    },
-    "bearman": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        0,
-        0,
-        0,
-        0,
-        6,
-        6
-      ]
-    },
-    "hulkenberg": {
-      "seasons": [
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "points": [
-        6,
-        0,
-        0,
-        14,
-        10,
-        6
+        214,
+        395.5,
+        454,
+        575,
+        437,
+        421
       ]
     },
     "hadjar": {
@@ -1987,10 +2008,28 @@ window.F1_DATA = {
         0,
         0,
         0,
-        5
+        51
       ]
     },
-    "bortoleto": {
+    "russell": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        3,
+        16,
+        275,
+        175,
+        245,
+        319
+      ]
+    },
+    "antonelli": {
       "seasons": [
         2020,
         2021,
@@ -2005,10 +2044,46 @@ window.F1_DATA = {
         0,
         0,
         0,
-        0
+        150
       ]
     },
-    "colapinto": {
+    "sainz": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        105,
+        164.5,
+        246,
+        200,
+        290,
+        64
+      ]
+    },
+    "albon": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        105,
+        0,
+        4,
+        27,
+        12,
+        73
+      ]
+    },
+    "lawson": {
       "seasons": [
         2020,
         2021,
@@ -2021,9 +2096,9 @@ window.F1_DATA = {
         0,
         0,
         0,
-        0,
-        5,
-        0
+        2,
+        4,
+        38
       ]
     },
     "arvid_lindblad": {
@@ -2044,6 +2119,150 @@ window.F1_DATA = {
         0
       ]
     },
+    "alonso": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        0,
+        81,
+        81,
+        206,
+        70,
+        56
+      ]
+    },
+    "stroll": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        75,
+        34,
+        18,
+        74,
+        24,
+        33
+      ]
+    },
+    "bearman": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        0,
+        0,
+        0,
+        0,
+        7,
+        41
+      ]
+    },
+    "ocon": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        62,
+        74,
+        92,
+        58,
+        23,
+        38
+      ]
+    },
+    "gasly": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        75,
+        110,
+        23,
+        62,
+        42,
+        22
+      ]
+    },
+    "colapinto": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        0,
+        0,
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    "hulkenberg": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        10,
+        0,
+        0,
+        9,
+        41,
+        51
+      ]
+    },
+    "bortoleto": {
+      "seasons": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "points": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        19
+      ]
+    },
     "bottas": {
       "seasons": [
         2020,
@@ -2054,10 +2273,10 @@ window.F1_DATA = {
         2025
       ],
       "points": [
-        73,
-        47,
-        28,
-        5,
+        223,
+        226,
+        49,
+        10,
         0,
         0
       ]
@@ -2072,11 +2291,11 @@ window.F1_DATA = {
         2025
       ],
       "points": [
-        22,
-        44,
-        60,
-        224,
-        127,
+        125,
+        190,
+        305,
+        285,
+        152,
         0
       ]
     }
@@ -3292,6 +3511,13 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "Antonelli admits it's 'not going to be easy' in Barcelona",
+      "url": "https://www.formula1.com/en/latest/article/not-going-to-be-easy-antonelli-assesses-tricky-friday-in-barcelona-as-he-targets-sixth-win-in-a-row.5MVU1FpsomsbeutBOaVAqk",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "Norris gives his take on McLaren's Barcelona chances",
       "url": "https://www.formula1.com/en/latest/article/heading-in-the-right-direction-norris-optimistic-over-mclarens-barcelona-chances-after-setting-the-pace-on-friday.7qoF214QOQ4PBrHTqRUd3B",
       "image": null,
@@ -3339,20 +3565,13 @@ window.F1_DATA = {
       "image": null,
       "date": null,
       "tag": "F1 News"
-    },
-    {
-      "title": "What upgrades have each team brought to Barcelona?",
-      "url": "https://www.formula1.com/en/latest/article/what-upgrades-have-each-team-brought-to-the-barcelona-catalunya-grand-prix.77PmwSOI3Sxsn79sS1uhAK",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
     }
   ],
   "_health": {
     "live": "jolpica:6rounds",
     "results": "jolpica:6races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-12T17:50:17.187Z"
+    "scrapedAt": "2026-06-12T18:22:01.550Z"
   },
   "_sanity": {
     "drivers_full_grid": true,

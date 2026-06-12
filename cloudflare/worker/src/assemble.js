@@ -14,6 +14,7 @@
 import {
   DRIVER_INFO, TEAM_COLORS, REGULATION_IMPACT_2026, SEASONS_USED,
   HISTORICAL_DRIVER_POINTS, HISTORICAL_CONSTRUCTOR_POINTS, DRIVER_ROLLING_FORM,
+  HISTORICAL_DRIVER_TEAMS, DRIVER_NAMES,
   CALENDAR_2026, CANCELLED_2026,
 } from "./seed.js";
 import { predict } from "./predict.js";
@@ -193,6 +194,8 @@ export async function assemble(opts = {}) {
 
     historical_driver_points: HISTORICAL_DRIVER_POINTS,
     historical_constructor_points: HISTORICAL_CONSTRUCTOR_POINTS,
+    historical_driver_teams: HISTORICAL_DRIVER_TEAMS,
+    driver_names: DRIVER_NAMES,
     driver_rolling_form: DRIVER_ROLLING_FORM,
 
     calendar_2026: CALENDAR_2026,

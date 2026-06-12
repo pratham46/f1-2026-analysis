@@ -1124,6 +1124,7 @@ const teamColor = t => (F1.team_colors || {})[t] || FALLBACK_COLORS[t] || '#777'
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pct = (x, d = 1) => ((x || 0) * 100).toFixed(d) + '%';
+const tcase = s => String(s || '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 const rnd = x => Math.round(x || 0);
 const byId = id => document.getElementById(id);
 
@@ -1979,10 +1980,17 @@ function renderYear(year) {
     ctorData = F1.constructors.slice().sort((a, b) => b.realPoints - a.realPoints).map(c => [c.name, c.realPoints, c.color]);
   } else {
     sub = '';
+    const yearTeams = (F1.historical_driver_teams || {})[String(year)] || (F1.historical_driver_teams || {})[year] || {};
+    const names = F1.driver_names || {};
     rows = Object.entries(hdp[String(year)] || {}).sort((a, b) => b[1] - a[1]).slice(0, 12)
-      .map(([id, p], i) => [i + 1, (F1.driversById[id] || { name: id.replace(/_/g, ' ') }).name, p, (F1.driversById[id] || {}).color]);
+      .map(([id, p], i) => [
+        i + 1,
+        names[id] || (F1.driversById[id] || {}).name || tcase(id),
+        p,
+        yearTeams[id] ? teamColor(yearTeams[id]) : (F1.driversById[id] || {}).color, // color of the team they drove for THAT year
+      ]);
     ctorData = Object.entries(hcp[String(year)] || {}).sort((a, b) => b[1] - a[1])
-      .map(([id, p]) => [id.replace(/_/g, ' '), p, teamColor(id)]);
+      .map(([id, p]) => [tcase(id), p, teamColor(id)]);
   }
   byId('year-driver-title').textContent = year + ' DRIVERS' + sub;
   byId('year-ctor-title').textContent = year + ' CONSTRUCTORS' + sub;
