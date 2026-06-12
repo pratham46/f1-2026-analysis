@@ -65,21 +65,28 @@ export function computeBasePositions(liveStandings = [], racesCompleted = 0) {
   const anchor = {};
   for (const d of drivers) anchor[d] = (21 - MODEL_BASE_2026[d]);
 
-  // Live score from current standings order (if any).
+  // Live score from current standings — POINTS-based, not just rank order, so a
+  // points-dominant leader (e.g. 156 pts / 5 wins) gets a correspondingly dominant
+  // going-forward base position instead of being a hair ahead of P4. Normalised to
+  // the current points leader; drivers yet to score sit near 0 (correctly weak).
   const live = {};
   if (liveStandings.length) {
-    liveStandings.forEach((row, i) => {
+    const maxPts = Math.max(1, ...liveStandings.map((r) => r.points || 0));
+    liveStandings.forEach((row) => {
       const id = row.driver_id || row.driver;
-      if (id != null) live[id] = liveStandings.length - i;
+      if (id != null) live[id] = (row.points || 0) / maxPts;
     });
   }
 
   // Form nudge keeps the scorer "alive" without overriding the calibrated anchor.
   const maxForm = Math.max(...drivers.map(formScore), 1);
 
-  // Blend weight: 0 preseason → up to ~0.7 late season.
+  // Blend weight: Bayesian-style ramp — the preseason anchor acts as a prior worth
+  // ~4 races; real 2026 results take over quickly as the season unfolds. At 6 races
+  // live reality already carries ~0.6, so a runaway live leader (e.g. 5 wins in 6)
+  // is reflected instead of being overruled by the stale preseason ranking.
   const liveW = liveStandings.length
-    ? Math.min(0.7, racesCompleted / N_RACES_2026)
+    ? Math.min(0.85, racesCompleted / (racesCompleted + 4))
     : 0;
 
   const score = {};
@@ -90,7 +97,7 @@ export function computeBasePositions(liveStandings = [], racesCompleted = 0) {
     // matters for near-ties — keeps parity with the XGBoost ranking preseason.
     const base = 0.95 * a + 0.05 * f;
     if (liveW > 0 && live[d] != null) {
-      const l = live[d] / liveStandings.length;
+      const l = live[d]; // already 0..1 (points / current leader's points)
       score[d] = (1 - liveW) * base + liveW * l;
     } else {
       score[d] = base;
@@ -116,7 +123,10 @@ function raceWinProbabilities(basePos) {
 }
 
 // 500-iteration season Monte Carlo. Returns per-driver aggregates.
-function monteCarlo(basePos, sigma, nRaces) {
+// `banked` carries the points each driver has ALREADY scored in completed 2026
+// rounds; only `nRacesRemaining` races are simulated on top, so the projection is
+// (real points so far) + (simulated rest of season) rather than a fresh 24-race run.
+function monteCarlo(basePos, sigma, nRacesRemaining, banked = {}) {
   const drivers = Object.keys(basePos);
   const champWins = Object.fromEntries(drivers.map((d) => [d, 0]));
   const podiums = Object.fromEntries(drivers.map((d) => [d, 0]));
@@ -124,8 +134,8 @@ function monteCarlo(basePos, sigma, nRaces) {
   const rng = mulberry32(42);
 
   for (let s = 0; s < N_SIMS; s++) {
-    const seasonPts = Object.fromEntries(drivers.map((d) => [d, 0]));
-    for (let r = 0; r < nRaces; r++) {
+    const seasonPts = Object.fromEntries(drivers.map((d) => [d, banked[d] || 0]));
+    for (let r = 0; r < nRacesRemaining; r++) {
       // Sample a noisy race score per driver, then re-rank to discrete positions.
       const scored = drivers.map((d) => ({
         d, x: Math.max(0.5, basePos[d] + gaussian(rng) * sigma),
@@ -152,7 +162,7 @@ function monteCarlo(basePos, sigma, nRaces) {
   for (const d of drivers) {
     predictedPoints[d] = pointsTotal[d] / N_SIMS;
     champProb[d] = champWins[d] / N_SIMS;
-    podiumRate[d] = podiums[d] / (N_SIMS * nRaces);
+    podiumRate[d] = podiums[d] / (N_SIMS * Math.max(nRacesRemaining, 1));
   }
   return { predictedPoints, champProb, podiumRate };
 }
@@ -164,18 +174,26 @@ function monteCarlo(basePos, sigma, nRaces) {
 export function predict(opts = {}) {
   const { liveStandings = [], racesCompleted = 0 } = opts;
   const nRaces = N_RACES_2026;
+  const racesRemaining = Math.max(0, nRaces - racesCompleted);
+
+  // Points already banked in completed 2026 rounds (carried into every sim).
+  const banked = {};
+  for (const row of liveStandings) {
+    const id = row.driver_id || row.driver;
+    if (id != null) banked[id] = row.points || 0;
+  }
 
   const basePos = computeBasePositions(liveStandings, racesCompleted);
   const raceWin = raceWinProbabilities(basePos);
 
   let sigma = DEFAULT_SIGMA;
-  let sim = monteCarlo(basePos, sigma, nRaces);
+  let sim = monteCarlo(basePos, sigma, racesRemaining, banked);
 
   // Sanity: if the leader runs away (>550 pts), noise too low — bump σ and resim.
   let maxPts = Math.max(...Object.values(sim.predictedPoints));
   if (maxPts > 550) {
     sigma = 5.0;
-    sim = monteCarlo(basePos, sigma, nRaces);
+    sim = monteCarlo(basePos, sigma, racesRemaining, banked);
     maxPts = Math.max(...Object.values(sim.predictedPoints));
   }
 
