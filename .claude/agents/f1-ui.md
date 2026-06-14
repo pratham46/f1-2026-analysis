@@ -20,7 +20,11 @@ analysis as a game-like experience. Data comes from the Worker; the page must al
 
 ## Sections (preserve IDs + chart logic)
 podium hero, win-probability speedometer gauges, head-to-head battle panel, season timeline,
-constructor war bars, driver cards, year explorer, race calendar/modal, regulations, **News** (`#news`).
+constructor war bars, driver cards, year explorer, race calendar/modal, regulations, **News** (`#news`),
+**Driver detail modal** (`.driver-modal-veil` — opens on any driver card/podium/tdriver click),
+**Pit Wall AI chatbot** (`#pitwall-btn` float + `#pitwall-chat` panel — pure-JS intent matching over F1 data),
+**Speed canvas** (`#speed-canvas` — 40-streak particle animation behind hero),
+**Telemetry bar** (`#telemetry-bar` — scan-line pulse under the ticker).
 
 ## Hard Constraints
 - Never reference normalized fields before `normalizeF1()` runs.

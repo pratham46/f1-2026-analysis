@@ -23,7 +23,8 @@ cron (daily cron, self-gated in `scheduled()`).
 - **"Scrape results / news / driver images / track layouts"** → f1-scraper (edits `scrape.js`/`media.js`)
   → f1-worker re-assemble → f1-publish.
 - **"Push data to dashboard / regenerate data.js / fix a data gap"** → f1-publish (`npm run seed`).
-- **"Redesign UI / add game sections / head-to-head / gauges / news section"** → f1-ui.
+- **"Redesign UI / add game sections / head-to-head / gauges / news section / driver modal / chatbot / animations"** → f1-ui.
+- **"Update driver bio, nationality, lap records, chatbot intents"** → f1-ui (hardcoded maps in dashboard/index.html: DRIVER_BIO, DRIVER_NATIONALITY, CIRCUIT_LAP_RECORDS, pitWallAnswer).
 - **"Deploy / host on Cloudflare / set up Worker, Pages, cron, KV"** → f1-deploy.
 - **"Save / hand off context"** → context-snapshot.
 - **Simple questions** (explain code, read a file) → answer directly, no agent.
