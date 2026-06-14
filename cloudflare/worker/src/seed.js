@@ -213,3 +213,28 @@ export const CANCELLED_2026 = [
 ];
 
 export const N_RACES_2026 = CALENDAR_2026.length;
+
+// Manually-verified race results for rounds where Jolpica lags post-race.
+// assemble.js merges these in for any round missing from the Jolpica bulk fetch.
+// Remove an entry here once Jolpica has published the official result for that round.
+export const MANUAL_RACE_PATCHES = [
+  {
+    round: 7,
+    name: "Spanish Grand Prix",
+    date: "2026-06-14",
+    circuit_id: "spain",
+    results: [
+      { position: 1,  driver_id: "hamilton",       constructor_id: "ferrari",   points: 25, status: "Finished", time_or_gap: "1:32:28.105",   fastest_lap: true  },
+      { position: 2,  driver_id: "russell",         constructor_id: "mercedes",  points: 18, status: "Finished", time_or_gap: "+19.561",      fastest_lap: false },
+      { position: 3,  driver_id: "norris",          constructor_id: "mclaren",   points: 15, status: "Finished", time_or_gap: "+23.719",      fastest_lap: false },
+      { position: 4,  driver_id: "max_verstappen",  constructor_id: "red_bull",  points: 12, status: "Finished", time_or_gap: "+40.497",      fastest_lap: false },
+      { position: 5,  driver_id: "piastri",         constructor_id: "mclaren",   points: 10, status: "Finished", time_or_gap: "+58.661",      fastest_lap: false },
+      { position: 6,  driver_id: "hadjar",          constructor_id: "red_bull",  points: 8,  status: "Lapped",   time_or_gap: "+24.627",      fastest_lap: false },
+      { position: 7,  driver_id: "gasly",           constructor_id: "alpine",    points: 6,  status: "Lapped",   time_or_gap: "+55.789",      fastest_lap: false },
+      { position: 8,  driver_id: "colapinto",       constructor_id: "alpine",    points: 4,  status: "Lapped",   time_or_gap: "+1:09.867",    fastest_lap: false },
+      { position: 9,  driver_id: "lawson",          constructor_id: "rb",        points: 2,  status: "Lapped",   time_or_gap: "+1:12.224",    fastest_lap: false },
+      { position: 10, driver_id: "arvid_lindblad",  constructor_id: "rb",        points: 1,  status: "Lapped",   time_or_gap: "+1:18.074",    fastest_lap: false },
+      { position: 20, driver_id: "antonelli",       constructor_id: "mercedes",  points: 0,  status: "Engine",   time_or_gap: "DNF",          fastest_lap: false },
+    ],
+  },
+];

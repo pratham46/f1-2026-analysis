@@ -15,7 +15,7 @@ import {
   DRIVER_INFO, TEAM_COLORS, REGULATION_IMPACT_2026, SEASONS_USED,
   HISTORICAL_DRIVER_POINTS, HISTORICAL_CONSTRUCTOR_POINTS, DRIVER_ROLLING_FORM,
   HISTORICAL_DRIVER_TEAMS, DRIVER_NAMES,
-  CALENDAR_2026, CANCELLED_2026,
+  CALENDAR_2026, CANCELLED_2026, MANUAL_RACE_PATCHES,
 } from "./seed.js";
 import { predict } from "./predict.js";
 import { fetchLiveStandings, fetchRaceResults } from "./sources.js";
@@ -161,6 +161,18 @@ export async function assemble(opts = {}) {
     if (rr.ok && rr.races?.length >= realRaces.length) { realRaces = rr.races; health.results = `jolpica:${rr.races.length}races`; }
     else health.results = "kept_last_good";
   } catch { health.results = "error_kept_last_good"; }
+
+  // Merge manual patches for rounds Jolpica hasn't published yet.
+  if (MANUAL_RACE_PATCHES.length) {
+    const seenRounds = new Set(realRaces.map((r) => r.round));
+    for (const patch of MANUAL_RACE_PATCHES) {
+      if (!seenRounds.has(patch.round) && patch.round <= racesCompleted) {
+        realRaces = [...realRaces, patch].sort((a, b) => a.round - b.round);
+        seenRounds.add(patch.round);
+        health.results += `+patch:r${patch.round}`;
+      }
+    }
+  }
 
   // 3. Predictions (always succeeds; blends live standings when present).
   const pred = predict({ liveStandings: liveForBlend, racesCompleted });

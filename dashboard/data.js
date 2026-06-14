@@ -237,7 +237,7 @@ window.F1_DATA = {
       "number": 12,
       "predicted_points": 438.4,
       "win_probability": 0.2709,
-      "championship_win_probability": 1,
+      "championship_win_probability": 0.988,
       "podium_probability": 0.7399,
       "avg_predicted_position": 1,
       "current_real_points": 156,
@@ -246,42 +246,6 @@ window.F1_DATA = {
     },
     {
       "rank": 2,
-      "driver_id": "russell",
-      "name": "George Russell",
-      "short": "RUS",
-      "team": "mercedes",
-      "team_name": "Mercedes",
-      "color": "#27F4D2",
-      "number": 63,
-      "predicted_points": 322.8,
-      "win_probability": 0.1355,
-      "championship_win_probability": 0,
-      "podium_probability": 0.6268,
-      "avg_predicted_position": 2,
-      "current_real_points": 88,
-      "current_real_position": 3,
-      "current_wins": 1
-    },
-    {
-      "rank": 3,
-      "driver_id": "leclerc",
-      "name": "Charles Leclerc",
-      "short": "LEC",
-      "team": "ferrari",
-      "team_name": "Ferrari",
-      "color": "#E8002D",
-      "number": 16,
-      "predicted_points": 276.1,
-      "win_probability": 0.0903,
-      "championship_win_probability": 0,
-      "podium_probability": 0.5012,
-      "avg_predicted_position": 3,
-      "current_real_points": 75,
-      "current_real_position": 4,
-      "current_wins": 0
-    },
-    {
-      "rank": 4,
       "driver_id": "hamilton",
       "name": "Lewis Hamilton",
       "short": "HAM",
@@ -289,13 +253,49 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 44,
-      "predicted_points": 264.1,
+      "predicted_points": 349.8,
+      "win_probability": 0.1355,
+      "championship_win_probability": 0.01,
+      "podium_probability": 0.6268,
+      "avg_predicted_position": 2,
+      "current_real_points": 115,
+      "current_real_position": 2,
+      "current_wins": 1
+    },
+    {
+      "rank": 3,
+      "driver_id": "russell",
+      "name": "George Russell",
+      "short": "RUS",
+      "team": "mercedes",
+      "team_name": "Mercedes",
+      "color": "#27F4D2",
+      "number": 63,
+      "predicted_points": 307.1,
+      "win_probability": 0.0903,
+      "championship_win_probability": 0.002,
+      "podium_probability": 0.5012,
+      "avg_predicted_position": 3,
+      "current_real_points": 106,
+      "current_real_position": 3,
+      "current_wins": 1
+    },
+    {
+      "rank": 4,
+      "driver_id": "leclerc",
+      "name": "Charles Leclerc",
+      "short": "LEC",
+      "team": "ferrari",
+      "team_name": "Ferrari",
+      "color": "#E8002D",
+      "number": 16,
+      "predicted_points": 249.1,
       "win_probability": 0.0677,
       "championship_win_probability": 0,
       "podium_probability": 0.3855,
       "avg_predicted_position": 4,
-      "current_real_points": 90,
-      "current_real_position": 2,
+      "current_real_points": 75,
+      "current_real_position": 4,
       "current_wins": 0
     },
     {
@@ -307,13 +307,13 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 81,
-      "predicted_points": 205.2,
+      "predicted_points": 215.2,
       "win_probability": 0.0542,
       "championship_win_probability": 0,
       "podium_probability": 0.2737,
       "avg_predicted_position": 5,
-      "current_real_points": 58,
-      "current_real_position": 5,
+      "current_real_points": 68,
+      "current_real_position": 6,
       "current_wins": 0
     },
     {
@@ -325,13 +325,13 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 1,
-      "predicted_points": 180,
+      "predicted_points": 195,
       "win_probability": 0.0452,
       "championship_win_probability": 0,
       "podium_probability": 0.1839,
       "avg_predicted_position": 6,
-      "current_real_points": 58,
-      "current_real_position": 6,
+      "current_real_points": 73,
+      "current_real_position": 5,
       "current_wins": 0
     },
     {
@@ -343,35 +343,17 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 3,
-      "predicted_points": 143.1,
+      "predicted_points": 155.1,
       "win_probability": 0.0387,
       "championship_win_probability": 0,
       "podium_probability": 0.1235,
       "avg_predicted_position": 7,
-      "current_real_points": 43,
+      "current_real_points": 55,
       "current_real_position": 7,
       "current_wins": 0
     },
     {
       "rank": 8,
-      "driver_id": "lawson",
-      "name": "Liam Lawson",
-      "short": "LAW",
-      "team": "rb",
-      "team_name": "Racing Bulls",
-      "color": "#6692FF",
-      "number": 30,
-      "predicted_points": 100.9,
-      "win_probability": 0.0339,
-      "championship_win_probability": 0,
-      "podium_probability": 0.0733,
-      "avg_predicted_position": 8,
-      "current_real_points": 24,
-      "current_real_position": 10,
-      "current_wins": 0
-    },
-    {
-      "rank": 9,
       "driver_id": "hadjar",
       "name": "Isack Hadjar",
       "short": "HAD",
@@ -379,13 +361,31 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 6,
+      "predicted_points": 110.9,
+      "win_probability": 0.0339,
+      "championship_win_probability": 0,
+      "podium_probability": 0.0733,
+      "avg_predicted_position": 8,
+      "current_real_points": 34,
+      "current_real_position": 9,
+      "current_wins": 0
+    },
+    {
+      "rank": 9,
+      "driver_id": "lawson",
+      "name": "Liam Lawson",
+      "short": "LAW",
+      "team": "rb",
+      "team_name": "Racing Bulls",
+      "color": "#6692FF",
+      "number": 30,
       "predicted_points": 83.8,
       "win_probability": 0.0301,
       "championship_win_probability": 0,
       "podium_probability": 0.0421,
       "avg_predicted_position": 9,
       "current_real_points": 26,
-      "current_real_position": 9,
+      "current_real_position": 10,
       "current_wins": 0
     },
     {
@@ -397,12 +397,12 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 10,
-      "predicted_points": 63.8,
-      "win_probability": 0.0246,
+      "predicted_points": 82.3,
+      "win_probability": 0.0271,
       "championship_win_probability": 0,
-      "podium_probability": 0.0137,
-      "avg_predicted_position": 11,
-      "current_real_points": 35,
+      "podium_probability": 0.0243,
+      "avg_predicted_position": 10,
+      "current_real_points": 41,
       "current_real_position": 8,
       "current_wins": 0
     },
@@ -415,11 +415,11 @@ window.F1_DATA = {
       "team_name": "Williams",
       "color": "#64C4FF",
       "number": 55,
-      "predicted_points": 47.3,
-      "win_probability": 0.0271,
+      "predicted_points": 34.8,
+      "win_probability": 0.0246,
       "championship_win_probability": 0,
-      "podium_probability": 0.0243,
-      "avg_predicted_position": 10,
+      "podium_probability": 0.0137,
+      "avg_predicted_position": 11,
       "current_real_points": 6,
       "current_real_position": 14,
       "current_wins": 0
@@ -439,7 +439,7 @@ window.F1_DATA = {
       "podium_probability": 0.0025,
       "avg_predicted_position": 13,
       "current_real_points": 18,
-      "current_real_position": 11,
+      "current_real_position": 12,
       "current_wins": 0
     },
     {
@@ -469,13 +469,13 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 43,
-      "predicted_points": 17.2,
-      "win_probability": 0.0169,
+      "predicted_points": 23.4,
+      "win_probability": 0.0181,
       "championship_win_probability": 0,
-      "podium_probability": 0.0001,
-      "avg_predicted_position": 16,
-      "current_real_points": 15,
-      "current_real_position": 12,
+      "podium_probability": 0.0005,
+      "avg_predicted_position": 15,
+      "current_real_points": 19,
+      "current_real_position": 11,
       "current_wins": 0
     },
     {
@@ -487,12 +487,12 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "predicted_points": 11.1,
+      "predicted_points": 12.1,
       "win_probability": 0.0135,
       "championship_win_probability": 0,
       "podium_probability": 0,
       "avg_predicted_position": 20,
-      "current_real_points": 11,
+      "current_real_points": 12,
       "current_real_position": 13,
       "current_wins": 0
     },
@@ -523,11 +523,11 @@ window.F1_DATA = {
       "team_name": "Haas",
       "color": "#B6BABD",
       "number": 31,
-      "predicted_points": 7.4,
-      "win_probability": 0.0181,
+      "predicted_points": 5.2,
+      "win_probability": 0.0169,
       "championship_win_probability": 0,
-      "podium_probability": 0.0005,
-      "avg_predicted_position": 15,
+      "podium_probability": 0.0001,
+      "avg_predicted_position": 16,
       "current_real_points": 3,
       "current_real_position": 16,
       "current_wins": 0
@@ -629,9 +629,9 @@ window.F1_DATA = {
       "constructor_id": "mercedes",
       "name": "Mercedes",
       "color": "#27F4D2",
-      "predicted_points": 761.2,
-      "championship_win_probability": 1,
-      "current_real_points": 244,
+      "predicted_points": 745.5,
+      "championship_win_probability": 0.99,
+      "current_real_points": 262,
       "current_wins": 6
     },
     {
@@ -639,19 +639,19 @@ window.F1_DATA = {
       "constructor_id": "ferrari",
       "name": "Ferrari",
       "color": "#E8002D",
-      "predicted_points": 540.2,
-      "championship_win_probability": 0,
-      "current_real_points": 165,
-      "current_wins": 0
+      "predicted_points": 598.9,
+      "championship_win_probability": 0.01,
+      "current_real_points": 190,
+      "current_wins": 1
     },
     {
       "rank": 3,
       "constructor_id": "mclaren",
       "name": "McLaren",
       "color": "#FF8000",
-      "predicted_points": 385.2,
+      "predicted_points": 410.2,
       "championship_win_probability": 0,
-      "current_real_points": 116,
+      "current_real_points": 141,
       "current_wins": 0
     },
     {
@@ -659,29 +659,29 @@ window.F1_DATA = {
       "constructor_id": "red_bull",
       "name": "Red Bull Racing",
       "color": "#3671C6",
-      "predicted_points": 226.9,
+      "predicted_points": 266,
       "championship_win_probability": 0,
-      "current_real_points": 69,
+      "current_real_points": 89,
       "current_wins": 0
     },
     {
       "rank": 5,
-      "constructor_id": "rb",
-      "name": "Racing Bulls",
-      "color": "#6692FF",
-      "predicted_points": 112,
+      "constructor_id": "alpine",
+      "name": "Alpine",
+      "color": "#FF87BC",
+      "predicted_points": 105.7,
       "championship_win_probability": 0,
-      "current_real_points": 35,
+      "current_real_points": 60,
       "current_wins": 0
     },
     {
       "rank": 6,
-      "constructor_id": "alpine",
-      "name": "Alpine",
-      "color": "#FF87BC",
-      "predicted_points": 81,
+      "constructor_id": "rb",
+      "name": "Racing Bulls",
+      "color": "#6692FF",
+      "predicted_points": 95.9,
       "championship_win_probability": 0,
-      "current_real_points": 50,
+      "current_real_points": 38,
       "current_wins": 0
     },
     {
@@ -689,7 +689,7 @@ window.F1_DATA = {
       "constructor_id": "williams",
       "name": "Williams",
       "color": "#64C4FF",
-      "predicted_points": 72.2,
+      "predicted_points": 59.7,
       "championship_win_probability": 0,
       "current_real_points": 11,
       "current_wins": 0
@@ -699,7 +699,7 @@ window.F1_DATA = {
       "constructor_id": "haas",
       "name": "Haas",
       "color": "#B6BABD",
-      "predicted_points": 38,
+      "predicted_points": 35.8,
       "championship_win_probability": 0,
       "current_real_points": 21,
       "current_wins": 0
@@ -973,27 +973,32 @@ window.F1_DATA = {
       "race_date": "2026-06-14",
       "sprint": false,
       "completed": true,
-      "winner": "antonelli",
+      "winner": "hamilton",
       "top5": [
         {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
+          "driver_id": "hamilton",
+          "win_prob": null,
+          "position": 1
         },
         {
           "driver_id": "russell",
-          "win_prob": 0.1355
+          "win_prob": null,
+          "position": 2
         },
         {
-          "driver_id": "leclerc",
-          "win_prob": 0.0903
+          "driver_id": "norris",
+          "win_prob": null,
+          "position": 3
         },
         {
-          "driver_id": "hamilton",
-          "win_prob": 0.0677
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 4
         },
         {
           "driver_id": "piastri",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 5
         }
       ]
     },
@@ -1013,15 +1018,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1046,15 +1051,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1079,15 +1084,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1112,15 +1117,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1145,15 +1150,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1178,15 +1183,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1211,15 +1216,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1244,15 +1249,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1277,15 +1282,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1310,15 +1315,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1343,15 +1348,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1376,15 +1381,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1409,15 +1414,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1442,15 +1447,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -1475,15 +1480,15 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "hamilton",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "leclerc",
           "win_prob": 0.0677
         },
         {
@@ -2482,8 +2487,8 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 44,
-      "points": 90,
-      "wins": 0
+      "points": 115,
+      "wins": 1
     },
     {
       "position": 3,
@@ -2495,7 +2500,7 @@ window.F1_DATA = {
       "team_name": "Mercedes",
       "color": "#27F4D2",
       "number": 63,
-      "points": 88,
+      "points": 106,
       "wins": 1
     },
     {
@@ -2513,19 +2518,6 @@ window.F1_DATA = {
     },
     {
       "position": 5,
-      "driver_id": "piastri",
-      "name": "Oscar Piastri",
-      "short": "PIA",
-      "constructor_id": "mclaren",
-      "team": "mclaren",
-      "team_name": "McLaren",
-      "color": "#FF8000",
-      "number": 81,
-      "points": 58,
-      "wins": 0
-    },
-    {
-      "position": 6,
       "driver_id": "norris",
       "name": "Lando Norris",
       "short": "NOR",
@@ -2534,7 +2526,20 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 1,
-      "points": 58,
+      "points": 73,
+      "wins": 0
+    },
+    {
+      "position": 6,
+      "driver_id": "piastri",
+      "name": "Oscar Piastri",
+      "short": "PIA",
+      "constructor_id": "mclaren",
+      "team": "mclaren",
+      "team_name": "McLaren",
+      "color": "#FF8000",
+      "number": 81,
+      "points": 68,
       "wins": 0
     },
     {
@@ -2547,7 +2552,7 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 3,
-      "points": 43,
+      "points": 55,
       "wins": 0
     },
     {
@@ -2560,7 +2565,7 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 10,
-      "points": 35,
+      "points": 41,
       "wins": 0
     },
     {
@@ -2573,7 +2578,7 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 6,
-      "points": 26,
+      "points": 34,
       "wins": 0
     },
     {
@@ -2586,11 +2591,24 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 30,
-      "points": 24,
+      "points": 26,
       "wins": 0
     },
     {
       "position": 11,
+      "driver_id": "colapinto",
+      "name": "Franco Colapinto",
+      "short": "COL",
+      "constructor_id": "alpine",
+      "team": "alpine",
+      "team_name": "Alpine",
+      "color": "#FF87BC",
+      "number": 43,
+      "points": 19,
+      "wins": 0
+    },
+    {
+      "position": 12,
       "driver_id": "bearman",
       "name": "Oliver Bearman",
       "short": "BEA",
@@ -2603,19 +2621,6 @@ window.F1_DATA = {
       "wins": 0
     },
     {
-      "position": 12,
-      "driver_id": "colapinto",
-      "name": "Franco Colapinto",
-      "short": "COL",
-      "constructor_id": "alpine",
-      "team": "alpine",
-      "team_name": "Alpine",
-      "color": "#FF87BC",
-      "number": 43,
-      "points": 15,
-      "wins": 0
-    },
-    {
       "position": 13,
       "driver_id": "arvid_lindblad",
       "name": "Arvid Lindblad",
@@ -2625,7 +2630,7 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "points": 11,
+      "points": 12,
       "wins": 0
     },
     {
@@ -2750,37 +2755,37 @@ window.F1_DATA = {
     {
       "position": 1,
       "constructor_id": "mercedes",
-      "points": 244,
+      "points": 262,
       "wins": 6
     },
     {
       "position": 2,
       "constructor_id": "ferrari",
-      "points": 165,
-      "wins": 0
+      "points": 190,
+      "wins": 1
     },
     {
       "position": 3,
       "constructor_id": "mclaren",
-      "points": 116,
+      "points": 141,
       "wins": 0
     },
     {
       "position": 4,
       "constructor_id": "red_bull",
-      "points": 69,
+      "points": 89,
       "wins": 0
     },
     {
       "position": 5,
       "constructor_id": "alpine",
-      "points": 50,
+      "points": 60,
       "wins": 0
     },
     {
       "position": 6,
       "constructor_id": "rb",
-      "points": 35,
+      "points": 38,
       "wins": 0
     },
     {
@@ -3402,6 +3407,104 @@ window.F1_DATA = {
           "fastest_lap": false
         }
       ]
+    },
+    {
+      "round": 7,
+      "name": "Barcelona Grand Prix",
+      "date": "2026-06-14",
+      "circuit_id": "spain",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:32:28.105",
+          "fastest_lap": true
+        },
+        {
+          "position": 2,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+19.561",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+23.719",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+40.497",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+58.661",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 8,
+          "status": "Lapped",
+          "time_or_gap": "+24.627",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "gasly",
+          "constructor_id": "alpine",
+          "points": 6,
+          "status": "Lapped",
+          "time_or_gap": "+55.789",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "colapinto",
+          "constructor_id": "alpine",
+          "points": 4,
+          "status": "Lapped",
+          "time_or_gap": "+1:09.867",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "lawson",
+          "constructor_id": "rb",
+          "points": 2,
+          "status": "Lapped",
+          "time_or_gap": "+1:12.224",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "arvid_lindblad",
+          "constructor_id": "rb",
+          "points": 1,
+          "status": "Lapped",
+          "time_or_gap": "+1:18.074",
+          "fastest_lap": false
+        }
+      ]
     }
   ],
   "driver_images": {
@@ -3511,6 +3614,34 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "Hamilton reacts to magical maiden win with Ferrari",
+      "url": "https://www.formula1.com/en/latest/article/this-ones-something-else-hamilton-reacts-to-magical-maiden-win-with-ferrari-in-barcelona.7vmAJqyTHDtJZP60wStqSg",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "'I feel a bit empty' – Antonelli on late Barcelona retirement",
+      "url": "https://www.formula1.com/en/latest/article/i-feel-a-bit-empty-antonelli-reflects-on-late-barcelona-catalunya-gp-retirement.6wpFZCfvdQgU4FKe3q1dic",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "Hamilton your clear winner after first Ferrari triumph",
+      "url": "https://www.formula1.com/en/latest/article/driver-of-the-day-hamilton-your-clear-winner-after-first-ferrari-triumph.5GssLCBAdUbY8nASwtuK7F",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "Leclerc reflects on tough Barcelona weekend after DNF",
+      "url": "https://www.formula1.com/en/latest/article/leclerc-laments-tough-barcelona-catalunya-gp-weekend-as-hydraulic-issue-forces-ferrari-drivers-retirement.r3xcs2T1P6prQlDhLD7Uq",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "Hamilton wins first GP for Ferrari as Antonelli retires",
       "url": "https://www.formula1.com/en/latest/article/hamilton-claims-stellar-maiden-grand-prix-victory-for-ferrari-in-barcelona-as-antonelli-suffers-shock-retirement.4yCXiPLHUdcnl2BwNpqUIa",
       "image": null,
@@ -3532,36 +3663,8 @@ window.F1_DATA = {
       "tag": "F1 News"
     },
     {
-      "title": "LIVE COVERAGE: Hamilton wins in Barcelona as Antonelli retires",
+      "title": "AS IT HAPPENED: Hamilton wins in Barcelona as Antonelli retires",
       "url": "https://www.formula1.com/en/latest/article/live-coverage-formula-1-msc-cruises-gran-premio-de-barcelona-catalunya-2026.4cOdCOhdk5kkdpeKllE8jK",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Nael dominates in Barcelona to earn maiden F3 victory",
-      "url": "https://www.formula1.com/en/latest/article/f3-theophile-nael-dominates-in-barcelona-to-earn-maiden-victory.ET4ffb5Vms3CggShc3Cga",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "How Alonso turned Spain into a motorsport mad nation",
-      "url": "https://www.formula1.com/en/latest/article/how-fernando-alonso-turned-spain-into-a-motorsport-mad-nation-as-told-by-his-fans.3OzKjc5WbDIMScspbuNto",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Our final Barcelona GP betting predictions made",
-      "url": "https://www.formula1.com/en/latest/article/our-final-barcelona-catalunya-grand-prix-betting-predictions-made.1uHegHTpVoMwurJHg1V7i3",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Wolff sets out approach to Mercedes battle for Barcelona win",
-      "url": "https://www.formula1.com/en/latest/article/theyre-racing-for-a-championship-wolff-sets-out-approach-to-mercedes-battle-for-barcelona-win.2jmbpN7XhbNSBMw6it8CEW",
       "image": null,
       "date": null,
       "tag": "F1 News"
@@ -3569,9 +3672,9 @@ window.F1_DATA = {
   ],
   "_health": {
     "live": "jolpica:7rounds",
-    "results": "jolpica:6races",
+    "results": "jolpica:7races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-14T15:34:43.299Z"
+    "scrapedAt": "2026-06-14T16:37:24.060Z"
   },
   "_sanity": {
     "drivers_full_grid": true,
