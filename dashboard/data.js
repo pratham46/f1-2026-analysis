@@ -1982,6 +1982,162 @@ window.F1_DATA = {
       ]
     }
   ],
+  "predictions_archive": {
+    "1": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ],
+    "2": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ],
+    "3": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ],
+    "4": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ],
+    "5": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ],
+    "6": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ],
+    "7": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "hamilton",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "leclerc",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "piastri",
+        "win_prob": 0.0542
+      }
+    ]
+  },
   "historical_driver_points": {
     "2020": {
       "hamilton": 347,
@@ -5087,6 +5243,13 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "Ex-F1 drivers De Vries and Kobayashi win Le Mans 24 Hours",
+      "url": "https://www.formula1.com/en/latest/article/former-f1-drivers-de-vries-and-kobayashi-win-le-mans-24-hours.6HsLK7VOWDwnUoNimVwJp7",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "'Not good enough' – Wolff critical of Mercedes' reliability",
       "url": "https://www.formula1.com/en/latest/article/not-good-enough-wolff-critical-of-mercedes-reliability-after-antonelli-retirement-in-barcelona-catalunya-grand-prix.6KLa3k3yay82ZUUWe5G09W",
       "image": null,
@@ -5134,20 +5297,13 @@ window.F1_DATA = {
       "image": null,
       "date": null,
       "tag": "F1 News"
-    },
-    {
-      "title": "Hamilton reacts to magical maiden win with Ferrari",
-      "url": "https://www.formula1.com/en/latest/article/this-ones-something-else-hamilton-reacts-to-magical-maiden-win-with-ferrari-in-barcelona.7vmAJqyTHDtJZP60wStqSg",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
     }
   ],
   "_health": {
     "live": "jolpica:7rounds",
     "results": "jolpica:7races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-14T18:45:05.488Z",
+    "scrapedAt": "2026-06-14T19:14:45.827Z",
     "openf1": "enriched:1races",
     "bios": "jolpica:30",
     "circuits": "jolpica:24"

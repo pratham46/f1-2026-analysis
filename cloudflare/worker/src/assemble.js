@@ -74,8 +74,13 @@ function toConstructorStandings2026(pred, liveConstructors) {
 // Per-round race cards: completed rounds carry the REAL result (from Jolpica),
 // future rounds carry the model's forecast top-5. Emits both `name`/`date` and
 // the legacy `race_name`/`race_date` aliases the dashboard normalizer reads.
-function toRacePredictions(pred, realRaces, racesCompleted) {
-  const predictedTop5 = pred.race_predictions[0].drivers
+//
+// Returns { races, archive } — archive is the updated predictions_archive that
+// must be persisted in the KV payload so completed rounds stay frozen forever.
+// prevArchive comes from lastGood.predictions_archive so we never overwrite a
+// round that was already snapshotted on a prior refresh.
+function toRacePredictions(pred, realRaces, racesCompleted, prevArchive = {}) {
+  const currentModelTop5 = pred.race_predictions[0].drivers
     .slice()
     .sort((a, b) => b.win_probability - a.win_probability)
     .slice(0, 5)
@@ -84,7 +89,17 @@ function toRacePredictions(pred, realRaces, racesCompleted) {
   const realByRound = {};
   for (const r of realRaces || []) realByRound[r.round] = r;
 
-  return CALENDAR_2026.map((race) => {
+  // Build updated archive: first time a round appears as completed → freeze it.
+  // Already-frozen rounds keep their original value unchanged.
+  const archive = { ...prevArchive };
+  for (const race of CALENDAR_2026) {
+    const completed = !!realByRound[race.round] || race.round <= racesCompleted;
+    if (completed && !archive[race.round]) {
+      archive[race.round] = currentModelTop5;
+    }
+  }
+
+  const races = CALENDAR_2026.map((race) => {
     const real = realByRound[race.round];
     const completed = !!real || race.round <= racesCompleted;
     const top5 = real
@@ -93,7 +108,7 @@ function toRacePredictions(pred, realRaces, racesCompleted) {
           win_prob: null,            // actual result — no forecast probability
           position: res.position,
         }))
-      : predictedTop5;
+      : currentModelTop5;
     return {
       round: race.round,
       circuit_id: race.id,
@@ -105,9 +120,11 @@ function toRacePredictions(pred, realRaces, racesCompleted) {
       completed,
       winner: top5[0] ? top5[0].driver_id : null,
       top5,
-      predicted_top5: predictedTop5,
+      predicted_top5: archive[race.round] || currentModelTop5,
     };
   });
+
+  return { races, archive };
 }
 
 function toRealDriverStandings(live) {
@@ -231,6 +248,11 @@ export async function assemble(opts = {}) {
   // 3. Predictions (always succeeds; blends live standings when present).
   const pred = predict({ liveStandings: liveForBlend, racesCompleted });
 
+  // Load per-round predictions archive so completed races keep their frozen snapshot.
+  const prevPredictionsArchive = lastGood.predictions_archive || {};
+  const { races: racePredictions, archive: predictionsArchive } =
+    toRacePredictions(pred, realRaces, racesCompleted, prevPredictionsArchive);
+
   // 4. News (best-effort; keep last-good on block).
   let news = lastGood.news || [];
   try {
@@ -271,7 +293,8 @@ export async function assemble(opts = {}) {
 
     driver_standings_2026: toDriverStandings2026(pred, liveByDriver),
     constructor_standings_2026: toConstructorStandings2026(pred, live.ok ? live.constructorStandings : []),
-    race_predictions: toRacePredictions(pred, realRaces, racesCompleted),
+    race_predictions: racePredictions,
+    predictions_archive: predictionsArchive,
 
     historical_driver_points: HISTORICAL_DRIVER_POINTS,
     historical_constructor_points: HISTORICAL_CONSTRUCTOR_POINTS,
