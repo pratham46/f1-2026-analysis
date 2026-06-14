@@ -182,3 +182,134 @@ export async function fetchRaceResults(racesCompleted = 0) {
   races.sort((a, b) => a.round - b.round);
   return { ok: races.length > 0, races };
 }
+
+// ══════════════════════════════════════════════════════════════════════════════
+// OPENF1 — Real-time telemetry and session data (openf1.org)
+// Complements Jolpica: fills result gaps immediately after a race ends,
+// then adds tire strategy + pit stop enrichment for the last 3 races.
+// ══════════════════════════════════════════════════════════════════════════════
+const OPENF1 = "https://api.openf1.org/v1";
+
+// 2026 car number → our driver_id slug (matches seed.js DRIVER_INFO numbers)
+const OPENF1_DRIVER_MAP = {
+  81: "piastri",       1: "norris",         16: "leclerc",
+  44: "hamilton",      3: "max_verstappen",  6: "hadjar",
+  63: "russell",      12: "antonelli",      55: "sainz",
+  23: "albon",        30: "lawson",         41: "arvid_lindblad",
+  14: "alonso",       18: "stroll",         87: "bearman",
+  31: "ocon",         10: "gasly",          43: "colapinto",
+  27: "hulkenberg",    5: "bortoleto",      77: "bottas",
+  11: "perez",
+};
+
+// OpenF1 circuit_short_name → our calendar circuit_id
+const OPENF1_CIRCUIT_MAP = {
+  "Melbourne": "australia",    "Shanghai": "china",         "Suzuka": "japan",
+  "Miami": "miami",            "Imola": "imola",            "Monaco": "monaco",
+  "Montreal": "canada",        "Barcelona": "spain",        "Spielberg": "austria",
+  "Silverstone": "britain",    "Budapest": "hungary",       "Spa-Francorchamps": "belgium",
+  "Zandvoort": "netherlands",  "Monza": "italy",            "Baku": "azerbaijan",
+  "Madrid": "madrid",          "Singapore": "singapore",    "Austin": "americas",
+  "Mexico City": "mexico",     "São Paulo": "brazil",       "Las Vegas": "las_vegas",
+  "Lusail": "qatar",           "Yas Island": "abu_dhabi",
+};
+const normOF1Circuit = (n) => OPENF1_CIRCUIT_MAP[n] || (n || "").toLowerCase().replace(/[^a-z]/g, "_");
+const OF1_POINTS = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+
+/**
+ * All 2026 Race session keys from OpenF1, mapped to circuit_id + date.
+ * Used to join OpenF1 telemetry data to our CALENDAR_2026 rounds.
+ */
+export async function fetchOpenF1Sessions(year = 2026) {
+  const r = await getJSON(`${OPENF1}/sessions?year=${year}&session_name=Race`, 10000);
+  if (!r.ok || !Array.isArray(r.json)) return { ok: false };
+  const sessions = r.json.map(s => ({
+    session_key: s.session_key,
+    circuit_id: normOF1Circuit(s.circuit_short_name),
+    circuit_name: s.circuit_short_name || "",
+    date: s.date_start ? s.date_start.slice(0, 10) : null,
+    meeting_name: s.meeting_name || "",
+  }));
+  return { ok: sessions.length > 0, sessions };
+}
+
+/**
+ * Final race classification from OpenF1 (automated fallback when Jolpica lags).
+ * Uses the last position entry per driver as the final race order.
+ */
+export async function fetchOpenF1RaceResult(sessionKey) {
+  const [posR, drvR] = await Promise.all([
+    getJSON(`${OPENF1}/position?session_key=${sessionKey}`, 14000),
+    getJSON(`${OPENF1}/drivers?session_key=${sessionKey}`, 8000),
+  ]);
+  if (!posR.ok || !Array.isArray(posR.json) || !posR.json.length) return { ok: false };
+
+  // driver_number → constructor slug from live session data
+  const teamByNum = {};
+  for (const d of Array.isArray(drvR.json) ? drvR.json : []) {
+    if (d.driver_number) {
+      const raw = (d.team_name || "").toLowerCase().replace(/[\s-]+/g, "_");
+      teamByNum[d.driver_number] = normTeam(raw) || null;
+    }
+  }
+
+  // last recorded position per driver = final classification
+  const finalPos = {};
+  for (const p of posR.json) {
+    if (p.driver_number != null && p.position != null) finalPos[p.driver_number] = p.position;
+  }
+
+  const results = Object.entries(finalPos)
+    .map(([num, pos]) => {
+      const driverId = OPENF1_DRIVER_MAP[+num];
+      return driverId
+        ? { position: +pos, driver_id: driverId, constructor_id: teamByNum[+num] || null,
+            points: +pos <= 10 ? (OF1_POINTS[+pos - 1] || 0) : 0,
+            status: "Finished", time_or_gap: null, fastest_lap: false, _source: "openf1" }
+        : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.position - b.position);
+
+  return { ok: results.length >= 5, results };
+}
+
+/**
+ * Pit stop events per driver for a session (lap number + stop duration in seconds).
+ */
+export async function fetchPitStops(sessionKey) {
+  const r = await getJSON(`${OPENF1}/pit?session_key=${sessionKey}`, 8000);
+  if (!r.ok || !Array.isArray(r.json)) return { ok: false };
+  const byDriver = {};
+  for (const p of r.json) {
+    const id = OPENF1_DRIVER_MAP[p.driver_number];
+    if (!id) continue;
+    if (!byDriver[id]) byDriver[id] = [];
+    byDriver[id].push({ lap: p.lap_number || 0, duration: typeof p.pit_duration === "number" ? +p.pit_duration.toFixed(2) : null });
+  }
+  return { ok: Object.keys(byDriver).length > 0, pit_stops: byDriver };
+}
+
+/**
+ * Tire compound stints per driver: which compound on which laps.
+ * Returns SOFT / MEDIUM / HARD / INTERMEDIATE / WET per stint.
+ */
+export async function fetchTireStints(sessionKey) {
+  const r = await getJSON(`${OPENF1}/stints?session_key=${sessionKey}`, 8000);
+  if (!r.ok || !Array.isArray(r.json)) return { ok: false };
+  const byDriver = {};
+  for (const s of r.json) {
+    const id = OPENF1_DRIVER_MAP[s.driver_number];
+    if (!id) continue;
+    if (!byDriver[id]) byDriver[id] = [];
+    byDriver[id].push({
+      compound: (s.compound || "UNKNOWN").toUpperCase(),
+      lap_start: s.lap_start || 1,
+      lap_end: s.lap_end || null,
+      tyre_age: s.tyre_age_at_start || 0,
+      stint_number: s.stint_number || 1,
+    });
+  }
+  for (const id of Object.keys(byDriver)) byDriver[id].sort((a, b) => a.lap_start - b.lap_start);
+  return { ok: Object.keys(byDriver).length > 0, stints: byDriver };
+}

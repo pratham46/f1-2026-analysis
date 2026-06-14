@@ -18,7 +18,8 @@ import {
   CALENDAR_2026, CANCELLED_2026, MANUAL_RACE_PATCHES,
 } from "./seed.js";
 import { predict } from "./predict.js";
-import { fetchLiveStandings, fetchRaceResults, fetchDriverBios, fetchCircuitData } from "./sources.js";
+import { fetchLiveStandings, fetchRaceResults, fetchDriverBios, fetchCircuitData,
+         fetchOpenF1Sessions, fetchOpenF1RaceResult, fetchPitStops, fetchTireStints } from "./sources.js";
 import { scrapeNews } from "./scrape.js";
 import { buildDriverImages, buildTrackLayouts, buildTeamCars } from "./media.js";
 
@@ -174,6 +175,58 @@ export async function assemble(opts = {}) {
     }
   }
 
+  // 2b. OpenF1: automatic backfill for Jolpica-lagged rounds + tire/pit enrichment.
+  // Priority: Jolpica > MANUAL_RACE_PATCHES (already applied above) > OpenF1 positions.
+  let openf1_race_data = lastGood.openf1_race_data || {};
+  try {
+    const of1s = await fetchOpenF1Sessions(2026);
+    if (of1s.ok) {
+      // circuit_id → session_key lookup
+      const skByCircuit = {};
+      for (const s of of1s.sessions) if (s.circuit_id) skByCircuit[s.circuit_id] = s.session_key;
+
+      // Backfill any completed round that neither Jolpica nor MANUAL_RACE_PATCHES covered
+      const seenRounds2 = new Set(realRaces.map((r) => r.round));
+      for (const cal of CALENDAR_2026) {
+        if (seenRounds2.has(cal.round) || cal.round > racesCompleted) continue;
+        const sk = skByCircuit[cal.id];
+        if (!sk) continue;
+        const of1r = await fetchOpenF1RaceResult(sk);
+        if (of1r.ok) {
+          realRaces = [...realRaces, {
+            round: cal.round, name: cal.name, date: cal.date,
+            circuit_id: cal.id, results: of1r.results, _source: "openf1",
+          }].sort((a, b) => a.round - b.round);
+          seenRounds2.add(cal.round);
+          health.results = (health.results || "") + `+of1:r${cal.round}`;
+        }
+      }
+
+      // Enrich last 3 completed races with tire stints + pit stops (cached after first fetch)
+      const toEnrich = realRaces.slice(-3);
+      const freshData = {};
+      for (const race of toEnrich) {
+        const cached = openf1_race_data[race.round];
+        if (cached && cached.stints && Object.keys(cached.stints).length > 0) {
+          freshData[race.round] = cached; // already good
+          continue;
+        }
+        const sk = skByCircuit[race.circuit_id];
+        if (!sk) continue;
+        const [pits, stints] = await Promise.all([fetchPitStops(sk), fetchTireStints(sk)]);
+        if (pits.ok || stints.ok) {
+          freshData[race.round] = {
+            session_key: sk,
+            pit_stops: pits.ok ? pits.pit_stops : {},
+            stints: stints.ok ? stints.stints : {},
+          };
+        }
+      }
+      openf1_race_data = { ...openf1_race_data, ...freshData };
+      if (Object.keys(openf1_race_data).length) health.openf1 = `enriched:${Object.keys(openf1_race_data).length}races`;
+    }
+  } catch { health.openf1 = "error"; }
+
   // 3. Predictions (always succeeds; blends live standings when present).
   const pred = predict({ liveStandings: liveForBlend, racesCompleted });
 
@@ -235,6 +288,7 @@ export async function assemble(opts = {}) {
 
     driver_bios_2026: driver_bios,
     circuit_data_2026: circuit_data,
+    openf1_race_data,
 
     driver_images,
     track_layouts,

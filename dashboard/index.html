@@ -579,6 +579,65 @@
     .modal-fact .k { font-size: .55rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-dim); }
     .modal-chartside { flex: 1 1 320px; }
 
+    /* ─── RACE RESULT TABLE (in modal) ──────────────────────────────── */
+    .race-result-list { display: flex; flex-direction: column; gap: 3px; }
+    .rr-row {
+      display: grid; grid-template-columns: 2.6rem 8px 1fr auto auto 2.4rem;
+      align-items: center; gap: .45rem; padding: .32rem .55rem;
+      border-radius: var(--radius); background: rgba(255,255,255,.03);
+      border-left: 3px solid var(--tc, #555);
+      font-family: var(--font-tele); font-size: .75rem;
+      transition: background .15s;
+    }
+    .rr-row:hover { background: rgba(255,255,255,.07); }
+    .rr-pos { color: var(--text-sec); font-size: .68rem; text-align: right; }
+    .rr-pos.gold { color: var(--gold); font-weight: 700; font-size: .8rem; }
+    .rr-pos.silver { color: #c0c0c0; font-weight: 700; }
+    .rr-pos.bronze { color: #cd7f32; font-weight: 700; }
+    .rr-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tc, #555); flex-shrink: 0; }
+    .rr-name { color: var(--text); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rr-gap { color: var(--text-dim); font-size: .66rem; text-align: right; white-space: nowrap; }
+    .rr-pts { color: var(--text-sec); font-size: .66rem; text-align: right; }
+    .rr-fl { color: var(--accent); font-size: .6rem; text-align: center; }
+    .rr-dnf .rr-name { color: var(--text-dim); }
+    .rr-dnf .rr-gap { color: #e05050; }
+
+    /* ─── TYRE STRATEGY (in modal) ───────────────────────────────────── */
+    .strategy-section { margin-top: 1.2rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .strategy-chart { display: flex; flex-direction: column; gap: 4px; padding: .4rem 0; }
+    .strategy-row { display: flex; align-items: center; gap: .55rem; opacity: 0; animation: fadeSlide .28s ease forwards; }
+    .str-drv { width: 30px; font-family: var(--font-tele); font-size: .68rem; font-weight: 700; text-align: right; flex-shrink: 0; }
+    .str-bar { flex: 1; display: flex; height: 20px; gap: 2px; }
+    .stint-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-tele); font-size: .58rem; font-weight: 700;
+      border-radius: 3px; overflow: hidden; min-width: 5px; cursor: default;
+      transition: filter .15s;
+    }
+    .stint-seg:hover { filter: brightness(1.25); }
+    .str-pit { font-family: var(--font-tele); font-size: .58rem; color: var(--text-dim); flex-shrink: 0; min-width: 28px; text-align: center; }
+    .compound-legend { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .55rem; }
+    .cleg { font-family: var(--font-tele); font-size: .6rem; font-weight: 700; padding: .15rem .38rem; border-radius: 3px; }
+    .cleg.soft    { background: #e10600; color: #fff; }
+    .cleg.medium  { background: #ffd900; color: #000; }
+    .cleg.hard    { background: #e8e8e8; color: #000; }
+    .cleg.inter   { background: #39b54a; color: #fff; }
+    .cleg.wet     { background: #0067ff; color: #fff; }
+
+    /* ─── COMPOUND CHIPS on race cards ──────────────────────────────── */
+    .race-compounds { display: flex; gap: 3px; margin-top: .32rem; flex-wrap: wrap; }
+    .compound-dot {
+      width: 15px; height: 15px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-tele); font-size: .5rem; font-weight: 700;
+    }
+    .cd-soft   { background: #e10600; color: #fff; }
+    .cd-medium { background: #ffd900; color: #000; }
+    .cd-hard   { background: #e8e8e8; color: #000; }
+    .cd-inter  { background: #39b54a; color: #fff; }
+    .cd-wet    { background: #0067ff; color: #fff; }
+    .cd-unk    { background: #444; color: #aaa; }
+
     /* ─── TEAMS — CAR SHOWCASE ───────────────────────────────────────── */
     .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.1rem; }
     .team-card {
@@ -1305,6 +1364,18 @@
           <div id="modal-chart" class="chart-host"></div>
         </div>
       </div>
+      <!-- TYRE STRATEGY — shown only for completed races with OpenF1 data -->
+      <div id="strategy-section" class="strategy-section" style="display:none">
+        <div class="panel-title" style="margin-bottom:.6rem">TYRE STRATEGY</div>
+        <div id="strategy-chart" class="strategy-chart"></div>
+        <div class="compound-legend">
+          <span class="cleg soft">S SOFT</span>
+          <span class="cleg medium">M MED</span>
+          <span class="cleg hard">H HARD</span>
+          <span class="cleg inter">I INTER</span>
+          <span class="cleg wet">W WET</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1316,8 +1387,8 @@
         <div class="foot-meta" id="foot-gen">—</div>
       </div>
       <div class="foot-meta">
-        DATA · <a href="https://api.jolpi.ca" target="_blank" rel="noopener">Jolpica F1 API</a> + <a href="https://www.formula1.com" target="_blank" rel="noopener">formula1.com</a><br>
-        MODEL · XGBoost anchor (frozen) + live blend + 500× Monte Carlo<br>
+        DATA · <a href="https://api.jolpi.ca" target="_blank" rel="noopener">Jolpica F1 API</a> + <a href="https://openf1.org" target="_blank" rel="noopener">OpenF1</a> + <a href="https://www.formula1.com" target="_blank" rel="noopener">formula1.com</a><br>
+        MODEL · XGBoost anchor (frozen) + live blend + 500× Monte Carlo · Strategy · OpenF1 tire/pit telemetry<br>
         Unofficial fan project — not affiliated with Formula 1.
       </div>
     </div>
@@ -1485,9 +1556,10 @@ function normalizeF1() {
   F1.racesCompleted = F1.races_completed_2026 || 0;
   F1.realResultsByRound = {};
   (F1.real_race_results_2026 || []).forEach(r => { F1.realResultsByRound[r.round] = r; });
-  // Expose live bio + circuit data for modals
+  // Expose live bio + circuit data + OpenF1 strategy for modals
   F1.driver_bios_2026 = F1.driver_bios_2026 || {};
   F1.circuit_data_2026 = F1.circuit_data_2026 || {};
+  F1.openf1_race_data = F1.openf1_race_data || {};
 
   F1.races = (F1.race_predictions || []).map(r => {
     const date = r.date || r.race_date || '';
@@ -2028,12 +2100,23 @@ function renderTimeline() {
 }
 
 /* ─── CALENDAR GRID ───────────────────────────────────────────── */
+const CD_CLASS = { SOFT:'cd-soft', MEDIUM:'cd-medium', HARD:'cd-hard', INTERMEDIATE:'cd-inter', WET:'cd-wet' };
+const CD_SHORT  = { SOFT:'S', MEDIUM:'M', HARD:'H', INTERMEDIATE:'I', WET:'W' };
+
 function renderCalendar() {
   byId('race-grid').innerHTML = F1.races.map(r => {
     const next = F1.nextRace && r.round === F1.nextRace.round;
     const fav = F1.driversById[r.winner] || null;
     const color = fav ? fav.color : '#777';
     const tl = (F1.track_layouts || {})[r.circuit_id] || {};
+    // Compound dots for winner's tire strategy (if OpenF1 data available)
+    const of1 = (F1.openf1_race_data || {})[r.round];
+    const winnerStints = (of1 && r.winner && of1.stints) ? (of1.stints[r.winner] || []) : [];
+    const compoundHtml = winnerStints.length
+      ? '<div class="race-compounds">' + winnerStints.map(s =>
+          `<span class="compound-dot ${CD_CLASS[s.compound] || 'cd-unk'}" title="${s.compound} · L${s.lap_start}-${s.lap_end || '?'}">${CD_SHORT[s.compound] || '?'}</span>`
+        ).join('') + '</div>'
+      : '';
     return `<div class="race-card" style="--tc:${color}" data-round="${r.round}" role="button" tabindex="0" aria-label="${esc(r.name)}">
       ${tl.img_url ? '<img class="track-bg" src="' + esc(tl.img_url) + '" alt="" loading="lazy">' : ''}
       ${r.completed ? '<span class="race-badge done">✓ DONE</span>' : next ? '<span class="race-badge next">NEXT</span>' : ''}
@@ -2048,6 +2131,7 @@ function renderCalendar() {
           ? ' <span style="font-family:var(--font-tele);font-size:.68rem;color:var(--text-sec)">' + pct(r.top5[0].win_prob) + '</span>'
           : ''}
       </div>
+      ${compoundHtml}
     </div>`;
   }).join('');
   byId('race-grid').querySelectorAll('.race-card').forEach(c => {
@@ -2070,44 +2154,52 @@ function openRaceModal(round) {
   const tl = (F1.track_layouts || {})[r.circuit_id] || {};
   if (tl.img_url) { img.src = tl.img_url; img.style.display = ''; } else img.style.display = 'none';
   const lapRec = CIRCUIT_LAP_RECORDS[r.circuit_id];
-  // winner + winning time for completed races
+
+  // Winner fact + circuit facts
   let winnerHtml = '';
   if (r.completed && r.real && r.real.results && r.real.results.length) {
     const w = r.real.results[0];
     const wd = F1.driversById[w.driver_id] || { name: w.driver_id };
-    winnerHtml =
-      `<div class="modal-fact" style="grid-column:span 2"><div class="v" style="color:var(--gold)">🏆 ${esc(wd.name)}</div><div class="k">Winner${w.time_or_gap ? ' · ' + esc(w.time_or_gap) : ''}</div></div>`;
+    winnerHtml = `<div class="modal-fact" style="grid-column:span 2"><div class="v" style="color:var(--gold)">${esc(wd.name)}</div><div class="k">Winner${w.time_or_gap ? ' · ' + esc(w.time_or_gap) : ''}</div></div>`;
   }
-  // merge live Jolpica circuit data over CIRCUIT_META
   const liveCircuit = ((F1.circuit_data_2026 || {})[r.circuit_id]) || {};
   const locality = liveCircuit.locality || cm.country || '';
   const altitude = liveCircuit.alt ? liveCircuit.alt + ' m' : null;
   const circuitWiki = liveCircuit.wiki
-    ? `<a href="${esc(liveCircuit.wiki)}" target="_blank" rel="noopener" style="color:var(--accent);font-size:.6rem;text-decoration:none">↗ Circuit info</a>`
-    : '';
+    ? `<a href="${esc(liveCircuit.wiki)}" target="_blank" rel="noopener" style="color:var(--accent);font-size:.6rem;text-decoration:none">↗ info</a>` : '';
   byId('modal-facts').innerHTML =
     `<div class="modal-fact"><div class="v">${cm.km ? cm.km + ' km' : '—'}</div><div class="k">Length</div></div>
      <div class="modal-fact"><div class="v">${cm.corners || '—'}</div><div class="k">Corners</div></div>
      <div class="modal-fact"><div class="v">${cm.laps || '—'}</div><div class="k">Laps</div></div>
      ${locality ? '<div class="modal-fact"><div class="v" style="font-size:.82rem">' + esc(locality) + '</div><div class="k">Location</div></div>' : ''}
      ${altitude ? '<div class="modal-fact"><div class="v">' + esc(altitude) + '</div><div class="k">Altitude</div></div>' : ''}
-     ${liveCircuit.name ? '<div class="modal-fact"><div class="v" style="font-size:.7rem">' + esc(liveCircuit.name) + '</div><div class="k">Official name ' + circuitWiki + '</div></div>' : ''}
-     ${lapRec ? '<div class="modal-fact" style="grid-column:span 3"><div class="v" style="font-size:.82rem">' + esc(lapRec) + '</div><div class="k">Lap record</div></div>' : ''}
+     ${liveCircuit.name ? '<div class="modal-fact"><div class="v" style="font-size:.7rem">' + esc(liveCircuit.name) + ' ' + circuitWiki + '</div><div class="k">Official name</div></div>' : ''}
+     ${lapRec ? '<div class="modal-fact" style="grid-column:span 3"><div class="v" style="font-size:.78rem">' + esc(lapRec) + '</div><div class="k">Lap record</div></div>' : ''}
      ${winnerHtml}`;
 
-  if (r.completed && r.real) {
-    byId('modal-chart-title').textContent = 'CLASSIFIED RESULT — TOP ' + Math.min(8, r.real.results.length);
-    const res = r.real.results.slice(0, 8).reverse();
-    PLOT('modal-chart', [{
-      type: 'bar', orientation: 'h',
-      x: res.map(x => x.points), y: res.map(x => 'P' + x.position + ' ' + ((F1.driversById[x.driver_id] || {}).abbr || x.driver_id)),
-      marker: { color: res.map(x => (F1.driversById[x.driver_id] || {}).color || '#777') },
-      text: res.map(x => x.points + ' pts'), textposition: 'outside',
-      textfont: { color: '#f4f4f6', size: 10, family: "'Share Tech Mono',monospace" },
-      hovertemplate: '<b>%{y}</b> · %{x} pts<extra></extra>',
-    }], { height: 300, margin: { t: 6, r: 56, b: 28, l: 86 }, xaxis: Object.assign({}, AXIS, { range: [0, 30] }), yaxis: Object.assign({}, AXIS, { tickfont: { color: '#f4f4f6', size: 10, family: PLOT_FONT.family } }) });
+  if (r.completed && r.real && r.real.results && r.real.results.length) {
+    // — CLASSIFIED RESULT: rich table instead of bar chart —
+    byId('modal-chart-title').textContent = 'CLASSIFIED RESULT — TOP ' + Math.min(10, r.real.results.length);
+    const POSCLASS = { 1: 'gold', 2: 'silver', 3: 'bronze' };
+    byId('modal-chart').innerHTML =
+      '<div class="race-result-list">' +
+      r.real.results.slice(0, 10).map(x => {
+        const drv = F1.driversById[x.driver_id] || { name: x.driver_id, color: '#777', abbr: x.driver_id, teamName: '' };
+        const isDnf = x.status && x.status !== 'Finished' && !/Lap/i.test(x.status) && x.status !== 'Lapped';
+        const posLabel = isDnf ? 'DNF' : 'P' + x.position;
+        return `<div class="rr-row${isDnf ? ' rr-dnf' : ''}" style="--tc:${drv.color}">
+          <div class="rr-pos ${POSCLASS[x.position] || ''}">${posLabel}</div>
+          <div class="rr-dot"></div>
+          <div class="rr-name">${esc(drv.abbr || drv.name)}</div>
+          <div class="rr-gap">${isDnf ? esc(x.status) : esc(x.time_or_gap || '—')}</div>
+          <div class="rr-pts">${x.points ? x.points + 'p' : ''}</div>
+          <div class="rr-fl">${x.fastest_lap ? 'FL' : ''}</div>
+        </div>`;
+      }).join('') +
+      '</div>';
   } else {
     byId('modal-chart-title').textContent = 'MODEL FORECAST — TOP 5 WIN PROBABILITY';
+    byId('modal-chart').innerHTML = '';
     const t5 = r.top5.slice(0, 5).reverse();
     PLOT('modal-chart', [{
       type: 'bar', orientation: 'h',
@@ -2117,9 +2209,70 @@ function openRaceModal(round) {
       text: t5.map(t => ((t.win_prob || 0) * 100).toFixed(1) + '%'), textposition: 'outside',
       textfont: { color: '#f4f4f6', size: 10, family: "'Share Tech Mono',monospace" },
       hovertemplate: '<b>%{y}</b> win probability · %{x}%<extra></extra>',
-    }], { height: 300, margin: { t: 6, r: 56, b: 28, l: 56 }, xaxis: Object.assign({}, AXIS, { range: [0, Math.max(...t5.map(t => (t.win_prob || 0) * 100)) * 1.3 + 4] }), yaxis: Object.assign({}, AXIS, { tickfont: { color: '#f4f4f6', size: 11, family: PLOT_FONT.family } }) });
+    }], { height: 280, margin: { t: 6, r: 56, b: 28, l: 56 }, xaxis: Object.assign({}, AXIS, { range: [0, Math.max(...t5.map(t => (t.win_prob || 0) * 100)) * 1.3 + 4] }), yaxis: Object.assign({}, AXIS, { tickfont: { color: '#f4f4f6', size: 11, family: PLOT_FONT.family } }) });
   }
+
+  // Tyre strategy (OpenF1 enrichment)
+  const of1 = (F1.openf1_race_data || {})[round] || null;
+  const stratSec = byId('strategy-section');
+  if (r.completed && of1 && of1.stints && Object.keys(of1.stints).length) {
+    stratSec.style.display = '';
+    renderTireStrategy(r, of1);
+  } else {
+    stratSec.style.display = 'none';
+  }
+
   byId('race-modal').classList.add('active');
+}
+
+/* ─── TYRE STRATEGY RENDERER ──────────────────────────────────── */
+function renderTireStrategy(race, of1) {
+  const COMPOUND_COL  = { SOFT:'#e10600', MEDIUM:'#ffd900', HARD:'#e8e8e8', INTERMEDIATE:'#39b54a', WET:'#0067ff', UNKNOWN:'#444' };
+  const COMPOUND_TXT  = { SOFT:'#fff', MEDIUM:'#000', HARD:'#111', INTERMEDIATE:'#fff', WET:'#fff', UNKNOWN:'#aaa' };
+  const COMPOUND_SH   = { SOFT:'S', MEDIUM:'M', HARD:'H', INTERMEDIATE:'I', WET:'W', UNKNOWN:'?' };
+  const stints   = of1.stints   || {};
+  const pitStops = of1.pit_stops || {};
+  const totalLaps = (CIRCUIT_META[race.circuit_id] || {}).laps || 60;
+
+  // Order drivers by race result position
+  const order = (race.real && race.real.results)
+    ? race.real.results.map(x => x.driver_id)
+    : Object.keys(stints);
+
+  const rows = order.slice(0, 10).filter(id => stints[id] && stints[id].length).map((id, idx) => {
+    const drv      = F1.driversById[id] || { abbr: id.slice(0,3).toUpperCase(), color:'#888' };
+    const dStints  = stints[id];
+    const dPits    = pitStops[id] || [];
+
+    // Build stint segments; fill any gap between stint end and next start
+    let cursor = 1;
+    let segs = '';
+    dStints.forEach((st, i) => {
+      const lapEnd   = st.lap_end || (i === dStints.length - 1 ? totalLaps : (dStints[i+1] ? dStints[i+1].lap_start - 1 : totalLaps));
+      const laps     = Math.max(1, lapEnd - (st.lap_start || cursor) + 1);
+      const flex     = (laps / totalLaps * 100).toFixed(2);
+      const bg       = COMPOUND_COL[st.compound] || '#444';
+      const col      = COMPOUND_TXT[st.compound] || '#fff';
+      const sh       = COMPOUND_SH[st.compound]  || '?';
+      const ageTip   = st.tyre_age > 0 ? ` · ${st.tyre_age}L used` : '';
+      segs += `<div class="stint-seg" style="flex:${flex};background:${bg};color:${col}" title="${st.compound} L${st.lap_start || cursor}–${lapEnd}${ageTip}">${laps > 4 ? sh : ''}</div>`;
+      // Pit stop marker after each non-last stint
+      if (i < dStints.length - 1) {
+        const pit = dPits[i] || {};
+        const dur = pit.duration ? pit.duration.toFixed(1) + 's' : '·';
+        segs += `<div class="str-pit" title="Pit stop lap ${pit.lap || ''}">${dur}</div>`;
+      }
+      cursor = lapEnd + 1;
+    });
+
+    return `<div class="strategy-row" style="animation-delay:${idx * 35}ms">
+      <div class="str-drv" style="color:${drv.color}">${esc(drv.abbr)}</div>
+      <div class="str-bar">${segs}</div>
+    </div>`;
+  }).join('');
+
+  byId('strategy-chart').innerHTML = rows ||
+    '<div style="padding:.6rem;color:var(--text-dim);font-size:.78rem">Strategy data not yet available from OpenF1.</div>';
 }
 byId('modal-close').addEventListener('click', () => byId('race-modal').classList.remove('active'));
 byId('race-modal').addEventListener('click', e => { if (e.target === byId('race-modal')) byId('race-modal').classList.remove('active'); });
