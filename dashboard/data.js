@@ -3507,6 +3507,376 @@ window.F1_DATA = {
       ]
     }
   ],
+  "driver_bios_2026": {
+    "albon": {
+      "dob": "1996-03-23",
+      "nationality": "Thai",
+      "wiki": "http://en.wikipedia.org/wiki/Alexander_Albon"
+    },
+    "alonso": {
+      "dob": "1981-07-29",
+      "nationality": "Spanish",
+      "wiki": "http://en.wikipedia.org/wiki/Fernando_Alonso"
+    },
+    "antonelli": {
+      "dob": "2006-08-25",
+      "nationality": "Italian",
+      "wiki": "https://en.wikipedia.org/wiki/Andrea_Kimi_Antonelli"
+    },
+    "paul_aron": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "bearman": {
+      "dob": "2005-05-08",
+      "nationality": "British",
+      "wiki": "http://en.wikipedia.org/wiki/Oliver_Bearman"
+    },
+    "dino_beganovic": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "bortoleto": {
+      "dob": "2004-10-14",
+      "nationality": "Brazilian",
+      "wiki": "https://en.wikipedia.org/wiki/Gabriel_Bortoleto"
+    },
+    "bottas": {
+      "dob": "1989-08-28",
+      "nationality": "Finnish",
+      "wiki": "http://en.wikipedia.org/wiki/Valtteri_Bottas"
+    },
+    "luke_browning": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "colapinto": {
+      "dob": "2003-05-27",
+      "nationality": "Argentine",
+      "wiki": "http://en.wikipedia.org/wiki/Franco_Colapinto"
+    },
+    "jak_crawford": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "leonardo_fornaroli": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "gasly": {
+      "dob": "1996-02-07",
+      "nationality": "French",
+      "wiki": "http://en.wikipedia.org/wiki/Pierre_Gasly"
+    },
+    "hadjar": {
+      "dob": "2004-09-28",
+      "nationality": "French",
+      "wiki": "https://en.wikipedia.org/wiki/Isack_Hadjar"
+    },
+    "hamilton": {
+      "dob": "1985-01-07",
+      "nationality": "British",
+      "wiki": "http://en.wikipedia.org/wiki/Lewis_Hamilton"
+    },
+    "colton_herta": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "hulkenberg": {
+      "dob": "1987-08-19",
+      "nationality": "German",
+      "wiki": "http://en.wikipedia.org/wiki/Nico_H%C3%BClkenberg"
+    },
+    "ayumu_iwasa": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    },
+    "lawson": {
+      "dob": "2002-02-11",
+      "nationality": "New Zealander",
+      "wiki": "http://en.wikipedia.org/wiki/Liam_Lawson"
+    },
+    "leclerc": {
+      "dob": "1997-10-16",
+      "nationality": "Monegasque",
+      "wiki": "http://en.wikipedia.org/wiki/Charles_Leclerc"
+    },
+    "arvid_lindblad": {
+      "dob": "2007-08-08",
+      "nationality": "British",
+      "wiki": "https://en.wikipedia.org/wiki/Arvid_Lindblad"
+    },
+    "norris": {
+      "dob": "1999-11-13",
+      "nationality": "British",
+      "wiki": "http://en.wikipedia.org/wiki/Lando_Norris"
+    },
+    "ocon": {
+      "dob": "1996-09-17",
+      "nationality": "French",
+      "wiki": "http://en.wikipedia.org/wiki/Esteban_Ocon"
+    },
+    "piastri": {
+      "dob": "2001-04-06",
+      "nationality": "Australian",
+      "wiki": "http://en.wikipedia.org/wiki/Oscar_Piastri"
+    },
+    "perez": {
+      "dob": "1990-01-26",
+      "nationality": "Mexican",
+      "wiki": "http://en.wikipedia.org/wiki/Sergio_P%C3%A9rez"
+    },
+    "russell": {
+      "dob": "1998-02-15",
+      "nationality": "British",
+      "wiki": "http://en.wikipedia.org/wiki/George_Russell_(racing_driver)"
+    },
+    "sainz": {
+      "dob": "1994-09-01",
+      "nationality": "Spanish",
+      "wiki": "http://en.wikipedia.org/wiki/Carlos_Sainz_Jr."
+    },
+    "stroll": {
+      "dob": "1998-10-29",
+      "nationality": "Canadian",
+      "wiki": "http://en.wikipedia.org/wiki/Lance_Stroll"
+    },
+    "max_verstappen": {
+      "dob": "1997-09-30",
+      "nationality": "Dutch",
+      "wiki": "http://en.wikipedia.org/wiki/Max_Verstappen"
+    },
+    "frederik_vesti": {
+      "dob": null,
+      "nationality": null,
+      "wiki": null
+    }
+  },
+  "circuit_data_2026": {
+    "australia": {
+      "name": "Albert Park Grand Prix Circuit",
+      "locality": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8497,
+      "long": 144.968,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Albert_Park_Circuit"
+    },
+    "americas": {
+      "name": "Circuit of the Americas",
+      "locality": "Austin",
+      "country": "USA",
+      "lat": 30.1328,
+      "long": -97.6411,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Circuit_of_the_Americas"
+    },
+    "bahrain": {
+      "name": "Bahrain International Circuit",
+      "locality": "Sakhir",
+      "country": "Bahrain",
+      "lat": 26.0325,
+      "long": 50.5106,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Bahrain_International_Circuit"
+    },
+    "azerbaijan": {
+      "name": "Baku City Circuit",
+      "locality": "Baku",
+      "country": "Azerbaijan",
+      "lat": 40.3725,
+      "long": 49.8533,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Baku_City_Circuit"
+    },
+    "spain": {
+      "name": "Circuit de Barcelona-Catalunya",
+      "locality": "Barcelona",
+      "country": "Spain",
+      "lat": 41.57,
+      "long": 2.26111,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Circuit_de_Barcelona-Catalunya"
+    },
+    "hungary": {
+      "name": "Hungaroring",
+      "locality": "Budapest",
+      "country": "Hungary",
+      "lat": 47.5789,
+      "long": 19.2486,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Hungaroring"
+    },
+    "brazil": {
+      "name": "Autódromo José Carlos Pace",
+      "locality": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.7036,
+      "long": -46.6997,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Interlagos_Circuit"
+    },
+    "jeddah": {
+      "name": "Jeddah Corniche Circuit",
+      "locality": "Jeddah",
+      "country": "Saudi Arabia",
+      "lat": 21.6319,
+      "long": 39.1044,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Jeddah_Corniche_Circuit"
+    },
+    "qatar": {
+      "name": "Losail International Circuit",
+      "locality": "Lusail",
+      "country": "Qatar",
+      "lat": 25.49,
+      "long": 51.4542,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Lusail_International_Circuit"
+    },
+    "madrid": {
+      "name": "Madring",
+      "locality": "Madrid",
+      "country": "Spain",
+      "lat": 40.46528,
+      "long": -3.61528,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Madring"
+    },
+    "singapore": {
+      "name": "Marina Bay Street Circuit",
+      "locality": "Marina Bay",
+      "country": "Singapore",
+      "lat": 1.2914,
+      "long": 103.864,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Marina_Bay_Street_Circuit"
+    },
+    "miami": {
+      "name": "Miami International Autodrome",
+      "locality": "Miami",
+      "country": "USA",
+      "lat": 25.9581,
+      "long": -80.2389,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Miami_International_Autodrome"
+    },
+    "monaco": {
+      "name": "Circuit de Monaco",
+      "locality": "Monte Carlo",
+      "country": "Monaco",
+      "lat": 43.7347,
+      "long": 7.42056,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Circuit_de_Monaco"
+    },
+    "italy": {
+      "name": "Autodromo Nazionale di Monza",
+      "locality": "Monza",
+      "country": "Italy",
+      "lat": 45.6156,
+      "long": 9.28111,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Monza_Circuit"
+    },
+    "austria": {
+      "name": "Red Bull Ring",
+      "locality": "Spielberg",
+      "country": "Austria",
+      "lat": 47.2197,
+      "long": 14.7647,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Red_Bull_Ring"
+    },
+    "mexico": {
+      "name": "Autódromo Hermanos Rodríguez",
+      "locality": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4042,
+      "long": -99.0907,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Aut%C3%B3dromo_Hermanos_Rodr%C3%ADguez"
+    },
+    "china": {
+      "name": "Shanghai International Circuit",
+      "locality": "Shanghai",
+      "country": "China",
+      "lat": 31.3389,
+      "long": 121.22,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Shanghai_International_Circuit"
+    },
+    "britain": {
+      "name": "Silverstone Circuit",
+      "locality": "Silverstone",
+      "country": "UK",
+      "lat": 52.0786,
+      "long": -1.01694,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Silverstone_Circuit"
+    },
+    "belgium": {
+      "name": "Circuit de Spa-Francorchamps",
+      "locality": "Spa",
+      "country": "Belgium",
+      "lat": 50.4372,
+      "long": 5.97139,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps"
+    },
+    "japan": {
+      "name": "Suzuka Circuit",
+      "locality": "Suzuka",
+      "country": "Japan",
+      "lat": 34.8431,
+      "long": 136.541,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Suzuka_International_Racing_Course"
+    },
+    "las_vegas": {
+      "name": "Las Vegas Strip Street Circuit",
+      "locality": "Las Vegas",
+      "country": "USA",
+      "lat": 36.1147,
+      "long": -115.173,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Las_Vegas_Grand_Prix#Circuit"
+    },
+    "canada": {
+      "name": "Circuit Gilles Villeneuve",
+      "locality": "Montreal",
+      "country": "Canada",
+      "lat": 45.5,
+      "long": -73.5228,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Circuit_Gilles_Villeneuve"
+    },
+    "abu_dhabi": {
+      "name": "Yas Marina Circuit",
+      "locality": "Abu Dhabi",
+      "country": "UAE",
+      "lat": 24.4672,
+      "long": 54.6031,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Yas_Marina_Circuit"
+    },
+    "netherlands": {
+      "name": "Circuit Park Zandvoort",
+      "locality": "Zandvoort",
+      "country": "Netherlands",
+      "lat": 52.3888,
+      "long": 4.54092,
+      "alt": null,
+      "wiki": "https://en.wikipedia.org/wiki/Circuit_Zandvoort"
+    }
+  },
   "driver_images": {
     "piastri": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/mclaren/oscpia01/2026mclarenoscpia01right.webp",
     "norris": "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/mclaren/lannor01/2026mclarenlannor01right.webp",
@@ -3614,6 +3984,20 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "Norris insists McLaren will 'be there soon' after podium",
+      "url": "https://www.formula1.com/en/latest/article/well-be-there-soon-norris-very-happy-to-finish-on-podium-in-barcelona-catalunya-grand-prix.2OIMquffyXj9B1upFXbPZo",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "Russell wary of ‘mighty impressive’ Ferrari after Barcelona P2",
+      "url": "https://www.formula1.com/en/latest/article/russell-wary-of-mighty-impressive-ferrari-after-challenging-return-to-the-podium-in-barcelona.SzzLWCyrIN3Vra9A0qE7u",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "Hamilton reacts to magical maiden win with Ferrari",
       "url": "https://www.formula1.com/en/latest/article/this-ones-something-else-hamilton-reacts-to-magical-maiden-win-with-ferrari-in-barcelona.7vmAJqyTHDtJZP60wStqSg",
       "image": null,
@@ -3654,27 +4038,15 @@ window.F1_DATA = {
       "image": null,
       "date": null,
       "tag": "F1 News"
-    },
-    {
-      "title": "OFFICIAL GRID: Who starts where for the Barcelona-Catalunya GP",
-      "url": "https://www.formula1.com/en/latest/article/official-grid-who-starts-where-for-the-barcelona-catalunya-grand-prix-2026.4Ji8L9DMsNKTjjEpNKlghK",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "AS IT HAPPENED: Hamilton wins in Barcelona as Antonelli retires",
-      "url": "https://www.formula1.com/en/latest/article/live-coverage-formula-1-msc-cruises-gran-premio-de-barcelona-catalunya-2026.4cOdCOhdk5kkdpeKllE8jK",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
     }
   ],
   "_health": {
     "live": "jolpica:7rounds",
     "results": "jolpica:7races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-14T16:37:24.060Z"
+    "scrapedAt": "2026-06-14T17:06:02.731Z",
+    "bios": "jolpica:30",
+    "circuits": "jolpica:24"
   },
   "_sanity": {
     "drivers_full_grid": true,

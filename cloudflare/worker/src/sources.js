@@ -110,6 +110,48 @@ function mapRace(race) {
 }
 
 /**
+ * Driver biographical data from Jolpica (DOB, nationality, Wikipedia URL).
+ * @returns {{ok:boolean, bios?:Object}}
+ */
+export async function fetchDriverBios() {
+  const r = await getJSON(`${JOLPICA}/drivers.json?limit=40`);
+  if (!r.ok) return { ok: false };
+  const bios = {};
+  for (const d of r.json?.MRData?.DriverTable?.Drivers || []) {
+    const id = normDriver(d.driverId);
+    bios[id] = {
+      dob: d.dateOfBirth || null,
+      nationality: d.nationality || null,
+      wiki: d.url || null,
+    };
+  }
+  return { ok: Object.keys(bios).length > 0, bios };
+}
+
+/**
+ * Circuit data for all 2026 rounds (name, locality, country, lat/long, altitude).
+ * @returns {{ok:boolean, circuits?:Object}}
+ */
+export async function fetchCircuitData() {
+  const r = await getJSON(`${JOLPICA}/circuits.json?limit=30`);
+  if (!r.ok) return { ok: false };
+  const circuits = {};
+  for (const c of r.json?.MRData?.CircuitTable?.Circuits || []) {
+    const id = normCircuit(c.circuitId);
+    circuits[id] = {
+      name: c.circuitName || null,
+      locality: c.Location?.locality || null,
+      country: c.Location?.country || null,
+      lat: parseFloat(c.Location?.lat) || null,
+      long: parseFloat(c.Location?.long) || null,
+      alt: parseFloat(c.Location?.alt) || null,
+      wiki: c.url || null,
+    };
+  }
+  return { ok: Object.keys(circuits).length > 0, circuits };
+}
+
+/**
  * Per-race results for completed 2026 rounds (top-10 per race).
  * Jolpica's bulk /results endpoint sometimes lags the newest round (it dropped
  * Monaco while the standings already included it), so any round missing from

@@ -18,7 +18,7 @@ import {
   CALENDAR_2026, CANCELLED_2026, MANUAL_RACE_PATCHES,
 } from "./seed.js";
 import { predict } from "./predict.js";
-import { fetchLiveStandings, fetchRaceResults } from "./sources.js";
+import { fetchLiveStandings, fetchRaceResults, fetchDriverBios, fetchCircuitData } from "./sources.js";
 import { scrapeNews } from "./scrape.js";
 import { buildDriverImages, buildTrackLayouts, buildTeamCars } from "./media.js";
 
@@ -185,7 +185,22 @@ export async function assemble(opts = {}) {
     else health.news = n.blocked ? "blocked_kept_last_good" : "empty_kept_last_good";
   } catch { health.news = "error_kept_last_good"; }
 
-  // 5. Media URLs (deterministic; cheap).
+  // 5. Driver bios + circuit data from Jolpica (best-effort; non-blocking).
+  let driver_bios = lastGood.driver_bios_2026 || {};
+  try {
+    const db = await fetchDriverBios();
+    if (db.ok && Object.keys(db.bios).length) { driver_bios = db.bios; health.bios = `jolpica:${Object.keys(db.bios).length}`; }
+    else health.bios = "kept_last_good";
+  } catch { health.bios = "error_kept_last_good"; }
+
+  let circuit_data = lastGood.circuit_data_2026 || {};
+  try {
+    const cd = await fetchCircuitData();
+    if (cd.ok && Object.keys(cd.circuits).length) { circuit_data = cd.circuits; health.circuits = `jolpica:${Object.keys(cd.circuits).length}`; }
+    else health.circuits = "kept_last_good";
+  } catch { health.circuits = "error_kept_last_good"; }
+
+  // 6. Media URLs (deterministic; cheap).
   const driver_images = buildDriverImages();
   const track_layouts = buildTrackLayouts();
   const team_cars = buildTeamCars();
@@ -217,6 +232,9 @@ export async function assemble(opts = {}) {
     real_driver_standings_2026: live.ok ? toRealDriverStandings(live) : [],
     real_constructor_standings_2026: live.ok ? (live.constructorStandings || []) : [],
     real_race_results_2026: realRaces,
+
+    driver_bios_2026: driver_bios,
+    circuit_data_2026: circuit_data,
 
     driver_images,
     track_layouts,

@@ -1485,6 +1485,9 @@ function normalizeF1() {
   F1.racesCompleted = F1.races_completed_2026 || 0;
   F1.realResultsByRound = {};
   (F1.real_race_results_2026 || []).forEach(r => { F1.realResultsByRound[r.round] = r; });
+  // Expose live bio + circuit data for modals
+  F1.driver_bios_2026 = F1.driver_bios_2026 || {};
+  F1.circuit_data_2026 = F1.circuit_data_2026 || {};
 
   F1.races = (F1.race_predictions || []).map(r => {
     const date = r.date || r.race_date || '';
@@ -2075,10 +2078,20 @@ function openRaceModal(round) {
     winnerHtml =
       `<div class="modal-fact" style="grid-column:span 2"><div class="v" style="color:var(--gold)">🏆 ${esc(wd.name)}</div><div class="k">Winner${w.time_or_gap ? ' · ' + esc(w.time_or_gap) : ''}</div></div>`;
   }
+  // merge live Jolpica circuit data over CIRCUIT_META
+  const liveCircuit = ((F1.circuit_data_2026 || {})[r.circuit_id]) || {};
+  const locality = liveCircuit.locality || cm.country || '';
+  const altitude = liveCircuit.alt ? liveCircuit.alt + ' m' : null;
+  const circuitWiki = liveCircuit.wiki
+    ? `<a href="${esc(liveCircuit.wiki)}" target="_blank" rel="noopener" style="color:var(--accent);font-size:.6rem;text-decoration:none">↗ Circuit info</a>`
+    : '';
   byId('modal-facts').innerHTML =
     `<div class="modal-fact"><div class="v">${cm.km ? cm.km + ' km' : '—'}</div><div class="k">Length</div></div>
      <div class="modal-fact"><div class="v">${cm.corners || '—'}</div><div class="k">Corners</div></div>
      <div class="modal-fact"><div class="v">${cm.laps || '—'}</div><div class="k">Laps</div></div>
+     ${locality ? '<div class="modal-fact"><div class="v" style="font-size:.82rem">' + esc(locality) + '</div><div class="k">Location</div></div>' : ''}
+     ${altitude ? '<div class="modal-fact"><div class="v">' + esc(altitude) + '</div><div class="k">Altitude</div></div>' : ''}
+     ${liveCircuit.name ? '<div class="modal-fact"><div class="v" style="font-size:.7rem">' + esc(liveCircuit.name) + '</div><div class="k">Official name ' + circuitWiki + '</div></div>' : ''}
      ${lapRec ? '<div class="modal-fact" style="grid-column:span 3"><div class="v" style="font-size:.82rem">' + esc(lapRec) + '</div><div class="k">Lap record</div></div>' : ''}
      ${winnerHtml}`;
 
@@ -2457,11 +2470,23 @@ function openDriverModal(driverId) {
   byId('dm-statrow').innerHTML = stats.map(([v, k]) =>
     `<div class="dm-stat"><div class="v">${esc(v)}</div><div class="k">${esc(k)}</div></div>`).join('');
 
-  // bio
+  // bio — merge live Jolpica data over hardcoded fallback
+  const liveBio = ((F1.driver_bios_2026 || {})[driverId]) || {};
+  const ageFromDob = liveBio.dob
+    ? Math.floor((new Date() - new Date(liveBio.dob)) / 31557600000)
+    : (bio ? bio.age : null);
+  const natLive = liveBio.nationality || nat.country;
   byId('dm-bio').textContent = bio ? bio.bio : 'No detailed biography on file for this driver.';
-  byId('dm-bio-chips').innerHTML = bio ? [
-    ['AGE', bio.age], ['DEBUT', bio.debut], ['TITLES', bio.championships],
-  ].map(([k, v]) => `<span class="exp-chip">${k} <b>${esc(v)}</b></span>`).join('') : '';
+  const wikiLink = liveBio.wiki
+    ? `<a href="${esc(liveBio.wiki)}" target="_blank" rel="noopener" style="color:var(--accent);font-size:.62rem;letter-spacing:.1em;text-decoration:none;margin-left:.5rem">↗ Wikipedia</a>`
+    : '';
+  byId('dm-bio-chips').innerHTML = [
+    bio ? ['TITLES', bio.championships] : null,
+    bio ? ['DEBUT', bio.debut] : null,
+    ageFromDob ? ['AGE', ageFromDob] : null,
+    natLive ? ['NATION', natLive] : null,
+    liveBio.dob ? ['DOB', liveBio.dob] : null,
+  ].filter(Boolean).map(([k, v]) => `<span class="exp-chip">${k} <b>${esc(v)}</b></span>`).join('') + wikiLink;
 
   // 2026 form chips — from realStandings row
   const rs = (F1.realStandings || []).find(s => s.id === driverId);
