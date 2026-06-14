@@ -15,6 +15,7 @@ const REQUIRED_KEYS = [
   "races_completed_2026", "real_driver_standings_2026", "real_constructor_standings_2026",
   "real_race_results_2026",
   "driver_images", "track_layouts", "team_cars", "news",
+  "predictions_archive",
 ];
 
 const d = await assemble({ lastGood: { news: [{ title: "seed", url: "#" }] } });

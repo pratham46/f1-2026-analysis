@@ -5303,7 +5303,7 @@ window.F1_DATA = {
     "live": "jolpica:7rounds",
     "results": "jolpica:7races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-14T19:14:45.827Z",
+    "scrapedAt": "2026-06-14T19:26:39.040Z",
     "openf1": "enriched:1races",
     "bios": "jolpica:30",
     "circuits": "jolpica:24"
