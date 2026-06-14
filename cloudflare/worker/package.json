@@ -9,7 +9,8 @@
     "deploy": "wrangler deploy",
     "kv:create": "wrangler kv namespace create F1_KV",
     "test": "node test/predict.test.mjs && node test/assemble.test.mjs",
-    "seed": "node scripts/gen-seed.mjs",
+    "seed": "node scripts/gen-seed.mjs && node scripts/enrich-openf1-seed.mjs",
+    "seed:base": "node scripts/gen-seed.mjs",
     "tail": "wrangler tail"
   },
   "devDependencies": {

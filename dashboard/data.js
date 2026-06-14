@@ -379,12 +379,12 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 30,
-      "predicted_points": 83.8,
+      "predicted_points": 85.8,
       "win_probability": 0.0301,
       "championship_win_probability": 0,
       "podium_probability": 0.0421,
       "avg_predicted_position": 9,
-      "current_real_points": 26,
+      "current_real_points": 28,
       "current_real_position": 10,
       "current_wins": 0
     },
@@ -439,7 +439,7 @@ window.F1_DATA = {
       "podium_probability": 0.0025,
       "avg_predicted_position": 13,
       "current_real_points": 18,
-      "current_real_position": 12,
+      "current_real_position": 11,
       "current_wins": 0
     },
     {
@@ -469,13 +469,13 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 43,
-      "predicted_points": 23.4,
-      "win_probability": 0.0181,
+      "predicted_points": 18.2,
+      "win_probability": 0.0169,
       "championship_win_probability": 0,
-      "podium_probability": 0.0005,
-      "avg_predicted_position": 15,
-      "current_real_points": 19,
-      "current_real_position": 11,
+      "podium_probability": 0.0001,
+      "avg_predicted_position": 16,
+      "current_real_points": 16,
+      "current_real_position": 12,
       "current_wins": 0
     },
     {
@@ -487,12 +487,12 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "predicted_points": 12.1,
+      "predicted_points": 13.1,
       "win_probability": 0.0135,
       "championship_win_probability": 0,
       "podium_probability": 0,
       "avg_predicted_position": 20,
-      "current_real_points": 12,
+      "current_real_points": 13,
       "current_real_position": 13,
       "current_wins": 0
     },
@@ -523,11 +523,11 @@ window.F1_DATA = {
       "team_name": "Haas",
       "color": "#B6BABD",
       "number": 31,
-      "predicted_points": 5.2,
-      "win_probability": 0.0169,
+      "predicted_points": 7.4,
+      "win_probability": 0.0181,
       "championship_win_probability": 0,
-      "podium_probability": 0.0001,
-      "avg_predicted_position": 16,
+      "podium_probability": 0.0005,
+      "avg_predicted_position": 15,
       "current_real_points": 3,
       "current_real_position": 16,
       "current_wins": 0
@@ -669,9 +669,9 @@ window.F1_DATA = {
       "constructor_id": "alpine",
       "name": "Alpine",
       "color": "#FF87BC",
-      "predicted_points": 105.7,
+      "predicted_points": 100.5,
       "championship_win_probability": 0,
-      "current_real_points": 60,
+      "current_real_points": 57,
       "current_wins": 0
     },
     {
@@ -679,9 +679,9 @@ window.F1_DATA = {
       "constructor_id": "rb",
       "name": "Racing Bulls",
       "color": "#6692FF",
-      "predicted_points": 95.9,
+      "predicted_points": 98.9,
       "championship_win_probability": 0,
-      "current_real_points": 38,
+      "current_real_points": 41,
       "current_wins": 0
     },
     {
@@ -699,7 +699,7 @@ window.F1_DATA = {
       "constructor_id": "haas",
       "name": "Haas",
       "color": "#B6BABD",
-      "predicted_points": 35.8,
+      "predicted_points": 38,
       "championship_win_probability": 0,
       "current_real_points": 21,
       "current_wins": 0
@@ -3231,24 +3231,11 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 30,
-      "points": 26,
+      "points": 28,
       "wins": 0
     },
     {
       "position": 11,
-      "driver_id": "colapinto",
-      "name": "Franco Colapinto",
-      "short": "COL",
-      "constructor_id": "alpine",
-      "team": "alpine",
-      "team_name": "Alpine",
-      "color": "#FF87BC",
-      "number": 43,
-      "points": 19,
-      "wins": 0
-    },
-    {
-      "position": 12,
       "driver_id": "bearman",
       "name": "Oliver Bearman",
       "short": "BEA",
@@ -3261,6 +3248,19 @@ window.F1_DATA = {
       "wins": 0
     },
     {
+      "position": 12,
+      "driver_id": "colapinto",
+      "name": "Franco Colapinto",
+      "short": "COL",
+      "constructor_id": "alpine",
+      "team": "alpine",
+      "team_name": "Alpine",
+      "color": "#FF87BC",
+      "number": 43,
+      "points": 16,
+      "wins": 0
+    },
+    {
       "position": 13,
       "driver_id": "arvid_lindblad",
       "name": "Arvid Lindblad",
@@ -3270,7 +3270,7 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "points": 12,
+      "points": 13,
       "wins": 0
     },
     {
@@ -3419,13 +3419,13 @@ window.F1_DATA = {
     {
       "position": 5,
       "constructor_id": "alpine",
-      "points": 60,
+      "points": 57,
       "wins": 0
     },
     {
       "position": 6,
       "constructor_id": "rb",
-      "points": 38,
+      "points": 41,
       "wins": 0
     },
     {
@@ -4119,29 +4119,29 @@ window.F1_DATA = {
         },
         {
           "position": 8,
-          "driver_id": "colapinto",
-          "constructor_id": "alpine",
-          "points": 4,
-          "status": "Lapped",
-          "time_or_gap": "+1:09.867",
-          "fastest_lap": false
-        },
-        {
-          "position": 9,
           "driver_id": "lawson",
           "constructor_id": "rb",
-          "points": 2,
+          "points": 4,
           "status": "Lapped",
           "time_or_gap": "+1:12.224",
           "fastest_lap": false
         },
         {
-          "position": 10,
+          "position": 9,
           "driver_id": "arvid_lindblad",
           "constructor_id": "rb",
-          "points": 1,
+          "points": 2,
           "status": "Lapped",
           "time_or_gap": "+1:18.074",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "colapinto",
+          "constructor_id": "alpine",
+          "points": 1,
+          "status": "Lapped",
+          "time_or_gap": "+1:19.867",
           "fastest_lap": false
         }
       ]
@@ -4518,6 +4518,1948 @@ window.F1_DATA = {
     }
   },
   "openf1_race_data": {
+    "1": {
+      "session_key": 11234,
+      "pit_stops": {
+        "colapinto": [
+          {
+            "lap": 9,
+            "duration": 27.7
+          },
+          {
+            "lap": 46,
+            "duration": 18.56
+          }
+        ],
+        "norris": [
+          {
+            "lap": 11,
+            "duration": 18.2
+          },
+          {
+            "lap": 34,
+            "duration": 17.6
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 11,
+            "duration": 18.5
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 11,
+            "duration": 18.6
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 11,
+            "duration": 19.8
+          },
+          {
+            "lap": 33,
+            "duration": 25.94
+          },
+          {
+            "lap": 45,
+            "duration": 34.62
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 11,
+            "duration": 19.1
+          },
+          {
+            "lap": 33,
+            "duration": 18.19
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 11,
+            "duration": 25.89
+          },
+          {
+            "lap": 13,
+            "duration": 972.3
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 11,
+            "duration": 36.69
+          },
+          {
+            "lap": 26,
+            "duration": 33.1
+          },
+          {
+            "lap": 18,
+            "duration": 33.18
+          },
+          {
+            "lap": 34,
+            "duration": 1081.5
+          },
+          {
+            "lap": 39,
+            "duration": 22.4
+          },
+          {
+            "lap": 46,
+            "duration": 22.47
+          }
+        ],
+        "russell": [
+          {
+            "lap": 12,
+            "duration": 17.79
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 12,
+            "duration": 20.98
+          }
+        ],
+        "albon": [
+          {
+            "lap": 12,
+            "duration": 18.12
+          },
+          {
+            "lap": 33,
+            "duration": 18.4
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 12,
+            "duration": 30.39
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 18,
+            "duration": 18.51
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 18,
+            "duration": 19.07
+          },
+          {
+            "lap": 41,
+            "duration": 18
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 18,
+            "duration": 18.77
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 18,
+            "duration": 22.62
+          },
+          {
+            "lap": 33,
+            "duration": 22.6
+          }
+        ],
+        "perez": [
+          {
+            "lap": 18,
+            "duration": 21.37
+          },
+          {
+            "lap": 43,
+            "duration": 18.95
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 25,
+            "duration": 17.6
+          },
+          {
+            "lap": 18,
+            "duration": 17.66
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 28,
+            "duration": 17.7
+          },
+          {
+            "lap": 18,
+            "duration": 17.74
+          }
+        ]
+      },
+      "stints": {
+        "hulkenberg": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 8,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 9,
+            "lap_end": 45,
+            "tyre_age": 9,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 34,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 33,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 33,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 11,
+            "lap_end": 12,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 13,
+            "lap_end": 21,
+            "tyre_age": 2,
+            "stint_number": 3
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 25,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 26,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 34,
+            "lap_end": 38,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 39,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 5
+          }
+        ],
+        "russell": [
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 1,
+            "lap_end": 11,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 11,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "albon": [
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 1,
+            "lap_end": 11,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 33,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 11,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 15,
+            "tyre_age": 12,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 18,
+            "lap_end": 40,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 41,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 33,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "perez": [
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 43,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 24,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 25,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 28,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
+    },
+    "2": {
+      "session_key": 11245,
+      "pit_stops": {
+        "hadjar": [
+          {
+            "lap": 1,
+            "duration": 23.06
+          },
+          {
+            "lap": 10,
+            "duration": 25.75
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 9,
+            "duration": 22.72
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 9,
+            "duration": 23.68
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 9,
+            "duration": 23.11
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 10,
+            "duration": 23
+          }
+        ],
+        "russell": [
+          {
+            "lap": 10,
+            "duration": 23.39
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 10,
+            "duration": 22.43
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 10,
+            "duration": 25.63
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 10,
+            "duration": 23.54
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 10,
+            "duration": 22.97
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 10,
+            "duration": 27.8
+          }
+        ],
+        "perez": [
+          {
+            "lap": 11,
+            "duration": 26.21
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 29,
+            "duration": 26
+          },
+          {
+            "lap": 46,
+            "duration": 47.07
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 31,
+            "duration": 23.29
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 32,
+            "duration": 23.2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 35,
+            "duration": 37.36
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 42,
+            "duration": 23.29
+          }
+        ]
+      },
+      "stints": {
+        "hadjar": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 2,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 9,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "perez": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 11,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "albon": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 43,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 30,
+            "lap_end": 46,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 47,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "norris": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 33,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 35,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 36,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
+    },
+    "3": {
+      "session_key": 11253,
+      "pit_stops": {},
+      "stints": {
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 17,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 17,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 18,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 19,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 18,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 19,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 20,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 20,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 52,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "perez": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 24,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 25,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 23,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 24,
+            "lap_end": 52,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "albon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 46,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 47,
+            "lap_end": 47,
+            "tyre_age": 1,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 48,
+            "lap_end": 48,
+            "tyre_age": 2,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 49,
+            "lap_end": 49,
+            "tyre_age": 3,
+            "stint_number": 6
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 50,
+            "lap_end": 51,
+            "tyre_age": 0,
+            "stint_number": 7
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 23,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 24,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
+    },
+    "4": {
+      "session_key": 11280,
+      "pit_stops": {
+        "hulkenberg": [
+          {
+            "lap": 1,
+            "duration": 33.71
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 6,
+            "duration": 22.55
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 6,
+            "duration": 23.53
+          },
+          {
+            "lap": 21,
+            "duration": 23.83
+          },
+          {
+            "lap": 30,
+            "duration": 17.1
+          }
+        ],
+        "russell": [
+          {
+            "lap": 20,
+            "duration": 22
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 21,
+            "duration": 23.39
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 21,
+            "duration": 22.63
+          },
+          {
+            "lap": 37,
+            "duration": 22.09
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 26,
+            "duration": 22.13
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 26,
+            "duration": 23.47
+          }
+        ],
+        "norris": [
+          {
+            "lap": 27,
+            "duration": 22.57
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 27,
+            "duration": 23.78
+          }
+        ],
+        "albon": [
+          {
+            "lap": 27,
+            "duration": 23.02
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 28,
+            "duration": 23.02
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 28,
+            "duration": 23.59
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 28,
+            "duration": 22.73
+          }
+        ],
+        "perez": [
+          {
+            "lap": 29,
+            "duration": 23.2
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 31,
+            "duration": 23.09
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 31,
+            "duration": 24.03
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 32,
+            "duration": 23.99
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 41,
+            "duration": 23.16
+          }
+        ]
+      },
+      "stints": {
+        "leclerc": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 6,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 7,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 29,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 28,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 6,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 29,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 21,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 27,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "albon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 28,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 42,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 33,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 7,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 27,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "perez": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 30,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 22,
+            "lap_end": 37,
+            "tyre_age": 3,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 38,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 32,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 32,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 28,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 4,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 6,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 7,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 22,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 31,
+            "lap_end": 55,
+            "tyre_age": 9,
+            "stint_number": 4
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 4,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 29,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
+    },
     "5": {
       "session_key": 11291,
       "pit_stops": {
@@ -5134,6 +7076,1671 @@ window.F1_DATA = {
           }
         ]
       }
+    },
+    "6": {
+      "session_key": 11299,
+      "pit_stops": {
+        "bottas": [
+          {
+            "lap": 1,
+            "duration": 26.7
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 1,
+            "duration": 25.9
+          },
+          {
+            "lap": 43,
+            "duration": 24.6
+          },
+          {
+            "lap": 58,
+            "duration": 20.3
+          },
+          {
+            "lap": 59,
+            "duration": 24.8
+          },
+          {
+            "lap": 65,
+            "duration": 22.7
+          },
+          {
+            "lap": 67,
+            "duration": 2029.9
+          },
+          {
+            "lap": 68,
+            "duration": 63.9
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 1,
+            "duration": 32.1
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 3,
+            "duration": 24.9
+          },
+          {
+            "lap": 58,
+            "duration": 26.3
+          },
+          {
+            "lap": 59,
+            "duration": 20.2
+          },
+          {
+            "lap": 65,
+            "duration": 24
+          },
+          {
+            "lap": 67,
+            "duration": 2024.7
+          },
+          {
+            "lap": 68,
+            "duration": 64.9
+          }
+        ],
+        "perez": [
+          {
+            "lap": 4,
+            "duration": 27.1
+          },
+          {
+            "lap": 9,
+            "duration": 19.7
+          },
+          {
+            "lap": 59,
+            "duration": 26
+          },
+          {
+            "lap": 65,
+            "duration": 23.8
+          },
+          {
+            "lap": 67,
+            "duration": 2026.8
+          },
+          {
+            "lap": 68,
+            "duration": 65.8
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 4,
+            "duration": 24.8
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 9,
+            "duration": 25.4
+          },
+          {
+            "lap": 59,
+            "duration": 19.9
+          },
+          {
+            "lap": 65,
+            "duration": 21.4
+          },
+          {
+            "lap": 67,
+            "duration": 2025.9
+          },
+          {
+            "lap": 68,
+            "duration": 62.6
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 12,
+            "duration": 24.8
+          },
+          {
+            "lap": 58,
+            "duration": 20.5
+          },
+          {
+            "lap": 59,
+            "duration": 19.9
+          },
+          {
+            "lap": 65,
+            "duration": 22.3
+          },
+          {
+            "lap": 67,
+            "duration": 2027
+          },
+          {
+            "lap": 68,
+            "duration": 61.9
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 28,
+            "duration": 24.1
+          },
+          {
+            "lap": 60,
+            "duration": 31.2
+          },
+          {
+            "lap": 61,
+            "duration": 24.2
+          },
+          {
+            "lap": 66,
+            "duration": 22.5
+          },
+          {
+            "lap": 68,
+            "duration": 2156.2
+          }
+        ],
+        "russell": [
+          {
+            "lap": 31,
+            "duration": 24
+          },
+          {
+            "lap": 60,
+            "duration": 35.2
+          },
+          {
+            "lap": 66,
+            "duration": 22.5
+          },
+          {
+            "lap": 68,
+            "duration": 2158.1
+          },
+          {
+            "lap": 72,
+            "duration": 19.7
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 32,
+            "duration": 24.7
+          },
+          {
+            "lap": 60,
+            "duration": 19.6
+          },
+          {
+            "lap": 66,
+            "duration": 22.3
+          },
+          {
+            "lap": 68,
+            "duration": 2156.6
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 35,
+            "duration": 25.3
+          },
+          {
+            "lap": 60,
+            "duration": 34.9
+          },
+          {
+            "lap": 61,
+            "duration": 20
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 35,
+            "duration": 25.7
+          },
+          {
+            "lap": 59,
+            "duration": 21.9
+          },
+          {
+            "lap": 65,
+            "duration": 23.3
+          },
+          {
+            "lap": 67,
+            "duration": 2025.8
+          },
+          {
+            "lap": 68,
+            "duration": 64.4
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 37,
+            "duration": 24.1
+          },
+          {
+            "lap": 61,
+            "duration": 26.8
+          },
+          {
+            "lap": 66,
+            "duration": 20.7
+          },
+          {
+            "lap": 68,
+            "duration": 2154.1
+          }
+        ],
+        "albon": [
+          {
+            "lap": 43,
+            "duration": 25.5
+          },
+          {
+            "lap": 59,
+            "duration": 19.7
+          },
+          {
+            "lap": 65,
+            "duration": 22.7
+          },
+          {
+            "lap": 67,
+            "duration": 2024.1
+          },
+          {
+            "lap": 68,
+            "duration": 62.2
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 44,
+            "duration": 25.6
+          },
+          {
+            "lap": 60,
+            "duration": 19.9
+          },
+          {
+            "lap": 66,
+            "duration": 20.3
+          },
+          {
+            "lap": 68,
+            "duration": 2146
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 45,
+            "duration": 25.5
+          },
+          {
+            "lap": 60,
+            "duration": 19.8
+          },
+          {
+            "lap": 66,
+            "duration": 23.3
+          },
+          {
+            "lap": 68,
+            "duration": 2151.5
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 48,
+            "duration": 24.2
+          },
+          {
+            "lap": 59,
+            "duration": 31.4
+          },
+          {
+            "lap": 60,
+            "duration": 20.1
+          },
+          {
+            "lap": 66,
+            "duration": 23.4
+          },
+          {
+            "lap": 68,
+            "duration": 2151.4
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 52,
+            "duration": 25.6
+          },
+          {
+            "lap": 59,
+            "duration": 19.8
+          },
+          {
+            "lap": 65,
+            "duration": 22.1
+          },
+          {
+            "lap": 67,
+            "duration": 2025.7
+          },
+          {
+            "lap": 68,
+            "duration": 61.9
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 59,
+            "duration": 20.2
+          },
+          {
+            "lap": 65,
+            "duration": 22.7
+          },
+          {
+            "lap": 67,
+            "duration": 2023
+          },
+          {
+            "lap": 68,
+            "duration": 62.5
+          }
+        ]
+      },
+      "stints": {
+        "max_verstappen": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": null,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 43,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 58,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 6
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 7
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 0,
+            "stint_number": 8
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": null,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": null,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 3,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 58,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 7,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 8,
+            "stint_number": 6
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 8,
+            "stint_number": 7
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 4,
+            "lap_end": 8,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 9,
+            "lap_end": 58,
+            "tyre_age": 5,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 6,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 6,
+            "stint_number": 6
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 0,
+            "stint_number": 7
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 4,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 8,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 9,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 50,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 56,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 0,
+            "stint_number": 6
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 11,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 58,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 53,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 6
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 0,
+            "stint_number": 7
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 28,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 60,
+            "tyre_age": 4,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 61,
+            "lap_end": 65,
+            "tyre_age": 5,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 10,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 4,
+            "stint_number": 6
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 31,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 65,
+            "tyre_age": 4,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 10,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 71,
+            "tyre_age": 4,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 72,
+            "lap_end": 78,
+            "tyre_age": 8,
+            "stint_number": 6
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 32,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 60,
+            "lap_end": 65,
+            "tyre_age": 28,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 34,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 4,
+            "stint_number": 5
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 34,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 35,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 60,
+            "tyre_age": 4,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 61,
+            "lap_end": 64,
+            "tyre_age": 5,
+            "stint_number": 4
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 34,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 35,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 24,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 0,
+            "stint_number": 6
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 37,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 61,
+            "lap_end": 65,
+            "tyre_age": 4,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 9,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 4,
+            "stint_number": 5
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "albon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 43,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 16,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 22,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 6,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 6,
+            "stint_number": 6
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 44,
+            "lap_end": 59,
+            "tyre_age": 4,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 65,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 26,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 6,
+            "stint_number": 5
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 45,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 60,
+            "lap_end": 65,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 4,
+            "stint_number": 5
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 47,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 48,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 59,
+            "tyre_age": 4,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 65,
+            "tyre_age": 5,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 66,
+            "lap_end": 67,
+            "tyre_age": 11,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 4,
+            "stint_number": 6
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 51,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 52,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 7,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 13,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 70,
+            "tyre_age": 4,
+            "stint_number": 6
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 58,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 65,
+            "lap_end": 66,
+            "tyre_age": 65,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 67,
+            "lap_end": 67,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 68,
+            "lap_end": 78,
+            "tyre_age": 0,
+            "stint_number": 5
+          }
+        ]
+      }
+    },
+    "7": {
+      "session_key": 11307,
+      "pit_stops": {
+        "hamilton": [
+          {
+            "lap": 11,
+            "duration": 22.48
+          },
+          {
+            "lap": 27,
+            "duration": 22.48
+          },
+          {
+            "lap": 41,
+            "duration": 22.84
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 11,
+            "duration": 25.98
+          },
+          {
+            "lap": 35,
+            "duration": 23.17
+          }
+        ],
+        "russell": [
+          {
+            "lap": 12,
+            "duration": 22.08
+          },
+          {
+            "lap": 36,
+            "duration": 21.68
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 12,
+            "duration": 22.27
+          },
+          {
+            "lap": 29,
+            "duration": 24.19
+          },
+          {
+            "lap": 40,
+            "duration": 22.79
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 12,
+            "duration": 22.98
+          },
+          {
+            "lap": 34,
+            "duration": 22.29
+          }
+        ],
+        "perez": [
+          {
+            "lap": 12,
+            "duration": 24.8
+          },
+          {
+            "lap": 31,
+            "duration": 24.43
+          },
+          {
+            "lap": 39,
+            "duration": 23.91
+          }
+        ],
+        "norris": [
+          {
+            "lap": 13,
+            "duration": 21.7
+          },
+          {
+            "lap": 35,
+            "duration": 22
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 13,
+            "duration": 22.87
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 13,
+            "duration": 23.26
+          },
+          {
+            "lap": 34,
+            "duration": 26.45
+          },
+          {
+            "lap": 58,
+            "duration": 22.9
+          }
+        ],
+        "albon": [
+          {
+            "lap": 13,
+            "duration": 24
+          },
+          {
+            "lap": 29,
+            "duration": 22.03
+          },
+          {
+            "lap": 34,
+            "duration": 777.7
+          },
+          {
+            "lap": 50,
+            "duration": 22.7
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 14,
+            "duration": 22.04
+          },
+          {
+            "lap": 37,
+            "duration": 22.21
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 14,
+            "duration": 21.78
+          },
+          {
+            "lap": 36,
+            "duration": 22.66
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 14,
+            "duration": 22.68
+          },
+          {
+            "lap": 40,
+            "duration": 23.31
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 14,
+            "duration": 22.98
+          },
+          {
+            "lap": 30,
+            "duration": 22.59
+          },
+          {
+            "lap": 55,
+            "duration": 22.77
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 14,
+            "duration": 23.28
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 15,
+            "duration": 22.44
+          },
+          {
+            "lap": 32,
+            "duration": 22.53
+          },
+          {
+            "lap": 58,
+            "duration": 21.95
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 15,
+            "duration": 22.78
+          },
+          {
+            "lap": 33,
+            "duration": 22.29
+          },
+          {
+            "lap": 53,
+            "duration": 25.91
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 16,
+            "duration": 22.25
+          },
+          {
+            "lap": 39,
+            "duration": 22.13
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 18,
+            "duration": 23.12
+          },
+          {
+            "lap": 39,
+            "duration": 23.9
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 21,
+            "duration": 22.22
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 22,
+            "duration": 22.48
+          },
+          {
+            "lap": 37,
+            "duration": 24.01
+          }
+        ]
+      },
+      "stints": {
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 12,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 40,
+            "lap_end": 63,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "russell": [
+          {
+            "compound": "HARD",
+            "lap_start": 37,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "HARD",
+            "lap_start": 42,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "HARD",
+            "lap_start": 38,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "norris": [
+          {
+            "compound": "HARD",
+            "lap_start": 36,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 41,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "HARD",
+            "lap_start": 37,
+            "lap_end": 66,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "HARD",
+            "lap_start": 40,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "HARD",
+            "lap_start": 12,
+            "lap_end": 35,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 36,
+            "lap_end": 65,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "HARD",
+            "lap_start": 38,
+            "lap_end": 65,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "HARD",
+            "lap_start": 14,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "HARD",
+            "lap_start": 35,
+            "lap_end": 65,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "HARD",
+            "lap_start": 41,
+            "lap_end": 65,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 56,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 65,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "HARD",
+            "lap_start": 19,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 29,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 59,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "HARD",
+            "lap_start": 16,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 54,
+            "lap_end": 64,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "albon": [
+          {
+            "compound": "HARD",
+            "lap_start": 14,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 51,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 5
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 5,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 37,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
     }
   },
   "driver_images": {
@@ -5243,6 +8850,13 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "All the key moments from the 2026 Barcelona-Catalunya GP",
+      "url": "https://www.formula1.com/en/latest/article/barcelona-lowdown-all-the-key-moments-as-hamilton-lands-sublime-maiden-win-with-ferrari-and-antonelli-retires.3uRBVUiY87JTLhM1l9G24K",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "Ex-F1 drivers De Vries and Kobayashi win Le Mans 24 Hours",
       "url": "https://www.formula1.com/en/latest/article/former-f1-drivers-de-vries-and-kobayashi-win-le-mans-24-hours.6HsLK7VOWDwnUoNimVwJp7",
       "image": null,
@@ -5290,21 +8904,14 @@ window.F1_DATA = {
       "image": null,
       "date": null,
       "tag": "F1 News"
-    },
-    {
-      "title": "Russell wary of ‘mighty impressive’ Ferrari after Barcelona P2",
-      "url": "https://www.formula1.com/en/latest/article/russell-wary-of-mighty-impressive-ferrari-after-challenging-return-to-the-podium-in-barcelona.SzzLWCyrIN3Vra9A0qE7u",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
     }
   ],
   "_health": {
     "live": "jolpica:7rounds",
     "results": "jolpica:7races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-14T19:26:39.040Z",
-    "openf1": "enriched:1races",
+    "scrapedAt": "2026-06-14T21:05:26.722Z",
+    "openf1": "enriched:4races",
     "bios": "jolpica:30",
     "circuits": "jolpica:24"
   },
