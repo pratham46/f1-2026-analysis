@@ -105,6 +105,7 @@ function toRacePredictions(pred, realRaces, racesCompleted) {
       completed,
       winner: top5[0] ? top5[0].driver_id : null,
       top5,
+      predicted_top5: predictedTop5,
     };
   });
 }

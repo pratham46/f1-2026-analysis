@@ -19,10 +19,15 @@ const CORS = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 
+const SEC = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+};
+
 const json = (obj, status = 200, extra = {}) =>
   new Response(JSON.stringify(obj), {
     status,
-    headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=300", ...CORS, ...extra },
+    headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=300", ...CORS, ...SEC, ...extra },
   });
 
 // True when today is within [Thu before .. Mon after] of any 2026 GP.
@@ -77,16 +82,18 @@ export default {
           return json(JSON.parse((await env.F1_KV.get(KEY_LASTRUN)) || "{}"));
 
         case "/api/refresh": {
+          if (request.method !== "POST") return json({ error: "method_not_allowed" }, 405, { Allow: "POST" });
           // Manual trigger — run in the background so the response is instant.
           ctx.waitUntil(refresh(env));
-          return json({ ok: true, triggered: true, note: "refresh running in background" });
+          return json({ ok: true, triggered: true, note: "refresh running in background" }, 202, { "Cache-Control": "no-store" });
         }
 
         default:
           return json({ error: "not_found", routes: ["/api/data", "/api/news", "/api/health", "/api/refresh"] }, 404);
       }
     } catch (e) {
-      return json({ error: "worker_error", detail: String(e) }, 500);
+      console.error("[worker] unhandled:", e);
+      return json({ error: "internal_error" }, 500);
     }
   },
 

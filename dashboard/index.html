@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>F1 2026 — Race Control · Season Predictions</title>
   <meta name="description" content="Live 2026 Formula 1 season predictions — real results, championship forecast, race-by-race model output." />
+  <meta property="og:title" content="F1 2026 Race Control — Season Predictions" />
+  <meta property="og:description" content="Live 2026 Formula 1 season predictions — real results, championship forecast, race-by-race model output." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#e10600" />
+  <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -129,6 +134,7 @@
     }
     .nav-live .dot.seed { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
     @keyframes blink { 50% { opacity: .35; } }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
     /* ─── NEWS TICKER ────────────────────────────────────────────────── */
     .ticker {
@@ -624,6 +630,26 @@
     .cleg.inter   { background: #39b54a; color: #fff; }
     .cleg.wet     { background: #0067ff; color: #fff; }
 
+    /* ─── PREDICTION vs RESULT comparison ───────────────────────────── */
+    .pvr-wrap { margin-top: .85rem; padding-top: .7rem; border-top: 1px solid var(--border); }
+    .pvr-label { font-family: var(--font-tele); font-size: .58rem; letter-spacing: .14em; color: var(--text-dim); text-transform: uppercase; margin-bottom: .35rem; }
+    .pvr-row { display: flex; align-items: center; gap: .45rem; padding: .2rem .3rem; border-radius: var(--radius); transition: background .12s; }
+    .pvr-row:hover { background: rgba(255,255,255,.04); }
+    .pvr-drv { width: 30px; font-family: var(--font-tele); font-size: .7rem; font-weight: 700; }
+    .pvr-prob { width: 38px; color: var(--text-sec); font-family: var(--font-tele); font-size: .63rem; text-align: right; }
+    .pvr-sep { color: var(--border); font-size: .55rem; flex-shrink: 0; }
+    .pvr-result { display: flex; align-items: center; gap: .3rem; flex: 1; }
+    .pvr-pos { font-family: var(--font-tele); font-size: .7rem; font-weight: 700; min-width: 28px; }
+    .pvr-pos.p-win  { color: var(--gold); }
+    .pvr-pos.p-hit  { color: #39b54a; }
+    .pvr-pos.p-miss { color: var(--text-dim); }
+    .pvr-pos.p-dnf  { color: #e05050; }
+    .pvr-name { font-family: var(--font-tele); font-size: .63rem; color: var(--text-sec); flex: 1; }
+    .pvr-badge { font-family: var(--font-tele); font-size: .52rem; font-weight: 700; padding: .1rem .3rem; border-radius: 2px; }
+    .pvr-badge.win  { background: var(--gold); color: #000; }
+    .pvr-badge.hit  { background: rgba(57,181,74,.18); color: #39b54a; border: 1px solid rgba(57,181,74,.35); }
+    .pvr-badge.miss { background: rgba(255,255,255,.05); color: var(--text-dim); border: 1px solid var(--border); }
+
     /* ─── COMPOUND CHIPS on race cards ──────────────────────────────── */
     .race-compounds { display: flex; gap: 3px; margin-top: .32rem; flex-wrap: wrap; }
     .compound-dot {
@@ -819,6 +845,15 @@
     }
     @media (prefers-reduced-motion: reduce) {
       #telemetry-bar::before { animation: none; left: 0; width: 100%; opacity: .25; }
+      .strategy-row { animation: none; opacity: 1; }
+      .rv { animation: none; opacity: 1; transform: none; }
+      .tl-node, .race-card, .driver-card, .team-card { transition: none; }
+    }
+
+    /* Focus styles for keyboard nav — role=button cards and modals */
+    [role="button"]:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     /* ─── DRIVER CARD HOVER GLOW (extends existing transform) ────── */
@@ -1345,7 +1380,7 @@
   </section>
 
   <!-- RACE MODAL -->
-  <div class="modal-veil" id="race-modal" role="dialog" aria-modal="true">
+  <div class="modal-veil" id="race-modal" role="dialog" aria-modal="true" aria-labelledby="modal-race-name">
     <div class="modal-box">
       <div class="modal-top">
         <div>
@@ -1362,6 +1397,8 @@
         <div class="modal-chartside">
           <div class="panel-title" id="modal-chart-title">TOP 5</div>
           <div id="modal-chart" class="chart-host"></div>
+          <!-- MODEL vs REALITY — populated by openRaceModal for completed races -->
+          <div id="modal-prediction" style="display:none"></div>
         </div>
       </div>
       <!-- TYRE STRATEGY — shown only for completed races with OpenF1 data -->
@@ -1395,7 +1432,7 @@
   </footer>
 
   <!-- DRIVER DETAIL MODAL -->
-  <div class="driver-modal-veil" id="driver-modal" role="dialog" aria-modal="true">
+  <div class="driver-modal-veil" id="driver-modal" role="dialog" aria-modal="true" aria-labelledby="dm-name">
     <div class="driver-modal-box">
       <button class="dm-close" id="dm-close" aria-label="Close">✕</button>
       <div class="dm-hero" id="dm-hero">
@@ -1578,6 +1615,7 @@ function normalizeF1() {
       completed,
       winner: r.winner || (top5[0] || {}).driver_id || '',
       top5,
+      predicted_top5: r.predicted_top5 || [],
       flag: cm.flag || '🏁',
       country: cm.country || '',
       real: F1.realResultsByRound[r.round] || null,
@@ -2177,8 +2215,9 @@ function openRaceModal(round) {
      ${lapRec ? '<div class="modal-fact" style="grid-column:span 3"><div class="v" style="font-size:.78rem">' + esc(lapRec) + '</div><div class="k">Lap record</div></div>' : ''}
      ${winnerHtml}`;
 
+  const predEl = byId('modal-prediction');
   if (r.completed && r.real && r.real.results && r.real.results.length) {
-    // — CLASSIFIED RESULT: rich table instead of bar chart —
+    // — CLASSIFIED RESULT: rich table —
     byId('modal-chart-title').textContent = 'CLASSIFIED RESULT — TOP ' + Math.min(10, r.real.results.length);
     const POSCLASS = { 1: 'gold', 2: 'silver', 3: 'bronze' };
     byId('modal-chart').innerHTML =
@@ -2197,19 +2236,55 @@ function openRaceModal(round) {
         </div>`;
       }).join('') +
       '</div>';
+
+    // — MODEL vs REALITY: frozen pre-race top5 vs actual result —
+    // r.predicted_top5 is stored per-round in assemble.js and frozen in the seed,
+    // so old races always show what the model said before that specific race.
+    const rawPreds = (r.predicted_top5 && r.predicted_top5.length)
+      ? r.predicted_top5
+      : [...(F1.drivers || [])].filter(d => d.winProb > 0).sort((a, b) => b.winProb - a.winProb).slice(0, 5)
+          .map(d => ({ driver_id: d.id, win_prob: d.winProb }));
+    const modelTop5 = rawPreds.slice(0, 5).map(p => {
+      const drv = F1.driversById[p.driver_id] || {};
+      return { id: p.driver_id, abbr: drv.abbr || p.driver_id.slice(0,3).toUpperCase(), color: drv.color || '#888', winProb: p.win_prob || 0 };
+    });
+    if (modelTop5.length) {
+      const resultByDriver = {};
+      r.real.results.forEach(x => { resultByDriver[x.driver_id] = x; });
+      const rows = modelTop5.map(drv => {
+        const actual = resultByDriver[drv.id];
+        const isDnf  = actual && actual.status && actual.status !== 'Finished' && !/Lap/i.test(actual.status) && actual.status !== 'Lapped';
+        const pos    = actual ? actual.position : null;
+        const isWin  = pos === 1;
+        const isHit  = pos && pos <= 5 && !isWin;
+        const posCls = isWin ? 'p-win' : isHit ? 'p-hit' : isDnf ? 'p-dnf' : 'p-miss';
+        const posLabel = isDnf ? 'DNF' : pos ? 'P' + pos : '—';
+        const badge  = isWin  ? '<span class="pvr-badge win">WIN</span>'
+                     : isHit  ? '<span class="pvr-badge hit">TOP5</span>'
+                     : actual ? '<span class="pvr-badge miss">MISS</span>' : '';
+        return `<div class="pvr-row">
+          <div class="pvr-drv" style="color:${esc(drv.color)}">${esc(drv.abbr)}</div>
+          <div class="pvr-prob">${(drv.winProb * 100).toFixed(1)}%</div>
+          <div class="pvr-sep">→</div>
+          <div class="pvr-result">
+            <div class="pvr-pos ${esc(posCls)}">${esc(posLabel)}</div>
+            <div class="pvr-name">${esc(drv.abbr)}</div>
+            ${badge}
+          </div>
+        </div>`;
+      }).join('');
+      predEl.style.display = '';
+      predEl.innerHTML = `<div class="pvr-wrap">
+        <div class="pvr-label">MODEL WIN PROB &nbsp;→&nbsp; ACTUAL RESULT</div>
+        ${rows}
+      </div>`;
+    } else {
+      predEl.style.display = 'none';
+    }
   } else {
+    predEl.style.display = 'none';
     byId('modal-chart-title').textContent = 'MODEL FORECAST — TOP 5 WIN PROBABILITY';
     byId('modal-chart').innerHTML = '';
-    const t5 = r.top5.slice(0, 5).reverse();
-    PLOT('modal-chart', [{
-      type: 'bar', orientation: 'h',
-      x: t5.map(t => +((t.win_prob || 0) * 100).toFixed(1)),
-      y: t5.map(t => (F1.driversById[t.driver_id] || { abbr: t.driver_id }).abbr),
-      marker: { color: t5.map(t => (F1.driversById[t.driver_id] || {}).color || '#777') },
-      text: t5.map(t => ((t.win_prob || 0) * 100).toFixed(1) + '%'), textposition: 'outside',
-      textfont: { color: '#f4f4f6', size: 10, family: "'Share Tech Mono',monospace" },
-      hovertemplate: '<b>%{y}</b> win probability · %{x}%<extra></extra>',
-    }], { height: 280, margin: { t: 6, r: 56, b: 28, l: 56 }, xaxis: Object.assign({}, AXIS, { range: [0, Math.max(...t5.map(t => (t.win_prob || 0) * 100)) * 1.3 + 4] }), yaxis: Object.assign({}, AXIS, { tickfont: { color: '#f4f4f6', size: 11, family: PLOT_FONT.family } }) });
   }
 
   // Tyre strategy (OpenF1 enrichment)
@@ -2223,6 +2298,21 @@ function openRaceModal(round) {
   }
 
   byId('race-modal').classList.add('active');
+  // Defer Plotly render one frame so modal is visible (display:flex) before measuring width
+  if (!r.completed) {
+    const t5 = r.top5.slice(0, 5).reverse();
+    requestAnimationFrame(() => {
+      PLOT('modal-chart', [{
+        type: 'bar', orientation: 'h',
+        x: t5.map(t => +((t.win_prob || 0) * 100).toFixed(1)),
+        y: t5.map(t => (F1.driversById[t.driver_id] || { abbr: t.driver_id }).abbr),
+        marker: { color: t5.map(t => (F1.driversById[t.driver_id] || {}).color || '#777') },
+        text: t5.map(t => ((t.win_prob || 0) * 100).toFixed(1) + '%'), textposition: 'outside',
+        textfont: { color: '#f4f4f6', size: 10, family: "'Share Tech Mono',monospace" },
+        hovertemplate: '<b>%{y}</b> win probability · %{x}%<extra></extra>',
+      }], { height: 280, margin: { t: 6, r: 56, b: 28, l: 56 }, xaxis: Object.assign({}, AXIS, { range: [0, Math.max(...t5.map(t => (t.win_prob || 0) * 100)) * 1.3 + 4] }), yaxis: Object.assign({}, AXIS, { tickfont: { color: '#f4f4f6', size: 11, family: PLOT_FONT.family } }) });
+    });
+  }
 }
 
 /* ─── TYRE STRATEGY RENDERER ──────────────────────────────────── */
@@ -2604,7 +2694,7 @@ function openDriverModal(driverId) {
 
   byId('dm-ghost').textContent = String(d.number || '00');
   const ph = byId('dm-photo');
-  if (img) { ph.style.display = ''; ph.src = img; ph.style.setProperty('--tc', d.color); ph.onerror = () => { ph.style.display = 'none'; }; }
+  if (img) { ph.style.display = ''; ph.src = img; ph.alt = d.name; ph.style.setProperty('--tc', d.color); ph.onerror = () => { ph.style.display = 'none'; }; }
   else ph.style.display = 'none';
   byId('dm-flag').textContent = nat.flag + (nat.country ? ' ' + nat.country : '');
   byId('dm-name').textContent = d.name;
@@ -2650,25 +2740,13 @@ function openDriverModal(driverId) {
     ['WINS', rs ? rs.wins : d.wins],
   ].map(([k, v]) => `<span class="exp-chip">${k} <b>${esc(v)}</b></span>`).join('');
 
-  // career points chart — driver_rolling_form
+  // career points chart — collect data now, render AFTER modal becomes visible
+  // (Plotly computes width=0 when the host is display:none)
   const rf = (F1.driver_rolling_form || {})[driverId];
-  const seasons = (rf && rf.seasons ? rf.seasons : (F1.seasons_used || [])).slice();
-  const pts = (rf && rf.points ? rf.points : seasons.map(() => 0)).slice();
-  seasons.push(2026); pts.push(rnd(d.realPoints));
-  PLOT('dm-career-chart', [{
-    type: 'bar',
-    x: seasons.map(String), y: pts,
-    marker: { color: seasons.map(s => s === 2026 ? '#ffd24a' : d.color), opacity: .92 },
-    text: pts.map(p => rnd(p)), textposition: 'outside',
-    textfont: { color: '#f4f4f6', size: 10, family: "'Share Tech Mono',monospace" },
-    hovertemplate: '<b>%{x}</b>: %{y:.0f} pts<extra></extra>',
-  }], {
-    height: 230,
-    xaxis: Object.assign({}, AXIS, { type: 'category' }),
-    yaxis: Object.assign({}, AXIS, { title: { text: 'POINTS', font: { size: 9 } } }),
-    margin: { t: 14, r: 14, b: 30, l: 46 },
-    annotations: [{ x: '2026', y: pts[pts.length - 1], text: 'LIVE', showarrow: true, arrowcolor: '#5b606b', font: { color: '#ffd24a', size: 9 }, ax: 0, ay: -22 }],
-  });
+  const _cSeasons = (rf && rf.seasons ? rf.seasons : (F1.seasons_used || [])).slice();
+  const _cPts     = (rf && rf.points  ? rf.points  : _cSeasons.map(() => 0)).slice();
+  _cSeasons.push(2026); _cPts.push(rnd(d.realPoints));
+  const _dColor = d.color;
 
   // recent 2026 results — appearances in real_race_results_2026
   const appearances = [];
@@ -2692,6 +2770,23 @@ function openDriverModal(driverId) {
   }
 
   veil.classList.add('active');
+  // Defer chart render one frame so the modal is laid out (display:flex) before Plotly measures width
+  requestAnimationFrame(() => {
+    PLOT('dm-career-chart', [{
+      type: 'bar',
+      x: _cSeasons.map(String), y: _cPts,
+      marker: { color: _cSeasons.map(s => s === 2026 ? '#ffd24a' : _dColor), opacity: .92 },
+      text: _cPts.map(p => rnd(p)), textposition: 'outside',
+      textfont: { color: '#f4f4f6', size: 10, family: "'Share Tech Mono',monospace" },
+      hovertemplate: '<b>%{x}</b>: %{y:.0f} pts<extra></extra>',
+    }], {
+      height: 230,
+      xaxis: Object.assign({}, AXIS, { type: 'category' }),
+      yaxis: Object.assign({}, AXIS, { title: { text: 'POINTS', font: { size: 9 } } }),
+      margin: { t: 14, r: 14, b: 30, l: 46 },
+      annotations: [{ x: '2026', y: _cPts[_cPts.length - 1], text: 'LIVE', showarrow: true, arrowcolor: '#5b606b', font: { color: '#ffd24a', size: 9 }, ax: 0, ay: -22 }],
+    });
+  });
 }
 function closeDriverModal() { byId('driver-modal').classList.remove('active'); }
 byId('dm-close').addEventListener('click', closeDriverModal);

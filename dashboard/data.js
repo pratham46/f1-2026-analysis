@@ -772,6 +772,28 @@ window.F1_DATA = {
           "win_prob": null,
           "position": 5
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -809,6 +831,28 @@ window.F1_DATA = {
           "driver_id": "bearman",
           "win_prob": null,
           "position": 5
+        }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
         }
       ]
     },
@@ -848,6 +892,28 @@ window.F1_DATA = {
           "win_prob": null,
           "position": 5
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -885,6 +951,28 @@ window.F1_DATA = {
           "driver_id": "max_verstappen",
           "win_prob": null,
           "position": 5
+        }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
         }
       ]
     },
@@ -924,6 +1012,28 @@ window.F1_DATA = {
           "win_prob": null,
           "position": 5
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -961,6 +1071,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": null,
           "position": 5
+        }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
         }
       ]
     },
@@ -1000,6 +1132,28 @@ window.F1_DATA = {
           "win_prob": null,
           "position": 5
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1013,6 +1167,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1066,6 +1242,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1079,6 +1277,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1132,6 +1352,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1145,6 +1387,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1198,6 +1462,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1211,6 +1497,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1264,6 +1572,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1277,6 +1607,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1330,6 +1682,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1343,6 +1717,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1396,6 +1792,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1409,6 +1827,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -1462,6 +1902,28 @@ window.F1_DATA = {
           "driver_id": "piastri",
           "win_prob": 0.0542
         }
+      ],
+      "predicted_top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
       ]
     },
     {
@@ -1475,6 +1937,28 @@ window.F1_DATA = {
       "completed": false,
       "winner": "antonelli",
       "top5": [
+        {
+          "driver_id": "antonelli",
+          "win_prob": 0.2709
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": 0.1355
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": 0.0903
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": 0.0677
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": 0.0542
+        }
+      ],
+      "predicted_top5": [
         {
           "driver_id": "antonelli",
           "win_prob": 0.2709
@@ -4603,6 +5087,34 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "'Not good enough' – Wolff critical of Mercedes' reliability",
+      "url": "https://www.formula1.com/en/latest/article/not-good-enough-wolff-critical-of-mercedes-reliability-after-antonelli-retirement-in-barcelona-catalunya-grand-prix.6KLa3k3yay82ZUUWe5G09W",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "What the teams said – Race day in Barcelona-Catalunya",
+      "url": "https://www.formula1.com/en/latest/article/what-the-teams-said-race-day-in-barcelona-catalunya-2026.4fWikDvJzMjVCrHCUNG4Hr",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "5 betting lessons after Hamilton wins in Barcelona",
+      "url": "https://www.formula1.com/en/latest/article/5-betting-lessons-learnt-after-lewis-hamilton-wins-the-barcelona-catalunya-grand-prix.4eKJqrr0jgGAQgWFJ7VATr",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "Verstappen admits Red Bull ‘need to work harder’",
+      "url": "https://www.formula1.com/en/latest/article/verstappen-admits-red-bull-need-to-work-harder-as-he-reflects-on-lonely-race-in-barcelona.4RzPWLUsbzJPFvsD3TXrSm",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "Colapinto hit with post-race penalty in Barcelona",
       "url": "https://www.formula1.com/en/latest/article/colapinto-loses-p8-after-receiving-post-race-penalty-in-barcelona.2MJwHgw2A8y7PYIohxOFAQ",
       "image": null,
@@ -4629,41 +5141,13 @@ window.F1_DATA = {
       "image": null,
       "date": null,
       "tag": "F1 News"
-    },
-    {
-      "title": "'I feel a bit empty' – Antonelli on late Barcelona retirement",
-      "url": "https://www.formula1.com/en/latest/article/i-feel-a-bit-empty-antonelli-reflects-on-late-barcelona-catalunya-gp-retirement.6wpFZCfvdQgU4FKe3q1dic",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Hamilton your clear winner after first Ferrari triumph",
-      "url": "https://www.formula1.com/en/latest/article/driver-of-the-day-hamilton-your-clear-winner-after-first-ferrari-triumph.5GssLCBAdUbY8nASwtuK7F",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Leclerc reflects on tough Barcelona weekend after DNF",
-      "url": "https://www.formula1.com/en/latest/article/leclerc-laments-tough-barcelona-catalunya-gp-weekend-as-hydraulic-issue-forces-ferrari-drivers-retirement.r3xcs2T1P6prQlDhLD7Uq",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Hamilton wins first GP for Ferrari as Antonelli retires",
-      "url": "https://www.formula1.com/en/latest/article/hamilton-claims-stellar-maiden-grand-prix-victory-for-ferrari-in-barcelona-as-antonelli-suffers-shock-retirement.4yCXiPLHUdcnl2BwNpqUIa",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
     }
   ],
   "_health": {
     "live": "jolpica:7rounds",
     "results": "jolpica:7races",
     "news": "scraped:8",
-    "scrapedAt": "2026-06-14T17:35:46.316Z",
+    "scrapedAt": "2026-06-14T18:45:05.488Z",
     "openf1": "enriched:1races",
     "bios": "jolpica:30",
     "circuits": "jolpica:24"
