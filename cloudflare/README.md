@@ -61,6 +61,16 @@ page never breaks. Regenerate the seed any time with:
 cd cloudflare/worker && npm run seed
 ```
 
+`npm run seed` runs two steps: `gen-seed.mjs` (full `assemble()` pass) **then**
+`enrich-openf1-seed.mjs`, a deterministic OpenF1 backfill (retries + 20 s timeouts) that fills the
+tyre-strategy/pit data (`openf1_race_data`) for **every** completed round — the bare assemble pass
+only captures a random subset because OpenF1 is slow under the Worker's short request timeouts. Use
+`npm run seed:base` for the assemble pass alone.
+
+> After a fresh **Worker** deploy its KV may still hold partial OpenF1 coverage; each
+> `POST /api/refresh` only lands ~2 fresh OpenF1 fetches (but caches them), so POST it a few times
+> until `/api/health` shows `enriched:Nraces` for all N completed rounds.
+
 ---
 
 ## 3. Pages setup

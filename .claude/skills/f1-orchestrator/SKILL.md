@@ -23,6 +23,8 @@ cron (daily cron, self-gated in `scheduled()`).
 - **"Scrape results / news / driver images / track layouts"** → f1-scraper (edits `scrape.js`/`media.js`)
   → f1-worker re-assemble → f1-publish.
 - **"Push data to dashboard / regenerate data.js / fix a data gap"** → f1-publish (`npm run seed`).
+- **"Tyre / tire strategy, pit stops, stints, compound chips (all tracks)"** → f1-worker
+  (OpenF1 enrichment in `assemble.js` + `sources.js`). See *OpenF1 enrichment* below.
 - **"Redesign UI / add game sections / head-to-head / gauges / news section / driver modal / chatbot / animations"** → f1-ui.
 - **"Update driver bio, nationality, lap records, chatbot intents"** → f1-ui (hardcoded maps in dashboard/index.html: DRIVER_BIO, DRIVER_NATIONALITY, CIRCUIT_LAP_RECORDS, pitWallAnswer).
 - **"Deploy / host on Cloudflare / set up Worker, Pages, cron, KV"** → f1-deploy.
@@ -45,6 +47,41 @@ cron (daily cron, self-gated in `scheduled()`).
 - Every external fetch/scrape degrades gracefully — a source outage must never break `/api/data`.
 - Don't fan out subagents for trivial work; prefer inline edits. Token efficiency matters.
 
+## OpenF1 enrichment (tyre strategy + pit stops) — gotchas
+
+The dashboard's per-race **TYRE STRATEGY** chart and the race-card compound dots read
+`openf1_race_data[round]` (`{ session_key, stints, pit_stops }`), built from the OpenF1 API
+(`/stints`, `/pit`) in `assemble.js` and keyed by `circuit_id`.
+
+- **Enrich every completed race, not just recent ones.** `assemble.js` loops all `realRaces`,
+  reuses cached rounds, and only fetches uncached ones (capped `MAX_FRESH_ENRICH` per run so a cold
+  start can't blow the cron CPU budget — it backfills over a few runs and KV persists each).
+- **OpenF1 `circuit_short_name` ≠ city name.** The feed says `"Monte Carlo"` (not "Monaco"),
+  `"Catalunya"` (not "Barcelona"), `"Hungaroring"`, `"Madring"`, `"Interlagos"`, `"Yas Marina
+  Circuit"`. A mismatch in `OPENF1_CIRCUIT_MAP` (`sources.js`) silently drops that round's
+  enrichment. Verify against the live `/sessions` feed when adding circuits.
+- **Seeding is flaky from a cold cache.** OpenF1 is slow under the Worker's short per-request
+  timeout, so a single `assemble({lastGood:{}})` pass only captures a random subset. `npm run seed`
+  therefore runs `gen-seed.mjs` **then** `scripts/enrich-openf1-seed.mjs` — a deterministic backfill
+  (retries + 20 s timeouts) that fills **all** completed rounds into `data.js`. Use `npm run
+  seed:base` for the bare assemble only.
+- **Live refresh accumulates.** A deployed Worker also only manages ~2 fresh OpenF1 fetches per
+  `/api/refresh` pass; POST it repeatedly (or wait for crons) to reach `enriched:Nraces` for all N.
+- **Coverage guard on the client.** `fetchLiveData()` in `index.html` unions `openf1_race_data`
+  per round when upgrading to live data, keeping the seed's entry whenever the live Worker lacks
+  stints for a round — so a not-yet-backfilled Worker can't erase strategy data the seed ships.
+
+## UI patterns (dashboard/index.html)
+
+- **Charts inside modals must wait for real width.** A `display:none → flex` modal can report
+  `clientWidth ≈ 0` for a few frames after opening; `Plotly.newPlot` then bakes bar/axis geometry at
+  sub-pixel size and a later `resize` won't fix it. Use `PLOT_WHEN_VISIBLE(id, …)` (rAF-polls until
+  `clientWidth > 20`) instead of `PLOT(...)` for any chart rendered on modal open.
+- The **driver modal** (`#driver-modal`, `openDriverModal`) is the single driver detail surface —
+  stat row, bio chips (from the `DRIVER_BIOS` constant; `championships` drives the TITLES chip),
+  2026-form chips, career-points bar chart (`dm-career-chart`), recent results. The old always-on
+  "TELEMETRY FILE" explorer panel + `selectDriver()` were removed as redundant.
+
 ## Workspace map
 
 | Path | Purpose |
@@ -52,8 +89,9 @@ cron (daily cron, self-gated in `scheduled()`).
 | `cloudflare/worker/src/seed.js` | Frozen 2020–2025 history + 2026 grid + model anchor |
 | `cloudflare/worker/src/{sources,scrape,media,predict,assemble,index}.js` | Worker pipeline |
 | `cloudflare/worker/wrangler.toml` | KV binding + race-weekend cron |
-| `cloudflare/worker/scripts/gen-seed.mjs` | Regenerates `dashboard/data.js` |
-| `dashboard/index.html` | Static dashboard (fetches `/api/data`, News section) |
+| `cloudflare/worker/scripts/gen-seed.mjs` | Regenerates `dashboard/data.js` (assemble pass) |
+| `cloudflare/worker/scripts/enrich-openf1-seed.mjs` | Deterministic OpenF1 tyre/pit backfill for all rounds (chained after gen-seed in `npm run seed`) |
+| `dashboard/index.html` | Static dashboard (fetches `/api/data`, News section, tyre strategy, driver/race modals) |
 | `dashboard/{config.js,data.js,_redirects}` | Worker URL, offline seed, Pages API proxy |
 | `cloudflare/README.md` | Deploy guide |
 

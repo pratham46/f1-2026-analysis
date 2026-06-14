@@ -220,17 +220,23 @@ export async function assemble(opts = {}) {
         }
       }
 
-      // Enrich last 3 completed races with tire stints + pit stops (cached after first fetch)
-      const toEnrich = realRaces.slice(-3);
+      // Enrich EVERY completed race with tire stints + pit stops. Already-good
+      // rounds are served from the persisted cache (no refetch); only rounds that
+      // are missing/empty trigger an OpenF1 call, capped per-run so a cold start
+      // (nothing cached) can't blow the CPU budget — backfills over a few runs.
+      const MAX_FRESH_ENRICH = 12;
       const freshData = {};
-      for (const race of toEnrich) {
+      let fetched = 0;
+      for (const race of realRaces) {
         const cached = openf1_race_data[race.round];
         if (cached && cached.stints && Object.keys(cached.stints).length > 0) {
           freshData[race.round] = cached; // already good
           continue;
         }
+        if (fetched >= MAX_FRESH_ENRICH) continue;
         const sk = skByCircuit[race.circuit_id];
         if (!sk) continue;
+        fetched++;
         const [pits, stints] = await Promise.all([fetchPitStops(sk), fetchTireStints(sk)]);
         if (pits.ok || stints.ok) {
           freshData[race.round] = {

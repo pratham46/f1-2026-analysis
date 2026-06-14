@@ -202,16 +202,24 @@ const OPENF1_DRIVER_MAP = {
   11: "perez",
 };
 
-// OpenF1 circuit_short_name → our calendar circuit_id
+// OpenF1 circuit_short_name → our calendar circuit_id.
+// NOTE: these are OpenF1's *exact* circuit_short_name values (verified against the
+// live /sessions feed) — several differ from the city name (e.g. "Monte Carlo" not
+// "Monaco", "Catalunya" not "Barcelona"). A mismatch silently drops that round's
+// tire/pit enrichment, so keep this in sync with the real feed. Common aliases are
+// kept too in case OpenF1 changes a label.
 const OPENF1_CIRCUIT_MAP = {
-  "Melbourne": "australia",    "Shanghai": "china",         "Suzuka": "japan",
-  "Miami": "miami",            "Imola": "imola",            "Monaco": "monaco",
-  "Montreal": "canada",        "Barcelona": "spain",        "Spielberg": "austria",
-  "Silverstone": "britain",    "Budapest": "hungary",       "Spa-Francorchamps": "belgium",
-  "Zandvoort": "netherlands",  "Monza": "italy",            "Baku": "azerbaijan",
-  "Madrid": "madrid",          "Singapore": "singapore",    "Austin": "americas",
-  "Mexico City": "mexico",     "São Paulo": "brazil",       "Las Vegas": "las_vegas",
-  "Lusail": "qatar",           "Yas Island": "abu_dhabi",
+  "Melbourne": "australia",       "Shanghai": "china",          "Suzuka": "japan",
+  "Sakhir": "bahrain",            "Jeddah": "saudi_arabia",     "Miami": "miami",
+  "Imola": "imola",               "Monte Carlo": "monaco",      "Monaco": "monaco",
+  "Montreal": "canada",           "Catalunya": "spain",         "Barcelona": "spain",
+  "Spielberg": "austria",         "Silverstone": "britain",     "Hungaroring": "hungary",
+  "Budapest": "hungary",          "Spa-Francorchamps": "belgium", "Zandvoort": "netherlands",
+  "Monza": "italy",               "Baku": "azerbaijan",         "Madring": "madrid",
+  "Madrid": "madrid",             "Singapore": "singapore",     "Austin": "americas",
+  "Mexico City": "mexico",        "Interlagos": "brazil",       "São Paulo": "brazil",
+  "Las Vegas": "las_vegas",       "Lusail": "qatar",            "Yas Marina Circuit": "abu_dhabi",
+  "Yas Island": "abu_dhabi",
 };
 const normOF1Circuit = (n) => OPENF1_CIRCUIT_MAP[n] || (n || "").toLowerCase().replace(/[^a-z]/g, "_");
 const OF1_POINTS = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
