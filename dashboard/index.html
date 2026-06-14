@@ -2465,12 +2465,18 @@ function renderTireStrategy(race, of1) {
   const pitStops = of1.pit_stops || {};
   const totalLaps = (CIRCUIT_META[race.circuit_id] || {}).laps || 60;
 
-  // Order drivers by race result position
-  const order = (race.real && race.real.results)
-    ? race.real.results.map(x => x.driver_id)
-    : Object.keys(stints);
+  // Build display order: race-result drivers first (if they have stints),
+  // then any remaining stints drivers (Jolpica only returns top 10, so P11-P20
+  // stints still deserve to be shown when top-10 drivers have no stints data).
+  const raceOrder  = (race.real && race.real.results) ? race.real.results.map(x => x.driver_id) : [];
+  const stintsSet  = new Set(Object.keys(stints));
+  const raceWithStints = raceOrder.filter(id => stintsSet.has(id));
+  // If fewer than 3 race-result drivers have stints, also include all stints drivers
+  const order = raceWithStints.length >= 3
+    ? [...new Set([...raceWithStints, ...Object.keys(stints)])]
+    : Object.keys(stints); // Jolpica top-10 ↔ OpenF1 stints don't overlap → show all available
 
-  const rows = order.slice(0, 10).filter(id => stints[id] && stints[id].length).map((id, idx) => {
+  const rows = order.slice(0, 12).filter(id => stints[id] && stints[id].length).map((id, idx) => {
     const drv      = F1.driversById[id] || { abbr: id.slice(0,3).toUpperCase(), color:'#888' };
     const dStints  = stints[id];
     const dPits    = pitStops[id] || [];
