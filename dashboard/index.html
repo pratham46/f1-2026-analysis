@@ -660,6 +660,17 @@
     .pvr-badge.hit  { background: rgba(57,181,74,.18); color: #39b54a; border: 1px solid rgba(57,181,74,.35); }
     .pvr-badge.miss { background: rgba(255,255,255,.05); color: var(--text-dim); border: 1px solid var(--border); }
 
+    /* ─── ACCURACY round-by-round rows ──────────────────────────────── */
+    .acc-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; padding: .55rem .2rem; border-bottom: 1px solid var(--border); }
+    .acc-row:last-child { border-bottom: none; }
+    .acc-row:hover { background: rgba(255,255,255,.03); }
+    .acc-round { font-family: var(--font-tele); font-size: .68rem; color: var(--text-sec); min-width: 150px; }
+    .acc-round b { color: var(--text); margin-right: .3rem; }
+    .acc-chips { display: flex; gap: .3rem; flex-wrap: wrap; align-items: center; }
+    .acc-chip { display: inline-block; font-family: var(--font-tele); font-size: .62rem; font-weight: 700; padding: .12rem .4rem; border-radius: 3px; background: rgba(255,255,255,.04); }
+    .acc-arrow { color: var(--text-dim); font-size: .75rem; flex-shrink: 0; }
+    .acc-badge-wrap { margin-left: auto; }
+
     /* ─── COMPOUND CHIPS on race cards ──────────────────────────────── */
     .race-compounds { display: flex; gap: 3px; margin-top: .32rem; flex-wrap: wrap; }
     .compound-dot {
@@ -1415,8 +1426,13 @@
       <p class="sec-sub">Prediction accuracy tracker.</p>
     </div>
     <div class="rc-flair rv" id="acc-score" style="margin-bottom: 1.5rem"></div>
-    <div class="rv" id="acc-chart" style="height: 250px"></div>
-    <div class="rv" id="acc-rows" style="margin-top: 1.5rem; font-family: var(--font-tele); font-size: .85rem; color: var(--text-sec); display: flex; flex-direction: column; gap: 0.4rem;"></div>
+    <div class="panel rv">
+      <div class="panel-title">TOP-5 OVERLAP BY ROUND</div>
+      <div id="acc-chart" style="height: 220px"></div>
+    </div>
+    <div class="panel rv" style="margin-top: 1.4rem; padding: .6rem 1.4rem;">
+      <div id="acc-rows"></div>
+    </div>
   </section>
 
   <!-- 06.6 MOMENTUM -->
@@ -2416,30 +2432,42 @@ function renderAccuracy() {
     const rName = F1.races.find(r => r.round === i)?.name || `Round ${i}`;
     x.push(`R${i}`);
     y.push(t5Overlap);
-    colors.push(hit ? 'var(--accent)' : 'var(--text-dim)');
-    
-    const fmtShorts = (arr) => arr.map(id => F1.driversById[id]?.abbr || id).join(',');
-    rows.push(`<div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:.2rem;">
-      <span><b>R${i} ${esc(rName)}</b></span>
-      <span>Predicted: ${esc(fmtShorts(archTop5))} &rarr; Actual: ${esc(fmtShorts(realTop5))} ${hit ? '<span style="color:var(--green)">✓</span>' : '<span style="color:var(--accent)">✗</span>'}</span>
+    colors.push(hit ? '#e10600' : '#5b606b');
+
+    const chips = (arr, realSet) => arr.map(id => {
+      const d = F1.driversById[id] || { abbr: id, color: '#888' };
+      const landed = realSet ? realSet.has(id) : true;
+      const c = landed ? d.color : '#5b606b';
+      return `<span class="acc-chip" style="color:${c};box-shadow:inset 0 0 0 1px ${c}55">${esc(d.abbr)}</span>`;
+    }).join('');
+    const realSet = new Set(realTop5);
+
+    rows.push(`<div class="acc-row">
+      <div class="acc-round"><b>R${i}</b>${esc(rName)}</div>
+      <div class="acc-chips">${chips(archTop5, realSet)}</div>
+      <span class="acc-arrow">&rarr;</span>
+      <div class="acc-chips">${chips(realTop5)}</div>
+      <span class="acc-badge-wrap"><span class="pvr-badge ${hit ? 'hit' : 'miss'}">${hit ? 'HIT' : 'MISS'}</span></span>
     </div>`);
   }
 
   if (n < 2) return;
   byId('accuracy').style.display = 'block';
 
-  byId('acc-score').innerHTML = 
+  byId('acc-score').innerHTML =
     `<span class="flair-chip">Winner hit rate <b>${hits}/${n}</b></span>
      <span class="flair-chip">Avg podium overlap <b>${(podSum/n).toFixed(1)}/3</b></span>
      <span class="flair-chip">Avg top-5 overlap <b>${(top5Sum/n).toFixed(1)}/5</b></span>`;
-     
+
   byId('acc-rows').innerHTML = rows.join('');
-  
+
   PLOT_WHEN_VISIBLE('acc-chart', [{
-    x, y, type: 'bar', marker: { color: colors }
+    x, y, type: 'bar', marker: { color: colors },
+    hovertemplate: '<b>%{x}</b><br>Top-5 overlap: %{y}/5<extra></extra>',
   }], {
-    margin: { t: 10, b: 30, l: 30, r: 10 },
-    yaxis: { title: 'Top-5 Overlap', range: [0, 5], dtick: 1 }
+    margin: { t: 10, b: 30, l: 44, r: 10 },
+    xaxis: Object.assign({}, AXIS),
+    yaxis: Object.assign({}, AXIS, { title: { text: 'TOP-5 OVERLAP', font: { size: 9 } }, range: [0, 5], dtick: 1 }),
   });
 }
 
