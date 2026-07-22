@@ -1405,6 +1405,19 @@
     <div class="timeline-scroll rv"><div class="timeline-track" id="timeline-track"></div></div>
   </section>
 
+  <!-- 06.5 ACCURACY -->
+  <section id="accuracy" style="display:none">
+    <div class="sec-head rv">
+      <span class="sec-no">06.5</span>
+      <h2 class="sec-title">MODEL VS <em>REALITY</em></h2>
+      <div class="sec-rule"></div>
+      <p class="sec-sub">Prediction accuracy tracker.</p>
+    </div>
+    <div class="rc-flair rv" id="acc-score" style="margin-bottom: 1.5rem"></div>
+    <div class="rv" id="acc-chart" style="height: 250px"></div>
+    <div class="rv" id="acc-rows" style="margin-top: 1.5rem; font-family: var(--font-tele); font-size: .85rem; color: var(--text-sec); display: flex; flex-direction: column; gap: 0.4rem;"></div>
+  </section>
+
   <!-- 07 CALENDAR -->
   <section id="calendar">
     <div class="sec-head rv">
@@ -2305,6 +2318,64 @@ function renderTimeline() {
   });
 }
 
+/* ─── ACCURACY ────────────────────────────────────────────────── */
+function renderAccuracy() {
+  if (F1.racesCompleted < 2 || !F1.data.predictions_archive) {
+    return;
+  }
+  let hits = 0, podSum = 0, top5Sum = 0, n = 0;
+  const x = [], y = [], colors = [], rows = [];
+
+  for (let i = 1; i <= F1.racesCompleted; i++) {
+    const arch = F1.data.predictions_archive[i];
+    const real = F1.data.real_race_results_2026.find(r => r.round === i);
+    if (!arch || !real || !real.results) continue;
+    
+    n++;
+    const hit = arch[0].driver_id === real.results[0].driver_id;
+    if (hit) hits++;
+    
+    const archTop3 = arch.slice(0, 3).map(d => d.driver_id);
+    const realTop3 = real.results.slice(0, 3).map(r => r.driver_id);
+    const archTop5 = arch.slice(0, 5).map(d => d.driver_id);
+    const realTop5 = real.results.slice(0, 5).map(r => r.driver_id);
+    
+    const podOverlap = archTop3.filter(id => realTop3.includes(id)).length;
+    const t5Overlap = archTop5.filter(id => realTop5.includes(id)).length;
+    
+    podSum += podOverlap;
+    top5Sum += t5Overlap;
+    
+    const rName = F1.races.find(r => r.round === i)?.name || `Round ${i}`;
+    x.push(`R${i}`);
+    y.push(t5Overlap);
+    colors.push(hit ? 'var(--accent)' : 'var(--text-dim)');
+    
+    const fmtShorts = (arr) => arr.map(id => F1.driversById[id]?.abbr || id).join(',');
+    rows.push(`<div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:.2rem;">
+      <span><b>R${i} ${esc(rName)}</b></span>
+      <span>Predicted: ${esc(fmtShorts(archTop5))} &rarr; Actual: ${esc(fmtShorts(realTop5))} ${hit ? '<span style="color:var(--green)">✓</span>' : '<span style="color:var(--accent)">✗</span>'}</span>
+    </div>`);
+  }
+
+  if (n < 2) return;
+  byId('accuracy').style.display = 'block';
+
+  byId('acc-score').innerHTML = 
+    `<span class="flair-chip">Winner hit rate <b>${hits}/${n}</b></span>
+     <span class="flair-chip">Avg podium overlap <b>${(podSum/n).toFixed(1)}/3</b></span>
+     <span class="flair-chip">Avg top-5 overlap <b>${(top5Sum/n).toFixed(1)}/5</b></span>`;
+     
+  byId('acc-rows').innerHTML = rows.join('');
+  
+  PLOT_WHEN_VISIBLE('acc-chart', [{
+    x, y, type: 'bar', marker: { color: colors }
+  }], {
+    margin: { t: 10, b: 30, l: 30, r: 10 },
+    yaxis: { title: 'Top-5 Overlap', range: [0, 5], dtick: 1 }
+  });
+}
+
 /* ─── CALENDAR GRID ───────────────────────────────────────────── */
 const CD_CLASS = { SOFT:'cd-soft', MEDIUM:'cd-medium', HARD:'cd-hard', INTERMEDIATE:'cd-inter', WET:'cd-wet' };
 const CD_SHORT  = { SOFT:'S', MEDIUM:'M', HARD:'H', INTERMEDIATE:'I', WET:'W' };
@@ -3132,7 +3203,7 @@ function renderAll() {
   const steps = [
     renderHero, renderNews, renderRaceCenter, renderPodium, renderStandings,
     renderDriverBar, renderConstructorDonut, renderBattleChart, renderGauges,
-    renderH2H, renderTimeline, renderCalendar, renderTeams, renderDriversGrid,
+    renderH2H, renderTimeline, renderAccuracy, renderCalendar, renderTeams, renderDriversGrid,
     renderHistory, renderYearExplorer, renderRegShift,
   ];
   for (const fn of steps) {
