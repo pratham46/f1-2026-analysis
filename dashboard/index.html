@@ -1001,6 +1001,18 @@
     #telemetry-bar-fill.finish {
       background: repeating-linear-gradient(45deg, #fff 0px, #fff 4px, #111 4px, #111 8px) right center / 40px 100% no-repeat, var(--accent);
     }
+    .scroll-rail {
+      position: fixed; top: 0; bottom: 0; width: 46px; pointer-events: none; z-index: 50;
+      display: none;
+    }
+    #rail-left { left: 10px; }
+    #rail-right { right: 10px; }
+    .scroll-car {
+      position: absolute; width: 30px; height: 80px; left: 8px; top: 0;
+    }
+    @media (min-width: 1100px) {
+      .scroll-rail { display: block; }
+    }
     @media (prefers-reduced-motion: reduce) {
       #telemetry-bar-fill { transition: none; }
       .strategy-row { animation: none; opacity: 1; }
@@ -1233,6 +1245,10 @@
 
   <!-- TELEMETRY SCAN BAR -->
   <div id="telemetry-bar" aria-hidden="true"><div id="telemetry-bar-fill"></div></div>
+  
+  <!-- SCROLL RAILS -->
+  <div id="rail-left" class="scroll-rail"></div>
+  <div id="rail-right" class="scroll-rail"></div>
 
   <!-- HERO -->
   <header class="hero" id="top">
@@ -3410,6 +3426,9 @@ function initReveal() {
 /* ─── SCROLL FX (M1/M3) ───────────────────────────────────────── */
 let scrollTicking = false;
 let scrollPct = 0;
+let scrollCars = [];
+let scrollReduced = false;
+
 function onScrollFX() {
   const h = document.documentElement.scrollHeight - window.innerHeight;
   scrollPct = h > 0 ? Math.max(0, Math.min(1, window.scrollY / h)) : 0;
@@ -3421,12 +3440,68 @@ function onScrollFX() {
     else fill.classList.remove('finish');
   }
   
+  if (scrollCars.length && !scrollReduced) {
+    const railH = window.innerHeight;
+    const carH = 80;
+    scrollCars.forEach(c => {
+      const y = ((scrollPct * c.speed + c.phase) % 1) * (railH - carH);
+      c.el.style.transform = `translateY(${y}px)`;
+    });
+  }
+  
   scrollTicking = false;
 }
 
 function initScrollFX() {
   const fill = byId('telemetry-bar-fill');
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  scrollReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (F1.drivers && F1.drivers.length) {
+    const configs = [
+      { id: 'rail-left', speed: 1.0, phase: 0.0 },
+      { id: 'rail-right', speed: 1.15, phase: 0.5 },
+      { id: 'rail-left', speed: 0.9, phase: 0.3 },
+      { id: 'rail-right', speed: 1.05, phase: 0.8 },
+      { id: 'rail-left', speed: 1.1, phase: 0.6 },
+      { id: 'rail-right', speed: 0.85, phase: 0.1 }
+    ];
+    const railH = window.innerHeight;
+    const carH = 80;
+    F1.drivers.slice(0, 6).forEach((d, i) => {
+      if (!configs[i]) return;
+      const conf = configs[i];
+      const rail = byId(conf.id);
+      if (!rail) return;
+      
+      const svg = document.createElement('div');
+      svg.className = 'scroll-car';
+      svg.style.color = d.color;
+      svg.innerHTML = `<svg viewBox="0 0 30 80" width="30" height="80">
+        <rect x="2" y="5" width="26" height="4" fill="currentColor"/>
+        <path d="M12,9 L18,9 L17,25 L13,25 Z" fill="currentColor"/>
+        <rect x="0" y="8" width="4" height="14" fill="#222" rx="1"/>
+        <rect x="26" y="8" width="4" height="14" fill="#222" rx="1"/>
+        <rect x="8" y="25" width="14" height="30" fill="currentColor" rx="2"/>
+        <circle cx="15" cy="35" r="4" fill="#000"/>
+        <path d="M8,30 L4,35 L4,50 L8,55 Z" fill="currentColor"/>
+        <path d="M22,30 L26,35 L26,50 L22,55 Z" fill="currentColor"/>
+        <rect x="1" y="55" width="5" height="16" fill="#222" rx="1"/>
+        <rect x="24" y="55" width="5" height="16" fill="#222" rx="1"/>
+        <rect x="11" y="55" width="8" height="15" fill="currentColor"/>
+        <rect x="4" y="70" width="22" height="5" fill="currentColor"/>
+      </svg>`;
+      
+      rail.appendChild(svg);
+      
+      if (scrollReduced) {
+         const y = (conf.phase % 1) * (railH - carH);
+         svg.style.transform = `translateY(${y}px)`;
+      }
+      scrollCars.push({ el: svg, speed: conf.speed, phase: conf.phase });
+    });
+  }
+
+  if (scrollReduced) {
     // Static indicator on load for reduced motion
     const h = document.documentElement.scrollHeight - window.innerHeight;
     scrollPct = h > 0 ? Math.max(0, Math.min(1, window.scrollY / h)) : 0;
