@@ -2072,7 +2072,9 @@ function renderRaceCenter() {
   if (!nx) { byId('next-race-body').innerHTML = '<div class="news-empty">Season complete.</div>'; return; }
   byId('next-race-title').textContent = 'NEXT RACE — ' + nx.name.toUpperCase() + ' FORECAST';
   const cm = CIRCUIT_META[nx.circuit_id] || {};
+  const cData = (F1.circuit_data_2026 || {})[nx.circuit_id] || {};
   const tl = (F1.track_layouts || {})[nx.circuit_id] || {};
+  const nw = F1.next_race_weather;
   const rows = (nx.top5 || []).slice(0, 5).map((t, i) => {
     const d = F1.driversById[t.driver_id] || { name: t.driver_id, teamName: '', color: '#666' };
     const img = (F1.driver_images || {})[t.driver_id];
@@ -2092,12 +2094,17 @@ function renderRaceCenter() {
       <div style="flex:1 1 260px">${rows}</div>
       <div style="flex:0 1 200px;text-align:center">
         ${tl.img_url ? '<img src="' + esc(tl.img_url) + '" alt="' + esc(nx.name) + ' layout" style="max-height:150px;filter:invert(1) brightness(1.6)" loading="lazy">' : ''}
-        <div class="rc-flair" style="justify-content:center">
+        <div class="rc-flair" style="justify-content:center; flex-wrap:wrap">
           <span class="flair-chip">${nx.flag} ROUND ${nx.round}</span>
           ${cm.km ? '<span class="flair-chip">' + cm.km + ' KM</span>' : ''}
           ${cm.laps ? '<span class="flair-chip">' + cm.laps + ' LAPS</span>' : ''}
           ${nx.sprint ? '<span class="flair-chip" style="color:var(--gold)">SPRINT</span>' : ''}
+          ${cData.locality && cData.country ? '<span class="flair-chip">' + esc(cData.locality) + ', ' + esc(cData.country) + ' &middot; ' + (cData.alt || 0) + 'm altitude</span>' : ''}
+          ${cData.alt > 1000 ? '<span class="flair-chip" style="color:var(--gold)">HIGH-ALTITUDE</span>' : ''}
         </div>
+        ${nw ? `<div class="rc-flair" style="justify-content:center; margin-top:.3rem;">
+          <span class="flair-chip">🌡 ${nw.t_min}–${nw.t_max}°C &middot; 🌧 ${nw.rain_prob}% &middot; 💨 ${nw.wind_max} km/h</span>
+        </div>` : ''}
       </div>
     </div>`;
 }
@@ -3062,8 +3069,25 @@ function openDriverModal(driverId) {
   if (img) { ph.style.display = ''; ph.src = img; ph.alt = d.name; ph.style.setProperty('--tc', d.color); ph.onerror = () => { ph.style.display = 'none'; }; }
   else ph.style.display = 'none';
   byId('dm-flag').textContent = nat.flag + (nat.country ? ' ' + nat.country : '');
-  byId('dm-name').textContent = d.name;
-  byId('dm-sub').textContent = d.teamName;
+  
+  let nameHtml = esc(d.name);
+  let subHtml = esc(d.teamName);
+  const bioObj = (F1.driver_bios_2026 || {})[driverId];
+  if (bioObj) {
+    if (bioObj.wiki) {
+      nameHtml = `<a href="${esc(bioObj.wiki)}" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">${esc(d.name)}</a>`;
+    }
+    const age = bioObj.dob ? Math.floor((new Date() - new Date(bioObj.dob)) / 31557600000) : null;
+    const extra = [];
+    if (age) extra.push(`${age} yrs`);
+    if (bioObj.nationality) extra.push(bioObj.nationality);
+    if (extra.length) {
+      subHtml += ` &middot; <span style="color:var(--text-dim)">${esc(extra.join(' · '))}</span>`;
+    }
+  }
+  
+  byId('dm-name').innerHTML = nameHtml;
+  byId('dm-sub').innerHTML = subHtml;
   byId('dm-plate').textContent = '#' + d.number;
 
   // stat row
