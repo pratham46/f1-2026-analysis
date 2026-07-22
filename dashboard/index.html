@@ -991,19 +991,18 @@
       height: 3px; overflow: hidden;
       background: rgba(225,6,0,.06);
     }
-    #telemetry-bar::before {
-      content: ''; position: absolute; top: 0; bottom: 0; left: 0;
-      width: 22%;
-      background: linear-gradient(90deg, transparent, var(--accent-hot), transparent);
-      box-shadow: 0 0 12px 2px rgba(225,6,0,.65);
-      animation: telemetry-pulse 3.4s cubic-bezier(.5,0,.5,1) infinite;
+    #telemetry-bar-fill {
+      position: absolute; top: 0; bottom: 0; left: 0;
+      width: 0%;
+      background: var(--accent);
+      box-shadow: 2px 0 12px 1px rgba(225,6,0,.65);
+      transition: width 0.1s linear;
     }
-    @keyframes telemetry-pulse {
-      0%   { left: -22%; }
-      100% { left: 100%; }
+    #telemetry-bar-fill.finish {
+      background: repeating-linear-gradient(45deg, #fff 0px, #fff 4px, #111 4px, #111 8px) right center / 40px 100% no-repeat, var(--accent);
     }
     @media (prefers-reduced-motion: reduce) {
-      #telemetry-bar::before { animation: none; left: 0; width: 100%; opacity: .25; }
+      #telemetry-bar-fill { transition: none; }
       .strategy-row { animation: none; opacity: 1; }
       .rv { animation: none; opacity: 1; transform: none; }
       .tl-node, .race-card, .driver-card, .team-card { transition: none; }
@@ -1233,7 +1232,7 @@
   </div>
 
   <!-- TELEMETRY SCAN BAR -->
-  <div id="telemetry-bar" aria-hidden="true"></div>
+  <div id="telemetry-bar" aria-hidden="true"><div id="telemetry-bar-fill"></div></div>
 
   <!-- HERO -->
   <header class="hero" id="top">
@@ -3408,6 +3407,43 @@ function initReveal() {
   setTimeout(() => els.forEach(el => { el.classList.remove('rv-wait'); el.classList.add('rv-in'); }), 3000);
 }
 
+/* ─── SCROLL FX (M1/M3) ───────────────────────────────────────── */
+let scrollTicking = false;
+let scrollPct = 0;
+function onScrollFX() {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  scrollPct = h > 0 ? Math.max(0, Math.min(1, window.scrollY / h)) : 0;
+  
+  const fill = byId('telemetry-bar-fill');
+  if (fill) {
+    fill.style.width = (scrollPct * 100) + '%';
+    if (scrollPct > 0.9) fill.classList.add('finish');
+    else fill.classList.remove('finish');
+  }
+  
+  scrollTicking = false;
+}
+
+function initScrollFX() {
+  const fill = byId('telemetry-bar-fill');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Static indicator on load for reduced motion
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    scrollPct = h > 0 ? Math.max(0, Math.min(1, window.scrollY / h)) : 0;
+    if (fill) fill.style.width = (scrollPct * 100) + '%';
+    return;
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(onScrollFX);
+      scrollTicking = true;
+    }
+  }, { passive: true });
+  // Initial fire
+  window.requestAnimationFrame(onScrollFX);
+}
+
 /* ─── INIT ────────────────────────────────────────────────────── */
 function renderAll() {
   const steps = [
@@ -3459,6 +3495,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try { initPitWall(); } catch (e) { console.error('[init] pit wall failed:', e); }
   try { initSpeedCanvas(); } catch (e) { console.error('[init] speed canvas failed:', e); }
   try { initHamburger(); } catch (e) { console.error('[init] hamburger failed:', e); }
+  initScrollFX();
 
   // 2. Upgrade to live Worker data in the background; re-paint if fresher.
   fetchLiveData().then(ok => {
