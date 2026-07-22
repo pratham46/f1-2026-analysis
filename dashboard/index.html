@@ -2136,17 +2136,17 @@ function renderPodium() {
 
 /* ─── STANDINGS TABLE ─────────────────────────────────────────── */
 function renderStandings() {
-  if (F1.data.real_driver_standings_2026 && F1.data.calendar_2026) {
+  if (F1.real_driver_standings_2026 && F1.calendar_2026) {
     let maxRemaining = 0;
     let racesLeft = 0;
-    F1.data.calendar_2026.forEach(r => {
+    F1.calendar_2026.forEach(r => {
       if (r.round > F1.racesCompleted) {
         maxRemaining += (25 + (r.sprint ? 8 : 0));
         racesLeft++;
       }
     });
-    
-    const top4 = F1.data.real_driver_standings_2026.slice(0, 4);
+
+    const top4 = F1.real_driver_standings_2026.slice(0, 4);
     const leader = top4[0];
     
     if (leader) {
@@ -2387,15 +2387,15 @@ function renderTimeline() {
 
 /* ─── ACCURACY ────────────────────────────────────────────────── */
 function renderAccuracy() {
-  if (F1.racesCompleted < 2 || !F1.data.predictions_archive) {
+  if (F1.racesCompleted < 2 || !F1.predictions_archive) {
     return;
   }
   let hits = 0, podSum = 0, top5Sum = 0, n = 0;
   const x = [], y = [], colors = [], rows = [];
 
   for (let i = 1; i <= F1.racesCompleted; i++) {
-    const arch = F1.data.predictions_archive[i];
-    const real = F1.data.real_race_results_2026.find(r => r.round === i);
+    const arch = F1.predictions_archive[i];
+    const real = F1.real_race_results_2026.find(r => r.round === i);
     if (!arch || !real || !real.results) continue;
     
     n++;
@@ -2445,9 +2445,9 @@ function renderAccuracy() {
 
 /* ─── MOMENTUM ────────────────────────────────────────────────── */
 function renderMomentum() {
-  if (F1.racesCompleted < 2 || !F1.data.real_driver_standings_2026 || !F1.data.real_race_results_2026) return;
-  
-  const top8 = F1.data.real_driver_standings_2026.slice(0, 8).map(d => d.driver_id);
+  if (F1.racesCompleted < 2 || !F1.real_driver_standings_2026 || !F1.real_race_results_2026) return;
+
+  const top8 = F1.real_driver_standings_2026.slice(0, 8).map(d => d.driver_id);
   const traces = [];
   
   const rounds = Array.from({length: F1.racesCompleted}, (_, i) => i + 1);
@@ -2459,7 +2459,7 @@ function renderMomentum() {
     const text = [];
     
     rounds.forEach(r => {
-      const race = F1.data.real_race_results_2026.find(x => x.round === r);
+      const race = F1.real_race_results_2026.find(x => x.round === r);
       if (race && race.results) {
         const res = race.results.find(x => x.driver_id === driverId);
         if (res && res.points) {
@@ -2808,9 +2808,9 @@ function renderTeams() {
 }
 
 function renderSeasonPitStops() {
-  if (!F1.data.openf1_race_data) return;
+  if (!F1.openf1_race_data) return;
   const allPits = [];
-  Object.entries(F1.data.openf1_race_data).forEach(([round, of1]) => {
+  Object.entries(F1.openf1_race_data).forEach(([round, of1]) => {
     if (!of1.pit_stops) return;
     const rName = F1.races.find(r => r.round == round)?.name || `Round ${round}`;
     Object.entries(of1.pit_stops).forEach(([id, pits]) => {
