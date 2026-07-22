@@ -93,6 +93,15 @@
     .js-anim .rv { transition: opacity .6s ease, transform .6s ease; }
     .js-anim .rv.rv-wait { opacity: 0; transform: translateY(24px); }
     .js-anim .rv.rv-in { opacity: 1; transform: none; }
+    .js-anim .rv-wait .bar-fill { width: 0 !important; }
+
+    /* M2 Staggering */
+    .js-anim .rv.rv-stagger { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .js-anim .rv.rv-stagger > *, .js-anim .rv.rv-stagger tbody > tr {
+      transition: opacity .6s ease, transform .6s ease;
+      transition-delay: calc(var(--i, 0) * 40ms);
+    }
+    .js-anim .rv.rv-stagger.rv-wait > *, .js-anim .rv.rv-stagger.rv-wait tbody > tr { opacity: 0; transform: translateY(24px); }
 
     /* ─── NAV ────────────────────────────────────────────────────────── */
     .nav {
@@ -1017,6 +1026,7 @@
       #telemetry-bar-fill { transition: none; }
       .strategy-row { animation: none; opacity: 1; }
       .rv { animation: none; opacity: 1; transform: none; }
+      .js-anim .rv.rv-stagger > *, .js-anim .rv.rv-stagger tbody > tr { transition-delay: 0s !important; transition: none !important; }
       .tl-node, .race-card, .driver-card, .team-card { transition: none; }
     }
 
@@ -1347,7 +1357,7 @@
       <div class="sec-rule"></div>
       <p class="sec-sub">Where the championship lands if the simulation is right.</p>
     </div>
-    <div class="podium-grid" id="podium-grid"></div>
+    <div class="podium-grid rv rv-stagger" id="podium-grid"></div>
   </section>
 
   <!-- 03 STANDINGS / FORECAST -->
@@ -1359,7 +1369,7 @@
       <p class="sec-sub">Real points so far vs the Monte Carlo projection over the full 22-round season.</p>
     </div>
     <div id="title-fight-strip" class="rv" style="margin-bottom:1rem; font-family:var(--font-tele); font-size:.85rem; color:var(--text); background:var(--panel); padding:.8rem; border-left:3px solid var(--accent);"></div>
-    <div class="table-wrap rv">
+    <div class="table-wrap rv rv-stagger">
       <table class="standings">
         <thead>
           <tr>
@@ -1440,7 +1450,7 @@
       <div class="sec-rule"></div>
       <p class="sec-sub">Prediction accuracy tracker.</p>
     </div>
-    <div class="rc-flair rv" id="acc-score" style="margin-bottom: 1.5rem"></div>
+    <div id="acc-score" class="rv rv-stagger" style="display:flex;gap:1rem;margin-bottom:1rem"></div>
     <div class="panel rv">
       <div class="panel-title">TOP-5 OVERLAP BY ROUND</div>
       <div id="acc-chart" style="height: 220px"></div>
@@ -2150,11 +2160,11 @@ function renderPodium() {
   const baseH = ['54px', '84px', '40px'];
   byId('podium-grid').innerHTML = order.map((d, i) => {
     const img = (F1.driver_images || {})[d.id];
-    return `<div class="podium-card ${cls[i]}" style="--tc:${d.color}" data-driver="${d.id}" role="button" tabindex="0">
+    return `<div class="podium-card ${cls[i]}" style="--tc:${d.color};--i:${i}" data-driver="${d.id}" role="button" tabindex="0">
       <div class="podium-pos">${pos[i]}</div>
       ${img ? '<img class="podium-photo" src="' + esc(img) + '" alt="' + esc(d.name) + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : ''}
       <div class="podium-name">${esc(d.name)}</div>
-      <div class="podium-prob">${pct(d.championshipProb)}<span> TITLE</span></div>
+      <div class="podium-prob"><span data-countup="${pct(d.championshipProb)}">0%</span><span> TITLE</span></div>
       <div class="podium-pts">${rnd(d.points)} proj. pts · ${rnd(d.realPoints)} real · ${esc(d.teamName)}</div>
       <div class="podium-base" style="--h:${baseH[i]};--tc:${d.color}">${pos[i]}</div>
     </div>`;
@@ -2210,7 +2220,7 @@ function renderStandings() {
   const rows = F1.drivers.map((d, i) => {
     const p = i + 1;
     const rowCls = p <= 3 ? 'top' + p : '';
-    return `<tr class="${rowCls}">
+    return `<tr class="${rowCls}" style="--i:${i}">
       <td><span class="pos-plate">${p}</span></td>
       <td><div class="st-driver" style="--tc:${d.color}">
         <span class="rail"></span>
@@ -2219,7 +2229,7 @@ function renderStandings() {
       </div></td>
       <td><span class="st-team">${esc(d.teamName)}</span></td>
       <td style="text-align:right"><span class="num real">${rnd(d.realPoints)}</span></td>
-      <td style="text-align:right"><span class="num pred" style="--tc:${d.color}">${rnd(d.points)}</span></td>
+      <td style="text-align:right"><span class="num pred" style="--tc:${d.color}" data-countup="${rnd(d.points)}">0</span></td>
       <td><div class="bar-cell">
         <div class="bar-track"><div class="bar-fill" data-w="${Math.min(d.championshipProb * 100, 100)}" style="background:var(--gold)"></div></div>
         <span class="bar-val">${pct(d.championshipProb)}</span></div></td>
@@ -2470,9 +2480,9 @@ function renderAccuracy() {
   byId('accuracy').style.display = 'block';
 
   byId('acc-score').innerHTML =
-    `<span class="flair-chip">Winner hit rate <b>${hits}/${n}</b></span>
-     <span class="flair-chip">Avg podium overlap <b>${(podSum/n).toFixed(1)}/3</b></span>
-     <span class="flair-chip">Avg top-5 overlap <b>${(top5Sum/n).toFixed(1)}/5</b></span>`;
+    `<span class="flair-chip" style="--i:0">Winner hit rate <b><span data-countup="${hits}/${n}">0/${n}</span></b></span>
+     <span class="flair-chip" style="--i:1">Avg podium overlap <b><span data-countup="${(podSum/n).toFixed(1)}/3">0.0/3</span></b></span>
+     <span class="flair-chip" style="--i:2">Avg top-5 overlap <b><span data-countup="${(top5Sum/n).toFixed(1)}/5">0.0/5</span></b></span>`;
 
   byId('acc-rows').innerHTML = rows.join('');
 
@@ -3400,6 +3410,26 @@ function initSpeedCanvas() {
 }
 
 /* ─── REVEAL — safe scroll animation (never hides content) ────── */
+function countUp(el, targetStr, duration = 800) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = targetStr; return; }
+  const match = targetStr.match(/^([\d.]+)(.*)$/);
+  if (!match) { el.textContent = targetStr; return; }
+  const targetNum = parseFloat(match[1]);
+  const suffix = match[2];
+  const hasDec = match[1].includes('.');
+  
+  let start = performance.now();
+  function tick(now) {
+    let p = (now - start) / duration;
+    if (p >= 1) { el.textContent = targetStr; return; }
+    p = p * (2 - p);
+    const v = targetNum * p;
+    el.textContent = (hasDec ? v.toFixed(1) : Math.round(v)) + suffix;
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
 function initReveal() {
   if (!('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js-anim');
@@ -3411,6 +3441,13 @@ function initReveal() {
         e.target.classList.remove('rv-wait');
         e.target.classList.add('rv-in');
         obs.unobserve(e.target);
+        
+        e.target.querySelectorAll('[data-countup]').forEach(c => {
+          if (!c.dataset.counted) {
+            c.dataset.counted = "1";
+            countUp(c, c.dataset.countup);
+          }
+        });
       }
     });
   }, { threshold: .08, rootMargin: '0px 0px -4% 0px' });
