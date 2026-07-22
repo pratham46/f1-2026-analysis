@@ -84,6 +84,14 @@ export default {
 
         case "/api/refresh": {
           if (request.method !== "POST") return json({ error: "method_not_allowed" }, 405, { Allow: "POST" });
+          // Token-gated: each refresh costs 2 of the 1000/day free-tier KV writes,
+          // so unauthenticated spam could exhaust the quota. Fails closed if the
+          // secret is unset (cron refreshes are unaffected — they skip this route).
+          // Set with: wrangler secret put REFRESH_TOKEN
+          const auth = request.headers.get("Authorization") || "";
+          if (!env.REFRESH_TOKEN || auth !== `Bearer ${env.REFRESH_TOKEN}`) {
+            return json({ error: "unauthorized" }, 401, { "Cache-Control": "no-store" });
+          }
           // Manual trigger — run in the background so the response is instant.
           ctx.waitUntil(refresh(env));
           return json({ ok: true, triggered: true, note: "refresh running in background" }, 202, { "Cache-Control": "no-store" });

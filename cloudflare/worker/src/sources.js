@@ -42,7 +42,22 @@ const normDriver = (id) => DRIVER_ALIAS[id] || id;
 const normTeam = (id) => TEAM_ALIAS[id] || id;
 export const normCircuit = (id) => CIRCUIT_ALIAS[id] || id;
 
+// Free tier allows 50 subrequests per invocation; a cold-start assemble() can
+// legitimately approach that (Jolpica backfills + OpenF1 enrichment). Cap JSON
+// fetches at 40 so the run degrades gracefully (fetchers return ok:false and
+// callers keep last-good data) instead of Cloudflare hard-failing mid-run.
+// The margin also covers the single news scrape in scrape.js.
+// ponytail: module-level counter reset per assemble() run — fine while one
+// refresh runs at a time; thread a ctx object through the fetchers if
+// concurrent refreshes ever become real.
+const SUBREQUEST_BUDGET = 40;
+let budgetLeft = SUBREQUEST_BUDGET;
+export function resetSubrequestBudget() { budgetLeft = SUBREQUEST_BUDGET; }
+export function subrequestsUsed() { return SUBREQUEST_BUDGET - budgetLeft; }
+
 async function getJSON(url, timeoutMs = 8000) {
+  if (budgetLeft <= 0) return { ok: false, error: "subrequest_budget_exhausted" };
+  budgetLeft--;
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);
   try {

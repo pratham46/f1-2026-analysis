@@ -1,6 +1,7 @@
 // Harmony-contract test: assemble() must emit every key the dashboard reads,
 // and must succeed even when live fetch / scrape are unavailable (offline-safe).
 import { assemble } from "../src/assemble.js";
+import { resetSubrequestBudget, subrequestsUsed } from "../src/sources.js";
 
 let failures = 0;
 const ok = (cond, msg) => { console.log(`${cond ? "PASS" : "FAIL"}  ${msg}`); if (!cond) failures++; };
@@ -68,6 +69,13 @@ if (d.races_completed_2026 > 0) {
   const upcoming = d.race_predictions.find(r => !r.completed);
   ok(upcoming && typeof upcoming.top5[0].win_prob === "number", "upcoming rounds carry forecast win_prob");
 }
+
+// Subrequest budget: assemble() reports usage and can never exceed the 40 cap
+// (free tier allows 50 fetches/invocation; the margin covers the news scrape).
+ok(typeof d._health.subrequests === "number" && d._health.subrequests <= 40,
+   `subrequest budget respected (used ${d._health.subrequests}/40)`);
+resetSubrequestBudget();
+ok(subrequestsUsed() === 0, "resetSubrequestBudget zeroes the counter");
 
 console.log("\nhealth:", JSON.stringify(d._health));
 

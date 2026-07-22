@@ -19,7 +19,8 @@ import {
 } from "./seed.js";
 import { predict } from "./predict.js";
 import { fetchLiveStandings, fetchRaceResults, fetchDriverBios, fetchCircuitData,
-         fetchOpenF1Sessions, fetchOpenF1RaceResult, fetchPitStops, fetchTireStints } from "./sources.js";
+         fetchOpenF1Sessions, fetchOpenF1RaceResult, fetchPitStops, fetchTireStints,
+         resetSubrequestBudget, subrequestsUsed } from "./sources.js";
 import { scrapeNews } from "./scrape.js";
 import { buildDriverImages, buildTrackLayouts, buildTeamCars } from "./media.js";
 
@@ -161,6 +162,7 @@ function toNextRace(racesCompleted, now = new Date()) {
  */
 export async function assemble(opts = {}) {
   const lastGood = opts.lastGood || {};
+  resetSubrequestBudget();
   const health = { live: "skipped", results: "skipped", news: "skipped", scrapedAt: new Date().toISOString() };
 
   // 1. Live 2026 standings (authoritative for real_* + base-position blend).
@@ -325,7 +327,7 @@ export async function assemble(opts = {}) {
     team_cars,
     news,
 
-    _health: health,
+    _health: { ...health, subrequests: subrequestsUsed() },
     _sanity: pred._sanity,
   };
 
