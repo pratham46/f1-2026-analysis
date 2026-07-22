@@ -49,7 +49,7 @@ Set `timeout=10s`. On any exception or non-200, catch and fall back immediately.
 
 ### 3. Synthetic fallback
 
-Use the `_generate_synthetic_data()` function in `src/data/pipeline.py`.
+Use the `_generate_synthetic_data()` function in `legacy/src/data/pipeline.py`.
 This produces realistic data calibrated to known F1 history. Log: `"Data source: synthetic"`.
 
 ## Unified Schema Normalization
@@ -88,7 +88,7 @@ After normalization, call in order:
 2. `add_grid_vs_finish(df)` — positions_gained column
 3. `add_constructor_rolling_points(df, windows=[3, 5])` — constructor rolling avg points
 
-All functions are in `src/features/build_features.py`.
+All functions are in `legacy/src/features/build_features.py`.
 
 ## Output Validation
 

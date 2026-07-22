@@ -10,15 +10,17 @@ f1-2026-analysis/
 │   ├── raw/          # Original, unmodified data (race results, quali, weather, etc.)
 │   ├── processed/    # Cleaned and feature-engineered datasets
 │   └── external/     # Third-party data (tire compounds, track characteristics, etc.)
-├── notebooks/        # Jupyter notebooks for EDA and experimentation
-├── src/
-│   ├── data/         # Data ingestion and cleaning scripts
-│   ├── features/     # Feature engineering
-│   ├── models/       # Model training, evaluation, and inference
-│   └── visualization/ # Plotting and reporting utilities
-├── reports/
-│   └── figures/      # Saved charts and visualizations
-└── tests/            # Unit tests
+├── legacy/          # Offline-only Python pipeline (moved out of the live path)
+│   ├── notebooks/   # Jupyter notebooks for EDA and experimentation
+│   ├── src/
+│   │   ├── data/         # Data ingestion and cleaning scripts
+│   │   ├── features/    # Feature engineering
+│   │   ├── models/      # Model training, evaluation, and inference
+│   │   └── visualization # Plotting and reporting utilities
+│   ├── reports/
+│   │   └── figures/ # Saved charts and visualizations
+│   ├── tests/       # Unit tests
+│   └── *.py         # Root utility scripts (media injection, track stats, UI update)
 ```
 
 ## Data Sources
