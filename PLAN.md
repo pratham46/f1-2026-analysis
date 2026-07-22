@@ -68,9 +68,48 @@ The model's top-5 forecast for every completed round is FROZEN in `F1.prediction
 
 ---
 
+# The Encore — "Scrolling feels like winning" (motion pass, Gemini)
+
+Human-requested, brainstormed with claude 2026-07-22. Board tasks 19–21. Order: M1 → M3 (M3 reuses M1's scroll-percent plumbing — same session, commit together or separately, gemini's call) → M2 (fully independent, do anytime). All three are additive CSS/JS on top of existing sections — no new dependencies, no build step, no new files required (inline in `index.html` like everything else).
+
+Existing infrastructure to reuse, not replace:
+- `#telemetry-bar` (currently a decorative 3.4s infinite pulse loop, unrelated to scroll) — repurpose for M1.
+- `initSpeedCanvas()` (hero-only particle streaks, already gates on `prefers-reduced-motion` and pauses via `IntersectionObserver` when `#top` isn't visible) — pattern to follow for M3, not literally reuse (M3 is SVG/transform-based, not canvas — cheaper, and "top-down car" reads far more literally than abstract streaks).
+- `.rv` / `.rv-wait` / `.rv-in` reveal system (`initReveal()`, content visible-by-default, IntersectionObserver-driven, already respects `prefers-reduced-motion` at the `.js-anim .rv` level) — extend for M2, don't build a parallel system.
+
+## M1 (gemini, dashboard): real scroll-progress race bar
+
+- Replace `#telemetry-bar`'s current infinite CSS-only pulse (`telemetry-pulse` keyframe, ~line 999) with a live fill driven by actual scroll position: `scrollPct = scrollY / (documentHeight - viewportHeight)`, clamped 0–1, written as `width: {scrollPct*100}%` on the bar-fill element.
+- Update via a single `scroll` listener, rAF-throttled (compute once per animation frame max, not once per scroll event) — this same listener/scrollPct value is what M3 consumes, so write it as one small shared function (e.g. `onScrollFX()`) rather than two independent listeners.
+- Past ~90% scroll, add a checkered-flag texture/pattern to the fill's leading edge (CSS `repeating-linear-gradient` checkerboard, or a small flag glyph) — the "showing the flag" moment as the user nears the bottom of the page.
+- Guard: `prefers-reduced-motion` → set width once to current scroll position on load, no transition/animation, no continuous listener needed (a static indicator is fine, per the existing philosophy that content/state is never hidden — only the animation is skipped).
+- Acceptance: scrolling from top to bottom visibly fills the bar 0→100%; no console errors; checkered texture appears only in the final ~10%; reduced-motion users still see a (static, correct) fill position.
+
+## M2 (gemini, dashboard): punchier section reveals
+
+- Extend `initReveal()` / `.rv` — do not replace it. Add a small per-child stagger: children of a revealing section get a CSS `transition-delay` derived from their index (e.g. an inline `--i` custom property set when building each card's HTML, consumed by a CSS rule like `transition-delay: calc(var(--i, 0) * 60ms)`), so cards/rows cascade in rather than popping together.
+- Add one small reusable helper, e.g. `countUp(el, target, duration=800)`, that tweens a numeric text node from 0 to `target` via `requestAnimationFrame`. Wire it into the existing IntersectionObserver callback in `initReveal()`: elements marked with a `data-countup="{target}"` attribute run the tween once, the first time they enter view (guard against re-triggering on repeated scroll past the same element).
+- Apply `data-countup` to the highest-value numeric reveals: podium `championshipProb` %, standings `predicted_points`, the accuracy scoreboard chips (hit rate, overlap averages). Don't apply it everywhere — YAGNI, it should read as an accent on the 3–5 numbers that matter most, not a gimmick on every number on the page.
+- Extend the existing `.bar-fill` width-transition pattern (already used for the championship-probability bars in standings) to any other stat bars that currently just appear at full width with no transition, for visual consistency.
+- Guard: `prefers-reduced-motion` → `countUp` sets the final value immediately (no tween), stagger delays collapse to 0 (already covered by the existing `.js-anim .rv` reduced-motion rule if the stagger is implemented as a transition-delay within that same rule scope).
+- Acceptance: scrolling past standings/podium/accuracy sections shows staggered card entry + numbers counting up, not an instant pop; reduced-motion shows final values immediately with no animation; no layout shift (reserve space for final text width, don't let counting digits reflow neighboring elements).
+
+## M3 (gemini, dashboard): scroll-racing side rails
+
+Two fixed vertical lanes, one each side of the viewport (`position:fixed; top:0; height:100vh; width:~46px; pointer-events:none; z-index` above background but below nav/modals), each containing a few top-down F1 car silhouettes that move down the page as the user scrolls, reusing M1's `scrollPct`.
+
+- Car art: simple inline SVG per car (nose cone + body rect + rear-wing lines — a flat top-down silhouette, no image asset to host or hotlink), `fill`/`stroke` set to the driver's team color (same `driversById[id].color` hex already used everywhere else on the page — NOT a CSS `var()` string, per the bug already found and fixed in the accuracy chart's Plotly bars).
+- 5–6 cars total, split across the two rails (e.g. 3 left / 2–3 right), pulled from the top of `real_driver_standings_2026`.
+- Each car gets a distinct speed multiplier and phase offset (e.g. multiplier ≈ 0.85–1.15 spread across the set, phase offset ≈ i / carCount) so they visibly overtake each other on the way down rather than moving in lockstep — this is what makes it read as a race, not a duplicated scrollbar.
+- Position update: `y = ((scrollPct * car.speed + car.phase) % 1) * (railHeight - carHeight)`, applied via `transform: translateY(y)` (transform, not `top`, for compositor-friendly perf) inside the same rAF-throttled scroll callback as M1. The modulo wrap makes each car loop back to the top of its rail after reaching the bottom, like completing a lap, instead of stopping dead at the page end.
+- Guards: hide both rails below the project's existing tablet/mobile breakpoint (check `@media` cutoffs already in the file around the podium-grid responsive rules, ~840/902px — race rails need more like ≥1024–1100px since they eat fixed width on both edges; pick whichever avoids squeezing `.podium-grid`/`.forecast-grid` at their own breakpoints). `prefers-reduced-motion` → render cars at a static staggered starting position, no `transform` updates on scroll (never hidden, just still).
+- Acceptance: on a desktop-width viewport, scrolling the page visibly moves cars down both rails with overtaking (relative order changes at least once over a full scroll); rails are absent below the chosen mobile/tablet breakpoint; reduced-motion shows static cars, no scroll-driven movement; rails never intercept clicks (`pointer-events:none` verified — try clicking a nav link or card underneath a rail).
+
+---
+
 ## Non-goals (do NOT do)
 
-Framework/bundler, service worker, new chart lib, lap-by-lap telemetry (too many subrequests), separate pages, backend accuracy precompute (client math is enough), any paid API.
+Framework/bundler, service worker, new chart lib, lap-by-lap telemetry (too many subrequests), separate pages, backend accuracy precompute (client math is enough), any paid API. For the M1–M3 motion pass specifically: no animation library (GSAP etc.), no WebGL/canvas for the side rails (SVG+transform is cheaper and simpler for a handful of static shapes), no sound, no hotlinked car images (inline SVG only — same reasoning as the existing driver-photo `onerror` guards: don't add a new external dependency for something a few shapes can do).
 
 ## Definition of done (each task)
 

@@ -40,19 +40,30 @@ There is no live channel between us — **this file is the channel.** Read it fi
 | 5 | Trim Google Fonts to weights actually used (13 variants loaded across 3 families — audit CSS, keep ~5). | dashboard | gemini | DONE |
 | 6 | Fix canonical/og:url: index.html says `f1-2026-analysis.pages.dev`, CLAUDE.md says live site is `f1-2026.pages.dev`. Verify the real Pages URL, make them match. | dashboard | gemini | DONE |
 | 7 | Add `loading="lazy"` to below-the-fold `<img>`s (driver grid = 22 hotlinked photos; only 8 imgs have it). | dashboard | gemini | DONE |
-| 8 | Repo hygiene: `.gitignore` `_workspace/` (17MB of screenshots/scratch), commit the pending `.claude/` agent deletions, move legacy Python (`src/`, `tests/`, `notebooks/`, `reports/`, root `*.py`) under `legacy/` or delete. | hygiene | — | OPEN |
+| 8 | Repo hygiene: `.gitignore` `_workspace/` (17MB of screenshots/scratch), commit the pending `.claude/` agent deletions, move legacy Python (`src/`, `tests/`, `notebooks/`, `reports/`, root `*.py`) under `legacy/` or delete. | hygiene | glm+claude | DONE |
 | 9 | Merge branch `fix/tyre-strategy-and-modal-charts` → `main` (work is committed + already deployed; branch is ahead of main). Human should approve the merge. | hygiene | — | OPEN |
-| 10 | Optional: edge-cache `/api/data` responses with the Cache API (5-min TTL) to cut KV reads. Only worth it if traffic grows. | worker | — | OPEN |
-| 11 | Optional: slim live payload — Worker re-sends static `historical_*` blocks the seed already has. A `?slim=1` variant that omits them halves transfer. Schema change; coordinate with dashboard lane. | worker+dash | — | OPEN |
+| 10 | Optional: edge-cache `/api/data` responses with the Cache API (5-min TTL) to cut KV reads. Only worth it if traffic grows. | worker | claude | DONE |
+| 11 | Optional: slim live payload — Worker re-sends static `historical_*` blocks the seed already has. A `?slim=1` variant that omits them halves transfer. Schema change; coordinate with dashboard lane. | worker+dash | claude | DONE |
 | 12 | **PLAN.md B1**: next-race weather fetcher (Open-Meteo, 1 subrequest) → `next_race_weather` | worker | claude | DONE |
 | 13 | **PLAN.md B2**: regen seed with weather field + document in DATA_API.md | worker | claude | DONE |
-| 14 | **PLAN.md F1** ★: "Model vs Reality" accuracy tracker section (`predictions_archive` vs real results) | dashboard | — | OPEN |
-| 15 | **PLAN.md F2**: Championship momentum cumulative-points chart (top 8) | dashboard | — | OPEN |
-| 16 | **PLAN.md F3**: Pit-stop intelligence — modal pit rows + season fastest-stop leaderboard | dashboard | — | OPEN |
-| 17 | **PLAN.md F4**: Title-fight calculator strip in standings | dashboard | — | OPEN |
-| 18 | **PLAN.md F5**: Next-race weather chip + circuit facts + driver-modal age/nationality (needs 12+13) | dashboard | — | OPEN |
+| 14 | **PLAN.md F1** ★: "Model vs Reality" accuracy tracker section (`predictions_archive` vs real results) | dashboard | gemini | DONE |
+| 15 | **PLAN.md F2**: Championship momentum cumulative-points chart (top 8) | dashboard | gemini | DONE |
+| 16 | **PLAN.md F3**: Pit-stop intelligence — modal pit rows + season fastest-stop leaderboard | dashboard | gemini | DONE |
+| 17 | **PLAN.md F4**: Title-fight calculator strip in standings | dashboard | gemini | DONE |
+| 18 | **PLAN.md F5**: Next-race weather chip + circuit facts + driver-modal age/nationality (needs 12+13) | dashboard | gemini | DONE |
+| 19 | **PLAN.md M1** (The Encore): real scroll-progress race bar — repurpose `#telemetry-bar` to fill with actual scroll %, checkered flag past ~90% | dashboard | — | OPEN |
+| 20 | **PLAN.md M2** (The Encore): punchier section reveals — stagger `.rv` children, `countUp()` helper on key stats | dashboard | — | OPEN |
+| 21 | **PLAN.md M3** (The Encore): scroll-racing side rails — inline-SVG top-down cars in fixed side lanes, position driven by M1's scroll % with per-car speed/phase offsets | dashboard | — | OPEN |
 
 ## Log (append-only, newest first)
+
+- 2026-07-22 [claude] "The Encore" motion pass added to PLAN.md (board tasks 19–21, M1–M3), brainstormed with the human: real scroll-progress bar, staggered/count-up section reveals, and scroll-driven top-down car side-rails. Human explicitly chose "I write a spec, gemini implements" — I have NOT touched dashboard/index.html for this pass. Order: M1 → M3 (shares scroll-percent plumbing) → M2 (independent). Read PLAN.md's new "The Encore" section before starting — it names exact existing hooks to reuse (`#telemetry-bar`, `initReveal()`/`.rv`, the driver-color-hex convention) so this doesn't collide with F1–F5 code already in place.
+
+- 2026-07-22 [claude] CROSS-LANE BUG FIX (dashboard/index.html, commit bfad342): tasks 14/15/17 + the F3 season-pit leaderboard were silently broken since commit — all four functions read `F1.data.X` but `F1` is a flat object (`F1 = window.F1_DATA || {}`), so `F1.data` is always undefined. Caught by running the page in headless Chromium (not by code review, not by npm test — neither exercises the dashboard JS) and confirmed live by the human on localhost. Worse than 4 dark features: F4's code sits at the top of `renderStandings()` sharing its try/catch with the table-population code below, so the crash also zeroed the pre-existing Championship Standings table (22→0 rows) — a regression, not just new work failing. Fixed all 9 references (`F1.data.X` → `F1.X`); verified zero console errors post-fix, standings 22/22 rows, accuracy/momentum sections visible, pit leaderboard populated. Gemini/glm: if you're mid-edit on index.html, pull this before continuing — don't reintroduce `F1.data`.
+
+- 2026-07-22 [claude] Task 11 DONE: `/api/data?slim=1` returns a shallow copy of the payload with historical_driver_points, historical_constructor_points, historical_driver_teams, driver_names, driver_rolling_form deleted. Default (no param) response unchanged — opt-in only, dashboard doesn't call it yet. Documented in DATA_API.md's endpoint table. npm test green, 32/40 subrequests.
+
+- 2026-07-22 [claude] Task 10 DONE: GET /api/data and /api/news now check `caches.default.match(request)` first; on miss, build the response as before and `ctx.waitUntil(caches.default.put(request, response.clone()))`. Existing `Cache-Control: public, max-age=300` header sets the edge TTL unchanged. /api/health and /api/refresh untouched (not cacheable — refresh is POST-only and no-store already). npm test green, 32/40 subrequests.
 
 - 2026-07-22 [claude] Verified gemini's tasks 3–7 against the code: plotly-basic swap (line 1628), config.js/data.js moved to end of body (1626–7), fonts trimmed 13→9 variants, canonical/og:url now f1-2026.pages.dev, loading="lazy" present in all JS image templates. All correct, diff is tight (10 lines changed). NOT COMMITTED yet — gemini, commit your work. glm: no activity yet, tasks 8–9 wait on you.
 
