@@ -1456,6 +1456,10 @@
       <div class="panel-title">CONSTRUCTOR WAR — PROJECTED POINTS</div>
       <div class="ctor-bars" id="ctor-bars"></div>
     </div>
+    <div class="panel rv" style="margin-top:1.4rem">
+      <div class="panel-title">SEASON FASTEST PIT STOPS</div>
+      <div id="season-pit-stops" style="font-family:var(--font-tele); font-size:.85rem; display:flex; flex-direction:column; gap:0.4rem; margin-top:.8rem;"></div>
+    </div>
   </section>
 
   <!-- 09 DRIVERS -->
@@ -1568,7 +1572,8 @@
       </div>
       <!-- TYRE STRATEGY — shown only for completed races with OpenF1 data -->
       <div id="strategy-section" class="strategy-section" style="display:none">
-        <div class="panel-title" style="margin-bottom:.6rem">TYRE STRATEGY</div>
+        <div class="panel-title" style="margin-bottom:.6rem">TYRE STRATEGY &amp; PIT STOPS</div>
+        <div id="modal-pit-stops" style="margin-bottom:1rem; font-family:var(--font-tele); font-size:.8rem; line-height:1.5;"></div>
         <div id="strategy-chart" class="strategy-chart"></div>
         <div class="compound-legend">
           <span class="cleg soft">S SOFT</span>
@@ -2624,6 +2629,24 @@ function renderTireStrategy(race, of1) {
   const pitStops = of1.pit_stops || {};
   const totalLaps = (CIRCUIT_META[race.circuit_id] || {}).laps || 60;
 
+  const pitRowHTML = Object.entries(pitStops).map(([id, pits]) => {
+    if (!pits || pits.length === 0) return null;
+    const minDur = Math.min(...pits.map(p => p.duration).filter(Boolean));
+    return { id, num: pits.length, minDur };
+  }).filter(p => p && p.minDur && p.minDur !== Infinity)
+    .sort((a, b) => a.minDur - b.minDur)
+    .map((p, i) => {
+      const isTop = i === 0;
+      const drv = F1.driversById[p.id] || { abbr: p.id, color: '#888' };
+      return `<div style="display:inline-block; margin-right:1rem; ${isTop ? 'color:var(--gold)' : 'color:var(--text-sec)'}">
+        <span style="color:${drv.color}">▉</span> ${esc(drv.abbr)}: ${p.num} stops &middot; ${p.minDur.toFixed(1)}s ${isTop ? '⚡ fastest' : ''}
+      </div>`;
+    }).join('');
+    
+  if (byId('modal-pit-stops')) {
+    byId('modal-pit-stops').innerHTML = pitRowHTML || '<span style="color:var(--text-dim)">No pit stop data for this round.</span>';
+  }
+
   // Build display order: race-result drivers first (if they have stints),
   // then any remaining stints drivers (Jolpica only returns top 10, so P11-P20
   // stints still deserve to be shown when top-10 drivers have no stints data).
@@ -2734,6 +2757,38 @@ function renderTeams() {
     </div>`).join('');
   requestAnimationFrame(() => setTimeout(() =>
     document.querySelectorAll('#ctor-bars .ctor-fill').forEach(b => { b.style.width = b.dataset.w + '%'; }), 150));
+}
+
+function renderSeasonPitStops() {
+  if (!F1.data.openf1_race_data) return;
+  const allPits = [];
+  Object.entries(F1.data.openf1_race_data).forEach(([round, of1]) => {
+    if (!of1.pit_stops) return;
+    const rName = F1.races.find(r => r.round == round)?.name || `Round ${round}`;
+    Object.entries(of1.pit_stops).forEach(([id, pits]) => {
+      pits.forEach(p => {
+        if (p.duration) {
+          allPits.push({ id, duration: p.duration, round: rName });
+        }
+      });
+    });
+  });
+  
+  if (!allPits.length) return;
+  
+  allPits.sort((a, b) => a.duration - b.duration);
+  const top5 = allPits.slice(0, 5);
+  
+  const target = byId('season-pit-stops');
+  if (target) {
+    target.innerHTML = top5.map((p, i) => {
+      const drv = F1.driversById[p.id] || { abbr: p.id, color: '#888' };
+      return `<div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:.3rem; ${i === 0 ? 'color:var(--gold)' : 'color:var(--text-sec)'}">
+        <span><span style="color:${drv.color}">▉</span> ${esc(drv.abbr)} &middot; ${esc(p.round)}</span>
+        <span><b>${p.duration.toFixed(2)}s</b> ${i === 0 ? '⚡' : ''}</span>
+      </div>`;
+    }).join('');
+  }
 }
 
 /* ─── DRIVERS GRID + EXPLORER ─────────────────────────────────── */
@@ -3265,7 +3320,7 @@ function renderAll() {
   const steps = [
     renderHero, renderNews, renderRaceCenter, renderPodium, renderStandings,
     renderDriverBar, renderConstructorDonut, renderBattleChart, renderGauges,
-    renderH2H, renderTimeline, renderAccuracy, renderMomentum, renderCalendar, renderTeams, renderDriversGrid,
+    renderH2H, renderTimeline, renderAccuracy, renderMomentum, renderCalendar, renderTeams, renderSeasonPitStops, renderDriversGrid,
     renderHistory, renderYearExplorer, renderRegShift,
   ];
   for (const fn of steps) {
