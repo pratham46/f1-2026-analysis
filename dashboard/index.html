@@ -1332,6 +1332,7 @@
       <div class="sec-rule"></div>
       <p class="sec-sub">Real points so far vs the Monte Carlo projection over the full 22-round season.</p>
     </div>
+    <div id="title-fight-strip" class="rv" style="margin-bottom:1rem; font-family:var(--font-tele); font-size:.85rem; color:var(--text); background:var(--panel); padding:.8rem; border-left:3px solid var(--accent);"></div>
     <div class="table-wrap rv">
       <table class="standings">
         <thead>
@@ -2128,6 +2129,46 @@ function renderPodium() {
 
 /* ─── STANDINGS TABLE ─────────────────────────────────────────── */
 function renderStandings() {
+  if (F1.data.real_driver_standings_2026 && F1.data.calendar_2026) {
+    let maxRemaining = 0;
+    let racesLeft = 0;
+    F1.data.calendar_2026.forEach(r => {
+      if (r.round > F1.racesCompleted) {
+        maxRemaining += (25 + (r.sprint ? 8 : 0));
+        racesLeft++;
+      }
+    });
+    
+    const top4 = F1.data.real_driver_standings_2026.slice(0, 4);
+    const leader = top4[0];
+    
+    if (leader) {
+      let html = '';
+      if (top4.length > 1 && (leader.points - top4[1].points > maxRemaining)) {
+         html = `<div style="background:var(--accent); color:#fff; font-family:var(--font-head); font-size:1.2rem; padding:.5rem 1rem; text-align:center;">🏆 ${esc(leader.name).toUpperCase()} IS 2026 WORLD CHAMPION</div>`;
+         byId('title-fight-strip').style.padding = '0';
+         byId('title-fight-strip').style.borderLeft = 'none';
+      } else {
+         html = `<div style="margin-bottom:.5rem;"><b>${racesLeft} races left &middot; ${maxRemaining} pts still on the table</b></div>`;
+         top4.forEach((d, i) => {
+            const gap = leader.points - d.points;
+            let status = '';
+            if (i === 0) status = `<span style="color:var(--gold)">LEADER</span>`;
+            else if (gap <= maxRemaining) status = `alive, needs to outscore leader by ${gap} over ${racesLeft} races`;
+            else status = `<span style="color:var(--text-dim)">ELIMINATED</span>`;
+            
+            const drv = F1.driversById[d.driver_id] || { color: '#888' };
+            html += `<div style="display:flex; justify-content:space-between; margin-top:.2rem; border-top:1px solid var(--border); padding-top:.2rem;">
+              <span><span style="color:${drv.color}">▉</span> ${esc(d.short || d.name)}</span>
+              <span>${status}</span>
+            </div>`;
+         });
+      }
+      const tfStrip = byId('title-fight-strip');
+      if (tfStrip) tfStrip.innerHTML = html;
+    }
+  }
+
   const rows = F1.drivers.map((d, i) => {
     const p = i + 1;
     const rowCls = p <= 3 ? 'top' + p : '';
