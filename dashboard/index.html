@@ -1418,6 +1418,20 @@
     <div class="rv" id="acc-rows" style="margin-top: 1.5rem; font-family: var(--font-tele); font-size: .85rem; color: var(--text-sec); display: flex; flex-direction: column; gap: 0.4rem;"></div>
   </section>
 
+  <!-- 06.6 MOMENTUM -->
+  <section id="momentum" style="display:none">
+    <div class="sec-head rv">
+      <span class="sec-no">06.6</span>
+      <h2 class="sec-title">CHAMPIONSHIP <em>MOMENTUM</em></h2>
+      <div class="sec-rule"></div>
+      <p class="sec-sub">Points accumulated per race.</p>
+    </div>
+    <div class="rv" id="momentum-chart" style="height: 350px"></div>
+    <div class="rv" style="font-size:.7rem; color:var(--text-dim); text-align:right; margin-top:.5rem;">
+      *Cumulative race points (top-10 finishes; sprint points not included — official totals may differ slightly)
+    </div>
+  </section>
+
   <!-- 07 CALENDAR -->
   <section id="calendar">
     <div class="sec-head rv">
@@ -2376,6 +2390,54 @@ function renderAccuracy() {
   });
 }
 
+/* ─── MOMENTUM ────────────────────────────────────────────────── */
+function renderMomentum() {
+  if (F1.racesCompleted < 2 || !F1.data.real_driver_standings_2026 || !F1.data.real_race_results_2026) return;
+  
+  const top8 = F1.data.real_driver_standings_2026.slice(0, 8).map(d => d.driver_id);
+  const traces = [];
+  
+  const rounds = Array.from({length: F1.racesCompleted}, (_, i) => i + 1);
+  const roundNames = rounds.map(r => 'R' + r);
+
+  top8.forEach(driverId => {
+    let cum = 0;
+    const y = [];
+    const text = [];
+    
+    rounds.forEach(r => {
+      const race = F1.data.real_race_results_2026.find(x => x.round === r);
+      if (race && race.results) {
+        const res = race.results.find(x => x.driver_id === driverId);
+        if (res && res.points) {
+          cum += res.points;
+        }
+      }
+      y.push(cum);
+      text.push(`${F1.driversById[driverId]?.name || driverId}: ${cum} pts after R${r}`);
+    });
+    
+    traces.push({
+      x: roundNames,
+      y: y,
+      mode: 'lines+markers',
+      name: F1.driversById[driverId]?.abbr || driverId,
+      line: { color: F1.driversById[driverId]?.color || '#ffffff', width: 3 },
+      marker: { size: 6 },
+      text: text,
+      hoverinfo: 'text'
+    });
+  });
+
+  byId('momentum').style.display = 'block';
+  
+  PLOT_WHEN_VISIBLE('momentum-chart', traces, {
+    margin: { t: 10, b: 30, l: 30, r: 10 },
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 }
+  });
+}
+
 /* ─── CALENDAR GRID ───────────────────────────────────────────── */
 const CD_CLASS = { SOFT:'cd-soft', MEDIUM:'cd-medium', HARD:'cd-hard', INTERMEDIATE:'cd-inter', WET:'cd-wet' };
 const CD_SHORT  = { SOFT:'S', MEDIUM:'M', HARD:'H', INTERMEDIATE:'I', WET:'W' };
@@ -3203,7 +3265,7 @@ function renderAll() {
   const steps = [
     renderHero, renderNews, renderRaceCenter, renderPodium, renderStandings,
     renderDriverBar, renderConstructorDonut, renderBattleChart, renderGauges,
-    renderH2H, renderTimeline, renderAccuracy, renderCalendar, renderTeams, renderDriversGrid,
+    renderH2H, renderTimeline, renderAccuracy, renderMomentum, renderCalendar, renderTeams, renderDriversGrid,
     renderHistory, renderYearExplorer, renderRegShift,
   ];
   for (const fn of steps) {
