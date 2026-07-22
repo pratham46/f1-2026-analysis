@@ -13,23 +13,21 @@
   <meta name="robots" content="index, follow" />
   <meta name="author" content="F1 2026 Race Control" />
   <meta property="og:image" content="https://media.formula1.com/image/upload/c_fill,w_1200/q_auto/v1740000001/common/f1/2026/mercedes/andant01/2026mercedesandant01right.webp" />
-  <meta property="og:url" content="https://f1-2026-analysis.pages.dev/" />
+  <meta property="og:url" content="https://f1-2026.pages.dev/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="F1 2026 Race Control — Season Predictions" />
   <meta name="twitter:description" content="Live 2026 Formula 1 season predictions — real results, championship forecast, race-by-race model output." />
   <meta name="twitter:image" content="https://media.formula1.com/image/upload/c_fill,w_1200/q_auto/v1740000001/common/f1/2026/mercedes/andant01/2026mercedesandant01right.webp" />
-  <link rel="canonical" href="https://f1-2026-analysis.pages.dev/" />
+  <link rel="canonical" href="https://f1-2026.pages.dev/" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23e10600'/><text x='3' y='23' font-size='17' font-weight='900' fill='white' font-family='monospace'>F1</text></svg>" />
   <link rel="dns-prefetch" href="https://cdn.plot.ly" />
   <link rel="dns-prefetch" href="https://media.formula1.com" />
   <link rel="dns-prefetch" href="https://api.jolpi.ca" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400;1,700&family=Share+Tech+Mono&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,600;1,700&family=Titillium+Web:wght@400;600;700&family=Share+Tech+Mono&display=swap"
     rel="stylesheet" />
-  <script src="config.js"></script>
-  <script src="data.js"></script>
+
   <style>
     /* ════════════════════════════════════════════════════════════════
        RACE CONTROL — racing-theme design system
@@ -1531,7 +1529,7 @@
       </div>
       <div class="modal-flex">
         <div class="modal-track">
-          <img id="modal-track-img" src="" alt="Track layout" />
+          <img id="modal-track-img" src="" alt="Track layout" loading="lazy" />
           <div class="modal-facts" id="modal-facts"></div>
         </div>
         <div class="modal-chartside">
@@ -1577,7 +1575,7 @@
       <button class="dm-close" id="dm-close" aria-label="Close">✕</button>
       <div class="dm-hero" id="dm-hero">
         <div class="dm-ghost" id="dm-ghost">00</div>
-        <div class="dm-photo-wrap"><img class="dm-photo" id="dm-photo" alt="" /></div>
+        <div class="dm-photo-wrap"><img class="dm-photo" id="dm-photo" alt="" loading="lazy" /></div>
         <div class="dm-id">
           <div class="dm-flag" id="dm-flag">🏁</div>
           <div class="dm-name" id="dm-name">—</div>
@@ -1625,7 +1623,9 @@
   </div>
 
   <!-- CDN SCRIPTS -->
-  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="https://cdn.plot.ly/plotly-basic-2.27.0.min.js"></script>
 
   <script>
 /* ════════════════════════════════════════════════════════════════
@@ -2229,7 +2229,7 @@ function h2hCard(d, el) {
   const img = (F1.driver_images || {})[d.id];
   el.style.setProperty('--tc', d.color);
   el.innerHTML = `
-    ${img ? '<img class="h2h-photo" style="--tc:' + d.color + '" src="' + esc(img) + '" alt="' + esc(d.name) + '" onerror="this.style.visibility=\'hidden\'">' : ''}
+    ${img ? '<img class="h2h-photo" style="--tc:' + d.color + '" src="' + esc(img) + '" alt="' + esc(d.name) + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : ''}
     <div class="h2h-name">${esc(d.name)}</div>
     <div class="h2h-sub">${esc(d.teamName)} · #${d.number}</div>`;
 }
