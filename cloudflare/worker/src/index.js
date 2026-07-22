@@ -79,9 +79,21 @@ export default {
     try {
       let response;
       switch (url.pathname) {
-        case "/api/data":
-          response = json(await readData(env));
+        case "/api/data": {
+          const d = await readData(env);
+          if (url.searchParams.get("slim") === "1") {
+            const slim = { ...d };
+            delete slim.historical_driver_points;
+            delete slim.historical_constructor_points;
+            delete slim.historical_driver_teams;
+            delete slim.driver_rolling_form;
+            delete slim.driver_names;
+            response = json(slim);
+          } else {
+            response = json(d);
+          }
           break;
+        }
 
         case "/api/news": {
           const d = await readData(env);

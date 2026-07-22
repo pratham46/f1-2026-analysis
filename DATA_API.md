@@ -7,6 +7,7 @@ Single source of truth for what data exists. The dashboard reads `window.F1_DATA
 | Route | Method | Returns |
 |-------|--------|---------|
 | `/api/data` | GET | full payload (all fields below) |
+| `/api/data?slim=1` | GET | omits static historical_* blocks (seed already has them) |
 | `/api/news` | GET | `{ news, generated_at }` |
 | `/api/health` | GET | last run health + sanity |
 | `/api/refresh` | POST | 202; requires `Authorization: Bearer <REFRESH_TOKEN>` |
