@@ -17,4 +17,7 @@ node_modules/
 .dev.vars
 
 # Workspace scratch (regenerable)
-_workspace/_extracted_constants.json
+_workspace/
+
+# AI scratch/screenshots (regenerable)
+_workspace/
