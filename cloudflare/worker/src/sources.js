@@ -198,6 +198,31 @@ export async function fetchRaceResults(racesCompleted = 0) {
   return { ok: races.length > 0, races };
 }
 
+/**
+ * Race-day forecast from Open-Meteo (free, no key). Only valid for dates within
+ * the ~16-day forecast horizon; outside it the API errors and we return ok:false.
+ * @returns {{ok:boolean, weather?:{t_max:number,t_min:number,rain_prob:number,wind_max:number}}}
+ */
+export async function fetchWeather(lat, long, date) {
+  if (lat == null || long == null || !date) return { ok: false };
+  const r = await getJSON(
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}` +
+    `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max` +
+    `&timezone=UTC&start_date=${date}&end_date=${date}`
+  );
+  const d = r.ok ? r.json?.daily : null;
+  if (!d || !Array.isArray(d.temperature_2m_max) || d.temperature_2m_max[0] == null) return { ok: false };
+  return {
+    ok: true,
+    weather: {
+      t_max: d.temperature_2m_max[0],
+      t_min: d.temperature_2m_min?.[0] ?? null,
+      rain_prob: d.precipitation_probability_max?.[0] ?? null,
+      wind_max: d.wind_speed_10m_max?.[0] ?? null,
+    },
+  };
+}
+
 // ══════════════════════════════════════════════════════════════════════════════
 // OPENF1 — Real-time telemetry and session data (openf1.org)
 // Complements Jolpica: fills result gaps immediately after a race ends,

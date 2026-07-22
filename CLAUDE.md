@@ -1,5 +1,9 @@
 # F1 2026 Analysis — Project Guide
 
+## Multi-AI collaboration (active)
+
+Three AIs work this repo: **claude** (backend, `cloudflare/worker/`), **gemini** (frontend, `dashboard/`), **glm** (hygiene/tests/docs). You are **claude** — stay in your lane. Rules + task board: `AI_COLLAB.md`. Message bus: `_ai_bus/bus.md` (append-only; auto-injected into your context by a UserPromptSubmit hook). Announce claims/completions on the bus; claim tasks on the board before editing code.
+
 ## Harness: F1 2026 Cloudflare App
 
 **Goal:** Cloudflare Worker fetches live 2026 data + scrapes formula1.com → computes predictions in JS (frozen XGBoost anchor + Monte Carlo) → serves `/api/data` → static Pages dashboard renders it, with a committed `data.js` seed as offline fallback. Auto-refreshes on a race-weekend cron.
@@ -8,7 +12,7 @@
 
 **Live entry point:** the Cloudflare Worker at `cloudflare/worker/` (`npm test`, `npm run dev`, `wrangler deploy`). `scheduled()` runs daily and self-gates to race weekends. `npm run seed` regenerates `dashboard/data.js`.
 
-**Legacy (offline only):** the Python pipeline (`python src/data/pipeline.py`) and 11 archived agents (`.claude/agents/_archive/`) are kept for reference/offline seeding but are no longer the live path.
+**Legacy (offline only):** the Python pipeline (`python legacy/src/data/pipeline.py`) and 11 archived agents (`.claude/agents/_archive/`) are kept for reference/offline seeding but are no longer the live path. All legacy Python lives under `legacy/` (`src/`, `tests/`, `notebooks/`, `reports/`, root `*.py`, `pytest.ini`, `requirements.txt`).
 
 **Active agents (6):** `f1-worker`, `f1-scraper`, `f1-publish`, `f1-ui`, `f1-deploy`, `context-snapshot`.
 

@@ -70,6 +70,13 @@ if (d.races_completed_2026 > 0) {
   ok(upcoming && typeof upcoming.top5[0].win_prob === "number", "upcoming rounds carry forecast win_prob");
 }
 
+// Weather: key must exist; when populated it must be numeric and match next_race.
+ok("next_race_weather" in d, 'payload has key "next_race_weather"');
+if (d.next_race_weather) {
+  ok(typeof d.next_race_weather.t_max === "number", "weather t_max is a number");
+  ok(d.next_race_weather.circuit_id === d.next_race?.circuit_id, "weather is for the next race");
+}
+
 // Subrequest budget: assemble() reports usage and can never exceed the 40 cap
 // (free tier allows 50 fetches/invocation; the margin covers the news scrape).
 ok(typeof d._health.subrequests === "number" && d._health.subrequests <= 40,

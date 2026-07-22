@@ -20,7 +20,7 @@ import {
 import { predict } from "./predict.js";
 import { fetchLiveStandings, fetchRaceResults, fetchDriverBios, fetchCircuitData,
          fetchOpenF1Sessions, fetchOpenF1RaceResult, fetchPitStops, fetchTireStints,
-         resetSubrequestBudget, subrequestsUsed } from "./sources.js";
+         fetchWeather, resetSubrequestBudget, subrequestsUsed } from "./sources.js";
 import { scrapeNews } from "./scrape.js";
 import { buildDriverImages, buildTrackLayouts, buildTeamCars } from "./media.js";
 
@@ -284,6 +284,23 @@ export async function assemble(opts = {}) {
     else health.circuits = "kept_last_good";
   } catch { health.circuits = "error_kept_last_good"; }
 
+  // 5b. Race-day weather for the next race (Open-Meteo, 1 subrequest). Only
+  // attempted inside the ~16-day forecast horizon; keeps last-good otherwise
+  // (stale-guard: last-good is dropped if it refers to a different race).
+  const nextRace = toNextRace(racesCompleted);
+  let next_race_weather =
+    lastGood.next_race_weather && lastGood.next_race_weather.circuit_id === nextRace?.circuit_id
+      ? lastGood.next_race_weather : null;
+  try {
+    const c = nextRace ? circuit_data[nextRace.circuit_id] : null;
+    const daysOut = nextRace ? (new Date(nextRace.date) - Date.now()) / 86400000 : Infinity;
+    if (c && daysOut <= 15) {
+      const w = await fetchWeather(c.lat, c.long, nextRace.date);
+      if (w.ok) { next_race_weather = { circuit_id: nextRace.circuit_id, date: nextRace.date, ...w.weather }; health.weather = "open-meteo"; }
+      else health.weather = "kept_last_good";
+    } else health.weather = nextRace ? "outside_horizon" : "season_over";
+  } catch { health.weather = "error_kept_last_good"; }
+
   // 6. Media URLs (deterministic; cheap).
   const driver_images = buildDriverImages();
   const track_layouts = buildTrackLayouts();
@@ -313,7 +330,8 @@ export async function assemble(opts = {}) {
     calendar_2026: CALENDAR_2026,
     cancelled_races_2026: CANCELLED_2026,
     races_completed_2026: racesCompleted,
-    next_race: toNextRace(racesCompleted),
+    next_race: nextRace,
+    next_race_weather,
     real_driver_standings_2026: live.ok ? toRealDriverStandings(live) : [],
     real_constructor_standings_2026: live.ok ? (live.constructorStandings || []) : [],
     real_race_results_2026: realRaces,

@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "{ [ -f _ai_bus/bus.md ] && echo '== AI bus (recent) ==' && tail -20 _ai_bus/bus.md; } 2>/dev/null || true",
+            "timeout": 10,
+            "statusMessage": "Reading AI bus"
+          }
+        ]
+      }
+    ]
+  }
+}
