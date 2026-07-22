@@ -69,14 +69,24 @@ export default {
     const url = new URL(request.url);
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
+    // Edge-cache GET /api/data and /api/news (5-min TTL via existing Cache-Control) to cut KV reads.
+    const cacheable = request.method === "GET" && (url.pathname === "/api/data" || url.pathname === "/api/news");
+    if (cacheable) {
+      const hit = await caches.default.match(request);
+      if (hit) return hit;
+    }
+
     try {
+      let response;
       switch (url.pathname) {
         case "/api/data":
-          return json(await readData(env));
+          response = json(await readData(env));
+          break;
 
         case "/api/news": {
           const d = await readData(env);
-          return json({ news: d.news || [], generated_at: d.generated_at });
+          response = json({ news: d.news || [], generated_at: d.generated_at });
+          break;
         }
 
         case "/api/health":
@@ -100,6 +110,8 @@ export default {
         default:
           return json({ error: "not_found", routes: ["/api/data", "/api/news", "/api/health", "/api/refresh"] }, 404);
       }
+      if (cacheable) ctx.waitUntil(caches.default.put(request, response.clone()));
+      return response;
     } catch (e) {
       console.error("[worker] unhandled:", e);
       return json({ error: "internal_error" }, 500);
