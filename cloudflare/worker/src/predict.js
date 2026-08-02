@@ -43,12 +43,15 @@ const SEASON_RANK_SD_FULL_YEAR = 3.61;
 
 // Retirement rate per driver per race.
 //
-// NOT measurable from this payload: real_race_results_2026 stores only the top
-// 10 finishers, so retirements never appear in it (110 rows / 11 races = 10.0).
-// This is the modern-era approximation (~1.8 retirements per 20-car race) and
-// is the one genuinely external constant here. Tune it if full results become
-// available in the payload.
-const DNF_RATE = 0.09;
+// MEASURED, as of race_classification_2026: 44 retirements across 235 starts in
+// the first 11 rounds of 2026 (242 entries less 7 non-starts — a car that never
+// took the start did not retire from anything). This replaces the modern-era
+// ~0.09 approximation that stood while real_race_results_2026, which holds only
+// the top 10 finishers, was the sole source of results.
+//
+// It is high because 2026 is a first-year regulation set. Re-measure from
+// race_classification_2026 rather than assuming it holds next season.
+const DNF_RATE = 0.187;
 
 // Deterministic PRNG so identical inputs → identical predictions (mulberry32).
 function mulberry32(seed) {
@@ -390,7 +393,7 @@ export function predict(opts = {}) {
       season_rank_sd_full_year: SEASON_RANK_SD_FULL_YEAR,
       season_rank_sd_source: "SD of year-over-year championship rank change, 2020-2025 (91 driver-seasons)",
       dnf_rate: DNF_RATE,
-      dnf_rate_source: "modern-era approximation; not measurable from the top-10-only results payload",
+      dnf_rate_source: "measured: 44 retirements / 235 starts, 2026 rounds 1-11 (race_classification_2026)",
       leader_points: leaderPoints,
       max_points_remaining: maxRemaining,
     },

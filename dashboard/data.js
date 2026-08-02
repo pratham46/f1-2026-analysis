@@ -235,10 +235,10 @@ window.F1_DATA = {
       "team_name": "Mercedes",
       "color": "#27F4D2",
       "number": 12,
-      "predicted_points": 398.2,
+      "predicted_points": 383.8,
       "win_probability": 0.2709,
-      "championship_win_probability": 0.751,
-      "podium_probability": 0.6155,
+      "championship_win_probability": 0.759,
+      "podium_probability": 0.5736,
       "avg_predicted_position": 1,
       "current_real_points": 219,
       "current_real_position": 1,
@@ -246,7 +246,7 @@ window.F1_DATA = {
       "max_possible_points": 494,
       "points_behind_leader": 0,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 1
     },
     {
@@ -258,10 +258,10 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 44,
-      "predicted_points": 322.4,
+      "predicted_points": 311.8,
       "win_probability": 0.1355,
-      "championship_win_probability": 0.1715,
-      "podium_probability": 0.5455,
+      "championship_win_probability": 0.16,
+      "podium_probability": 0.5152,
       "avg_predicted_position": 2,
       "current_real_points": 169,
       "current_real_position": 2,
@@ -269,7 +269,7 @@ window.F1_DATA = {
       "max_possible_points": 444,
       "points_behind_leader": 50,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 6
     },
     {
@@ -281,10 +281,10 @@ window.F1_DATA = {
       "team_name": "Mercedes",
       "color": "#27F4D2",
       "number": 63,
-      "predicted_points": 294.1,
+      "predicted_points": 287.6,
       "win_probability": 0.0903,
-      "championship_win_probability": 0.0605,
-      "podium_probability": 0.4652,
+      "championship_win_probability": 0.0595,
+      "podium_probability": 0.4507,
       "avg_predicted_position": 3,
       "current_real_points": 160,
       "current_real_position": 3,
@@ -292,7 +292,7 @@ window.F1_DATA = {
       "max_possible_points": 435,
       "points_behind_leader": 59,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 6
     },
     {
@@ -304,10 +304,10 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 16,
-      "predicted_points": 255.3,
+      "predicted_points": 251.2,
       "win_probability": 0.0677,
-      "championship_win_probability": 0.012,
-      "podium_probability": 0.3718,
+      "championship_win_probability": 0.014,
+      "podium_probability": 0.3711,
       "avg_predicted_position": 4,
       "current_real_points": 138,
       "current_real_position": 4,
@@ -315,7 +315,7 @@ window.F1_DATA = {
       "max_possible_points": 413,
       "points_behind_leader": 81,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 6
     },
     {
@@ -327,10 +327,10 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 1,
-      "predicted_points": 229.5,
+      "predicted_points": 227.9,
       "win_probability": 0.0542,
-      "championship_win_probability": 0.005,
-      "podium_probability": 0.2814,
+      "championship_win_probability": 0.0055,
+      "podium_probability": 0.2965,
       "avg_predicted_position": 5,
       "current_real_points": 128,
       "current_real_position": 5,
@@ -338,7 +338,7 @@ window.F1_DATA = {
       "max_possible_points": 403,
       "points_behind_leader": 91,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 6
     },
     {
@@ -350,10 +350,10 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 3,
-      "predicted_points": 195.5,
+      "predicted_points": 196,
       "win_probability": 0.0452,
-      "championship_win_probability": 0,
-      "podium_probability": 0.2041,
+      "championship_win_probability": 0.002,
+      "podium_probability": 0.2261,
       "avg_predicted_position": 6,
       "current_real_points": 109,
       "current_real_position": 6,
@@ -361,7 +361,7 @@ window.F1_DATA = {
       "max_possible_points": 384,
       "points_behind_leader": 110,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 6
     },
     {
@@ -373,10 +373,10 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 81,
-      "predicted_points": 168.7,
+      "predicted_points": 167.3,
       "win_probability": 0.0387,
       "championship_win_probability": 0,
-      "podium_probability": 0.1729,
+      "podium_probability": 0.1719,
       "avg_predicted_position": 7,
       "current_real_points": 92,
       "current_real_position": 7,
@@ -384,7 +384,7 @@ window.F1_DATA = {
       "max_possible_points": 367,
       "points_behind_leader": 127,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 3
     },
     {
@@ -396,10 +396,10 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 6,
-      "predicted_points": 131.3,
+      "predicted_points": 132.7,
       "win_probability": 0.0339,
       "championship_win_probability": 0,
-      "podium_probability": 0.1308,
+      "podium_probability": 0.1391,
       "avg_predicted_position": 8,
       "current_real_points": 68,
       "current_real_position": 8,
@@ -407,7 +407,7 @@ window.F1_DATA = {
       "max_possible_points": 343,
       "points_behind_leader": 151,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 1
     },
     {
@@ -419,10 +419,10 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 30,
-      "predicted_points": 93.3,
+      "predicted_points": 96.8,
       "win_probability": 0.0301,
       "championship_win_probability": 0,
-      "podium_probability": 0.0775,
+      "podium_probability": 0.0901,
       "avg_predicted_position": 9,
       "current_real_points": 43,
       "current_real_position": 9,
@@ -430,7 +430,7 @@ window.F1_DATA = {
       "max_possible_points": 318,
       "points_behind_leader": 176,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 3
     },
     {
@@ -442,10 +442,10 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 10,
-      "predicted_points": 81.4,
+      "predicted_points": 85.7,
       "win_probability": 0.0271,
       "championship_win_probability": 0,
-      "podium_probability": 0.0488,
+      "podium_probability": 0.0584,
       "avg_predicted_position": 10,
       "current_real_points": 42,
       "current_real_position": 10,
@@ -453,7 +453,7 @@ window.F1_DATA = {
       "max_possible_points": 317,
       "points_behind_leader": 177,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 6
     },
     {
@@ -465,10 +465,10 @@ window.F1_DATA = {
       "team_name": "Williams",
       "color": "#64C4FF",
       "number": 55,
-      "predicted_points": 36,
+      "predicted_points": 41.1,
       "win_probability": 0.0246,
       "championship_win_probability": 0,
-      "podium_probability": 0.0316,
+      "podium_probability": 0.0371,
       "avg_predicted_position": 11,
       "current_real_points": 6,
       "current_real_position": 15,
@@ -476,7 +476,7 @@ window.F1_DATA = {
       "max_possible_points": 281,
       "points_behind_leader": 213,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 6
     },
     {
@@ -488,10 +488,10 @@ window.F1_DATA = {
       "team_name": "Haas",
       "color": "#B6BABD",
       "number": 87,
-      "predicted_points": 35.7,
+      "predicted_points": 39.6,
       "win_probability": 0.0208,
       "championship_win_probability": 0,
-      "podium_probability": 0.0141,
+      "podium_probability": 0.018,
       "avg_predicted_position": 13,
       "current_real_points": 18,
       "current_real_position": 13,
@@ -499,11 +499,34 @@ window.F1_DATA = {
       "max_possible_points": 293,
       "points_behind_leader": 201,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 2
     },
     {
       "rank": 13,
+      "driver_id": "albon",
+      "name": "Alex Albon",
+      "short": "ALB",
+      "team": "williams",
+      "team_name": "Williams",
+      "color": "#64C4FF",
+      "number": 23,
+      "predicted_points": 33,
+      "win_probability": 0.0226,
+      "championship_win_probability": 0,
+      "podium_probability": 0.0267,
+      "avg_predicted_position": 12,
+      "current_real_points": 5,
+      "current_real_position": 16,
+      "current_wins": 0,
+      "max_possible_points": 280,
+      "points_behind_leader": 214,
+      "mathematically_eliminated": false,
+      "expected_dnfs": 2.1,
+      "experience_seasons": 5
+    },
+    {
+      "rank": 14,
       "driver_id": "colapinto",
       "name": "Franco Colapinto",
       "short": "COL",
@@ -511,7 +534,7 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 43,
-      "predicted_points": 29.5,
+      "predicted_points": 32,
       "win_probability": 0.0181,
       "championship_win_probability": 0,
       "podium_probability": 0.0087,
@@ -522,31 +545,8 @@ window.F1_DATA = {
       "max_possible_points": 294,
       "points_behind_leader": 200,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 1
-    },
-    {
-      "rank": 14,
-      "driver_id": "albon",
-      "name": "Alex Albon",
-      "short": "ALB",
-      "team": "williams",
-      "team_name": "Williams",
-      "color": "#64C4FF",
-      "number": 23,
-      "predicted_points": 28,
-      "win_probability": 0.0226,
-      "championship_win_probability": 0,
-      "podium_probability": 0.0196,
-      "avg_predicted_position": 12,
-      "current_real_points": 5,
-      "current_real_position": 16,
-      "current_wins": 0,
-      "max_possible_points": 280,
-      "points_behind_leader": 214,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1,
-      "experience_seasons": 5
     },
     {
       "rank": 15,
@@ -557,10 +557,10 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "predicted_points": 27.2,
+      "predicted_points": 28.7,
       "win_probability": 0.0151,
       "championship_win_probability": 0,
-      "podium_probability": 0.0021,
+      "podium_probability": 0.003,
       "avg_predicted_position": 18,
       "current_real_points": 23,
       "current_real_position": 11,
@@ -568,7 +568,7 @@ window.F1_DATA = {
       "max_possible_points": 298,
       "points_behind_leader": 196,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 0
     },
     {
@@ -580,10 +580,10 @@ window.F1_DATA = {
       "team_name": "Aston Martin",
       "color": "#358C75",
       "number": 14,
-      "predicted_points": 13,
+      "predicted_points": 16.2,
       "win_probability": 0.0194,
       "championship_win_probability": 0,
-      "podium_probability": 0.0074,
+      "podium_probability": 0.0081,
       "avg_predicted_position": 14,
       "current_real_points": 1,
       "current_real_position": 19,
@@ -591,7 +591,7 @@ window.F1_DATA = {
       "max_possible_points": 276,
       "points_behind_leader": 218,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 5
     },
     {
@@ -603,10 +603,10 @@ window.F1_DATA = {
       "team_name": "Audi",
       "color": "#00E701",
       "number": 5,
-      "predicted_points": 11.3,
+      "predicted_points": 12.2,
       "win_probability": 0.0135,
       "championship_win_probability": 0,
-      "podium_probability": 0.0005,
+      "podium_probability": 0.0004,
       "avg_predicted_position": 20,
       "current_real_points": 10,
       "current_real_position": 14,
@@ -614,7 +614,7 @@ window.F1_DATA = {
       "max_possible_points": 285,
       "points_behind_leader": 209,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 1
     },
     {
@@ -626,10 +626,10 @@ window.F1_DATA = {
       "team_name": "Haas",
       "color": "#B6BABD",
       "number": 31,
-      "predicted_points": 8.3,
+      "predicted_points": 10.8,
       "win_probability": 0.0169,
       "championship_win_probability": 0,
-      "podium_probability": 0.0018,
+      "podium_probability": 0.003,
       "avg_predicted_position": 16,
       "current_real_points": 3,
       "current_real_position": 17,
@@ -637,7 +637,7 @@ window.F1_DATA = {
       "max_possible_points": 278,
       "points_behind_leader": 216,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 6
     },
     {
@@ -649,10 +649,10 @@ window.F1_DATA = {
       "team_name": "Cadillac",
       "color": "#C8A464",
       "number": 11,
-      "predicted_points": 3.3,
+      "predicted_points": 5.5,
       "win_probability": 0.0159,
       "championship_win_probability": 0,
-      "podium_probability": 0.0006,
+      "podium_probability": 0.0018,
       "avg_predicted_position": 17,
       "current_real_points": 0,
       "current_real_position": 22,
@@ -660,7 +660,7 @@ window.F1_DATA = {
       "max_possible_points": 275,
       "points_behind_leader": 219,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 5
     },
     {
@@ -672,7 +672,7 @@ window.F1_DATA = {
       "team_name": "Audi",
       "color": "#00E701",
       "number": 27,
-      "predicted_points": 2.3,
+      "predicted_points": 2.6,
       "win_probability": 0.0123,
       "championship_win_probability": 0,
       "podium_probability": 0,
@@ -683,7 +683,7 @@ window.F1_DATA = {
       "max_possible_points": 277,
       "points_behind_leader": 217,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 4
     },
     {
@@ -695,10 +695,10 @@ window.F1_DATA = {
       "team_name": "Aston Martin",
       "color": "#358C75",
       "number": 18,
-      "predicted_points": 1.3,
+      "predicted_points": 2.3,
       "win_probability": 0.0143,
       "championship_win_probability": 0,
-      "podium_probability": 0.0002,
+      "podium_probability": 0.0003,
       "avg_predicted_position": 19,
       "current_real_points": 0,
       "current_real_position": 20,
@@ -706,7 +706,7 @@ window.F1_DATA = {
       "max_possible_points": 275,
       "points_behind_leader": 219,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2.1,
       "experience_seasons": 6
     },
     {
@@ -718,10 +718,10 @@ window.F1_DATA = {
       "team_name": "Cadillac",
       "color": "#C8A464",
       "number": 77,
-      "predicted_points": 0.4,
+      "predicted_points": 1.1,
       "win_probability": 0.0129,
       "championship_win_probability": 0,
-      "podium_probability": 0,
+      "podium_probability": 0.0002,
       "avg_predicted_position": 21,
       "current_real_points": 0,
       "current_real_position": 21,
@@ -729,7 +729,7 @@ window.F1_DATA = {
       "max_possible_points": 275,
       "points_behind_leader": 219,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1,
+      "expected_dnfs": 2,
       "experience_seasons": 4
     }
   ],
@@ -739,8 +739,8 @@ window.F1_DATA = {
       "constructor_id": "mercedes",
       "name": "Mercedes",
       "color": "#27F4D2",
-      "predicted_points": 692.3,
-      "championship_win_probability": 0.8115,
+      "predicted_points": 671.4,
+      "championship_win_probability": 0.8185,
       "current_real_points": 379,
       "current_wins": 8
     },
@@ -749,8 +749,8 @@ window.F1_DATA = {
       "constructor_id": "ferrari",
       "name": "Ferrari",
       "color": "#E8002D",
-      "predicted_points": 577.7,
-      "championship_win_probability": 0.1835,
+      "predicted_points": 563,
+      "championship_win_probability": 0.174,
       "current_real_points": 307,
       "current_wins": 2
     },
@@ -759,8 +759,8 @@ window.F1_DATA = {
       "constructor_id": "mclaren",
       "name": "McLaren",
       "color": "#FF8000",
-      "predicted_points": 398.2,
-      "championship_win_probability": 0.005,
+      "predicted_points": 395.2,
+      "championship_win_probability": 0.0055,
       "current_real_points": 220,
       "current_wins": 1
     },
@@ -769,8 +769,8 @@ window.F1_DATA = {
       "constructor_id": "red_bull",
       "name": "Red Bull Racing",
       "color": "#3671C6",
-      "predicted_points": 326.8,
-      "championship_win_probability": 0,
+      "predicted_points": 328.7,
+      "championship_win_probability": 0.002,
       "current_real_points": 177,
       "current_wins": 0
     },
@@ -779,7 +779,7 @@ window.F1_DATA = {
       "constructor_id": "rb",
       "name": "Racing Bulls",
       "color": "#6692FF",
-      "predicted_points": 120.5,
+      "predicted_points": 125.5,
       "championship_win_probability": 0,
       "current_real_points": 66,
       "current_wins": 0
@@ -789,7 +789,7 @@ window.F1_DATA = {
       "constructor_id": "alpine",
       "name": "Alpine",
       "color": "#FF87BC",
-      "predicted_points": 110.9,
+      "predicted_points": 117.7,
       "championship_win_probability": 0,
       "current_real_points": 61,
       "current_wins": 0
@@ -799,7 +799,7 @@ window.F1_DATA = {
       "constructor_id": "williams",
       "name": "Williams",
       "color": "#64C4FF",
-      "predicted_points": 64,
+      "predicted_points": 74.1,
       "championship_win_probability": 0,
       "current_real_points": 11,
       "current_wins": 0
@@ -809,7 +809,7 @@ window.F1_DATA = {
       "constructor_id": "haas",
       "name": "Haas",
       "color": "#B6BABD",
-      "predicted_points": 44,
+      "predicted_points": 50.4,
       "championship_win_probability": 0,
       "current_real_points": 21,
       "current_wins": 0
@@ -819,7 +819,7 @@ window.F1_DATA = {
       "constructor_id": "aston_martin",
       "name": "Aston Martin",
       "color": "#358C75",
-      "predicted_points": 14.3,
+      "predicted_points": 18.5,
       "championship_win_probability": 0,
       "current_real_points": 1,
       "current_wins": 0
@@ -829,7 +829,7 @@ window.F1_DATA = {
       "constructor_id": "audi",
       "name": "Audi",
       "color": "#00E701",
-      "predicted_points": 13.6,
+      "predicted_points": 14.8,
       "championship_win_probability": 0,
       "current_real_points": 12,
       "current_wins": 0
@@ -839,7 +839,7 @@ window.F1_DATA = {
       "constructor_id": "cadillac",
       "name": "Cadillac",
       "color": "#C8A464",
-      "predicted_points": 3.7,
+      "predicted_points": 6.6,
       "championship_win_probability": 0,
       "current_real_points": 0,
       "current_wins": 0
@@ -6186,168 +6186,7 @@ window.F1_DATA = {
     },
     "3": {
       "session_key": 11253,
-      "pit_stops": {
-        "norris": [
-          {
-            "lap": 16,
-            "duration": 23.32
-          }
-        ],
-        "bearman": [
-          {
-            "lap": 16,
-            "duration": 25
-          }
-        ],
-        "leclerc": [
-          {
-            "lap": 17,
-            "duration": 22.99
-          }
-        ],
-        "colapinto": [
-          {
-            "lap": 17,
-            "duration": 23.65
-          }
-        ],
-        "piastri": [
-          {
-            "lap": 18,
-            "duration": 23.44
-          }
-        ],
-        "arvid_lindblad": [
-          {
-            "lap": 18,
-            "duration": 26.3
-          }
-        ],
-        "ocon": [
-          {
-            "lap": 19,
-            "duration": 24.63
-          }
-        ],
-        "hadjar": [
-          {
-            "lap": 19,
-            "duration": 23.7
-          }
-        ],
-        "bottas": [
-          {
-            "lap": 19,
-            "duration": 25.13
-          }
-        ],
-        "russell": [
-          {
-            "lap": 21,
-            "duration": 22.94
-          }
-        ],
-        "perez": [
-          {
-            "lap": 21,
-            "duration": 27.31
-          }
-        ],
-        "stroll": [
-          {
-            "lap": 21,
-            "duration": 25.08
-          },
-          {
-            "lap": 24,
-            "duration": 23.5
-          }
-        ],
-        "alonso": [
-          {
-            "lap": 21,
-            "duration": 26.46
-          },
-          {
-            "lap": 23,
-            "duration": 24.01
-          }
-        ],
-        "antonelli": [
-          {
-            "lap": 22,
-            "duration": 23.29
-          }
-        ],
-        "hamilton": [
-          {
-            "lap": 22,
-            "duration": 22.89
-          }
-        ],
-        "gasly": [
-          {
-            "lap": 22,
-            "duration": 24.3
-          }
-        ],
-        "max_verstappen": [
-          {
-            "lap": 22,
-            "duration": 24.49
-          }
-        ],
-        "lawson": [
-          {
-            "lap": 22,
-            "duration": 24.1
-          }
-        ],
-        "bortoleto": [
-          {
-            "lap": 22,
-            "duration": 24.63
-          }
-        ],
-        "sainz": [
-          {
-            "lap": 22,
-            "duration": 24.4
-          }
-        ],
-        "albon": [
-          {
-            "lap": 22,
-            "duration": 24.6
-          },
-          {
-            "lap": 45,
-            "duration": 23.07
-          },
-          {
-            "lap": 46,
-            "duration": 24.1
-          },
-          {
-            "lap": 47,
-            "duration": 26
-          },
-          {
-            "lap": 48,
-            "duration": 32.7
-          },
-          {
-            "lap": 49,
-            "duration": 24.3
-          }
-        ],
-        "hulkenberg": [
-          {
-            "lap": 23,
-            "duration": 23.9
-          }
-        ]
-      },
+      "pit_stops": {},
       "stints": {
         "norris": [
           {
@@ -7856,7 +7695,392 @@ window.F1_DATA = {
     },
     "6": {
       "session_key": 11299,
-      "pit_stops": {},
+      "pit_stops": {
+        "bottas": [
+          {
+            "lap": 1,
+            "duration": 26.7
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 1,
+            "duration": 25.9
+          },
+          {
+            "lap": 43,
+            "duration": 24.6
+          },
+          {
+            "lap": 58,
+            "duration": 20.3
+          },
+          {
+            "lap": 59,
+            "duration": 24.8
+          },
+          {
+            "lap": 65,
+            "duration": 22.7
+          },
+          {
+            "lap": 67,
+            "duration": 2029.9
+          },
+          {
+            "lap": 68,
+            "duration": 63.9
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 1,
+            "duration": 32.1
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 3,
+            "duration": 24.9
+          },
+          {
+            "lap": 58,
+            "duration": 26.3
+          },
+          {
+            "lap": 59,
+            "duration": 20.2
+          },
+          {
+            "lap": 65,
+            "duration": 24
+          },
+          {
+            "lap": 67,
+            "duration": 2024.7
+          },
+          {
+            "lap": 68,
+            "duration": 64.9
+          }
+        ],
+        "perez": [
+          {
+            "lap": 4,
+            "duration": 27.1
+          },
+          {
+            "lap": 9,
+            "duration": 19.7
+          },
+          {
+            "lap": 59,
+            "duration": 26
+          },
+          {
+            "lap": 65,
+            "duration": 23.8
+          },
+          {
+            "lap": 67,
+            "duration": 2026.8
+          },
+          {
+            "lap": 68,
+            "duration": 65.8
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 4,
+            "duration": 24.8
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 9,
+            "duration": 25.4
+          },
+          {
+            "lap": 59,
+            "duration": 19.9
+          },
+          {
+            "lap": 65,
+            "duration": 21.4
+          },
+          {
+            "lap": 67,
+            "duration": 2025.9
+          },
+          {
+            "lap": 68,
+            "duration": 62.6
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 12,
+            "duration": 24.8
+          },
+          {
+            "lap": 58,
+            "duration": 20.5
+          },
+          {
+            "lap": 59,
+            "duration": 19.9
+          },
+          {
+            "lap": 65,
+            "duration": 22.3
+          },
+          {
+            "lap": 67,
+            "duration": 2027
+          },
+          {
+            "lap": 68,
+            "duration": 61.9
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 28,
+            "duration": 24.1
+          },
+          {
+            "lap": 60,
+            "duration": 31.2
+          },
+          {
+            "lap": 61,
+            "duration": 24.2
+          },
+          {
+            "lap": 66,
+            "duration": 22.5
+          },
+          {
+            "lap": 68,
+            "duration": 2156.2
+          }
+        ],
+        "russell": [
+          {
+            "lap": 31,
+            "duration": 24
+          },
+          {
+            "lap": 60,
+            "duration": 35.2
+          },
+          {
+            "lap": 66,
+            "duration": 22.5
+          },
+          {
+            "lap": 68,
+            "duration": 2158.1
+          },
+          {
+            "lap": 72,
+            "duration": 19.7
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 32,
+            "duration": 24.7
+          },
+          {
+            "lap": 60,
+            "duration": 19.6
+          },
+          {
+            "lap": 66,
+            "duration": 22.3
+          },
+          {
+            "lap": 68,
+            "duration": 2156.6
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 35,
+            "duration": 25.3
+          },
+          {
+            "lap": 60,
+            "duration": 34.9
+          },
+          {
+            "lap": 61,
+            "duration": 20
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 35,
+            "duration": 25.7
+          },
+          {
+            "lap": 59,
+            "duration": 21.9
+          },
+          {
+            "lap": 65,
+            "duration": 23.3
+          },
+          {
+            "lap": 67,
+            "duration": 2025.8
+          },
+          {
+            "lap": 68,
+            "duration": 64.4
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 37,
+            "duration": 24.1
+          },
+          {
+            "lap": 61,
+            "duration": 26.8
+          },
+          {
+            "lap": 66,
+            "duration": 20.7
+          },
+          {
+            "lap": 68,
+            "duration": 2154.1
+          }
+        ],
+        "albon": [
+          {
+            "lap": 43,
+            "duration": 25.5
+          },
+          {
+            "lap": 59,
+            "duration": 19.7
+          },
+          {
+            "lap": 65,
+            "duration": 22.7
+          },
+          {
+            "lap": 67,
+            "duration": 2024.1
+          },
+          {
+            "lap": 68,
+            "duration": 62.2
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 44,
+            "duration": 25.6
+          },
+          {
+            "lap": 60,
+            "duration": 19.9
+          },
+          {
+            "lap": 66,
+            "duration": 20.3
+          },
+          {
+            "lap": 68,
+            "duration": 2146
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 45,
+            "duration": 25.5
+          },
+          {
+            "lap": 60,
+            "duration": 19.8
+          },
+          {
+            "lap": 66,
+            "duration": 23.3
+          },
+          {
+            "lap": 68,
+            "duration": 2151.5
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 48,
+            "duration": 24.2
+          },
+          {
+            "lap": 59,
+            "duration": 31.4
+          },
+          {
+            "lap": 60,
+            "duration": 20.1
+          },
+          {
+            "lap": 66,
+            "duration": 23.4
+          },
+          {
+            "lap": 68,
+            "duration": 2151.4
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 52,
+            "duration": 25.6
+          },
+          {
+            "lap": 59,
+            "duration": 19.8
+          },
+          {
+            "lap": 65,
+            "duration": 22.1
+          },
+          {
+            "lap": 67,
+            "duration": 2025.7
+          },
+          {
+            "lap": 68,
+            "duration": 61.9
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 59,
+            "duration": 20.2
+          },
+          {
+            "lap": 65,
+            "duration": 22.7
+          },
+          {
+            "lap": 67,
+            "duration": 2023
+          },
+          {
+            "lap": 68,
+            "duration": 62.5
+          }
+        ]
+      },
       "stints": {
         "max_verstappen": [
           {
@@ -10133,7 +10357,256 @@ window.F1_DATA = {
     },
     "9": {
       "session_key": 11326,
-      "pit_stops": {},
+      "pit_stops": {
+        "albon": [
+          {
+            "lap": 1,
+            "duration": 44.1
+          },
+          {
+            "lap": 14,
+            "duration": 41.2
+          },
+          {
+            "lap": 23,
+            "duration": 39.6
+          },
+          {
+            "lap": 35,
+            "duration": 31.4
+          },
+          {
+            "lap": 40,
+            "duration": 32.5
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 2,
+            "duration": 40.5
+          },
+          {
+            "lap": 36,
+            "duration": 29.5
+          },
+          {
+            "lap": 47,
+            "duration": 29
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 17,
+            "duration": 28.7
+          },
+          {
+            "lap": 38,
+            "duration": 28.9
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 17,
+            "duration": 28.9
+          },
+          {
+            "lap": 34,
+            "duration": 35.8
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 18,
+            "duration": 28.7
+          },
+          {
+            "lap": 46,
+            "duration": 46.2
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 19,
+            "duration": 29.9
+          },
+          {
+            "lap": 38,
+            "duration": 36.4
+          },
+          {
+            "lap": 47,
+            "duration": 29.6
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 20,
+            "duration": 28.8
+          },
+          {
+            "lap": 48,
+            "duration": 29.2
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 20,
+            "duration": 28.7
+          },
+          {
+            "lap": 46,
+            "duration": 29.9
+          }
+        ],
+        "perez": [
+          {
+            "lap": 21,
+            "duration": 29.3
+          },
+          {
+            "lap": 46,
+            "duration": 29.8
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 21,
+            "duration": 43.2
+          },
+          {
+            "lap": 47,
+            "duration": 31.2
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 22,
+            "duration": 29.3
+          },
+          {
+            "lap": 47,
+            "duration": 29.4
+          }
+        ],
+        "russell": [
+          {
+            "lap": 23,
+            "duration": 28.6
+          },
+          {
+            "lap": 34,
+            "duration": 28.3
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 23,
+            "duration": 34.8
+          },
+          {
+            "lap": 48,
+            "duration": 28.7
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 23,
+            "duration": 33.6
+          },
+          {
+            "lap": 48,
+            "duration": 28.7
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 25,
+            "duration": 28.4
+          },
+          {
+            "lap": 48,
+            "duration": 28.8
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 26,
+            "duration": 28.6
+          },
+          {
+            "lap": 47,
+            "duration": 29.9
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 27,
+            "duration": 28.9
+          },
+          {
+            "lap": 47,
+            "duration": 32.1
+          }
+        ],
+        "norris": [
+          {
+            "lap": 28,
+            "duration": 28.8
+          },
+          {
+            "lap": 38,
+            "duration": 29.8
+          },
+          {
+            "lap": 48,
+            "duration": 28.4
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 28,
+            "duration": 28.7
+          },
+          {
+            "lap": 47,
+            "duration": 28.5
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 29,
+            "duration": 29.9
+          },
+          {
+            "lap": 47,
+            "duration": 30.2
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 29,
+            "duration": 31.5
+          },
+          {
+            "lap": 46,
+            "duration": 29.5
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 35,
+            "duration": 28.9
+          },
+          {
+            "lap": 41,
+            "duration": 41.2
+          },
+          {
+            "lap": 43,
+            "duration": 33.6
+          }
+        ]
+      },
       "stints": {
         "albon": [
           {
@@ -12160,8 +12633,8 @@ window.F1_DATA = {
     "live": "jolpica:11rounds",
     "results": "jolpica:11races",
     "news": "scraped:8",
-    "scrapedAt": "2026-08-02T19:56:09.536Z",
-    "openf1": "enriched:6races",
+    "scrapedAt": "2026-08-02T20:34:09.105Z",
+    "openf1": "enriched:5races",
     "bios": "jolpica:31",
     "circuits": "jolpica:24",
     "weather": "outside_horizon",
@@ -12174,7 +12647,7 @@ window.F1_DATA = {
     "points_cap_ok": true,
     "champion_prob_ok": true,
     "prob_sum": 1,
-    "max_points": 398.2,
+    "max_points": 383.8,
     "passed": true
   },
   "circuit_paths": {

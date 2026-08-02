@@ -58,9 +58,15 @@ ok(experienceSeasons("antonelli") === 1, `antonelli has one (got ${experienceSea
 ok(experienceSeasons("nobody_at_all") === 0, "unknown driver has no history");
 
 // --- DNF risk ---------------------------------------------------------------
+// Track the rate rather than restating it: the previous version hard-coded the
+// band around a 0.09 guess, so measuring the real rate failed the test instead
+// of the model. What must hold is that simulated retirements match the rate the
+// metadata claims — 11 races remaining, so rate * 11, sampling noise aside.
 const ant = p.driver_standings.find((d) => d.driver === "antonelli");
-ok(ant.expected_dnfs > 0.5 && ant.expected_dnfs < 2,
-  `expected DNFs over 11 remaining races is ~1 (got ${ant.expected_dnfs})`);
+const expectedDnfs = p.metadata.dnf_rate * 11;
+ok(Math.abs(ant.expected_dnfs - expectedDnfs) < 0.4,
+  `expected DNFs should track the declared rate ${p.metadata.dnf_rate} over 11 races ` +
+  `(~${expectedDnfs.toFixed(2)}, got ${ant.expected_dnfs})`);
 
 // --- Arithmetic elimination -------------------------------------------------
 // Strict definition: max attainable < leader's CURRENT total.
