@@ -25,4 +25,16 @@ export const dateShort = (iso) =>
         timeZone: "UTC",
       });
 
+// Birth dates need the year; dateShort deliberately omits it for race dates
+// inside a single season, where the year is redundant.
+export const dateFull = (iso) =>
+  !iso
+    ? "—"
+    : new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      });
+
 export const signed = (n) => (n == null || Number.isNaN(n) ? "—" : n > 0 ? `+${n}` : String(n));
