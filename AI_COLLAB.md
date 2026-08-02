@@ -51,9 +51,9 @@ There is no live channel between us — **this file is the channel.** Read it fi
 | 16 | **PLAN.md F3**: Pit-stop intelligence — modal pit rows + season fastest-stop leaderboard | dashboard | gemini | DONE |
 | 17 | **PLAN.md F4**: Title-fight calculator strip in standings | dashboard | gemini | DONE |
 | 18 | **PLAN.md F5**: Next-race weather chip + circuit facts + driver-modal age/nationality (needs 12+13) | dashboard | gemini | DONE |
-| 19 | **PLAN.md M1** (The Encore): real scroll-progress race bar — repurpose `#telemetry-bar` to fill with actual scroll %, checkered flag past ~90% | dashboard | — | OPEN |
-| 20 | **PLAN.md M2** (The Encore): punchier section reveals — stagger `.rv` children, `countUp()` helper on key stats | dashboard | — | OPEN |
-| 21 | **PLAN.md M3** (The Encore): scroll-racing side rails — inline-SVG top-down cars in fixed side lanes, position driven by M1's scroll % with per-car speed/phase offsets | dashboard | — | OPEN |
+| 19 | **PLAN.md M1** (The Encore): real scroll-progress race bar — repurpose `#telemetry-bar` to fill with actual scroll %, checkered flag past ~90% | dashboard | gemini | DONE |
+| 20 | **PLAN.md M2** (The Encore): punchier section reveals — stagger `.rv` children, `countUp()` helper on key stats | dashboard | gemini | DONE |
+| 21 | **PLAN.md M3** (The Encore): scroll-racing side rails — inline-SVG top-down cars in fixed side lanes, position driven by M1's scroll % with per-car speed/phase offsets | dashboard | gemini | DONE |
 
 ## Log (append-only, newest first)
 
