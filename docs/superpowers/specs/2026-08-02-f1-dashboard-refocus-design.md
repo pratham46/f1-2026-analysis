@@ -134,11 +134,22 @@ the champion's team token, it matches the existing SVG side-rail cars visually, 
 adds no asset download. GSAP ScrollTrigger scrubs camera position and car rotation across
 the pinned hero. Static fallback: the existing hero composition, unchanged.
 
-**The Season So Far — track flythrough.** Circuit outlines already in `track_layouts` are
-traced into a `CatmullRomCurve3`, extruded into a ribbon, and a camera flies along the
-curve when a round is opened. No model licensing, no new data — it reuses assets already
-in the payload. Rendered inside the race modal, mounted on open and disposed on close.
-Static fallback: the existing flat track-layout image.
+**The Season So Far — track flythrough.** Circuits are traced from **OpenF1 car-location
+telemetry**: one flying lap per session, decimated to ~150 points, normalised, and stored
+as an additive `circuit_paths` key by a new seed-time enrichment script. The path becomes
+a `CatmullRomCurve3`, extruded into a ribbon, and a camera flies along it when a round is
+opened. Rendered inside the race modal, mounted on open and disposed on close. Static
+fallback: the existing flat track-layout image.
+
+*This replaces an earlier plan to trace the `track_layouts` assets. Those are remote raster
+`.webp` files on media.formula1.com — untraceable, and a canvas read would be CORS-blocked.
+There is no circuit geometry anywhere else in the payload: `openf1_race_data` carries only
+`session_key`, `pit_stops` and `stints`, and `circuit_data_2026` a single lat/long point.*
+
+Verified against live OpenF1 before committing to it: 293–352 location samples per flying
+lap, with the trace closing to within 1.2–2.5% of circuit span across Melbourne, Barcelona
+and Shanghai. **Coverage is the 11 completed rounds only** — the remaining circuits have no
+session key until raced, and fall back per-circuit to the flat layout image.
 
 **Shared constraints:** one `WebGLRenderer` per feature, both created lazily on first
 visibility and disposed when the section leaves the viewport or the modal closes;
