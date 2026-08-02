@@ -787,6 +787,11 @@ Every section task follows the same shape. Read this preamble once, then the per
 - Import colours only via `teamColor()`; charts only via `js/lib/charts.js`
 - Mark reveal targets with `data-reveal`
 - Verify: Playwright — section visible, no console errors, every chart reports `clientWidth > 0` and ≥1 trace
+- **Call `browser_close` before every verification navigate.** Playwright's browser
+  context caches ES modules across navigations even when the server sends
+  `Cache-Control: no-store`, so without it you will verify the previous version of the
+  file and believe a change worked when it did not. Serve via `python scripts/serve.py`,
+  never `python -m http.server` — the latter sends no cache headers at all.
 - Run `node scripts/check-tokens.mjs`
 - Commit as `[claude] Section: <name>`
 

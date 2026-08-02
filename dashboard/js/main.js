@@ -107,6 +107,12 @@ async function boot() {
   await paint(seed, "seed");
   initReveals(); // after first paint, so every [data-reveal] exists
 
+  // Sections start hidden and are revealed by paint(), so the browser had
+  // nothing to scroll to when it processed the incoming hash. Re-apply it.
+  if (location.hash) {
+    document.querySelector(location.hash)?.scrollIntoView({ behavior: "instant" });
+  }
+
   const live = await upgradeFromWorker(seed);
   if (live) await paint(live, "live");
 }
