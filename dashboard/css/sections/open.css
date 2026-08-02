@@ -1,1 +1,81 @@
-/* open — filled in by its section task. */
+/* Cold Open — full-bleed, one idea per fold. */
+
+#open {
+  min-height: calc(100svh - var(--nav-h) - var(--ticker-h));
+  display: grid;
+  grid-template-areas: "stage";
+  align-items: end;
+  overflow: hidden;
+  border-bottom: 1px solid var(--surface-3);
+}
+
+#open > * { grid-area: stage; }
+
+.open-3d { align-self: stretch; width: 100%; height: 100%; }
+.open-3d canvas { display: block; width: 100%; height: 100%; }
+
+.open-figure {
+  justify-self: end;
+  align-self: end;
+  height: min(80svh, 46rem);
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+  /* Pushed behind the type; the name is the headline, not the photograph. */
+  opacity: 0.9;
+  mask-image: linear-gradient(to bottom, var(--surface-0) 70%, transparent);
+}
+
+/* With the 3D car mounted the still is redundant. */
+#open:has(.open-3d canvas) .open-figure { display: none; }
+
+.open-body {
+  position: relative;
+  z-index: var(--z-rail);
+  padding-block: var(--space-9) var(--space-8);
+}
+
+.open-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  max-width: var(--measure);
+  margin-bottom: var(--space-4);
+}
+
+.open-title {
+  font-size: var(--text-hero);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-7);
+}
+
+.open-given { color: var(--ink-1); font-weight: 400; }
+.open-family { color: var(--open-accent, var(--ink-0)); }
+
+.open-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, max-content));
+  gap: var(--space-3) var(--space-8);
+  margin: 0;
+}
+
+.open-stats dt {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  grid-row: 1;
+}
+
+.open-stats dd {
+  margin: 0;
+  grid-row: 2;
+  font-size: var(--text-xl);
+  color: var(--ink-0);
+}
+
+@media (max-width: 48rem) {
+  .open-figure { opacity: 0.35; }
+  .open-stats { grid-template-columns: repeat(2, 1fr); }
+  .open-stats dt { grid-row: auto; }
+  .open-stats dd { grid-row: auto; margin-bottom: var(--space-3); }
+}
