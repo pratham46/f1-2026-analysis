@@ -1,1 +1,124 @@
-/* h2h — filled in by its section task. */
+/* Head to Head — two drivers, one shared track per metric. */
+
+.h2h-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-7);
+}
+
+.h2h-pick {
+  background: var(--surface-1);
+  color: var(--ink-0);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  min-width: 16rem;
+  cursor: pointer;
+}
+
+.h2h-vs {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+}
+
+.h2h-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* --- Nameplates ---------------------------------------------------------- */
+
+.h2h-plate {
+  border-top: var(--space-1) solid var(--c);
+  padding-top: var(--space-4);
+}
+
+.h2h-plate[data-side="b"] { text-align: right; }
+
+.h2h-photo {
+  width: 100%;
+  max-width: 14rem;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius);
+  background: var(--surface-1);
+  margin-bottom: var(--space-3);
+}
+
+.h2h-plate[data-side="b"] .h2h-photo { margin-inline-start: auto; }
+
+.h2h-plate-name {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  line-height: var(--leading-tight);
+}
+
+.h2h-plate-team {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  margin-top: var(--space-1);
+}
+
+/* --- Bars ---------------------------------------------------------------- */
+
+.h2h-bars { margin: 0; }
+
+.h2h-metric {
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  margin-top: var(--space-5);
+}
+
+.h2h-row {
+  display: grid;
+  grid-template-columns: 5rem 1fr 5rem;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+}
+
+.h2h-val { font-size: var(--text-base); color: var(--ink-2); }
+.h2h-row .h2h-val:first-child { text-align: right; }
+.h2h-row .h2h-val:last-child { text-align: left; }
+
+/* The leader is marked by weight and lightness, never by a semantic hue. */
+.h2h-val[data-lead="true"] { color: var(--ink-0); font-weight: 700; }
+
+.h2h-track {
+  display: flex;
+  height: var(--space-3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.h2h-fill {
+  display: block;
+  height: 100%;
+  /* Animates on every redraw, because the change IS the information. */
+  transition: width var(--dur-base) var(--ease-out-expo);
+}
+
+@media (max-width: 60rem) {
+  .h2h-stage { grid-template-columns: 1fr; }
+  .h2h-plate[data-side="b"] { text-align: left; }
+  .h2h-plate[data-side="b"] .h2h-photo { margin-inline-start: 0; }
+  .h2h-photo { max-width: 10rem; }
+  .h2h-row { grid-template-columns: 4rem 1fr 4rem; }
+  .h2h-pick { min-width: 0; flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h2h-fill { transition: none; }
+}
