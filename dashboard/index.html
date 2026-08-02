@@ -39,7 +39,7 @@
 </head>
 <body>
 
-<a class="skip" href="#open">Skip to content</a>
+<a class="skip" href="#main-content">Skip to content</a>
 
 <div class="progress" id="progress" aria-hidden="true"><span></span></div>
 
@@ -69,11 +69,19 @@
 </header>
 
 <div class="ticker" aria-label="Latest F1 headlines">
-  <p class="ticker-label">Pit Wall</p>
+  <div class="ticker-label-group">
+    <p class="ticker-label">Pit Wall</p>
+    <button class="ticker-pause" id="ticker-pause" aria-label="Pause news" aria-pressed="false">
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="6" y="4" width="4" height="16"></rect>
+        <rect x="14" y="4" width="4" height="16"></rect>
+      </svg>
+    </button>
+  </div>
   <div class="ticker-rail"><div class="ticker-move" id="ticker-move"></div></div>
 </div>
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <!-- 1 — Cold Open ------------------------------------------------------ -->
   <section id="open" class="section section--bleed">

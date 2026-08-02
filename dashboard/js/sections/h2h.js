@@ -87,12 +87,14 @@ function bars(a, b) {
     track.className = "h2h-track";
     const fillA = document.createElement("span");
     fillA.className = "h2h-fill";
+    fillA.dataset.side = "a";
     fillA.style.background = ca;
-    fillA.style.width = `${share * 100}%`;
+    fillA.style.transform = `scaleX(${share})`;
     const fillB = document.createElement("span");
     fillB.className = "h2h-fill";
+    fillB.dataset.side = "b";
     fillB.style.background = cb;
-    fillB.style.width = `${(1 - share) * 100}%`;
+    fillB.style.transform = `scaleX(${1 - share})`;
     track.append(fillA, fillB);
 
     const right = document.createElement("span");

@@ -63,7 +63,13 @@ function renderTicker(data) {
     return a;
   });
   // Duplicated so the -50% translate loops seamlessly.
-  rail.replaceChildren(...items, ...items.map((n) => n.cloneNode(true)));
+  const clones = items.map((n) => {
+    const clone = n.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.tabIndex = -1;
+    return clone;
+  });
+  rail.replaceChildren(...items, ...clones);
 }
 
 function renderFooter(data, source) {
@@ -82,17 +88,45 @@ function initNav() {
     const open = links.hasAttribute("data-open");
     links.toggleAttribute("data-open", !open);
     btn.setAttribute("aria-expanded", String(!open));
+    if (!open) {
+      const firstLink = links.querySelector("a");
+      if (firstLink) firstLink.focus();
+    }
   });
   links.addEventListener("click", (e) => {
     if (e.target.tagName === "A") {
       links.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
+      const hash = new URL(e.target.href, window.location.href).hash;
+      const target = document.querySelector(hash);
+      if (target) {
+        target.setAttribute("tabindex", "-1");
+        target.focus();
+      } else {
+        btn.focus();
+      }
     }
+  });
+}
+
+function initTicker() {
+  const pauseBtn = document.getElementById("ticker-pause");
+  if (!pauseBtn) return;
+  
+  const pauseIcon = `<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
+  const playIcon = `<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
+  
+  pauseBtn.addEventListener("click", () => {
+    const pressed = pauseBtn.getAttribute("aria-pressed") === "true";
+    pauseBtn.setAttribute("aria-pressed", String(!pressed));
+    pauseBtn.setAttribute("aria-label", !pressed ? "Play news" : "Pause news");
+    pauseBtn.innerHTML = !pressed ? playIcon : pauseIcon;
   });
 }
 
 async function boot() {
   initNav();
+  initTicker();
   initModal();
   initScrollProgress(document.getElementById("progress"));
 

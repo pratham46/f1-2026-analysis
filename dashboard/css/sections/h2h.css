@@ -96,7 +96,7 @@
 .h2h-val[data-lead="true"] { color: var(--ink-0); font-weight: 700; }
 
 .h2h-track {
-  display: flex;
+  position: relative;
   height: var(--space-3);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -104,10 +104,22 @@
 }
 
 .h2h-fill {
-  display: block;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
   /* Animates on every redraw, because the change IS the information. */
-  transition: width var(--dur-base) var(--ease-out-expo);
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.h2h-fill[data-side="a"] {
+  left: 0;
+  transform-origin: left;
+}
+
+.h2h-fill[data-side="b"] {
+  right: 0;
+  transform-origin: right;
 }
 
 @media (max-width: 60rem) {
