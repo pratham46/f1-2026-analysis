@@ -1,0 +1,348 @@
+/* ============================================================================
+   Reset, typography, layout primitives, chrome, modal shell, reveal system.
+   Consumes tokens only — no raw hex, no raw px. See scripts/check-tokens.mjs.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--ticker-h) + var(--space-4));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--ink-0);
+  font-family: var(--font-body);
+  font-stretch: var(--stretch-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+::selection { background: var(--ink-0); color: var(--surface-0); }
+
+:focus-visible {
+  outline: var(--space-1) solid var(--ink-0);
+  outline-offset: var(--space-1);
+  border-radius: var(--radius-sm);
+}
+
+/* --- Type ---------------------------------------------------------------- */
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+  margin: 0;
+}
+
+p { text-wrap: pretty; margin: 0; }
+
+.num, .mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Layout -------------------------------------------------------------- */
+
+.shell { width: var(--shell); margin-inline: auto; }
+
+.section { padding-block: var(--section-pad); position: relative; }
+.section--bleed { padding-block: 0; }
+.section[hidden] { display: none; }
+
+.section-title { font-size: var(--text-display); margin-bottom: var(--space-4); }
+
+.section-lede {
+  max-width: var(--measure);
+  color: var(--ink-1);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-7);
+}
+
+.skip {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(-1 * var(--space-11));
+  z-index: var(--z-tooltip);
+  background: var(--surface-2);
+  color: var(--ink-0);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.skip:focus { top: var(--space-4); }
+
+/* --- Scroll progress ------------------------------------------------------
+   Native scroll-driven where supported; motion.js sets --progress otherwise. */
+
+.progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: var(--progress-h);
+  z-index: var(--z-nav);
+  background: var(--surface-2);
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--ink-0);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+}
+
+@supports (animation-timeline: scroll()) {
+  .progress > span {
+    transform: scaleX(0);
+    animation: progress-grow linear both;
+    animation-timeline: scroll();
+  }
+  @keyframes progress-grow { to { transform: scaleX(1); } }
+}
+
+/* --- Nav ----------------------------------------------------------------- */
+
+.nav {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-nav);
+  height: var(--nav-h);
+  background: var(--surface-0);
+  border-bottom: 1px solid var(--surface-3);
+}
+
+.nav-inner {
+  width: var(--shell);
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav-mark {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: var(--tracking-display);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-inline-end: auto;
+}
+
+.nav-links a {
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.nav-links a:hover { color: var(--ink-0); }
+
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.nav-status .dot {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: 50%;
+  background: var(--ink-2);
+}
+.nav-status[data-source="live"] .dot { background: var(--ink-0); }
+.nav-status[data-source="seed"] .dot { background: var(--ink-2); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+@media (max-width: 60rem) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed;
+    inset-block-start: calc(var(--nav-h) + var(--ticker-h));
+    inset-inline: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--surface-3);
+    padding: var(--space-3) 0;
+    display: none;
+  }
+  .nav-links[data-open] { display: flex; }
+  .nav-links li { padding: var(--space-3) var(--space-5); }
+  .nav-links a { font-size: var(--text-base); }
+}
+
+/* --- Ticker -------------------------------------------------------------- */
+
+.ticker {
+  position: sticky;
+  inset-block-start: var(--nav-h);
+  z-index: var(--z-sticky);
+  height: var(--ticker-h);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--surface-3);
+  overflow: hidden;
+}
+
+.ticker-label {
+  flex: none;
+  padding-inline: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  border-right: 1px solid var(--surface-3);
+  line-height: var(--ticker-h);
+}
+
+.ticker-rail { overflow: hidden; flex: 1; }
+
+.ticker-move {
+  display: inline-flex;
+  gap: var(--space-7);
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  color: var(--ink-1);
+  animation: ticker-slide 60s linear infinite;
+}
+.ticker:hover .ticker-move { animation-play-state: paused; }
+
+@keyframes ticker-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.foot {
+  border-top: 1px solid var(--surface-3);
+  padding-block: var(--space-7);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+}
+.foot-note { max-width: var(--measure); margin-top: var(--space-2); }
+
+/* --- Modal --------------------------------------------------------------- */
+
+.modal {
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  color: var(--ink-0);
+  padding: 0;
+  width: min(72rem, 92vw);
+  max-height: 88vh;
+  overflow: hidden;
+}
+
+.modal::backdrop { background: var(--surface-0); opacity: 0.82; }
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--surface-3);
+}
+
+.modal-head h3 { font-size: var(--text-xl); }
+
+.modal-x {
+  background: none;
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: var(--space-5);
+  overflow-y: auto;
+  max-height: calc(88vh - var(--space-11));
+}
+
+/* --- Reveals -------------------------------------------------------------
+   Content is VISIBLE BY DEFAULT. Motion is additive. A reveal that gates
+   visibility ships a blank section in headless renderers and hidden tabs. */
+
+[data-reveal] { opacity: 1; transform: none; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 35%;
+    }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(var(--space-5)); }
+    }
+  }
+}
+
+/* JS fallback for browsers without scroll-driven CSS. */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--space-5));
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+.js-reveal [data-reveal][data-revealed] { opacity: 1; transform: none; }
+
+/* --- Utilities ----------------------------------------------------------- */
+
+.scroll-x { overflow-x: auto; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+/* --- Reduced motion ------------------------------------------------------
+   A designed path, not a fallback. Everything readable, nothing moving. */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+  [data-reveal], .js-reveal [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .ticker-move { animation: none; }
+}

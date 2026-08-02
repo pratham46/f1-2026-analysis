@@ -84,6 +84,9 @@
 
   --section-pad: clamp(4rem, 10vh, 9rem);
   --shell: min(1240px, 92vw);
+  --nav-h: 60px;
+  --ticker-h: 34px;
+  --progress-h: 3px;
 
   /* --- Radius + border ---------------------------------------------------- */
   --radius-sm: 3px;
