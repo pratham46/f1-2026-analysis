@@ -1,1 +1,142 @@
-/* season — filled in by its section task. */
+/* The Season So Far — one rail, 22 rounds, completed vs upcoming. */
+
+.sea-rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-2);
+}
+
+.sea-round {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "n name"
+    "n date"
+    "w w";
+  column-gap: var(--space-3);
+  align-items: baseline;
+  background: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+/* Upcoming rounds are outlined, not filled — the season is unfinished. */
+.sea-round[data-done="false"] {
+  background: transparent;
+  border-style: dashed;
+}
+
+.sea-round:hover { background: var(--surface-2); transform: translateY(-1px); }
+
+.sea-n {
+  grid-area: n;
+  font-size: var(--text-xl);
+  color: var(--ink-2);
+  align-self: center;
+}
+
+.sea-round[data-done="true"] .sea-n { color: var(--c, var(--ink-0)); }
+
+.sea-name {
+  grid-area: name;
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--ink-0);
+}
+
+.sea-date { grid-area: date; font-size: var(--text-xs); color: var(--ink-2); }
+
+.sea-winner {
+  grid-area: w;
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--surface-3);
+  font-size: var(--text-xs);
+}
+
+/* --- Modal --------------------------------------------------------------- */
+
+.sea-meta { color: var(--ink-2); font-size: var(--text-sm); }
+
+.sea-call {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+}
+.sea-call[data-hit="true"] { background: var(--surface-2); color: var(--ink-0); }
+.sea-call[data-hit="false"] { border-style: dashed; color: var(--ink-1); }
+
+.sea-modal-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-5);
+  align-items: start;
+}
+
+.sea-results { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+
+.sea-results th {
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink-2);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--surface-3);
+}
+
+.sea-results td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--surface-2);
+}
+
+.sea-results .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.sea-results th.num, .sea-results td.num { text-align: right; }
+.sea-gap { color: var(--ink-2); text-align: left !important; }
+
+.sea-fl {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--surface-0);
+  background: var(--ink-1);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-1);
+}
+
+.sea-track img {
+  width: 100%;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.sea-track canvas { display: block; width: 100%; border-radius: var(--radius); }
+
+.sea-empty { color: var(--ink-2); font-size: var(--text-sm); }
+
+.sea-strategy { margin-top: var(--space-6); }
+
+.sea-strategy h4 {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-3);
+}
+
+.sea-plot { width: 100%; min-height: 20rem; }
+
+@media (max-width: 60rem) {
+  .sea-modal-grid { grid-template-columns: 1fr; }
+}
