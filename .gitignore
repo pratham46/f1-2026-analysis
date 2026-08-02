@@ -21,3 +21,6 @@ _workspace/
 
 # AI scratch/screenshots (regenerable)
 _workspace/
+
+# Playwright MCP scratch output
+.playwright-mcp/
