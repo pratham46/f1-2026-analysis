@@ -1,0 +1,113 @@
+/* ============================================================================
+   The design standard. See DESIGN.md at the repo root.
+   This is the ONLY file permitted to contain raw hex or px values.
+   Enforced by scripts/check-tokens.mjs — it fails the build, not a lint warning.
+   ========================================================================== */
+
+:root {
+  /* --- Surface ------------------------------------------------------------
+     Chroma 0, deliberately. Eleven team liveries have to read true and they
+     are not colours we own; any cast would misrepresent Mercedes' cyan or
+     Alpine's pink. The consequence is the point: all chroma on the page is
+     data. Nothing is coloured for mood. */
+  --surface-0: oklch(0.14 0 0);
+  --surface-1: oklch(0.18 0 0);
+  --surface-2: oklch(0.22 0 0);
+  --surface-3: oklch(0.27 0 0);
+
+  /* --- Ink ---------------------------------------------------------------
+     --ink-2 is the muted floor and still clears 4.5:1 on --surface-3, the
+     lightest surface it can sit on. Light-grey-for-elegance is the single
+     most common reason an interface is hard to read. */
+  --ink-0: oklch(0.97 0 0);
+  --ink-1: oklch(0.80 0 0);
+  --ink-2: oklch(0.66 0 0);
+
+  /* --- Team liveries -----------------------------------------------------
+     Raw values are for fills, marks, chart series and borders, where the 3:1
+     non-text threshold applies. */
+  --team-mclaren: #FF8000;
+  --team-ferrari: #E8002D;
+  --team-red_bull: #3671C6;
+  --team-mercedes: #27F4D2;
+  --team-williams: #64C4FF;
+  --team-rb: #6692FF;
+  --team-aston_martin: #358C75;
+  --team-haas: #B6BABD;
+  --team-alpine: #FF87BC;
+  --team-audi: #00E701;
+  --team-cadillac: #C8A464;
+
+  /* Text-safe livery variants. On a near-black base it is the DARK liveries
+     that fail, not the bright ones. Lightness raised, hue held, so the team
+     still reads as itself. */
+  --team-ferrari-txt: #FF1A45;
+  --team-red_bull-txt: #5A8FD8;
+  --team-aston_martin-txt: #4FB89A;
+
+  /* --- Type --------------------------------------------------------------
+     Archivo is variable on wdth 62..125, so display type is the same family
+     pushed to the expanded end rather than a second typeface doing nothing.
+     Chivo Mono is the same foundry (Omnibus-Type) and carries the timing
+     figures — F1 timing is genuinely tabular, this is not mono-as-costume. */
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+  --font-mono: "Chivo Mono", ui-monospace, monospace;
+  --stretch-display: 125%;
+  --stretch-body: 100%;
+
+  --text-hero: clamp(2.5rem, 7vw, 5.5rem);
+  --text-display: clamp(2rem, 4vw, 3.25rem);
+  --text-xl: 1.75rem;
+  --text-lg: 1.3125rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+  --leading-tight: 1.1;
+  --leading-body: 1.6;
+  --tracking-display: -0.02em;
+  --measure: 68ch;
+
+  /* --- Space — 4px base --------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+
+  --section-pad: clamp(4rem, 10vh, 9rem);
+  --shell: min(1240px, 92vw);
+
+  /* --- Radius + border ---------------------------------------------------- */
+  --radius-sm: 3px;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --hairline: 1px;
+
+  /* --- Z — semantic, never arbitrary -------------------------------------- */
+  --z-base: 0;
+  --z-rail: 10;
+  --z-sticky: 20;
+  --z-nav: 30;
+  --z-backdrop: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+  --z-tooltip: 70;
+
+  /* --- Motion ------------------------------------------------------------
+     Out-quint and out-expo only. No bounce, no elastic. */
+  --dur-fast: 120ms;
+  --dur-base: 240ms;
+  --dur-slow: 480ms;
+  --dur-cinematic: 900ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}

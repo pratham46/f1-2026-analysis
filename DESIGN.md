@@ -99,9 +99,14 @@ was being referenced.
 
 | Token | Family | Role |
 |---|---|---|
-| `--font-display` | **Archivo Expanded** 700 | Headlines, section titles, big numbers |
-| `--font-body` | **Archivo** 400 / 600 | All prose, labels, UI text |
+| `--font-display` | **Archivo** 700 at `font-stretch: 125%` | Headlines, section titles, big numbers |
+| `--font-body` | **Archivo** 400 / 600 at normal width | All prose, labels, UI text |
 | `--font-mono` | **Chivo Mono** 400 / 700 | Timing, lap times, gaps, positions, any tabular figure |
+
+"Archivo Expanded" is not a separate family — Archivo is a variable font with a width
+axis (`wdth` 62–125). Display type is the same family pushed to the expanded end via
+`font-stretch`, which is why the pairing costs one font download rather than two. Load it
+as `family=Archivo:wdth,wght@62..125,400..700`.
 
 One family across display and body, with committed width and weight contrast doing the
 work a timid second typeface would have done badly. Archivo is a grotesque drawn for

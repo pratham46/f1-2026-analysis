@@ -276,6 +276,10 @@ Create `dashboard/css/tokens.css` implementing DESIGN.md exactly. Fonts load via
   --font-display: "Archivo", system-ui, sans-serif;
   --font-body: "Archivo", system-ui, sans-serif;
   --font-mono: "Chivo Mono", ui-monospace, monospace;
+  /* Archivo is variable on wdth 62..125 — display type is the same family
+     pushed to the expanded end, not a second font. */
+  --stretch-display: 125%;
+  --stretch-body: 100%;
   --text-hero: clamp(2.5rem, 7vw, 5.5rem);
   --text-display: clamp(2rem, 4vw, 3.25rem);
   --text-xl: 1.75rem;
@@ -655,7 +659,7 @@ Structure only. Import map declares every CDN dependency. Keep `<script src="con
 <title>F1 2026 — Season Analysis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Expanded:wght@600;700&family=Chivo+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Chivo+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/tokens.css" />
 <link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/sections/open.css" />
