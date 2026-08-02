@@ -47,20 +47,33 @@ function driverRow(d, maxProb) {
     : `Model projects ${Math.abs(delta)} place${Math.abs(delta) > 1 ? "s" : ""} ${delta > 0 ? "higher" : "lower"} than today`;
   tr.append(move);
 
-  // A bar is only drawn where there is something to see. By mid-season the
-  // model has the title all but settled, so twenty of twenty-two rows would
-  // otherwise carry a 1px sliver that reads as noise rather than as zero.
+  // Two DIFFERENT things, and conflating them was wrong:
+  //   - probability: what the simulation thinks is likely
+  //   - elimination: what the arithmetic permits
+  // A driver can sit at 0.0% and still be mathematically alive. Only
+  // `mathematically_eliminated` may say "out"; everything else gets a number.
   const prob = d.championship_win_probability || 0;
+  const eliminated = d.mathematically_eliminated === true;
   const probCell = cell("td", null, "tf-prob");
-  if (prob >= 0.001) {
+  probCell.dataset.state = eliminated ? "out" : prob >= 0.0005 ? "live" : "longshot";
+
+  if (!eliminated && prob >= 0.0005) {
     const bar = document.createElement("span");
     bar.className = "tf-bar";
     bar.style.setProperty("--w", `${(prob / maxProb) * 100}%`);
     bar.style.setProperty("--c", colour);
     probCell.append(bar);
   }
-  const val = cell("span", prob >= 0.001 ? pct(prob, 1) : "out of contention", "tf-prob-val num");
-  probCell.dataset.live = prob >= 0.001 ? "yes" : "no";
+
+  const label = eliminated
+    ? "eliminated"
+    : prob >= 0.0005
+      ? pct(prob, 1)
+      : "<0.1%";
+  const val = cell("span", label, "tf-prob-val num");
+  if (!eliminated && d.points_behind_leader > 0) {
+    val.title = `${d.points_behind_leader} points behind · can still reach ${d.max_possible_points}`;
+  }
   probCell.append(val);
   tr.append(probCell);
 

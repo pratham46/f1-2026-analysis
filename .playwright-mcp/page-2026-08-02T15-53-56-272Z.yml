@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#open"
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "F1 2026" [ref=e6] [cursor=pointer]:
+        - /url: "#open"
+      - navigation "Sections"
+      - paragraph [ref=e7]:
+        - generic [ref=e9]: Committed seed
+      - button "Open navigation" [ref=e10] [cursor=pointer]: Menu
+  - generic "Latest F1 headlines" [ref=e11]:
+    - paragraph [ref=e12]: Pit Wall
+    - generic [ref=e14]:
+      - link "Inside Liam Lawson's life away from the track" [ref=e15] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/off-the-grid-take-an-exclusive-look-into-the-off-track-life-of-liam-lawson-in-our-f1-tv-series.6Ij5uk5LE9kW3Xi7oNrAEd
+      - link "Norris, Piastri and Fornaroli in action for McLaren at Portimao" [ref=e16] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/gallery-norris-piastri-and-fornaroli-in-action-as-mclaren-complete-portimao-test-before-summer-break.5ieSzZEXkBk05APkhYN0y2
+      - link "Verstappen praises Antonelli’s first half of 2026" [ref=e17] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/hes-been-rock-solid-verstappen-praises-antonelli-for-really-impressive-first-half-of-2026.1JWlyBrN3OPCWiHQZ1438B
+      - link "Honda’s updated power unit debuts in Aston Martin filming day" [ref=e18] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/hondas-updated-power-unit-debuts-during-aston-martin-filming-day-at-hungaroring.2Q8yfGbITLLboMBt7Y0ray
+      - link "Three drivers in action at Pirelli tyre test in Hungary" [ref=e19] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/three-drivers-in-action-at-pirelli-test-in-hungary-for-development-of-2027-tyres.6ISbKVZffqSPZLNSBZsMTD
+      - link "Bearman admits he cannot wait years for Ferrari call" [ref=e20] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/bearman-insists-his-goal-is-still-ferrari-but-warns-he-cannot-waste-his-best-years-waiting.4CtgDtiDLMnVC8y8GVfztp
+      - link "The incredible statistics behind the 2026 F1 season to date" [ref=e21] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/in-numbers-from-record-crowds-to-environmental-initiatives-the-incredible-stats-behind-the-2026-f1-season-so-far.fqLZeO0jmXKY8oEu6aT34
+      - link "Domenicali reflects on ‘fascinating’ season so far" [ref=e22] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/domenicali-on-a-very-fascinating-championship-the-impact-of-antonelli-and-future-plans-for-f1.2E0Siok9mfgABBZaeh2q1T
+      - link "Inside Liam Lawson's life away from the track" [ref=e23] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/off-the-grid-take-an-exclusive-look-into-the-off-track-life-of-liam-lawson-in-our-f1-tv-series.6Ij5uk5LE9kW3Xi7oNrAEd
+      - link "Norris, Piastri and Fornaroli in action for McLaren at Portimao" [ref=e24] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/gallery-norris-piastri-and-fornaroli-in-action-as-mclaren-complete-portimao-test-before-summer-break.5ieSzZEXkBk05APkhYN0y2
+      - link "Verstappen praises Antonelli’s first half of 2026" [ref=e25] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/hes-been-rock-solid-verstappen-praises-antonelli-for-really-impressive-first-half-of-2026.1JWlyBrN3OPCWiHQZ1438B
+      - link "Honda’s updated power unit debuts in Aston Martin filming day" [ref=e26] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/hondas-updated-power-unit-debuts-during-aston-martin-filming-day-at-hungaroring.2Q8yfGbITLLboMBt7Y0ray
+      - link "Three drivers in action at Pirelli tyre test in Hungary" [ref=e27] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/three-drivers-in-action-at-pirelli-test-in-hungary-for-development-of-2027-tyres.6ISbKVZffqSPZLNSBZsMTD
+      - link "Bearman admits he cannot wait years for Ferrari call" [ref=e28] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/bearman-insists-his-goal-is-still-ferrari-but-warns-he-cannot-waste-his-best-years-waiting.4CtgDtiDLMnVC8y8GVfztp
+      - link "The incredible statistics behind the 2026 F1 season to date" [ref=e29] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/in-numbers-from-record-crowds-to-environmental-initiatives-the-incredible-stats-behind-the-2026-f1-season-so-far.fqLZeO0jmXKY8oEu6aT34
+      - link "Domenicali reflects on ‘fascinating’ season so far" [ref=e30] [cursor=pointer]:
+        - /url: https://www.formula1.com/en/latest/article/domenicali-on-a-very-fascinating-championship-the-impact-of-antonelli-and-future-plans-for-f1.2E0Siok9mfgABBZaeh2q1T
+  - main
+  - contentinfo [ref=e31]:
+    - generic [ref=e32]:
+      - paragraph [ref=e33]: Committed seed · generated 30 Jul · 11 of 22 rounds run
+      - paragraph [ref=e34]: Predictions computed in a Cloudflare Worker from Jolpica, OpenF1 and formula1.com. Not affiliated with Formula 1.

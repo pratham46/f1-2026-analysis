@@ -98,12 +98,16 @@
   color: var(--ink-2);
 }
 
-/* Eliminated drivers say so in words rather than showing an empty bar. */
-.tf-prob[data-live="no"] .tf-prob-val {
+/* Mathematically out — stated in words, no bar. Distinct from a long shot,
+   which still gets a number because the points are still reachable. */
+.tf-prob[data-state="out"] .tf-prob-val {
   font-family: var(--font-body);
   font-style: italic;
   margin-top: 0;
+  color: var(--ink-2);
 }
+
+.tf-prob[data-state="longshot"] .tf-prob-val { margin-top: 0; }
 
 .tf-ctor-wrap { margin-top: var(--space-6); }
 .tf-table--ctor .tf-driver { min-width: 10rem; }

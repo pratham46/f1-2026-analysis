@@ -52,6 +52,14 @@ function toDriverStandings2026(pred, liveByDriver) {
       current_real_points: live.points || 0,
       current_real_position: live.position || null,
       current_wins: live.wins || 0,
+      // Arithmetic championship status — independent of the simulation. A
+      // near-zero title probability is NOT elimination while the points are
+      // still mathematically reachable.
+      max_possible_points: d.max_possible_points ?? null,
+      points_behind_leader: d.points_behind_leader ?? null,
+      mathematically_eliminated: d.mathematically_eliminated ?? false,
+      expected_dnfs: d.expected_dnfs ?? null,
+      experience_seasons: d.experience_seasons ?? null,
     };
   });
 }
