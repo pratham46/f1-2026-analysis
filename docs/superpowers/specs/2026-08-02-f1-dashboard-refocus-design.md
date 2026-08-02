@@ -73,26 +73,25 @@ here's why 2026 is different.*
 
 ### 2. Design standard
 
-Produced with the `impeccable` skill. Two artefacts:
+Produced with the `impeccable` skill. **`DESIGN.md` at the repo root is the authority** —
+it is not summarised here, to avoid two drifting copies. `dashboard/css/tokens.css`
+implements it and is the only file allowed to contain raw values.
 
-**`dashboard/css/tokens.css`** — the only file allowed to contain raw values:
-- **Colour:** surface ramp (dark base, 4 elevations), text ramp (primary/secondary/muted),
-  the 11 official team colours plus an accessible-on-dark variant of each (several 2026
-  team colours — Haas `#B6BABD`, Audi `#00E701`, Mercedes `#27F4D2` — fail contrast as
-  text on dark and need a paired variant), semantic accents (hit/miss, gain/loss, live).
-- **Type:** existing families kept (Chakra Petch display, Titillium Web body, Share Tech
-  Mono numerics) but reduced to a fixed modular scale. Tabular numerals mandatory on all
-  data.
-- **Space:** one 4px-based scale. No arbitrary margins.
-- **Elevation, radius, border** ramps.
-- **Motion:** duration and easing tokens (see §3).
+The decisions in DESIGN.md that change this spec's assumptions:
 
-**`docs/DESIGN.md`** — the written standard: when to use each token, the chart style
-contract (every Plotly chart must resolve colours from tokens via JS — Plotly cannot
-resolve `var(--x)` strings, a bug that already shipped once and made the accuracy chart
-invisible), section anatomy, accessibility floor (WCAG AA on all text, visible focus
-rings, keyboard-reachable modals, `prefers-reduced-motion`), and the rule that no section
-CSS may contain a raw hex or px value outside the token file.
+- **The palette breaks the category reflex.** The surface ramp is chroma 0 — genuinely
+  achromatic, no tinted neutral — because the 11 team liveries have to read true and any
+  cast would misrepresent colours we do not own. All chroma on the page is data-bearing.
+- **`#e10600` "F1 red" is deleted.** A generic brand red competing with Ferrari's actual
+  red was always a conflict. Ferrari red now means Ferrari.
+- **The contrast hazards are the dark liveries, not the bright ones** — Ferrari `#E8002D`,
+  Red Bull `#3671C6`, Aston Martin `#358C75` — each needing a lightened `-txt` variant.
+- **Semantic state is carried by lightness and form, never hue.** The liveries occupy most
+  of the hue wheel, so there is no free "good/bad" colour that does not collide with a
+  team. Hit/miss and gain/loss use filled/hollow marks and ▲/▼.
+- **Type changes:** Chakra Petch → **Archivo Expanded** (display) with **Archivo** as body,
+  one family with committed width/weight contrast; Share Tech Mono → **Chivo Mono** for
+  tabular timing figures. Titillium Web is dropped.
 
 ### 3. Motion system
 
@@ -209,9 +208,11 @@ Zero-build means no test framework here; verification is direct and runnable:
 
 1. `cd cloudflare/worker && npm test` — existing parity/harmony suite must stay green
    (the data contract is unchanged, so it must).
-2. `node scripts/check-tokens.mjs` (new, repo root) — asserts no raw hex or `px` values
-   appear in `dashboard/css/sections/*.css` or `dashboard/css/base.css`, exiting non-zero
-   if any do. Without it the design standard is a suggestion, not a standard.
+2. `node scripts/check-tokens.mjs` (new, repo root) — asserts no raw hex or `px` values in
+   `dashboard/css/sections/*.css` or `base.css`, and computes contrast from the OKLCH
+   token values to confirm every ink/surface pairing and every team `-txt` variant clears
+   its WCAG threshold. Exits non-zero on any failure. Without it the design standard is a
+   suggestion, not a standard.
 3. Playwright pass over the local static site: zero console errors, all 8 sections
    present, every Plotly chart reports non-zero width and at least one trace, modals open
    and close, keyboard focus reaches the modal close button.
