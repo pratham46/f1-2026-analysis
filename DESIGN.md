@@ -93,6 +93,31 @@ This is stricter than WCAG requires and it is the better design regardless: red/
 the most common colour-vision failure, and here it would also have lied about which team
 was being referenced.
 
+### The one exception — tyre compounds
+
+| Compound | Token | Value | Fill vs `--surface-1` | Label |
+|---|---|---|---|---|
+| Soft | `--tyre-soft` | `#D01E12` | 3.47:1 | `--ink-0`, 4.97:1 |
+| Medium | `--tyre-medium` | `#FFD12E` | 12.91:1 | `--surface-0`, 13.66:1 |
+| Hard | `--tyre-hard` | `#F0F0EC` | 16.46:1 | `--surface-0`, 17.42:1 |
+| Intermediate | `--tyre-intermediate` | `#43B02A` | 6.70:1 | `--surface-0`, 7.09:1 |
+| Wet | `--tyre-wet` | `#0067AD` | 3.17:1 | `--ink-0`, 5.43:1 |
+
+Compounds keep their real colour code, against the rule above. Red/yellow/white/green/blue
+is knowledge the audience already has — every F1 viewer decodes it without a legend, and
+greyscale would have thrown that away to satisfy a rule whose purpose (not colliding with
+a livery) is already met by context: compounds appear only inside the stint chart, where
+nothing is coloured by team. Colour is still not the only channel — every stint carries
+its letter, and a key lists the compounds that race actually ran.
+
+Values are F1's own except soft, darkened from `#DA291C` so the in-bar label clears 4.5:1
+as white text (4.46 → 4.97) while the fill still clears 3:1.
+
+**Plotly cannot parse CSS colour functions.** It understood neither `oklch()` nor `var()`,
+and instead of erroring it fell back to its own categorical palette — so every stint
+rendered a random hue and the chart looked deliberate. Always hand Plotly a literal via
+`resolveToken`, which throws on a missing token rather than returning `""`.
+
 ## Typography
 
 ### Families

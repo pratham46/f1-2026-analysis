@@ -11,18 +11,23 @@ import { dateShort } from "../lib/format.js";
 import { openModal } from "../lib/modal.js";
 import { plotWhenVisible, baseLayout, resolveToken } from "../lib/charts.js";
 
-const COMPOUND_LIGHTNESS = {
-  SOFT: 0.72, MEDIUM: 0.56, HARD: 0.94,
-  INTERMEDIATE: 0.40, WET: 0.28, UNKNOWN: 0.5,
+// Tyre compounds use their real colour code — see DESIGN.md. `ink` is the
+// label colour that clears 4.5:1 on that fill, which flips with the compound:
+// black on the light ones, white on the dark ones.
+const COMPOUNDS = {
+  SOFT: { fill: "--tyre-soft", ink: "--ink-0", label: "Soft" },
+  MEDIUM: { fill: "--tyre-medium", ink: "--surface-0", label: "Medium" },
+  HARD: { fill: "--tyre-hard", ink: "--surface-0", label: "Hard" },
+  INTERMEDIATE: { fill: "--tyre-intermediate", ink: "--surface-0", label: "Inter" },
+  WET: { fill: "--tyre-wet", ink: "--ink-0", label: "Wet" },
+  UNKNOWN: { fill: "--tyre-unknown", ink: "--surface-0", label: "Unknown" },
 };
 
-// Tyre compounds are a fixed vocabulary with real-world colours (red/yellow/
-// white), but those collide head-on with the liveries. Encode by lightness
-// instead and label every stint — the compound name is on the bar.
-const compoundShade = (c) => {
-  const l = COMPOUND_LIGHTNESS[c] ?? 0.5;
-  return `oklch(${l} 0 0)`;
-};
+// Plotly parses CSS colour FUNCTIONS poorly — it understood neither the
+// oklch() strings this used to emit nor a var() reference, and silently fell
+// back to its own categorical palette, so every stint came out a random hue.
+// resolveToken hands it a literal hex, which it does understand.
+const compound = (c) => COMPOUNDS[c] || COMPOUNDS.UNKNOWN;
 
 function resultsTable(race, data) {
   const table = document.createElement("table");
@@ -71,7 +76,25 @@ function strategyChart(round, data) {
   h.textContent = "Tyre strategy";
   const plotEl = document.createElement("div");
   plotEl.className = "sea-plot";
-  wrap.append(h, plotEl);
+
+  // Key for the compounds this race actually ran — a wet-race legend on a dry
+  // race is noise.
+  const used = new Set();
+  for (const list of Object.values(stints)) for (const s of list) used.add(s.compound);
+  const key = document.createElement("ul");
+  key.className = "sea-tyre-key";
+  for (const name of Object.keys(COMPOUNDS)) {
+    if (!used.has(name)) continue;
+    const c = COMPOUNDS[name];
+    const li = document.createElement("li");
+    const dot = document.createElement("span");
+    dot.className = "sea-tyre-dot";
+    dot.style.background = `var(${c.fill})`;
+    li.append(dot, document.createTextNode(c.label));
+    key.append(li);
+  }
+
+  wrap.append(h, key, plotEl);
 
   // Order drivers by finishing position so the chart reads like the result.
   const order = [];
@@ -86,17 +109,18 @@ function strategyChart(round, data) {
       for (const s of stints[id]) {
         const start = s.lap_start || 1;
         const end = s.lap_end || start;
+        const c = compound(s.compound);
         traces.push({
           type: "bar",
           orientation: "h",
           x: [Math.max(1, end - start + 1)],
           y: [driverName(data, id)],
           base: [start],
-          marker: { color: compoundShade(s.compound), line: { color: resolveToken("--surface-1"), width: 1 } },
+          marker: { color: resolveToken(c.fill), line: { color: resolveToken("--surface-1"), width: 1 } },
           text: [s.compound?.[0] || ""],
           textposition: "inside",
-          insidetextfont: { color: resolveToken("--surface-0"), size: 10 },
-          hovertemplate: `${driverName(data, id)}<br>${s.compound} · laps ${start}–${end}<extra></extra>`,
+          insidetextfont: { color: resolveToken(c.ink), size: 10 },
+          hovertemplate: `${driverName(data, id)}<br>${c.label} · laps ${start}–${end}<extra></extra>`,
           showlegend: false,
         });
       }
