@@ -28,7 +28,14 @@
    row is `1fr` of a min-height container, and a percentage height against an
    indefinite track is the same trap that made the old 3D stage square. */
 .open-figure {
-  grid-area: body;
+  /* Spans BOTH rows rather than sitting in the type's. Anchored to the type
+     row he could never reach the floor of the fold — his feet stopped wherever
+     that row happened to end, which is why he hovered above the car with a gap
+     no amount of negative margin fixed honestly. Spanning to the bottom edge
+     puts him on the same ground line as the car, and the overlap becomes real
+     instead of nudged. */
+  grid-row: 1 / -1;
+  grid-column: 1;
   align-self: end;
   /* Held to the same 92rem box as the car rather than the viewport edge, so
      the two subjects share a right margin instead of missing it by 220px. */
@@ -37,14 +44,19 @@
   height: min(58svh, 34rem);
   object-fit: contain;
   object-position: bottom right;
-  /* Pushed down into the car's band so the two overlap. Ending exactly where
-     the car began made him look pasted above it; standing slightly in front of
-     the machine is how the pairing actually reads. */
-  margin-bottom: calc(var(--space-7) * -1);
-  /* Behind the type in weight, not in stacking: the headline stays the loudest
-     thing in the fold. */
+
+  /* He stands BEHIND the car, and that is what fixes him.
+     Overlapping it by a fraction left him hovering with his feet dissolving
+     into a mask fade — no ground, no contact, no explanation for where he
+     ends. Pushed deep enough that the bodywork cuts him at the shin, the car
+     becomes the thing that occludes him: a hard edge instead of a gradient,
+     and the question of where his feet land stops being asked. It is also how
+     a driver stands in an actual team photograph. */
+  z-index: var(--z-base);
+
+  /* Behind the type in weight as well as in stacking: the headline stays the
+     loudest thing in the fold. No mask — the car does that job now. */
   opacity: 0.92;
-  mask-image: linear-gradient(to bottom, var(--surface-0) 88%, transparent);
 }
 
 /* Official side-on render, full width along the floor of the fold. A 4.5:1
@@ -61,6 +73,13 @@
   max-height: min(34svh, 19rem);
   object-fit: contain;
   object-position: bottom center;
+
+  /* Lifted above the driver so the bodywork actually cuts him off. Without
+     this the car and the figure both sit at auto, and DOM order alone decides
+     — the figure comes second in the markup, so it painted in FRONT and he
+     stood on top of the car instead of behind it. The type still wins the
+     stack: `.open-body` shares this level and comes last in the markup. */
+  z-index: var(--z-rail);
 }
 
 
