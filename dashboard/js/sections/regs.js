@@ -39,6 +39,7 @@ export function render(data, root) {
   for (const [id, delta] of entries) {
     const li = document.createElement("li");
     li.className = "rg-row";
+    li.dataset.reveal = "row";
     li.dataset.dir = delta > 0 ? "up" : delta < 0 ? "down" : "level";
 
     const name = document.createElement("span");

@@ -15,7 +15,10 @@
   border-bottom: 1px solid var(--surface-3);
 }
 
-.open-body { grid-area: body; }
+/* The type block is centred in its band rather than dropped to the floor of
+   it. Bottom-aligned, everything pooled at the base of the fold and left a
+   dead strip across the top that read as a mistake instead of as air. */
+.open-body { grid-area: body; align-self: center; }
 .open-car { grid-area: car; }
 
 /* The driver shares the type's band, standing at its right edge — so the fold
@@ -30,13 +33,17 @@
      the two subjects share a right margin instead of missing it by 220px. */
   justify-self: center;
   width: min(100%, 92rem);
-  height: min(52svh, 32rem);
+  height: min(58svh, 34rem);
   object-fit: contain;
   object-position: bottom right;
+  /* Pushed down into the car's band so the two overlap. Ending exactly where
+     the car began made him look pasted above it; standing slightly in front of
+     the machine is how the pairing actually reads. */
+  margin-bottom: calc(var(--space-7) * -1);
   /* Behind the type in weight, not in stacking: the headline stays the loudest
      thing in the fold. */
   opacity: 0.92;
-  mask-image: linear-gradient(to bottom, var(--surface-0) 82%, transparent);
+  mask-image: linear-gradient(to bottom, var(--surface-0) 88%, transparent);
 }
 
 /* Official side-on render, full width along the floor of the fold. A 4.5:1
@@ -47,8 +54,10 @@
   justify-self: center;
   width: min(100%, 92rem);
   /* A 4.5:1 strip given full width grows tall on a wide screen and short on a
-     laptop. Capped against the viewport so the fold holds either way. */
-  max-height: min(44svh, 24rem);
+     laptop. Capped against the viewport so the fold holds either way — and
+     capped lower than it was, because at 44svh the car stopped being the floor
+     of the composition and became a third of it. */
+  max-height: min(34svh, 19rem);
   object-fit: contain;
   object-position: bottom center;
 }
@@ -100,6 +109,65 @@
   grid-row: 2;
   font-size: var(--text-xl);
   color: var(--ink-0);
+}
+
+/* --- The start procedure -------------------------------------------------
+   The one orchestrated moment on the page. Everything else is scroll-linked;
+   this plays once, on load, and nothing repeats it.
+
+   Ordered the way a grid slot resolves: the surface arrives, the name is set,
+   the numbers settle last. The car travels in along its own axis — a side-on
+   car sliding sideways is the only direction that isn't fighting the image.
+
+   Gated on `[data-ready]`, which open.js sets once the fold is populated.
+   Without the gate the animations start at parse time, against a hidden image
+   and two empty text nodes, and are finished before render() puts anything in
+   them — a choreography performed to an empty room.
+
+   `backwards` and not `both`: the from-state applies during the delay, and
+   after the run each element sits at its own natural style. If the engine
+   never runs the animation the fold renders exactly as authored, which is the
+   rule this page has broken twice by gating content behind a transition.
+   Total elapsed 1.05s, and no element waits more than 400ms to begin. */
+
+@media (prefers-reduced-motion: no-preference) {
+  #open[data-ready] .open-car {
+    animation: open-car var(--dur-cinematic) var(--ease-out-expo) 120ms backwards;
+  }
+  @keyframes open-car {
+    from { opacity: 0; transform: translate3d(6%, 0, 0); }
+  }
+
+  #open[data-ready] .open-figure {
+    animation: open-figure var(--dur-cinematic) var(--ease-out) 320ms backwards;
+  }
+  @keyframes open-figure {
+    from { opacity: 0; transform: translate3d(0, var(--space-5), 0); }
+  }
+
+  #open[data-ready] .open-kicker {
+    animation: open-rise var(--dur-slow) var(--ease-out) 80ms backwards;
+  }
+
+  /* The two halves of the name are wiped in sequence, given then family. The
+     surname carries the team colour and lands last, so the fold resolves on
+     the one word that is the headline. */
+  #open[data-ready] .open-given  { animation: open-wipe 760ms var(--ease-out-expo) 200ms backwards; }
+  #open[data-ready] .open-family { animation: open-wipe 760ms var(--ease-out-expo) 320ms backwards; }
+  @keyframes open-wipe {
+    from { clip-path: inset(0 0 105% 0); transform: translateY(0.14em); }
+    to   { clip-path: inset(0 0 -25% 0); transform: none; }
+  }
+
+  /* Labels and figures alternate up the stat row, so the four columns resolve
+     left to right rather than as one block. */
+  #open[data-ready] .open-stats > * {
+    animation: open-rise var(--dur-slow) var(--ease-out) backwards;
+    animation-delay: calc(400ms + var(--i, 0) * 55ms);
+  }
+  @keyframes open-rise {
+    from { opacity: 0; transform: translate3d(0, var(--space-4), 0); }
+  }
 }
 
 @media (max-width: 48rem) {

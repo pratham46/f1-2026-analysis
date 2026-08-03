@@ -17,6 +17,8 @@ function cell(tag, text, cls) {
 
 function driverRow(d, maxProb) {
   const tr = document.createElement("tr");
+  // Typed reveal: rows slide in from the reading edge as each one enters view.
+  tr.dataset.reveal = "row";
   const colour = teamColor(d.team);
   const textColour = teamColor(d.team, { text: true });
 
@@ -116,6 +118,7 @@ function constructorsTable(ctors) {
   const tbody = document.createElement("tbody");
   for (const c of ctors) {
     const tr = document.createElement("tr");
+    tr.dataset.reveal = "row";
     tr.append(cell("td", c.rank, "tf-pos num"));
     const nameCell = cell("td", null, "tf-driver");
     const mark = document.createElement("span");

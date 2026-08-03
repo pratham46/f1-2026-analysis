@@ -126,6 +126,8 @@ export function render(data, root) {
 
     const card = document.createElement("article");
     card.className = "gr-team";
+    // Cards scale up rather than travel — eleven sliding panels is busy.
+    card.dataset.reveal = "card";
     card.style.setProperty("--c", teamColor(teamId));
 
     const head = document.createElement("header");

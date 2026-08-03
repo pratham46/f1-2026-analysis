@@ -325,27 +325,85 @@ p { text-wrap: pretty; margin: 0; }
 
 /* --- Reveals -------------------------------------------------------------
    Content is VISIBLE BY DEFAULT. Motion is additive. A reveal that gates
-   visibility ships a blank section in headless renderers and hidden tabs. */
+   visibility ships a blank section in headless renderers and hidden tabs.
+
+   Reveals are TYPED, not uniform. One identical fade-up applied to every
+   section is the thing PRODUCT.md lists as an anti-reference, and it was what
+   this page did twenty times over. Each type now matches what it reveals:
+   a title is wiped like a printed line, a row slides in from the direction
+   the eye reads, a bar grows the way the quantity it encodes accumulates.
+
+   Every type rides `animation-timeline: view()`, which is per-element. A list
+   therefore cascades on its own — each row starts when that row enters, not
+   on a hand-numbered delay — and the cascade is tied to scroll position, so
+   it runs backwards when the reader scrolls back up. That is the difference
+   between motion that belongs to the page and motion played at the page. */
 
 [data-reveal] { opacity: 1; transform: none; }
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     [data-reveal] {
-      animation: reveal linear both;
+      animation: linear both;
       animation-timeline: view();
-      animation-range: entry 10% cover 35%;
+      animation-range: entry 5% cover 30%;
     }
-    @keyframes reveal {
-      from { opacity: 0; transform: translateY(var(--space-5)); }
+
+    /* Titles: a wipe. The line is uncovered rather than floated in — closer to
+       type being set than to a card arriving. */
+    [data-reveal="title"] { animation-name: rv-wipe; }
+    @keyframes rv-wipe {
+      from { clip-path: inset(0 0 100% 0); transform: translateY(0.18em); }
+      to   { clip-path: inset(0 0 -20% 0); transform: none; }
     }
+
+    /* Prose: opacity only. Supporting copy should arrive, not perform. */
+    [data-reveal="text"] { animation-name: rv-fade; animation-range: entry 5% cover 25%; }
+    @keyframes rv-fade { from { opacity: 0; } }
+
+    /* Rows: enter from the reading edge, so a table fills the way a result
+       sheet is read down. */
+    [data-reveal="row"] {
+      animation-name: rv-row;
+      animation-range: entry 2% entry 90%;
+    }
+    @keyframes rv-row {
+      from { opacity: 0; transform: translate3d(calc(var(--space-4) * -1), 0, 0); }
+    }
+
+    /* Cards: scale from just under, no travel. A grid that slides is busy. */
+    [data-reveal="card"] {
+      animation-name: rv-card;
+      animation-range: entry 2% entry 85%;
+    }
+    @keyframes rv-card {
+      from { opacity: 0; transform: scale(0.965); }
+    }
+
   }
 }
 
-/* JS fallback for browsers without scroll-driven CSS. */
+/* Reveals the view timeline cannot reach — those inside a scroll container.
+   motion.js tags them; the CSS animation is switched off so it cannot fill at
+   progress 1 and overrule the transition, and the row keeps its own direction
+   of travel so the standings still fill from the reading edge. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal][data-reveal-js] {
+    animation: none;
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out),
+                transform var(--dur-base) var(--ease-out);
+  }
+  [data-reveal="row"][data-reveal-js] { transform: translate3d(calc(var(--space-4) * -1), 0, 0); }
+  [data-reveal][data-reveal-js][data-revealed] { opacity: 1; transform: none; }
+}
+
+/* JS fallback for browsers without scroll-driven CSS. Deliberately one shared
+   transition: without a scroll timeline the per-element cascade is not
+   available, and faking it with timers is worse than a single honest fade. */
 .js-reveal [data-reveal] {
   opacity: 0;
-  transform: translateY(var(--space-5));
+  transform: translateY(var(--space-4));
   transition: opacity var(--dur-slow) var(--ease-out),
               transform var(--dur-slow) var(--ease-out);
 }
@@ -353,6 +411,11 @@ p { text-wrap: pretty; margin: 0; }
 
 /* --- Utilities ----------------------------------------------------------- */
 
+/* A horizontally scrollable box is unavoidably a scroll container in BOTH
+   axes: `overflow-x: auto` coerces the other axis away from `visible`, and
+   `clip` is coerced on to `hidden` in turn. There is no declaration that
+   scrolls x while leaving y alone, which is why `[data-reveal]` inside here
+   needs the JS path in motion.js — see `usesViewTimeline()`. */
 .scroll-x { overflow-x: auto; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
@@ -370,5 +433,16 @@ p { text-wrap: pretty; margin: 0; }
     opacity: 1 !important;
     transform: none !important;
   }
+
+  /* The ticker is the one piece of autonomous, unending motion on the page and
+     the exact thing the vestibular guidance in PRODUCT.md names. It stops. */
   .ticker-move { animation: none; }
+
+  /* The progress bar does NOT stop, and the blanket duration above would have
+     broken it. A scroll-driven animation needs `auto` duration for its range
+     to map onto the scroll; pinned to 1ms it completes immediately and the bar
+     reads full at the top of the page. It is a position indicator rather than
+     an animation — it moves only because the reader does — so reduced motion
+     keeps it and just restores the duration the timeline requires. */
+  .progress > span { animation-duration: auto !important; }
 }

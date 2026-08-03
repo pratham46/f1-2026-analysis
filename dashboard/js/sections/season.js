@@ -284,6 +284,7 @@ export function render(data, root) {
 
   for (const race of calendar) {
     const li = document.createElement("li");
+    li.dataset.reveal = "card";
     const btn = document.createElement("button");
     btn.className = "sea-round";
     btn.type = "button";

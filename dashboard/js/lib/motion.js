@@ -1,9 +1,13 @@
 // Two-tier motion.
 //
-// Native CSS scroll-driven animations do the reveals and the progress bar —
-// compositor-driven, no JS. GSAP is imported only by the sections that need
-// pinning or scrubbing. This module supplies the JS fallback for browsers
+// Native CSS scroll-driven animations do the reveals and the progress bar,
+// entirely on the compositor. This module is only the fallback for browsers
 // without scroll-driven CSS, plus count-ups.
+//
+// GSAP used to be lazily imported here for "pinned and scrubbed sequences".
+// Nothing ever called it. Two CDN entries and a loader for zero callers is
+// worse than no motion library, so it is gone — and the typed reveals it was
+// meant to power turned out to need only `animation-timeline: view()`.
 //
 // HARD RULE: content is visible by default. Reveals ADD motion to an already
 // painted page. Nothing here may hide content — transitions pause on hidden
@@ -29,12 +33,43 @@ export function onVisible(el, fn, { once = true } = {}) {
   return () => io.disconnect();
 }
 
-// Fallback only. When scroll-driven CSS is supported the stylesheet owns this
-// and we do nothing — no double animation.
+// `animation-timeline: view()` resolves against the nearest ancestor SCROLL
+// CONTAINER, not the viewport. Anything inside `.scroll-x` therefore measures
+// itself against a box it never scrolls within, reports itself permanently in
+// view, and pins its animation at progress 1 — which renders identically to a
+// reveal that has already played, so it fails silently. Both standings tables
+// lost their row cascade this way and nothing in the page looked wrong.
+//
+// There is no CSS escape: x-scrolling forces the y axis to `auto`/`hidden`
+// whatever you write. So these elements are found and driven by observer.
+//
+// Detected by ASKING the animation what it bound to, rather than re-deriving
+// the rule from overflow values. Walking ancestors looked equivalent and was
+// not: `body` carries `overflow-x: hidden`, which propagates to the viewport
+// instead of making body a scroll container, so that version condemned every
+// reveal on the page to the JS path. The browser already knows the answer.
+const usesViewTimeline = (el) => {
+  const anim = el.getAnimations().find((a) => a.timeline instanceof ViewTimeline);
+  return !anim || anim.timeline.source === document.documentElement;
+};
+
 export function initReveals() {
-  if (supportsScrollTimeline() || prefersReducedMotion()) return;
-  document.documentElement.classList.add("js-reveal");
+  if (prefersReducedMotion()) return;
+
+  // No scroll-driven CSS at all: one honest transition for everything.
+  if (!supportsScrollTimeline()) {
+    document.documentElement.classList.add("js-reveal");
+    for (const el of document.querySelectorAll("[data-reveal]")) {
+      onVisible(el, (t) => t.setAttribute("data-revealed", ""));
+    }
+    return;
+  }
+
+  // Otherwise CSS owns every reveal it can actually see, and we take only the
+  // ones its timeline cannot reach.
   for (const el of document.querySelectorAll("[data-reveal]")) {
+    if (usesViewTimeline(el)) continue;
+    el.dataset.revealJs = "";
     onVisible(el, (t) => t.setAttribute("data-revealed", ""));
   }
 }
@@ -68,26 +103,4 @@ export function initScrollProgress(el) {
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", update, { passive: true });
   update();
-}
-
-// GSAP is only needed by the two pinned/scrubbed sequences. Load it lazily so
-// the seed-first paint never waits on it, and so a CDN failure degrades to a
-// static section instead of blocking the page.
-let gsapPromise = null;
-export function loadGsap() {
-  if (prefersReducedMotion()) return Promise.resolve(null);
-  gsapPromise ||= (async () => {
-    try {
-      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
-        import("gsap"),
-        import("gsap/ScrollTrigger"),
-      ]);
-      gsap.registerPlugin(ScrollTrigger);
-      return { gsap, ScrollTrigger };
-    } catch (e) {
-      console.warn("[motion] GSAP unavailable, falling back to static", e);
-      return null;
-    }
-  })();
-  return gsapPromise;
 }

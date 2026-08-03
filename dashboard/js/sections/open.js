@@ -42,11 +42,15 @@ export function render(data, root) {
     { k: "Points today", v: leader.current_real_points, kind: "num" },
     { k: "Wins", v: leader.current_wins, kind: "num" },
   ];
-  for (const r of rows) {
+  rows.forEach((r, i) => {
     const dt = document.createElement("dt");
     dt.textContent = r.k;
     const dd = document.createElement("dd");
     dd.className = "num";
+    // Label and figure share a column index, so the start procedure resolves
+    // the row left to right by column rather than as one block.
+    dt.style.setProperty("--i", i);
+    dd.style.setProperty("--i", i);
     if (!Number.isFinite(r.v)) {
       dd.textContent = "—";
     } else if (r.kind === "pct") {
@@ -57,7 +61,7 @@ export function render(data, root) {
       countUpWhenVisible(dd, r.v, { decimals: Number.isInteger(r.v) ? 0 : 1 });
     }
     stats.append(dt, dd);
-  }
+  });
 
   // The leader's actual 2026 car, in its actual livery, from F1's own CDN.
   //
@@ -83,6 +87,12 @@ export function render(data, root) {
     fig.hidden = !photo;
     if (photo) fig.src = photo;
   }
+
+  // Releases the start procedure in open.css. The fold is populated here, not
+  // at parse time, so the choreography has to wait for its subject — otherwise
+  // it runs against a hidden image and two empty spans and is over before any
+  // of them exist.
+  root.dataset.ready = "";
 
   return true;
 }
