@@ -1,52 +1,16 @@
 // Plotly wrapper.
 //
-// Plotly cannot parse CSS colour syntax. Not `var(--token)` — that shipped once
-// and rendered the accuracy chart blank. Not `oklch()` either, which is worse:
-// rather than erroring it falls back to its own categorical palette, so a
-// broken chart looks deliberate. Since the whole surface and ink ramp is
-// authored in OKLCH, "hand Plotly the token's literal value" was never enough.
-//
-// So every colour goes through the browser first and reaches Plotly as rgb().
+// Plotly cannot parse CSS colour syntax — not `var(--token)`, which shipped an
+// invisible chart once, and not `oklch()`, which is worse because it falls back
+// to its own palette instead of erroring. lib/color.js resolves tokens to
+// rgb(); this module's job is to make sure nothing reaches Plotly any other way.
+
+import { resolveToken } from "./color.js";
+
+export { resolveToken };
 
 const cssVar = (name) =>
   getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-
-// Let the browser do the colour maths, then RASTERISE it. Neither
-// getComputedStyle nor canvas fillStyle converts: both round-trip a modern
-// colour function unchanged (CSS Color 4 keeps the computed value in its
-// authored space), so reading either back still hands Plotly `oklch(...)`.
-// Painting one pixel and reading it forces the conversion to sRGB bytes.
-// Works for oklch(), color-mix(), named colours — anything CSS can paint —
-// without shipping a colour-conversion library.
-let ctx;
-const SENTINEL = "#010203";
-function toRGB(value, name) {
-  if (!ctx) {
-    const c = document.createElement("canvas");
-    c.width = c.height = 1;
-    ctx = c.getContext("2d", { willReadFrequently: true });
-  }
-  // An invalid value is silently ignored, leaving the previous fillStyle in
-  // place. Setting a sentinel first turns that silence into a failure.
-  ctx.fillStyle = SENTINEL;
-  ctx.fillStyle = value;
-  if (ctx.fillStyle === SENTINEL && value.toLowerCase() !== SENTINEL) {
-    throw new Error(`Token ${name} is not a usable colour: ${value}`);
-  }
-  ctx.clearRect(0, 0, 1, 1);
-  ctx.fillRect(0, 0, 1, 1);
-  const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
-  return a === 255 ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${(a / 255).toFixed(3)})`;
-}
-
-export function resolveToken(name) {
-  const v = cssVar(name);
-  // Throw loudly rather than returning "" — a silent empty string is exactly
-  // how the invisible-chart bug got to production.
-  if (!v) throw new Error(`Unknown design token: ${name}`);
-  if (v.startsWith("var(")) throw new Error(`Token ${name} resolved to another var()`);
-  return toRGB(v, name);
-}
 
 export function baseLayout(overrides = {}) {
   const ink1 = resolveToken("--ink-1");

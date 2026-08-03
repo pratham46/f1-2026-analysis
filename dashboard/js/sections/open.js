@@ -7,7 +7,48 @@
 
 import { teamColor } from "../lib/data.js";
 import { pct, pts } from "../lib/format.js";
-import { countUpWhenVisible } from "../lib/motion.js";
+import { countUpWhenVisible, prefersReducedMotion } from "../lib/motion.js";
+
+// The car is an enhancement on top of a page that already reads. It is loaded
+// lazily and its failure is swallowed: no 3D must ever cost the headline.
+async function mountCar(mount, color) {
+  if (!mount || mount.dataset.mounted) return;
+  const { createStage, webglAvailable } = await import("../lib/three/stage.js");
+  if (!webglAvailable()) {
+    mount.dataset.fallback = "";
+    return;
+  }
+  const { loadCar, lightCar } = await import("../lib/three/car.js");
+  const THREE = await import("three");
+
+  mount.dataset.mounted = "1";
+  const still = prefersReducedMotion();
+  let car = null;
+  let t = 0;
+  const stage = createStage(mount, {
+    onFrame: () => {
+      if (!car || still) return; // reduced motion gets one static frame
+      t += 0.0035;
+      car.rotation.y = t;
+    },
+  });
+
+  lightCar(stage.scene, stage.renderer);
+
+  // Three-quarter front, low — the angle that shows the planform and the way
+  // the nose falls to the front wing at the same time.
+  stage.camera.position.set(5.4, 1.9, 4.5);
+  stage.camera.lookAt(new THREE.Vector3(0, 0.35, 0));
+
+  car = await loadCar(color);
+  car.rotation.y = still ? -0.6 : 0;
+  // Offset along the camera's own right/down axes so the car sits in the lower
+  // right of the fold, behind the name, rather than centred through the kicker.
+  // The pivot is the car's centre, so this moves it without skewing the spin.
+  car.position.set(1.55, 0.35, -1.85);
+  stage.scene.add(car);
+  stage.resize();
+}
 
 export function render(data, root) {
   const standings = data.driver_standings_2026 || [];
@@ -75,6 +116,11 @@ export function render(data, root) {
   } else {
     fig?.remove();
   }
+
+  mountCar(root.querySelector("#open-3d"), teamColor(leader.team)).catch(() => {
+    const m = root.querySelector("#open-3d");
+    if (m) m.dataset.fallback = "";
+  });
 
   return true;
 }
