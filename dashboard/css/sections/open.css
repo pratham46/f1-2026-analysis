@@ -41,7 +41,14 @@
      the two subjects share a right margin instead of missing it by 220px. */
   justify-self: center;
   width: min(100%, 92rem);
-  height: min(58svh, 34rem);
+  /* Taller than the true ratio, deliberately. A 1.8m driver beside a car
+     that stands under a metre is about 1.9x its height, and at that figure he
+     read as a child: his shins are hidden behind the bodywork so his VISIBLE
+     height is short of his real one, and the car is five metres long, so the
+     eye measures him against that length rather than against its height.
+     Sized up until he reads as an adult standing at the car, which is the
+     thing the composition is claiming. */
+  height: min(74svh, 44rem);
   object-fit: contain;
   object-position: bottom right;
 
