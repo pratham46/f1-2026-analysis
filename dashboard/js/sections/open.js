@@ -75,11 +75,14 @@ export function render(data, root) {
     if (carSrc) car.src = carSrc;
   }
 
-  // The driver cut-out that used to stand at the right edge is gone. It existed
-  // as the fallback for a 3D car that might not load; against a full-width
-  // livery it was a second subject competing with the first, and the reader
-  // meets Antonelli in The Grid anyway.
-  root.querySelector(".open-figure")?.remove();
+  // The driver, standing at the right. Not a fallback for anything now — the
+  // fold reads name, then driver, then the car he drives.
+  const fig = root.querySelector("#open-figure");
+  const photo = data.driver_images?.[leader.driver_id];
+  if (fig) {
+    fig.hidden = !photo;
+    if (photo) fig.src = photo;
+  }
 
   return true;
 }

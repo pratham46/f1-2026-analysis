@@ -18,6 +18,27 @@
 .open-body { grid-area: body; }
 .open-car { grid-area: car; }
 
+/* The driver shares the type's band, standing at its right edge — so the fold
+   reads name, then the man, then the car he drives, rather than stacking two
+   full-width subjects. Sized in svh rather than a percentage of the row: the
+   row is `1fr` of a min-height container, and a percentage height against an
+   indefinite track is the same trap that made the old 3D stage square. */
+.open-figure {
+  grid-area: body;
+  align-self: end;
+  /* Held to the same 92rem box as the car rather than the viewport edge, so
+     the two subjects share a right margin instead of missing it by 220px. */
+  justify-self: center;
+  width: min(100%, 92rem);
+  height: min(52svh, 32rem);
+  object-fit: contain;
+  object-position: bottom right;
+  /* Behind the type in weight, not in stacking: the headline stays the loudest
+     thing in the fold. */
+  opacity: 0.92;
+  mask-image: linear-gradient(to bottom, var(--surface-0) 82%, transparent);
+}
+
 /* Official side-on render, full width along the floor of the fold. A 4.5:1
    strip is a horizontal by nature; fighting that to make it a right-hand
    figure would only shrink it. Sitting on the bottom edge it becomes the
@@ -85,6 +106,14 @@
   .open-stats { grid-template-columns: repeat(2, 1fr); }
   .open-stats dt { grid-row: auto; }
   .open-stats dd { grid-row: auto; margin-bottom: var(--space-3); }
+
+  /* A phone fold holds a name, four figures and one subject — not two. Standing
+     at the right, the driver landed exactly under the stat values, printing
+     75.9% across his chest. Sized down he would be a thumbnail, and shuffled
+     up he would collide with the kicker instead. The car stays because it is
+     the one element carrying the team's colour; Antonelli keeps his full
+     portrait in The Grid, two sections down. */
+  .open-figure { display: none; }
 
   /* Fitted to a phone the whole car is 86px of sliver — present, but too small
      to be worth the fold it costs. Oversized and cropped instead: the nose,
