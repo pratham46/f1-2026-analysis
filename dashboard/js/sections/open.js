@@ -7,48 +7,7 @@
 
 import { teamColor } from "../lib/data.js";
 import { pct, pts } from "../lib/format.js";
-import { countUpWhenVisible, prefersReducedMotion } from "../lib/motion.js";
-
-// The car is an enhancement on top of a page that already reads. It is loaded
-// lazily and its failure is swallowed: no 3D must ever cost the headline.
-async function mountCar(mount, color) {
-  if (!mount || mount.dataset.mounted) return;
-  const { createStage, webglAvailable } = await import("../lib/three/stage.js");
-  if (!webglAvailable()) {
-    mount.dataset.fallback = "";
-    return;
-  }
-  const { loadCar, lightCar } = await import("../lib/three/car.js");
-  const THREE = await import("three");
-
-  mount.dataset.mounted = "1";
-  const still = prefersReducedMotion();
-  let car = null;
-  let t = 0;
-  const stage = createStage(mount, {
-    onFrame: () => {
-      if (!car || still) return; // reduced motion gets one static frame
-      t += 0.0035;
-      car.rotation.y = t;
-    },
-  });
-
-  lightCar(stage.scene, stage.renderer);
-
-  // Three-quarter front, low — the angle that shows the planform and the way
-  // the nose falls to the front wing at the same time.
-  stage.camera.position.set(5.4, 1.9, 4.5);
-  stage.camera.lookAt(new THREE.Vector3(0, 0.35, 0));
-
-  car = await loadCar(color);
-  car.rotation.y = still ? -0.6 : 0;
-  // Offset along the camera's own right/down axes so the car sits in the lower
-  // right of the fold, behind the name, rather than centred through the kicker.
-  // The pivot is the car's centre, so this moves it without skewing the spin.
-  car.position.set(1.55, 0.35, -1.85);
-  stage.scene.add(car);
-  stage.resize();
-}
+import { countUpWhenVisible } from "../lib/motion.js";
 
 export function render(data, root) {
   const standings = data.driver_standings_2026 || [];
@@ -100,27 +59,27 @@ export function render(data, root) {
     stats.append(dt, dd);
   }
 
-  // Driver render is the static composition — and the fallback the 3D car
-  // degrades to when WebGL is unavailable or motion is reduced.
-  const photo = data.driver_images?.[leader.driver_id];
-  let fig = root.querySelector(".open-figure");
-  if (photo) {
-    if (!fig) {
-      fig = document.createElement("img");
-      fig.className = "open-figure";
-      fig.alt = "";
-      fig.decoding = "async";
-      root.append(fig);
-    }
-    fig.src = photo;
-  } else {
-    fig?.remove();
+  // The leader's actual 2026 car, in its actual livery, from F1's own CDN.
+  //
+  // This replaces a 3D model, which is the right trade and worth saying why.
+  // The model's one advantage was recolouring itself from the champion's team
+  // token — a flat tint standing in for a livery. But every 2026 car already
+  // exists as an official render keyed by team, so the page can show the real
+  // thing: right regulations, right sponsors, right car number, ~50KB, and no
+  // licence to honour. A tinted silhouette was only ever an approximation of
+  // this image.
+  const car = root.querySelector("#open-car");
+  const carSrc = data.team_cars?.[leader.team];
+  if (car) {
+    car.hidden = !carSrc;
+    if (carSrc) car.src = carSrc;
   }
 
-  mountCar(root.querySelector("#open-3d"), teamColor(leader.team)).catch(() => {
-    const m = root.querySelector("#open-3d");
-    if (m) m.dataset.fallback = "";
-  });
+  // The driver cut-out that used to stand at the right edge is gone. It existed
+  // as the fallback for a 3D car that might not load; against a full-width
+  // livery it was a second subject competing with the first, and the reader
+  // meets Antonelli in The Grid anyway.
+  root.querySelector(".open-figure")?.remove();
 
   return true;
 }
