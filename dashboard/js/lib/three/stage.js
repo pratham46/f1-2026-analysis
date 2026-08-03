@@ -11,13 +11,26 @@
 
 import * as THREE from "three";
 
+// Memoised, and the probe context is thrown away explicitly.
+//
+// This used to answer honestly and leak while doing it: every call spun up a
+// real WebGL context and abandoned it to GC. Twenty race-modal opens probed
+// twenty times, and since browsers cap live contexts at around 16 and evict
+// the oldest, the probes alone could push out the contexts actually being
+// drawn — the exact failure this module exists to prevent. The answer cannot
+// change inside a session, so ask once.
+let webglSupport;
 export const webglAvailable = () => {
+  if (webglSupport !== undefined) return webglSupport;
   try {
     const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
+    const gl = c.getContext("webgl2") || c.getContext("webgl");
+    gl?.getExtension("WEBGL_lose_context")?.loseContext();
+    webglSupport = !!gl;
   } catch {
-    return false;
+    webglSupport = false;
   }
+  return webglSupport;
 };
 
 export function createStage(mount, { onFrame, fov = 45, far = 1000 } = {}) {

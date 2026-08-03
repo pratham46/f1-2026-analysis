@@ -10,6 +10,7 @@ import { teamColor, driverName, driverTeam, raceWinner } from "../lib/data.js";
 import { dateShort } from "../lib/format.js";
 import { openModal } from "../lib/modal.js";
 import { plotWhenVisible, baseLayout, resolveToken } from "../lib/charts.js";
+import { prefersReducedMotion } from "../lib/motion.js";
 
 // Tyre compounds use their real colour code — see DESIGN.md. `ink` is the
 // label colour that clears 4.5:1 on that fill, which flips with the compound:
@@ -139,11 +140,49 @@ function strategyChart(round, data) {
   return wrap;
 }
 
+// Mounts the 3D circuit into `host`, replacing the flat layout image. Returns
+// the teardown to hand the modal, or null if this round should keep the image:
+// no traced path, no WebGL, or a reader who asked for less motion.
+async function mountTrack(host, path, color) {
+  if (!path?.points?.length || prefersReducedMotion()) return null;
+  const { createStage, webglAvailable } = await import("../lib/three/stage.js");
+  if (!webglAvailable()) return null;
+
+  const { buildTrack, buildRacingLine, buildPaceMarker, moveMarker, orbitTo, lightTrack, TRACK_FOV } =
+    await import("../lib/three/track.js");
+
+  host.replaceChildren(); // the flat image has been superseded
+  const { mesh, curve, center, radius } = buildTrack(path);
+  const marker = buildPaceMarker(color);
+
+  let t = 0;
+  const stage = createStage(host, {
+    fov: TRACK_FOV,
+    onFrame: () => {
+      t += 0.0016; // a lap every ~10s — quick enough to trace, slow to follow
+      moveMarker(marker, curve, t);
+      // A quarter turn per lap. Enough parallax to read the loop as a solid on
+      // a plane; not so much that the shape never settles long enough to learn.
+      orbitTo(stage.camera, { center, radius }, t * Math.PI * 0.5);
+    },
+  });
+  stage.scene.add(mesh, buildRacingLine(curve, color), marker);
+  lightTrack(stage.scene);
+  moveMarker(marker, curve, 0);
+  orbitTo(stage.camera, { center, radius }, 0);
+  stage.resize();
+  return stage.dispose;
+}
+
 function openRace(round, data) {
   const race = data.real_race_results_2026?.find((r) => r.round === round);
   const cal = (data.calendar_2026 || []).find((r) => r.round === round);
   const pred = (data.race_predictions || []).find((r) => r.round === round);
-  const circuit = data.circuit_data_2026?.[cal?.circuit_id || race?.circuit_id];
+  // The calendar calls it `id`; the results call it `circuit_id`. Reading only
+  // the latter meant every round not yet run resolved to undefined — no circuit
+  // name, no layout, and now no traced path.
+  const circuitId = cal?.id || cal?.circuit_id || race?.circuit_id;
+  const circuit = data.circuit_data_2026?.[circuitId];
 
   const body = document.createElement("div");
   body.className = "sea-modal";
@@ -189,7 +228,7 @@ function openRace(round, data) {
   const right = document.createElement("div");
   right.id = "season-3d";
   right.className = "sea-track";
-  const img = data.track_layouts?.[cal?.circuit_id || race?.circuit_id]?.img_url;
+  const img = data.track_layouts?.[circuitId]?.img_url;
   if (img) {
     const el = document.createElement("img");
     el.src = img;
@@ -204,12 +243,35 @@ function openRace(round, data) {
   const strategy = race ? strategyChart(round, data) : null;
   if (strategy) body.append(strategy);
 
+  // The renderer is created after the dialog is open, so it has a laid-out box
+  // to size against. `dispose` is registered the moment it exists; a modal
+  // closed mid-load must still collect the context, or twenty opens exhaust
+  // the browser's budget and earlier canvases start going black.
+  let teardown = null;
+  let closed = false;
+
   openModal({
     title: cal?.name || race?.name || `Round ${round}`,
     body,
-    // Task 16 registers 3D teardown here.
-    onClose: () => {},
+    onClose: () => {
+      closed = true;
+      teardown?.();
+      teardown = null;
+    },
   });
+
+  const winner = race ? raceWinner(race) : null;
+  mountTrack(
+    right,
+    data.circuit_paths?.[circuitId],
+    teamColor(winner ? driverTeam(data, winner) : null),
+  )
+    .then((dispose) => {
+      if (!dispose) return;
+      if (closed) dispose();
+      else teardown = dispose;
+    })
+    .catch(() => {}); // the flat layout image is still sitting there
 }
 
 export function render(data, root) {

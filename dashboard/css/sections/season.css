@@ -122,7 +122,19 @@
   background: var(--surface-2);
 }
 
-.sea-track canvas { display: block; width: 100%; border-radius: var(--radius); }
+/* Once the 3D circuit mounts, the panel needs a height of its own. Left to the
+   canvas it would size from the canvas while the canvas sized from it — the
+   same loop that made the Cold Open square, except here it resolves to zero
+   and the renderer never starts at all. */
+.sea-track:has(canvas) {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.sea-track canvas { position: absolute; inset: 0; display: block; }
 
 .sea-empty { color: var(--ink-2); font-size: var(--text-sm); }
 

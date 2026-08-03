@@ -16,6 +16,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { cssColorToRGB } from "../color.js";
 
 const MODEL_URL = new URL("../../../assets/f1-2026-car.glb", import.meta.url).href;
 const LIVERY_MATERIAL = "Livery";
@@ -23,7 +24,8 @@ const LIVERY_MATERIAL = "Livery";
 let cached;
 
 /**
- * @param {string} color  CSS colour for the livery, already resolved to rgb().
+ * @param {string} color  Any CSS colour — a team token's value, or the
+ *   `--ink-1` fallback `teamColor()` returns for an unknown team.
  * @returns {Promise<THREE.Group>} centred on the origin, sitting on y = 0.
  */
 export async function loadCar(color) {
@@ -32,7 +34,10 @@ export async function loadCar(color) {
 
   // Clone so a second mount cannot recolour the first one's material.
   const car = gltf.scene.clone(true);
-  const tint = new THREE.Color(color);
+  // The team tokens are hex, but `teamColor()` falls back to `--ink-1` — which
+  // is oklch(), and THREE.Color parses that no better than Plotly did. Convert
+  // here rather than trusting every caller to remember.
+  const tint = new THREE.Color(cssColorToRGB(color));
   const seen = new Set();
   car.traverse((o) => {
     if (!o.isMesh) return;
