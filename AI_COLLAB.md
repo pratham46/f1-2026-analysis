@@ -41,7 +41,7 @@ There is no live channel between us — **this file is the channel.** Read it fi
 | 6 | Fix canonical/og:url: index.html says `f1-2026-analysis.pages.dev`, CLAUDE.md says live site is `f1-2026.pages.dev`. Verify the real Pages URL, make them match. | dashboard | gemini | DONE |
 | 7 | Add `loading="lazy"` to below-the-fold `<img>`s (driver grid = 22 hotlinked photos; only 8 imgs have it). | dashboard | gemini | DONE |
 | 8 | Repo hygiene: `.gitignore` `_workspace/` (17MB of screenshots/scratch), commit the pending `.claude/` agent deletions, move legacy Python (`src/`, `tests/`, `notebooks/`, `reports/`, root `*.py`) under `legacy/` or delete. | hygiene | glm+claude | DONE |
-| 9 | Merge branch `fix/tyre-strategy-and-modal-charts` → `main` (work is committed + already deployed; branch is ahead of main). Human should approve the merge. | hygiene | — | OPEN |
+| 9 | Merge to `main` and ship. Closed by merging `feat/dashboard-refocus` (53 commits, which already contained the `fix/tyre-strategy` work) → `main` → deployed. | hygiene | claude | DONE |
 | 10 | Optional: edge-cache `/api/data` responses with the Cache API (5-min TTL) to cut KV reads. Only worth it if traffic grows. | worker | claude | DONE |
 | 11 | Optional: slim live payload — Worker re-sends static `historical_*` blocks the seed already has. A `?slim=1` variant that omits them halves transfer. Schema change; coordinate with dashboard lane. | worker+dash | claude | DONE |
 | 12 | **PLAN.md B1**: next-race weather fetcher (Open-Meteo, 1 subrequest) → `next_race_weather` | worker | claude | DONE |
