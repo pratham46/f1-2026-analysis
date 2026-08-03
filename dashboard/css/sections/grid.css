@@ -94,10 +94,25 @@
   align-items: start;
 }
 
+/* Cropped to head and shoulders rather than shown full-length. The source
+   images are standing full-body portraits, so at full width the figure ran
+   several hundred pixels tall and pushed the facts beside it — team, number,
+   points — below the fold of the dialog. `cover` with a top anchor keeps the
+   face at a readable size and lets the panel sit level with the data.
+
+   The aspect ratio is what does the cropping, so the height never depends on
+   the image's own dimensions and cannot drift when a portrait is swapped. */
 .gr-modal-photo {
   width: 100%;
-  border-radius: var(--radius);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  /* Anchored to the very top. These are ~720x2069 full-body portraits, so the
+     crop window is a small fraction of the height and even a 12% offset landed
+     below the eyeline — the percentage applies to the OVERFLOW, which here is
+     roughly 860px, not to the image. */
+  object-position: 50% 0;
   background: var(--surface-2);
+  border-bottom: var(--border) solid var(--c, var(--neon-cyan));
 }
 
 .gr-facts {
@@ -129,5 +144,7 @@
 
 @media (max-width: 48rem) {
   .gr-modal-head { grid-template-columns: 1fr; }
-  .gr-modal-photo { max-width: 12rem; }
+  /* Stacked on a phone the crop goes wider still — a 4:3 head-and-shoulders at
+     full column width would eat the fold before the facts start. */
+  .gr-modal-photo { aspect-ratio: 16 / 9; object-position: 50% 0; }
 }
