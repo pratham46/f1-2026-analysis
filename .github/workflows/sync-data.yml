@@ -1,0 +1,122 @@
+name: Sync F1 data
+
+# Closes the gap between what this project claims and what it does.
+#
+# The Worker's own cron recomputes predictions and writes them to KV, so the
+# live API stays current on its own. Nothing ever refreshed the COMMITTED seed
+# — `dashboard/data.js` only moved when a human ran `npm run seed` by hand. So
+# the offline-first render, which is what most visitors actually see, aged from
+# the moment it was generated.
+#
+# Needs no Cloudflare secrets to do its main job, and works whether or not
+# anything is deployed.
+
+on:
+  schedule:
+    - cron: "0 7 * * *" # 07:00 UTC daily
+  workflow_dispatch: {}
+
+concurrency:
+  group: sync-data
+  cancel-in-progress: false # never abandon a run half-committed
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    # A forked copy of this repo has no reason to push commits anywhere.
+    if: github.repository == 'pratham46/f1-2026-analysis'
+    # The seed hits Jolpica and OpenF1 across every completed round; 20 minutes
+    # is generous but a hung upstream should not hold a runner all day.
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # wrangler 4 and the worker both require >= 22
+          cache: npm
+          cache-dependency-path: cloudflare/worker/package-lock.json
+
+      - name: Install Worker deps
+        working-directory: cloudflare/worker
+        run: npm ci
+
+      # Gate BEFORE regenerating. If the model or the assembler is broken, the
+      # last thing to do is overwrite a known-good seed with its output.
+      - name: Test before regenerating
+        working-directory: cloudflare/worker
+        run: npm test
+
+      # Keep the seed we are about to overwrite, so the regeneration can be
+      # judged against it rather than merely parsed.
+      - name: Snapshot the committed seed
+        run: cp dashboard/data.js "$RUNNER_TEMP/seed-before.js"
+
+      - name: Regenerate the seed
+        working-directory: cloudflare/worker
+        run: npm run seed
+
+      # The step that stops this workflow being worse than no workflow.
+      #
+      # When an upstream has a bad morning it does not error, it returns LESS,
+      # and the regenerated seed is a perfectly valid payload that happens to
+      # be missing races. Observed on 2026-08-03: openf1_race_data fell from 11
+      # rounds to 9 and the season's stints from 677 to 508, because OpenF1
+      # briefly served none for Japan, Belgium and Hungary. Every test below
+      # still passed, because nothing tests for absence. On a daily schedule
+      # that quietly guts the strategy section and nobody finds out.
+      - name: Refuse a seed that knows less than the one it replaces
+        run: node scripts/check-seed-regression.mjs "$RUNNER_TEMP/seed-before.js" dashboard/data.js
+
+      # Gate AFTER as well: the regenerated payload has to satisfy the same
+      # contract the dashboard renders against.
+      #
+      # The glob is not decoration. `node --test test/` resolves `test/` as a
+      # MODULE path on Node 22+ and dies with MODULE_NOT_FOUND before running
+      # anything — which reads exactly like a failing test suite.
+      - name: Verify the regenerated payload
+        run: node --test "test/*.test.mjs"
+
+      - name: Commit only if the data actually changed
+        id: commit
+        run: |
+          set -euo pipefail
+
+          # `npm run seed` writes THREE tracked things, not one: the seed, and
+          # the two enrich caches that let the next run skip re-fetching every
+          # circuit trace and classification from OpenF1. Committing only
+          # data.js leaves those caches dirty, so every run would refetch the
+          # whole season and the caches would drift from the seed they describe.
+          PATHS="dashboard/data.js cloudflare/worker/data"
+
+          if git diff --quiet -- $PATHS; then
+            echo "No data change — nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $PATHS
+          git commit -m "[bot] Sync F1 data $(date -u +%Y-%m-%d)"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with GITHUB_TOKEN deliberately does not trigger other
+      # workflows, so deploy.yml will NOT fire for the commit above. Without
+      # this step the refreshed seed would sit in the repo until the next human
+      # code push — which is the same staleness problem one level along.
+      #
+      # Skipped silently when the Cloudflare secrets are absent: the sync is
+      # still worth running on a repo that is not deployed.
+      - name: Publish the refreshed dashboard
+        if: steps.commit.outputs.changed == 'true' && env.CLOUDFLARE_API_TOKEN != ''
+        working-directory: cloudflare/worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler pages deploy ../../dashboard --project-name=f1-2026 --branch=main
