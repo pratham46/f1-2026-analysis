@@ -69,8 +69,26 @@ jobs:
       # briefly served none for Japan, Belgium and Hungary. Every test below
       # still passed, because nothing tests for absence. On a daily schedule
       # that quietly guts the strategy section and nobody finds out.
+      #
+      # Refusing is a SUCCESS path, not an error, so the run stays green and
+      # emits a warning instead. A scheduled job that sits permanently red is a
+      # job people stop reading, and this one refuses routinely: upstream pit
+      # counts drift by a few stops between calls, and the first real run of
+      # this workflow declined over 21 of them.
+      #
+      # The consequence of declining is only that today's seed is not updated.
+      # The committed one is already good — that is why it is being defended.
       - name: Refuse a seed that knows less than the one it replaces
-        run: node scripts/check-seed-regression.mjs "$RUNNER_TEMP/seed-before.js" dashboard/data.js
+        id: guard
+        run: |
+          if node scripts/check-seed-regression.mjs "$RUNNER_TEMP/seed-before.js" dashboard/data.js; then
+            echo "regressed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "regressed=true" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Seed not updated::Upstream returned less than the committed seed holds. Keeping the existing seed; see the step log for which measures fell."
+            # Put the good seed back so nothing downstream can commit the bad one.
+            git checkout -- dashboard/data.js cloudflare/worker/data
+          fi
 
       # Gate AFTER as well: the regenerated payload has to satisfy the same
       # contract the dashboard renders against.
@@ -79,10 +97,12 @@ jobs:
       # MODULE path on Node 22+ and dies with MODULE_NOT_FOUND before running
       # anything — which reads exactly like a failing test suite.
       - name: Verify the regenerated payload
+        if: steps.guard.outputs.regressed == 'false'
         run: node --test "test/*.test.mjs"
 
       - name: Commit only if the data actually changed
         id: commit
+        if: steps.guard.outputs.regressed == 'false'
         run: |
           set -euo pipefail
 
