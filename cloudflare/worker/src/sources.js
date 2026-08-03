@@ -42,7 +42,22 @@ const normDriver = (id) => DRIVER_ALIAS[id] || id;
 const normTeam = (id) => TEAM_ALIAS[id] || id;
 export const normCircuit = (id) => CIRCUIT_ALIAS[id] || id;
 
+// Free tier allows 50 subrequests per invocation; a cold-start assemble() can
+// legitimately approach that (Jolpica backfills + OpenF1 enrichment). Cap JSON
+// fetches at 40 so the run degrades gracefully (fetchers return ok:false and
+// callers keep last-good data) instead of Cloudflare hard-failing mid-run.
+// The margin also covers the single news scrape in scrape.js.
+// ponytail: module-level counter reset per assemble() run — fine while one
+// refresh runs at a time; thread a ctx object through the fetchers if
+// concurrent refreshes ever become real.
+const SUBREQUEST_BUDGET = 40;
+let budgetLeft = SUBREQUEST_BUDGET;
+export function resetSubrequestBudget() { budgetLeft = SUBREQUEST_BUDGET; }
+export function subrequestsUsed() { return SUBREQUEST_BUDGET - budgetLeft; }
+
 async function getJSON(url, timeoutMs = 8000) {
+  if (budgetLeft <= 0) return { ok: false, error: "subrequest_budget_exhausted" };
+  budgetLeft--;
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
@@ -181,6 +196,31 @@ export async function fetchRaceResults(racesCompleted = 0) {
   }
   races.sort((a, b) => a.round - b.round);
   return { ok: races.length > 0, races };
+}
+
+/**
+ * Race-day forecast from Open-Meteo (free, no key). Only valid for dates within
+ * the ~16-day forecast horizon; outside it the API errors and we return ok:false.
+ * @returns {{ok:boolean, weather?:{t_max:number,t_min:number,rain_prob:number,wind_max:number}}}
+ */
+export async function fetchWeather(lat, long, date) {
+  if (lat == null || long == null || !date) return { ok: false };
+  const r = await getJSON(
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}` +
+    `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max` +
+    `&timezone=UTC&start_date=${date}&end_date=${date}`
+  );
+  const d = r.ok ? r.json?.daily : null;
+  if (!d || !Array.isArray(d.temperature_2m_max) || d.temperature_2m_max[0] == null) return { ok: false };
+  return {
+    ok: true,
+    weather: {
+      t_max: d.temperature_2m_max[0],
+      t_min: d.temperature_2m_min?.[0] ?? null,
+      rain_prob: d.precipitation_probability_max?.[0] ?? null,
+      wind_max: d.wind_speed_10m_max?.[0] ?? null,
+    },
+  };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,277 @@
+/* Cold Open — full-bleed, one idea per fold. */
+
+/* Two bands, not one stack. Everything used to share a single grid area and
+   overlap, which was right when the subject was a 3D car floating in space.
+   A side-on render is opaque and busy — laid under the type it put "Title
+   probability" on a black sidepod and "Wins" on a tyre, and the labels simply
+   disappeared. The car gets the floor; the type gets everything above it. */
+#open {
+  min-height: calc(100svh - var(--nav-h) - var(--ticker-h));
+  display: grid;
+  grid-template-areas: "body" "car";
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  overflow: hidden;
+  border-bottom: var(--border) solid transparent;
+  border-image: var(--grad-rule) 1;
+}
+
+/* The type block is centred in its band rather than dropped to the floor of
+   it. Bottom-aligned, everything pooled at the base of the fold and left a
+   dead strip across the top that read as a mistake instead of as air. */
+.open-body { grid-area: body; align-self: center; }
+.open-car { grid-area: car; }
+
+/* The driver shares the type's band, standing at its right edge — so the fold
+   reads name, then the man, then the car he drives, rather than stacking two
+   full-width subjects. Sized in svh rather than a percentage of the row: the
+   row is `1fr` of a min-height container, and a percentage height against an
+   indefinite track is the same trap that made the old 3D stage square. */
+.open-figure {
+  /* Spans BOTH rows rather than sitting in the type's. Anchored to the type
+     row he could never reach the floor of the fold — his feet stopped wherever
+     that row happened to end, which is why he hovered above the car with a gap
+     no amount of negative margin fixed honestly. Spanning to the bottom edge
+     puts him on the same ground line as the car, and the overlap becomes real
+     instead of nudged. */
+  grid-row: 1 / -1;
+  grid-column: 1;
+  align-self: end;
+  /* Held to the same 92rem box as the car rather than the viewport edge, so
+     the two subjects share a right margin instead of missing it by 220px. */
+  justify-self: center;
+  width: min(100%, 92rem);
+  /* Taller than the true ratio, deliberately. A 1.8m driver beside a car
+     that stands under a metre is about 1.9x its height, and at that figure he
+     read as a child: his shins are hidden behind the bodywork so his VISIBLE
+     height is short of his real one, and the car is five metres long, so the
+     eye measures him against that length rather than against its height.
+     Sized up until he reads as an adult standing at the car, which is the
+     thing the composition is claiming. */
+  height: min(74svh, 44rem);
+  object-fit: contain;
+  object-position: bottom right;
+
+  /* He stands BEHIND the car, and that is what fixes him.
+     Overlapping it by a fraction left him hovering with his feet dissolving
+     into a mask fade — no ground, no contact, no explanation for where he
+     ends. Pushed deep enough that the bodywork cuts him at the shin, the car
+     becomes the thing that occludes him: a hard edge instead of a gradient,
+     and the question of where his feet land stops being asked. It is also how
+     a driver stands in an actual team photograph. */
+  z-index: var(--z-base);
+
+  /* Behind the type in weight as well as in stacking: the headline stays the
+     loudest thing in the fold. No mask — the car does that job now. */
+  opacity: 0.92;
+}
+
+/* Official side-on render, full width along the floor of the fold. A 4.5:1
+   strip is a horizontal by nature; fighting that to make it a right-hand
+   figure would only shrink it. Sitting on the bottom edge it becomes the
+   ground the type stands on. */
+.open-car {
+  justify-self: center;
+  width: min(100%, 92rem);
+  /* A 4.5:1 strip given full width grows tall on a wide screen and short on a
+     laptop. Capped against the viewport so the fold holds either way — and
+     capped lower than it was, because at 44svh the car stopped being the floor
+     of the composition and became a third of it. */
+  max-height: min(34svh, 19rem);
+  object-fit: contain;
+  object-position: bottom center;
+
+  /* Lifted above the driver so the bodywork actually cuts him off. Without
+     this the car and the figure both sit at auto, and DOM order alone decides
+     — the figure comes second in the markup, so it painted in FRONT and he
+     stood on top of the car instead of behind it. The type still wins the
+     stack: `.open-body` shares this level and comes last in the markup. */
+  z-index: var(--z-rail);
+}
+
+
+.open-body {
+  position: relative;
+  z-index: var(--z-rail);
+  /* Tighter than it was. The old padding bought clearance from a car that
+     floated behind the type; now the car is a band below it, and that
+     clearance was pushing the whole fold 46px past the viewport and slicing
+     the front wing off. */
+  padding-block: var(--space-7) var(--space-6);
+}
+
+.open-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-2);
+  max-width: var(--measure);
+  margin-bottom: var(--space-4);
+}
+/* A prompt, with a cursor that blinks the way a DOS box does. Generated, so
+   the sentence stays clean for a screen reader. */
+.open-kicker::before { content: "> "; color: var(--neon-cyan); }
+.open-kicker::after {
+  content: "_";
+  color: var(--neon-cyan);
+  margin-left: var(--space-1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .open-kicker::after { animation: caret 1.05s steps(1) infinite; }
+  @keyframes caret { 50% { opacity: 0; } }
+}
+
+.open-title {
+  font-size: var(--text-hero);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-7);
+}
+
+.open-title { text-transform: uppercase; }
+
+.open-given {
+  color: var(--ink-1);
+  font-weight: 400;
+  text-shadow: var(--text-glow-chrome);
+}
+
+/* The surname is the one gradient-filled word in the fold. `--open-accent` is
+   the leader's team colour and stays as the fallback: if background-clip is
+   unavailable the name is still Mercedes cyan, not transparent. */
+.open-family {
+  color: var(--open-accent, var(--neon-magenta));
+  font-weight: 900;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .open-family {
+    background: var(--grad-sunset);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(var(--text-glow-magenta));
+  }
+}
+
+/* Readouts, not a stat row. Each figure sits in a skewed cell with a magenta
+   left rule and counter-skewed content so the type stays upright — the lean is
+   the container's, never the number's. */
+.open-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, max-content));
+  gap: var(--space-3) var(--space-6);
+  margin: 0;
+}
+
+.open-stats dt {
+  grid-row: 1;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-2);
+  transform: skewX(var(--skew));
+  padding-inline: var(--space-3);
+  border-left: var(--border) solid var(--neon-magenta);
+}
+.open-stats dt > * { display: inline-block; transform: skewX(var(--skew-counter)); }
+
+.open-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+  transform: skewX(var(--skew));
+  padding-inline: var(--space-3);
+  border-left: var(--border) solid var(--neon-cyan);
+}
+.open-stats dd > * { display: inline-block; transform: skewX(var(--skew-counter)); }
+
+/* --- The start procedure -------------------------------------------------
+   The one orchestrated moment on the page. Everything else is scroll-linked;
+   this plays once, on load, and nothing repeats it.
+
+   Ordered the way a grid slot resolves: the surface arrives, the name is set,
+   the numbers settle last. The car travels in along its own axis — a side-on
+   car sliding sideways is the only direction that isn't fighting the image.
+
+   Gated on `[data-ready]`, which open.js sets once the fold is populated.
+   Without the gate the animations start at parse time, against a hidden image
+   and two empty text nodes, and are finished before render() puts anything in
+   them — a choreography performed to an empty room.
+
+   `backwards` and not `both`: the from-state applies during the delay, and
+   after the run each element sits at its own natural style. If the engine
+   never runs the animation the fold renders exactly as authored, which is the
+   rule this page has broken twice by gating content behind a transition.
+   Total elapsed 1.05s, and no element waits more than 400ms to begin. */
+
+@media (prefers-reduced-motion: no-preference) {
+  #open[data-ready] .open-car {
+    animation: open-car var(--dur-cinematic) var(--ease-out-expo) 120ms backwards;
+  }
+  @keyframes open-car {
+    from { opacity: 0; transform: translate3d(6%, 0, 0); }
+  }
+
+  #open[data-ready] .open-figure {
+    animation: open-figure var(--dur-cinematic) var(--ease-out) 320ms backwards;
+  }
+  @keyframes open-figure {
+    from { opacity: 0; transform: translate3d(0, var(--space-5), 0); }
+  }
+
+  #open[data-ready] .open-kicker {
+    animation: open-rise var(--dur-slow) var(--ease-out) 80ms backwards;
+  }
+
+  /* The two halves of the name are wiped in sequence, given then family. The
+     surname carries the team colour and lands last, so the fold resolves on
+     the one word that is the headline. */
+  #open[data-ready] .open-given  { animation: open-wipe 760ms var(--ease-out-expo) 200ms backwards; }
+  #open[data-ready] .open-family { animation: open-wipe 760ms var(--ease-out-expo) 320ms backwards; }
+  @keyframes open-wipe {
+    from { clip-path: inset(0 0 105% 0); transform: translateY(0.14em); }
+    to   { clip-path: inset(0 0 -25% 0); transform: none; }
+  }
+
+  /* Labels and figures alternate up the stat row, so the four columns resolve
+     left to right rather than as one block. */
+  #open[data-ready] .open-stats > * {
+    animation: open-rise var(--dur-slow) var(--ease-out) backwards;
+    animation-delay: calc(400ms + var(--i, 0) * 55ms);
+  }
+  @keyframes open-rise {
+    from { opacity: 0; transform: translate3d(0, var(--space-4), 0); }
+  }
+}
+
+@media (max-width: 48rem) {
+  .open-stats { grid-template-columns: repeat(2, 1fr); }
+  .open-stats dt { grid-row: auto; }
+  .open-stats dd { grid-row: auto; margin-bottom: var(--space-3); }
+
+  /* A phone fold holds a name, four figures and one subject — not two. Standing
+     at the right, the driver landed exactly under the stat values, printing
+     75.9% across his chest. Sized down he would be a thumbnail, and shuffled
+     up he would collide with the kicker instead. The car stays because it is
+     the one element carrying the team's colour; Antonelli keeps his full
+     portrait in The Grid, two sections down. */
+  .open-figure { display: none; }
+
+  /* Fitted to a phone the whole car is 86px of sliver — present, but too small
+     to be worth the fold it costs. Oversized and cropped instead: the nose,
+     front wing and the 12 on the airbox at a size you can actually read. A
+     large fragment beats a complete miniature. */
+  .open-car {
+    width: 190%;
+    max-width: none;
+    max-height: 26svh;
+    justify-self: end;
+    object-position: bottom right;
+  }
+}

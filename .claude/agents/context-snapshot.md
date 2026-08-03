@@ -25,7 +25,7 @@ Read the current project state from files on disk — not from conversation memo
 9. `dashboard/index.html` — file size, section IDs present (grep for `id="`)
 
 ### Source Code
-10. `src/data/pipeline.py` — entry point path, CALENDAR_2026 length, key constants
+10. `legacy/src/data/pipeline.py` — entry point path (moved under `legacy/`), CALENDAR_2026 length, key constants
 11. `src/data/enrich_dashboard.py` — existence check
 
 ## Output File

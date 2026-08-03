@@ -95,5 +95,5 @@ The dashboard's per-race **TYRE STRATEGY** chart and the race-card compound dots
 | `dashboard/{config.js,data.js,_redirects}` | Worker URL, offline seed, Pages API proxy |
 | `cloudflare/README.md` | Deploy guide |
 
-> Legacy Python pipeline (`src/`) and the 11 archived agents (`.claude/agents/_archive/`) are kept
+> Legacy Python pipeline (`legacy/src/`) and the 11 archived agents (`.claude/agents/_archive/`) are kept
 > for reference/offline seeding but are no longer the live path.

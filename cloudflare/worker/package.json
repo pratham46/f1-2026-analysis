@@ -8,8 +8,8 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "kv:create": "wrangler kv namespace create F1_KV",
-    "test": "node test/predict.test.mjs && node test/assemble.test.mjs",
-    "seed": "node scripts/gen-seed.mjs && node scripts/enrich-openf1-seed.mjs",
+    "test": "node test/predict.test.mjs && node test/model-v2.test.mjs && node test/assemble.test.mjs",
+    "seed": "node scripts/gen-seed.mjs && node scripts/enrich-openf1-seed.mjs && node scripts/enrich-circuit-paths.mjs && node scripts/enrich-h2h.mjs",
     "seed:base": "node scripts/gen-seed.mjs",
     "tail": "wrangler tail"
   },

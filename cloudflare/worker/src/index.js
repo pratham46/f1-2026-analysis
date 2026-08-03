@@ -69,14 +69,36 @@ export default {
     const url = new URL(request.url);
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
+    // Edge-cache GET /api/data and /api/news (5-min TTL via existing Cache-Control) to cut KV reads.
+    const cacheable = request.method === "GET" && (url.pathname === "/api/data" || url.pathname === "/api/news");
+    if (cacheable) {
+      const hit = await caches.default.match(request);
+      if (hit) return hit;
+    }
+
     try {
+      let response;
       switch (url.pathname) {
-        case "/api/data":
-          return json(await readData(env));
+        case "/api/data": {
+          const d = await readData(env);
+          if (url.searchParams.get("slim") === "1") {
+            const slim = { ...d };
+            delete slim.historical_driver_points;
+            delete slim.historical_constructor_points;
+            delete slim.historical_driver_teams;
+            delete slim.driver_rolling_form;
+            delete slim.driver_names;
+            response = json(slim);
+          } else {
+            response = json(d);
+          }
+          break;
+        }
 
         case "/api/news": {
           const d = await readData(env);
-          return json({ news: d.news || [], generated_at: d.generated_at });
+          response = json({ news: d.news || [], generated_at: d.generated_at });
+          break;
         }
 
         case "/api/health":
@@ -84,6 +106,14 @@ export default {
 
         case "/api/refresh": {
           if (request.method !== "POST") return json({ error: "method_not_allowed" }, 405, { Allow: "POST" });
+          // Token-gated: each refresh costs 2 of the 1000/day free-tier KV writes,
+          // so unauthenticated spam could exhaust the quota. Fails closed if the
+          // secret is unset (cron refreshes are unaffected — they skip this route).
+          // Set with: wrangler secret put REFRESH_TOKEN
+          const auth = request.headers.get("Authorization") || "";
+          if (!env.REFRESH_TOKEN || auth !== `Bearer ${env.REFRESH_TOKEN}`) {
+            return json({ error: "unauthorized" }, 401, { "Cache-Control": "no-store" });
+          }
           // Manual trigger — run in the background so the response is instant.
           ctx.waitUntil(refresh(env));
           return json({ ok: true, triggered: true, note: "refresh running in background" }, 202, { "Cache-Control": "no-store" });
@@ -92,6 +122,8 @@ export default {
         default:
           return json({ error: "not_found", routes: ["/api/data", "/api/news", "/api/health", "/api/refresh"] }, 404);
       }
+      if (cacheable) ctx.waitUntil(caches.default.put(request, response.clone()));
+      return response;
     } catch (e) {
       console.error("[worker] unhandled:", e);
       return json({ error: "internal_error" }, 500);

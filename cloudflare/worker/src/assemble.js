@@ -19,7 +19,8 @@ import {
 } from "./seed.js";
 import { predict } from "./predict.js";
 import { fetchLiveStandings, fetchRaceResults, fetchDriverBios, fetchCircuitData,
-         fetchOpenF1Sessions, fetchOpenF1RaceResult, fetchPitStops, fetchTireStints } from "./sources.js";
+         fetchOpenF1Sessions, fetchOpenF1RaceResult, fetchPitStops, fetchTireStints,
+         fetchWeather, resetSubrequestBudget, subrequestsUsed } from "./sources.js";
 import { scrapeNews } from "./scrape.js";
 import { buildDriverImages, buildTrackLayouts, buildTeamCars } from "./media.js";
 
@@ -51,6 +52,14 @@ function toDriverStandings2026(pred, liveByDriver) {
       current_real_points: live.points || 0,
       current_real_position: live.position || null,
       current_wins: live.wins || 0,
+      // Arithmetic championship status — independent of the simulation. A
+      // near-zero title probability is NOT elimination while the points are
+      // still mathematically reachable.
+      max_possible_points: d.max_possible_points ?? null,
+      points_behind_leader: d.points_behind_leader ?? null,
+      mathematically_eliminated: d.mathematically_eliminated ?? false,
+      expected_dnfs: d.expected_dnfs ?? null,
+      experience_seasons: d.experience_seasons ?? null,
     };
   });
 }
@@ -161,6 +170,7 @@ function toNextRace(racesCompleted, now = new Date()) {
  */
 export async function assemble(opts = {}) {
   const lastGood = opts.lastGood || {};
+  resetSubrequestBudget();
   const health = { live: "skipped", results: "skipped", news: "skipped", scrapedAt: new Date().toISOString() };
 
   // 1. Live 2026 standings (authoritative for real_* + base-position blend).
@@ -282,6 +292,23 @@ export async function assemble(opts = {}) {
     else health.circuits = "kept_last_good";
   } catch { health.circuits = "error_kept_last_good"; }
 
+  // 5b. Race-day weather for the next race (Open-Meteo, 1 subrequest). Only
+  // attempted inside the ~16-day forecast horizon; keeps last-good otherwise
+  // (stale-guard: last-good is dropped if it refers to a different race).
+  const nextRace = toNextRace(racesCompleted);
+  let next_race_weather =
+    lastGood.next_race_weather && lastGood.next_race_weather.circuit_id === nextRace?.circuit_id
+      ? lastGood.next_race_weather : null;
+  try {
+    const c = nextRace ? circuit_data[nextRace.circuit_id] : null;
+    const daysOut = nextRace ? (new Date(nextRace.date) - Date.now()) / 86400000 : Infinity;
+    if (c && daysOut <= 15) {
+      const w = await fetchWeather(c.lat, c.long, nextRace.date);
+      if (w.ok) { next_race_weather = { circuit_id: nextRace.circuit_id, date: nextRace.date, ...w.weather }; health.weather = "open-meteo"; }
+      else health.weather = "kept_last_good";
+    } else health.weather = nextRace ? "outside_horizon" : "season_over";
+  } catch { health.weather = "error_kept_last_good"; }
+
   // 6. Media URLs (deterministic; cheap).
   const driver_images = buildDriverImages();
   const track_layouts = buildTrackLayouts();
@@ -311,7 +338,8 @@ export async function assemble(opts = {}) {
     calendar_2026: CALENDAR_2026,
     cancelled_races_2026: CANCELLED_2026,
     races_completed_2026: racesCompleted,
-    next_race: toNextRace(racesCompleted),
+    next_race: nextRace,
+    next_race_weather,
     real_driver_standings_2026: live.ok ? toRealDriverStandings(live) : [],
     real_constructor_standings_2026: live.ok ? (live.constructorStandings || []) : [],
     real_race_results_2026: realRaces,
@@ -325,7 +353,7 @@ export async function assemble(opts = {}) {
     team_cars,
     news,
 
-    _health: health,
+    _health: { ...health, subrequests: subrequestsUsed() },
     _sanity: pred._sanity,
   };
 

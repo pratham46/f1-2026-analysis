@@ -1,5 +1,9 @@
 # F1 2026 Analysis — Project Guide
 
+## Multi-AI collaboration (active)
+
+Three AIs work this repo: **claude** (backend, `cloudflare/worker/`), **gemini** (frontend, `dashboard/`), **glm** (hygiene/tests/docs). You are **claude** — stay in your lane. Rules + task board: `AI_COLLAB.md`. Message bus: `_ai_bus/bus.md` (append-only; auto-injected into your context by a UserPromptSubmit hook). Announce claims/completions on the bus; claim tasks on the board before editing code.
+
 ## Harness: F1 2026 Cloudflare App
 
 **Goal:** Cloudflare Worker fetches live 2026 data + scrapes formula1.com → computes predictions in JS (frozen XGBoost anchor + Monte Carlo) → serves `/api/data` → static Pages dashboard renders it, with a committed `data.js` seed as offline fallback. Auto-refreshes on a race-weekend cron.
@@ -8,7 +12,7 @@
 
 **Live entry point:** the Cloudflare Worker at `cloudflare/worker/` (`npm test`, `npm run dev`, `wrangler deploy`). `scheduled()` runs daily and self-gates to race weekends. `npm run seed` regenerates `dashboard/data.js`.
 
-**Legacy (offline only):** the Python pipeline (`python src/data/pipeline.py`) and 11 archived agents (`.claude/agents/_archive/`) are kept for reference/offline seeding but are no longer the live path.
+**Legacy (offline only):** the Python pipeline (`python legacy/src/data/pipeline.py`) and 11 archived agents (`.claude/agents/_archive/`) are kept for reference/offline seeding but are no longer the live path. All legacy Python lives under `legacy/` (`src/`, `tests/`, `notebooks/`, `reports/`, root `*.py`, `pytest.ini`, `requirements.txt`).
 
 **Active agents (6):** `f1-worker`, `f1-scraper`, `f1-publish`, `f1-ui`, `f1-deploy`, `context-snapshot`.
 
@@ -33,3 +37,4 @@
 | 2026-06-15 | Leclerc bio corrected: `championships: 0` (was 1), "2022 title runner-up" (was "2022 WDC") | dashboard/index.html | TITLES chip showed a title he never won |
 | 2026-06-15 | Tyre strategy for ALL completed tracks: enrich every race (was last-3) + cache; fixed `OPENF1_CIRCUIT_MAP` (Monte Carlo/Catalunya/Hungaroring/Madring/Interlagos/Yas Marina); new `enrich-openf1-seed.mjs` chained into `npm run seed`; client coverage-merge guard | worker src/, scripts/, dashboard/ | Only Canada had stints; circuit-name mismatch silently dropped Monaco/Spain; stale Worker clobbered seed strategy |
 | 2026-06-15 | Deployed live: Worker (`enriched:7races` after repeated /api/refresh) + Pages (f1-2026.pages.dev) | Cloudflare | Ship the tyre-strategy + modal fixes to production |
+| 2026-08-03 | Real driver head-to-head: full 22-driver race/quali/sprint classification per round (`race_classification_2026`) via OpenF1 `/session_result`, committed cache, new `enrich-h2h.mjs` chained into `npm run seed`; H2H section rebuilt on measured data | worker scripts/, dashboard/ | `real_race_results_2026` holds only the top 10, so every retirement was invisible and any pair outside the points compared 0-0 |

@@ -1,0 +1,95 @@
+/* Model vs Reality — hits and misses carry equal weight.
+   State is encoded by fill and glyph, never by red/green. */
+
+.acc-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, max-content));
+  gap: var(--space-3) var(--space-8);
+  margin: 0 0 var(--space-7);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--border) solid var(--surface-3);
+}
+
+.acc-summary dt {
+  grid-row: 1;
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
+.acc-summary dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: var(--text-xl);
+  color: var(--ink-0);
+}
+
+.acc-rounds {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: var(--space-3);
+}
+
+.acc-round {
+  padding: var(--space-4);
+  border: var(--border) solid var(--surface-3);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+/* A miss is quieter in surface but not smaller and not hidden — it is stated,
+   not softened. */
+.acc-round[data-hit="false"] {
+  background: transparent;
+  border-style: dashed;
+}
+
+.acc-round-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.acc-round-n {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
+.acc-mark {
+  display: grid;
+  place-items: center;
+  width: var(--space-5);
+  height: var(--space-5);
+  border-radius: var(--radius-round);
+  font-size: var(--text-xs);
+  line-height: 1;
+}
+
+.acc-round[data-hit="true"] .acc-mark {
+  background: var(--ink-0);
+  color: var(--surface-0);
+}
+
+.acc-round[data-hit="false"] .acc-mark {
+  background: transparent;
+  border: 1px solid var(--ink-2);
+  color: var(--ink-2);
+}
+
+.acc-round-name {
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 600;
+  font-size: var(--text-base);
+}
+
+.acc-round-detail {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  line-height: var(--leading-body);
+}

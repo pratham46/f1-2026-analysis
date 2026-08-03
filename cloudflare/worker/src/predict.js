@@ -13,12 +13,45 @@
 
 import {
   DRIVER_INFO, MODEL_BASE_2026, MODEL_CV_MAE, REGULATION_IMPACT_2026,
-  DRIVER_ROLLING_FORM, N_RACES_2026,
+  DRIVER_ROLLING_FORM, N_RACES_2026, CALENDAR_2026,
 } from "./seed.js";
 
 const F1_POINTS = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]; // P1..P10
-const N_SIMS = 500;
-const DEFAULT_SIGMA = 3.5;
+const SPRINT_POINTS = [8, 7, 6, 5, 4, 3, 2, 1];        // P1..P8
+const N_SIMS = 2000;
+
+// ---------------------------------------------------------------------------
+// Calibration. Every constant below is derived from data in this repo, not
+// chosen to make the output look reasonable.
+// ---------------------------------------------------------------------------
+
+// Per-race noise. For a normal error, MAE = sigma * sqrt(2/pi), so the trained
+// model's own cross-validated MAE pins sigma rather than us guessing it.
+//   2.71 / 0.7979 = 3.40 positions
+const RACE_SIGMA = MODEL_CV_MAE / Math.sqrt(2 / Math.PI);
+
+// Season-level form drift. Measured from historical_driver_points 2020-2025:
+// the SD of a driver's year-over-year championship RANK change is 3.61
+// positions over 91 driver-season pairs (mean ~0).
+//
+// This is the term the old model was missing entirely. It is drawn ONCE per
+// simulation and applied to every remaining race, so it does NOT average out
+// the way per-race noise does. Without it, 11 races of independent noise
+// cancel (standard error shrinks by sqrt(11)) and the top-ranked driver wins
+// ~99% of simulations regardless of how close the championship actually is.
+const SEASON_RANK_SD_FULL_YEAR = 3.61;
+
+// Retirement rate per driver per race.
+//
+// MEASURED, as of race_classification_2026: 44 retirements across 235 starts in
+// the first 11 rounds of 2026 (242 entries less 7 non-starts — a car that never
+// took the start did not retire from anything). This replaces the modern-era
+// ~0.09 approximation that stood while real_race_results_2026, which holds only
+// the top 10 finishers, was the sole source of results.
+//
+// It is high because 2026 is a first-year regulation set. Re-measure from
+// race_classification_2026 rather than assuming it holds next season.
+const DNF_RATE = 0.187;
 
 // Deterministic PRNG so identical inputs → identical predictions (mulberry32).
 function mulberry32(seed) {
@@ -47,6 +80,61 @@ function formScore(driverId) {
   let s = 0;
   for (let i = 0; i < rf.points.length; i++) s += (rf.points[i] || 0) * (w[i] || 0);
   return s;
+}
+
+// How many prior seasons this driver actually scored in (2020-2025).
+export function experienceSeasons(driverId) {
+  const rf = DRIVER_ROLLING_FORM[driverId];
+  if (!rf) return 0;
+  return (rf.points || []).filter((p) => p > 0).length;
+}
+
+/**
+ * Per-driver season-form SD, in finishing positions.
+ *
+ * Two effects compose:
+ *  - Time: form drift accumulates with the season, so variance scales with the
+ *    fraction of the season left and SD with its square root. Predicting two
+ *    remaining races is a much smaller leap than predicting twenty.
+ *  - Evidence: a driver with one scoring season is far less predictable than
+ *    one with six. Antonelli's rolling form is [0,0,0,0,0,150] — treating him
+ *    as exactly as knowable as Alonso is what made the old output degenerate.
+ *    Multiplier runs 1.6x (no history) down to ~1.0x (six seasons).
+ */
+function seasonSigma(driverId, racesRemaining, nRaces) {
+  const timeScale = Math.sqrt(Math.max(0, racesRemaining) / Math.max(1, nRaces));
+  const evidence = 1 + 0.6 * Math.exp(-experienceSeasons(driverId) / 2);
+  return SEASON_RANK_SD_FULL_YEAR * timeScale * evidence;
+}
+
+/**
+ * Mathematical elimination from the drivers' championship.
+ *
+ * A driver is out only when their maximum attainable total cannot reach the
+ * leader's CURRENT total — the strict definition, independent of any
+ * simulation. A Monte Carlo probability of ~0 is not elimination: with 11
+ * rounds left there are 275 points on the table and almost nobody is
+ * arithmetically dead, however unlikely they are.
+ */
+export function eliminationStatus(banked, racesRemaining, sprintsRemaining = 0) {
+  const ids = Object.keys(banked);
+  const leaderPoints = ids.length ? Math.max(...ids.map((d) => banked[d] || 0)) : 0;
+  const maxRemaining = racesRemaining * F1_POINTS[0] + sprintsRemaining * SPRINT_POINTS[0];
+  const out = {};
+  for (const d of ids) {
+    const ceiling = (banked[d] || 0) + maxRemaining;
+    out[d] = {
+      max_possible_points: ceiling,
+      points_behind_leader: Math.max(0, leaderPoints - (banked[d] || 0)),
+      mathematically_eliminated: ceiling < leaderPoints,
+    };
+  }
+  return { statuses: out, leaderPoints, maxRemaining };
+}
+
+// Remaining sprint rounds after `racesCompleted` rounds have been run.
+export function remainingSprintCount(racesCompleted) {
+  return CALENDAR_2026.filter((r) => r.round > racesCompleted && r.sprint).length;
 }
 
 /**
@@ -126,27 +214,56 @@ function raceWinProbabilities(basePos) {
 // `banked` carries the points each driver has ALREADY scored in completed 2026
 // rounds; only `nRacesRemaining` races are simulated on top, so the projection is
 // (real points so far) + (simulated rest of season) rather than a fresh 24-race run.
-function monteCarlo(basePos, sigma, nRacesRemaining, banked = {}) {
+function monteCarlo(basePos, raceSigma, nRacesRemaining, banked = {}, opts = {}) {
+  const { sprintRounds = [], nRaces = N_RACES_2026, dnfRate = DNF_RATE } = opts;
   const drivers = Object.keys(basePos);
   const champWins = Object.fromEntries(drivers.map((d) => [d, 0]));
   const podiums = Object.fromEntries(drivers.map((d) => [d, 0]));
   const pointsTotal = Object.fromEntries(drivers.map((d) => [d, 0]));
+  const dnfCount = Object.fromEntries(drivers.map((d) => [d, 0]));
   const rng = mulberry32(42);
+
+  // Per-driver season-form SD, computed once — it does not vary between sims.
+  const seasonSd = Object.fromEntries(
+    drivers.map((d) => [d, seasonSigma(d, nRacesRemaining, nRaces)])
+  );
 
   for (let s = 0; s < N_SIMS; s++) {
     const seasonPts = Object.fromEntries(drivers.map((d) => [d, banked[d] || 0]));
+
+    // One form draw per driver for the WHOLE remaining season. This is the
+    // correlated term: it shifts every remaining race the same way, so unlike
+    // per-race noise it does not wash out over 11 rounds. "Is this car still
+    // the quickest in November?" is one question, not eleven.
+    const formShift = {};
+    for (const d of drivers) formShift[d] = gaussian(rng) * seasonSd[d];
+
     for (let r = 0; r < nRacesRemaining; r++) {
-      // Sample a noisy race score per driver, then re-rank to discrete positions.
-      const scored = drivers.map((d) => ({
-        d, x: Math.max(0.5, basePos[d] + gaussian(rng) * sigma),
-      }));
+      const isSprint = sprintRounds.includes(r);
+      const scored = [];
+      for (const d of drivers) {
+        // Retirement: scores nothing and is classified behind every finisher.
+        if (rng() < dnfRate) {
+          scored.push({ d, x: Number.POSITIVE_INFINITY, dnf: true });
+          dnfCount[d] += 1;
+        } else {
+          scored.push({
+            d,
+            x: Math.max(0.5, basePos[d] + formShift[d] + gaussian(rng) * raceSigma),
+            dnf: false,
+          });
+        }
+      }
       scored.sort((a, b) => a.x - b.x);
       scored.forEach((row, idx) => {
+        if (row.dnf) return; // no points, no podium
         const pos = idx + 1;
         if (pos <= 10) seasonPts[row.d] += F1_POINTS[pos - 1];
+        if (isSprint && pos <= 8) seasonPts[row.d] += SPRINT_POINTS[pos - 1];
         if (pos <= 3) podiums[row.d] += 1;
       });
     }
+
     // Champion of this sim = max season points.
     let champ = drivers[0];
     for (const d of drivers) {
@@ -159,12 +276,14 @@ function monteCarlo(basePos, sigma, nRacesRemaining, banked = {}) {
   const predictedPoints = {};
   const champProb = {};
   const podiumRate = {};
+  const dnfPerSeason = {};
   for (const d of drivers) {
     predictedPoints[d] = pointsTotal[d] / N_SIMS;
     champProb[d] = champWins[d] / N_SIMS;
     podiumRate[d] = podiums[d] / (N_SIMS * Math.max(nRacesRemaining, 1));
+    dnfPerSeason[d] = dnfCount[d] / N_SIMS;
   }
-  return { predictedPoints, champProb, podiumRate };
+  return { predictedPoints, champProb, podiumRate, dnfPerSeason };
 }
 
 /**
@@ -186,16 +305,22 @@ export function predict(opts = {}) {
   const basePos = computeBasePositions(liveStandings, racesCompleted);
   const raceWin = raceWinProbabilities(basePos);
 
-  let sigma = DEFAULT_SIGMA;
-  let sim = monteCarlo(basePos, sigma, racesRemaining, banked);
+  // Which of the REMAINING rounds are sprints, as offsets into the simulated
+  // sequence (0 = the next race).
+  const sprintRounds = CALENDAR_2026
+    .filter((r) => r.round > racesCompleted && r.sprint)
+    .map((r) => r.round - racesCompleted - 1);
+  const sprintsRemaining = sprintRounds.length;
 
-  // Sanity: if the leader runs away (>550 pts), noise too low — bump σ and resim.
-  let maxPts = Math.max(...Object.values(sim.predictedPoints));
-  if (maxPts > 550) {
-    sigma = 5.0;
-    sim = monteCarlo(basePos, sigma, racesRemaining, banked);
-    maxPts = Math.max(...Object.values(sim.predictedPoints));
-  }
+  const sigma = RACE_SIGMA;
+  const sim = monteCarlo(basePos, sigma, racesRemaining, banked, {
+    sprintRounds, nRaces, dnfRate: DNF_RATE,
+  });
+  const maxPts = Math.max(...Object.values(sim.predictedPoints));
+
+  // Strict arithmetic elimination, independent of the simulation.
+  const { statuses: elim, leaderPoints, maxRemaining } =
+    eliminationStatus(banked, racesRemaining, sprintsRemaining);
 
   const drivers = Object.keys(basePos);
 
@@ -209,6 +334,12 @@ export function predict(opts = {}) {
       race_win_probability: round4(raceWin[d]),
       podium_rate: round4(sim.podiumRate[d]),
       base_predicted_position: basePos[d],
+      expected_dnfs: Math.round(sim.dnfPerSeason[d] * 10) / 10,
+      experience_seasons: experienceSeasons(d),
+      // Arithmetic, not simulated. See eliminationStatus().
+      max_possible_points: elim[d]?.max_possible_points ?? null,
+      points_behind_leader: elim[d]?.points_behind_leader ?? null,
+      mathematically_eliminated: elim[d]?.mathematically_eliminated ?? false,
     }))
     .sort((a, b) => b.predicted_points - a.predicted_points)
     .map((row, i) => ({ position: i + 1, ...row }));
@@ -246,13 +377,25 @@ export function predict(opts = {}) {
   const result = {
     metadata: {
       generated_at: new Date().toISOString().slice(0, 10),
-      model: "js-weighted-montecarlo",
-      model_note: "XGBoost anchor (CV MAE " + MODEL_CV_MAE + ") + live-blend + 500x Monte Carlo",
+      model: "js-weighted-montecarlo-v2",
+      model_note:
+        "XGBoost anchor (CV MAE " + MODEL_CV_MAE + ") + live blend + " + N_SIMS +
+        "x Monte Carlo with correlated season-form drift, per-race noise and DNF risk",
       n_simulations: N_SIMS,
       n_races: nRaces,
-      noise_sigma: sigma,
-      cv_mae: MODEL_CV_MAE,
       races_completed: racesCompleted,
+      races_remaining: racesRemaining,
+      sprints_remaining: sprintsRemaining,
+      cv_mae: MODEL_CV_MAE,
+      // Calibration, surfaced so the dashboard can show its own workings.
+      noise_sigma: Math.round(sigma * 100) / 100,
+      race_sigma_source: "MODEL_CV_MAE / sqrt(2/pi)",
+      season_rank_sd_full_year: SEASON_RANK_SD_FULL_YEAR,
+      season_rank_sd_source: "SD of year-over-year championship rank change, 2020-2025 (91 driver-seasons)",
+      dnf_rate: DNF_RATE,
+      dnf_rate_source: "measured: 44 retirements / 235 starts, 2026 rounds 1-11 (race_classification_2026)",
+      leader_points: leaderPoints,
+      max_points_remaining: maxRemaining,
     },
     champion,
     driver_standings: driverStandings,

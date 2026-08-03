@@ -57,8 +57,8 @@ Top 5 from scraped formula1.com data:
 ## 8. Key Files & Entry Points
 | File | Purpose |
 |------|---------|
-| src/data/pipeline.py | Full pipeline entry point — `python src/data/pipeline.py` |
-| src/data/enrich_dashboard.py | Re-apply driver images + track layouts after pipeline |
+| src/data/pipeline.py | Full pipeline entry point — `python legacy/src/data/pipeline.py` (moved under `legacy/`) |
+| src/data/enrich_dashboard.py | Re-apply driver images + track layouts after pipeline (now under `legacy/`) |
 | dashboard/index.html | Static dashboard, open in browser |
 | dashboard/data.js | All pipeline + scraper output, {n} KB |
 | _workspace/predictions.json | Model predictions, {n} drivers |
@@ -84,7 +84,7 @@ Paste this prompt into a new Claude Code session or any AI:
 You are continuing work on an F1 2026 Championship Prediction project.
 
 **Project location:** `C:\Users\prath\f1-2026-analysis`
-**Entry point:** `python src/data/pipeline.py`
+**Entry point:** `python legacy/src/data/pipeline.py`
 **Dashboard:** `dashboard/index.html` (open in browser)
 
 **Current state:**
@@ -97,8 +97,8 @@ You are continuing work on an F1 2026 Championship Prediction project.
 **Pending work:**
 - {list pending items}
 
-**To run the full pipeline:** `python src/data/pipeline.py`
-**To re-enrich dashboard after pipeline:** `python src/data/enrich_dashboard.py`
+**To run the full pipeline:** `python legacy/src/data/pipeline.py`
+**To re-enrich dashboard after pipeline:** `python legacy/src/data/enrich_dashboard.py`
 **To open dashboard:** open `dashboard/index.html` in a browser
 ---
 ```

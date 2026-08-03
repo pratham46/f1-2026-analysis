@@ -1,0 +1,150 @@
+/* The Grid — teams and their drivers together, ordered by championship position. */
+
+.gr-teams {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: var(--space-5);
+}
+
+.gr-team {
+  /* A team card is a terminal panel: hard border, a laser rule on top in the
+     team's own colour, and no radius. The colour on the rule is the data —
+     everything else about the frame is chrome. */
+  background: var(--panel);
+  backdrop-filter: blur(var(--panel-blur));
+  border: var(--border) solid var(--surface-3);
+  border-top: var(--border-heavy) solid var(--c, var(--neon-cyan));
+  padding: var(--space-5);
+  transition: border-color var(--dur-fast) var(--ease-digital),
+              box-shadow var(--dur-fast) var(--ease-digital),
+              transform var(--dur-fast) var(--ease-digital);
+}
+
+.gr-team:hover {
+  border-color: var(--neon-cyan);
+  border-top-color: var(--c, var(--neon-cyan));
+  box-shadow: var(--glow-area);
+  transform: translateY(-2px);
+}
+
+.gr-team-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.gr-team-head h3 {
+  font-size: var(--text-lg);
+}
+
+.gr-team-stat { font-size: var(--text-xs); color: var(--ink-2); white-space: nowrap; }
+
+.gr-car {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: contain;
+  object-position: center;
+}
+
+.gr-drivers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.gr-driver {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  background: var(--surface-2);
+  border: var(--border) solid var(--surface-3);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.gr-driver:hover { background: var(--surface-3); }
+
+.gr-driver img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+}
+
+.gr-driver-name { font-size: var(--text-sm); font-weight: 600; }
+.gr-driver-no { font-size: var(--text-xs); color: var(--ink-2); }
+
+/* --- Driver modal -------------------------------------------------------- */
+
+.gr-modal-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+/* Cropped to head and shoulders rather than shown full-length. The source
+   images are standing full-body portraits, so at full width the figure ran
+   several hundred pixels tall and pushed the facts beside it — team, number,
+   points — below the fold of the dialog. `cover` with a top anchor keeps the
+   face at a readable size and lets the panel sit level with the data.
+
+   The aspect ratio is what does the cropping, so the height never depends on
+   the image's own dimensions and cannot drift when a portrait is swapped. */
+.gr-modal-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  /* Anchored to the very top. These are ~720x2069 full-body portraits, so the
+     crop window is a small fraction of the height and even a 12% offset landed
+     below the eyeline — the percentage applies to the OVERFLOW, which here is
+     roughly 860px, not to the image. */
+  object-position: 50% 0;
+  background: var(--surface-2);
+  border-bottom: var(--border) solid var(--c, var(--neon-cyan));
+}
+
+.gr-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.gr-facts dt { color: var(--ink-2); }
+.gr-facts dd { margin: 0; color: var(--ink-0); font-family: var(--font-mono); }
+
+.gr-modal-h {
+  font-family: var(--font-display);
+  font-stretch: var(--stretch-display);
+  font-size: var(--text-lg);
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.gr-plot { width: 100%; min-height: 16rem; }
+
+.gr-wiki {
+  display: inline-block;
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--ink-1);
+}
+
+@media (max-width: 48rem) {
+  .gr-modal-head { grid-template-columns: 1fr; }
+  /* Stacked on a phone the crop goes wider still — a 4:3 head-and-shoulders at
+     full column width would eat the fold before the facts start. */
+  .gr-modal-photo { aspect-ratio: 16 / 9; object-position: 50% 0; }
+}

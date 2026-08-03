@@ -1,0 +1,206 @@
+/* ============================================================================
+   The design standard. See DESIGN.md at the repo root.
+   This is the ONLY file permitted to contain raw hex or px values.
+   Enforced by scripts/check-tokens.mjs — it fails the build, not a lint warning.
+   ========================================================================== */
+
+:root {
+  /* --- The void ----------------------------------------------------------
+     Near-black carrying a purple bias rather than a true neutral. The old base
+     was chroma 0 on the argument that any cast would misrepresent eleven team
+     liveries. That argument still holds and is answered structurally instead:
+     neon owns the CHROME — frame, grid, glow, type — and team colour owns the
+     DATA. Nothing that encodes a team sits on a tinted panel without its own
+     mark. */
+  --void: #090014;
+  --surface-0: #090014;
+  --surface-1: #12082b;
+  --surface-2: #1a103c;
+  --surface-3: #2D1B4E;
+
+  /* Panel fill for glass chrome. Kept as a channel so backdrop-filter has
+     something to blur through. */
+  --panel: rgba(26, 16, 60, 0.8);
+  --panel-solid: #1a103c;
+
+  /* --- Ink ---------------------------------------------------------------
+     Chrome silver, not white. --ink-2 is the muted floor and still has to
+     clear 4.5:1 on --surface-3, the lightest surface it can sit on. */
+  --ink-0: #F2F2F5;
+  --ink-1: #E0E0E0;
+  --ink-2: #A9A2C4;
+  --ink-3: #7C74A0;
+
+  /* --- Neon ---------------------------------------------------------------
+     Pure digital primaries. These are structure, never data: a magenta rule is
+     a rule, a cyan heading is a heading. The moment a colour means "Mercedes"
+     it comes from the livery block below instead. */
+  --neon-magenta: #FF00FF;
+  --neon-cyan: #00FFFF;
+  --neon-orange: #FF9900;
+
+  /* Text-safe neon. Pure #FF00FF is 3.7:1 on the void — fine for a 2px border
+     or a large heading, and NOT fine for a label. These are lifted until they
+     clear 4.5:1 so small type can carry the colour without lying about it. */
+  --neon-magenta-txt: #FF6BFF;
+  --neon-cyan-txt: #6BFFFF;
+  --neon-orange-txt: #FFB84D;
+
+  /* --- Glow ---------------------------------------------------------------
+     Shadows here emit light rather than block it. Two intensities: resting and
+     the hover amplification, which is deliberately 2–3x rather than subtle. */
+  --glow-magenta: 0 0 10px rgba(255, 0, 255, 0.55);
+  --glow-magenta-hi: 0 0 24px rgba(255, 0, 255, 0.95);
+  --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.5);
+  --glow-cyan-hi: 0 0 24px rgba(0, 255, 255, 0.95);
+  --glow-area: 0 0 50px rgba(0, 255, 255, 0.18);
+  --text-glow-cyan: 0 0 5px rgba(0, 255, 255, 0.8);
+  --text-glow-magenta: 0 0 18px rgba(255, 0, 255, 0.6);
+  --text-glow-chrome: 0 0 10px rgba(255, 255, 255, 0.35);
+
+  /* --- Atmosphere ---------------------------------------------------------
+     The sun, the grid and the panel blur are design values, not arbitrary
+     numbers, so they live here and answer to the token checker like the rest.
+     --grid-perspective is the one that changes the whole feel: lower means a
+     more extreme horizon. */
+  --sun-size: 600px;
+  --sun-blur: 100px;
+  --grid-cell: 48px;
+  --grid-perspective: 340px;
+  --panel-blur: 6px;
+  --nav-blur: 10px;
+  --glow-spread: 8px;
+
+  /* --- Gradients ---------------------------------------------------------- */
+  --grad-sunset: linear-gradient(100deg, #FF9900, #FF00FF 55%, #00FFFF);
+  --grad-sun: linear-gradient(to bottom, #FF9900, #FF00FF);
+  --grad-rule: linear-gradient(to right, #FF00FF, #00FFFF);
+
+  /* --- Team liveries -----------------------------------------------------
+     Unchanged, and deliberately so. This is the data channel: raw values for
+     fills, marks and chart series, where the 3:1 non-text threshold applies. */
+  --team-mclaren: #FF8000;
+  --team-ferrari: #E8002D;
+  --team-red_bull: #3671C6;
+  --team-mercedes: #27F4D2;
+  --team-williams: #64C4FF;
+  --team-rb: #6692FF;
+  --team-aston_martin: #358C75;
+  --team-haas: #B6BABD;
+  --team-alpine: #FF87BC;
+  --team-audi: #00E701;
+  --team-cadillac: #C8A464;
+
+  /* Text-safe livery variants. On a near-black base it is the DARK liveries
+     that fail, not the bright ones. Lightness raised, hue held, so the team
+     still reads as itself. */
+  --team-ferrari-txt: #FF1A45;
+  --team-red_bull-txt: #5A8FD8;
+  --team-aston_martin-txt: #4FB89A;
+
+  /* --- Tyre compounds -----------------------------------------------------
+     The one place a fixed real-world colour code outranks the house rule about
+     hue. Every F1 viewer reads red/yellow/white/green/blue as soft/medium/hard/
+     inter/wet on sight; re-encoding that as neon would throw away knowledge the
+     audience already has, and would collide with the chrome besides. */
+  --tyre-soft: #D01E12;
+  --tyre-medium: #FFD12E;
+  --tyre-hard: #F0F0EC;
+  --tyre-intermediate: #43B02A;
+  --tyre-wet: #0067AD;
+  --tyre-unknown: #8A8A8A;
+
+  /* --- Type --------------------------------------------------------------
+     Orbitron for display: geometric, wide, drawn for the idea of the future
+     that 1982 had. Share Tech Mono for everything else — and mono here is not
+     costume, because F1 timing is genuinely tabular and the terminal framing
+     is the interface's actual metaphor.
+
+     They pair on a real contrast axis: Orbitron is wide, geometric and
+     closed; Share Tech Mono is narrow, fixed-pitch and open. */
+  --font-display: "Orbitron", "Archivo", system-ui, sans-serif;
+  --font-body: "Share Tech Mono", ui-monospace, monospace;
+  --font-mono: "Share Tech Mono", ui-monospace, monospace;
+  --stretch-display: 100%;
+  --stretch-body: 100%;
+
+  /* Hero ceiling stays under the 6rem shouting threshold even though the
+     register invites excess — the name has to fit on a laptop. */
+  --text-hero: clamp(2.75rem, 7.5vw, 5.75rem);
+  --text-display: clamp(2rem, 4.2vw, 3.5rem);
+  --text-xl: 1.75rem;
+  --text-lg: 1.3125rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+  --leading-tight: 1.05;
+  --leading-body: 1.65;
+  /* Orbitron is already wide; display type is tracked OUT rather than in,
+     which is the opposite of the grotesque it replaced. */
+  --tracking-display: 0.01em;
+  --tracking-ui: 0.14em;
+  --tracking-wide: 0.22em;
+  --measure: 68ch;
+
+  /* --- Space — 4px base --------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+
+  --section-pad: clamp(4.5rem, 11vh, 9.5rem);
+  --shell: min(1240px, 92vw);
+  --nav-h: 60px;
+  --ticker-h: 34px;
+  --progress-h: 3px;
+
+  /* --- Radius + border ---------------------------------------------------
+     Zero. The aesthetic is aggressively geometric and a rounded corner is the
+     single fastest way to make it read as a generic dark dashboard again.
+     --radius-round exists only for dots. */
+  --radius-sm: 0;
+  --radius: 0;
+  --radius-lg: 0;
+  --radius-round: 50%;
+  --hairline: 1px;
+  --border: 2px;
+  --border-heavy: 4px;
+
+  /* Skew is a token because it appears in pairs — the container leans, the
+     content inside counter-leans to stay readable. */
+  --skew: -12deg;
+  --skew-counter: 12deg;
+
+  /* --- Z — semantic, never arbitrary -------------------------------------- */
+  --z-under: -1;
+  --z-base: 0;
+  --z-rail: 10;
+  --z-sticky: 20;
+  --z-nav: 30;
+  --z-backdrop: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+  --z-tooltip: 70;
+  --z-scanline: 80;
+
+  /* --- Motion ------------------------------------------------------------
+     Faster and flatter than the curve set it replaces. This machine responds
+     like software from 1988: immediate, mechanical, slightly unnatural. The
+     exponential curves stay for anything that travels a long way. */
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 420ms;
+  --dur-cinematic: 900ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-digital: linear;
+}
