@@ -5,264 +5,203 @@ The visual system for the F1 2026 dashboard. Every value here has a token in
 
 ## Theme
 
-**Dark.** Not by default — by scene. The physical scene this interface belongs to is a
-race engineer's screen on a pit wall at night under floodlights: low ambient light, a lit
-surface, sustained focus. That sentence forces dark; a light interface would be a
-different room.
+**Outrun.** Not dark-because-dashboards — dark because of the scene. A synthetic
+dimension rendered on a CRT at 3am: a sun setting over an infinite wireframe grid, neon
+tubes for borders, a terminal for an interface. The room is a bedroom in 1987 running
+software from 2088.
+
+This replaces an achromatic pit-wall system. That one was defensible and quiet; it also
+read, honestly, as one more dark analytics dashboard, which PRODUCT.md names as an
+anti-reference. The register here is **brand** — design *is* the product — and in that
+register safe is invisible.
 
 ## Color
 
 ### Strategy
 
-**Achromatic surface, full-palette data.**
+**Committed, with a hard split between chrome and data.**
 
-The base ramp is chroma 0 — genuinely neutral, not a tinted neutral. This is the load-
-bearing decision of the whole system: eleven team liveries have to read true, and they are
-not colours we own. A warm cast would dull Mercedes' cyan; a cool cast would sour Alpine's
-pink. Tinting the base to express "brand personality" would corrupt eleven other brands'
-identities to do it.
+This is the load-bearing rule of the system, and the thing that lets a maximalist palette
+sit on top of real analysis without corrupting it:
 
-The consequence, and the point: **all chroma on the page is data.** If something is
-coloured, it means something. Nothing is coloured for mood.
+- **Neon is chrome.** Magenta, cyan and orange carry frame, rule, glow, heading, focus,
+  hover — structure. A magenta line is a line. A cyan heading is a heading.
+- **Team livery is data.** The moment a colour means *Mercedes*, it comes from the livery
+  block and nothing else. Eleven liveries have to read true and they are not colours we
+  own.
 
-Ferrari red is now the Ferrari colour and nothing else. The old `#e10600` "F1 red" accent
-is deleted — a generic brand red competing with an actual team's red was always a conflict.
+The previous system got this by making the base chroma 0. This one gets it by role
+separation instead, which survives a saturated base. The test is unchanged: **if something
+is coloured like a team, it means that team.**
 
-### Surface ramp
+### The void
 
 | Token | Value | Use |
 |---|---|---|
-| `--surface-0` | `oklch(0.14 0 0)` | Page background |
-| `--surface-1` | `oklch(0.18 0 0)` | Panels, table bodies |
-| `--surface-2` | `oklch(0.22 0 0)` | Raised elements, modal surface |
-| `--surface-3` | `oklch(0.27 0 0)` | Hover, active row, input fill |
+| `--void` / `--surface-0` | `#090014` | Page background — near-black, purple-biased |
+| `--surface-1` | `#12082b` | Recessed fills, bar tracks |
+| `--surface-2` | `#1a103c` | Panels, raised elements |
+| `--surface-3` | `#2D1B4E` | Borders, dividers, hover fill |
+| `--panel` | `rgba(26,16,60,0.8)` | Glass panels — kept translucent so `backdrop-filter` has something to do |
 
-No gradients on surfaces. The old radial red/blue body glows are removed; they tinted the
-liveries sitting on top of them.
+### Ink
 
-### Ink ramp
+Chrome silver, not white.
 
 | Token | Value | Min. contrast |
 |---|---|---|
-| `--ink-0` | `oklch(0.97 0 0)` | Primary text, headlines |
-| `--ink-1` | `oklch(0.80 0 0)` | Secondary text, labels |
-| `--ink-2` | `oklch(0.66 0 0)` | Muted text — the floor. Must clear 4.5:1 on `--surface-3`, the lightest surface it can sit on. |
+| `--ink-0` | `#F2F2F5` | Primary text |
+| `--ink-1` | `#E0E0E0` | Body — the default |
+| `--ink-2` | `#A9A2C4` | Secondary. Must clear 4.5:1 on `--surface-3` |
+| `--ink-3` | `#7C74A0` | Non-text only: rules, disabled marks, column labels at `--text-xs` |
 
-`--ink-2` is deliberately lighter than the grey it replaces. Light-grey-for-elegance is
-the most common reason an interface is hard to read, and the old `--text-dim: #5b606b`
-failed AA outright.
+### Neon
 
-### Team colours
-
-Eleven liveries, used raw for fills, marks, chart series, and borders — where the 3:1
-non-text threshold applies. Each also has a `-txt` variant, lightened until it clears
-4.5:1 on `--surface-1`, used whenever the colour carries type.
-
-| Team | Livery | Needs `-txt` variant |
+| Token | Value | Role |
 |---|---|---|
-| McLaren | `#FF8000` | no |
-| Ferrari | `#E8002D` | **yes** — ≈4.2:1, fails |
-| Red Bull | `#3671C6` | **yes** — ≈4.1:1, fails |
-| Mercedes | `#27F4D2` | no |
-| Williams | `#64C4FF` | no |
-| Racing Bulls | `#6692FF` | no |
-| Aston Martin | `#358C75` | **yes** — ≈4.9:1, too close to the line |
-| Haas | `#B6BABD` | no |
-| Alpine | `#FF87BC` | no |
-| Audi | `#00E701` | no |
-| Cadillac | `#C8A464` | no |
+| `--neon-magenta` | `#FF00FF` | Primary structure: rules, borders, the grid |
+| `--neon-cyan` | `#00FFFF` | Interactive: focus, hover, links, headings, live status |
+| `--neon-orange` | `#FF9900` | Sparing: the sun, fastest-lap marks |
 
-The `-txt` variants are generated by raising OKLCH lightness only, holding hue and chroma,
-so the team still reads as itself.
+**Pure neon fails as small text.** `#FF00FF` is ≈3.7:1 on the void — fine for a 2px border
+or a display heading at the 3:1 non-text threshold, and not fine for a label. Every neon
+therefore has a `-txt` variant lifted until it clears 4.5:1, and `check-tokens.mjs` enforces
+that on the same code path as the team variants.
+
+### Gradients
+
+| Token | Use |
+|---|---|
+| `--grad-sunset` | Orange → magenta → cyan. **Section titles and the champion's surname only.** |
+| `--grad-sun` | The atmospheric orb |
+| `--grad-rule` | Magenta → cyan, for accent rules and section edges |
+
+Gradient text is normally a ban, and it is deliberate here: it is the signature of the
+aesthetic, so it is rationed to exactly two roles. Used on a third thing it stops being a
+signature and becomes wallpaper. Every gradient-filled element carries a **solid colour
+fallback** underneath, so a browser without `background-clip: text` gets cyan rather than
+invisible text.
 
 ### Semantic states — form, not hue
 
-The eleven liveries already occupy most of the hue wheel. There is no free hue left that
-reads as "good" or "bad" without colliding with a team. So **semantic state is carried by
-lightness and form, never by hue alone**:
+Unchanged from the previous system, and for the same reason: the liveries occupy most of
+the hue wheel, and red/green is the most common colour-vision failure.
 
 | State | Encoding |
 |---|---|
-| Hit / correct prediction | Filled mark + `--ink-0` + `✓` |
-| Miss / wrong prediction | Hollow mark + `--ink-2` + `✗` |
-| Gain / position up | `▲` + `--ink-0` |
-| Loss / position down | `▼` + `--ink-2` |
-| Live / now | Pulsing dot, achromatic |
+| Hit / correct | `✓` + cyan + glow |
+| Miss / wrong | `✗` + `--ink-3`, no glow |
+| Gain / loss | `▲` / `▼` + lightness |
+| Live | Pulsing cyan dot |
+| Committed seed | Static magenta dot |
 
-This is stricter than WCAG requires and it is the better design regardless: red/green is
-the most common colour-vision failure, and here it would also have lied about which team
-was being referenced.
+### Tyre compounds
 
-### The one exception — tyre compounds
-
-| Compound | Token | Value | Fill vs `--surface-1` | Label |
-|---|---|---|---|---|
-| Soft | `--tyre-soft` | `#D01E12` | 3.47:1 | `--ink-0`, 4.97:1 |
-| Medium | `--tyre-medium` | `#FFD12E` | 12.91:1 | `--surface-0`, 13.66:1 |
-| Hard | `--tyre-hard` | `#F0F0EC` | 16.46:1 | `--surface-0`, 17.42:1 |
-| Intermediate | `--tyre-intermediate` | `#43B02A` | 6.70:1 | `--surface-0`, 7.09:1 |
-| Wet | `--tyre-wet` | `#0067AD` | 3.17:1 | `--ink-0`, 5.43:1 |
-
-Compounds keep their real colour code, against the rule above. Red/yellow/white/green/blue
-is knowledge the audience already has — every F1 viewer decodes it without a legend, and
-greyscale would have thrown that away to satisfy a rule whose purpose (not colliding with
-a livery) is already met by context: compounds appear only inside the stint chart, where
-nothing is coloured by team. Colour is still not the only channel — every stint carries
-its letter, and a key lists the compounds that race actually ran.
-
-Values are F1's own except soft, darkened from `#DA291C` so the in-bar label clears 4.5:1
-as white text (4.46 → 4.97) while the fill still clears 3:1.
-
-**Plotly cannot parse CSS colour functions.** It understood neither `oklch()` nor `var()`,
-and instead of erroring it fell back to its own categorical palette — so every stint
-rendered a random hue and the chart looked deliberate. Always hand Plotly a literal via
-`resolveToken`, which throws on a missing token rather than returning `""`.
+Real F1 colour codes, unchanged. Every viewer decodes red/yellow/white/green/blue without
+a legend, and re-encoding that as neon would throw away knowledge the audience already
+has. Compounds appear only in the stint chart and the tyre-life panel, where nothing is
+coloured by team. Colour is never the only channel — each carries its letter or name.
 
 ## Typography
 
-### Families
-
 | Token | Family | Role |
 |---|---|---|
-| `--font-display` | **Archivo** 700 at `font-stretch: 125%` | Headlines, section titles, big numbers |
-| `--font-body` | **Archivo** 400 / 600 at normal width | All prose, labels, UI text |
-| `--font-mono` | **Chivo Mono** 400 / 700 | Timing, lap times, gaps, positions, any tabular figure |
+| `--font-display` | **Orbitron** 700 / 900 | Headings, the name, figures |
+| `--font-body` / `--font-mono` | **Share Tech Mono** 400 | Everything else |
 
-"Archivo Expanded" is not a separate family — Archivo is a variable font with a width
-axis (`wdth` 62–125). Display type is the same family pushed to the expanded end via
-`font-stretch`, which is why the pairing costs one font download rather than two. Load it
-as `family=Archivo:wdth,wght@62..125,400..700`.
+They pair on a real contrast axis: Orbitron is wide, geometric and closed; Share Tech Mono
+is narrow, fixed-pitch and open. Not two sans-serifs pretending to differ.
 
-One family across display and body, with committed width and weight contrast doing the
-work a timid second typeface would have done badly. Archivo is a grotesque drawn for
-signage and documents; Expanded reads as a technical bulletin enlarged, not as a racing
-game.
+Monospace everywhere would normally be mono-as-costume. It is not costume here for two
+reasons: F1 timing is genuinely tabular, and the interface's actual metaphor is a terminal
+— the `>` prompts, the window chrome, the `.dat` filenames are the system, not decoration.
 
-Chivo Mono is from the same foundry as Archivo (Omnibus-Type) and harmonises with it.
-Monospace here is not a costume for "technical" — F1 timing is genuinely tabular, and
-digits that shift width while a lap time counts up is a real bug.
-
-**Removed:** Chakra Petch (the reflex "racing" face), Titillium Web, Share Tech Mono (a
-sci-fi terminal face, costume rather than timing).
+**Display type is tracked OUT** (`--tracking-display`, `--tracking-ui`, `--tracking-wide`),
+the opposite of the grotesque it replaced. Orbitron's counters close up if you track it in.
+Headings are uppercase.
 
 ### Scale
 
-Modular, ratio 1.333, fluid via `clamp()` on display steps.
+| Token | Size |
+|---|---|
+| `--text-hero` | `clamp(2.75rem, 7.5vw, 5.75rem)` — under the 6rem shouting ceiling |
+| `--text-display` | `clamp(2rem, 4.2vw, 3.5rem)` |
+| `--text-xl` → `--text-xs` | 1.75 / 1.3125 / 1 / 0.875 / 0.75rem |
 
-| Token | Size | Use |
-|---|---|---|
-| `--text-hero` | `clamp(2.5rem, 7vw, 5.5rem)` | Cold Open headline. Ceiling below the 6rem shouting threshold. |
-| `--text-display` | `clamp(2rem, 4vw, 3.25rem)` | Section titles |
-| `--text-xl` | `1.75rem` | Sub-headings, stat values |
-| `--text-lg` | `1.3125rem` | Lead paragraphs |
-| `--text-base` | `1rem` | Body |
-| `--text-sm` | `0.875rem` | Labels, table cells |
-| `--text-xs` | `0.75rem` | Legends, footnotes — the floor |
+Body measure caps at 68ch. `text-wrap: balance` on h1–h3, `pretty` on prose.
 
-### Rules
+## Radius & borders
 
-- Body measure capped at **68ch**.
-- Display letter-spacing `-0.02em`; never below `-0.04em`.
-- `text-wrap: balance` on h1–h3, `text-wrap: pretty` on prose.
-- Line-height `1.6` on body — dark-mode light text needs the extra breathing room.
-- `font-variant-numeric: tabular-nums` on every number that can change.
-- **No uppercase tracked eyebrow above section headings.** Sections are titled directly.
-  Kickers appear only where a section genuinely has a subtitle worth reading.
+**Zero radius.** `--radius`, `--radius-sm` and `--radius-lg` are all `0` — kept as names so
+existing rules resolve, but a rounded corner is the single fastest way to make this read as
+a generic dark dashboard again. `--radius-round` exists only for dots.
 
-## Spacing
+Borders are `--border` (2px) as standard, `--border-heavy` (4px) for emphasis, `--hairline`
+for table rules. Border colour is `--surface-3` at rest and neon when interactive.
 
-4px base. `--space-1` through `--space-16` (4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192px).
-Section padding is fluid: `clamp(4rem, 10vh, 9rem)` block.
+## The atmosphere
 
-Rhythm is deliberately uneven. The Cold Open and Model vs Reality get the most air; the
-data-dense panels (Title Fight, The Grid) tighten up. Uniform section padding is what makes
-a long page read as a list rather than a narrative.
+Three fixed layers, all `pointer-events: none` and `aria-hidden` — weather, not content:
 
-## Layout
+1. **The sun** — a `--sun-size` orb at `--sun-blur` blur. At that radius it is not a shape,
+   it is a light source.
+2. **The grid** — a wireframe floor at `perspective(--grid-perspective) rotateX(62deg)`,
+   masked to nothing at the top so it emerges from the dark instead of being cut off.
+3. **The CRT** — scanlines plus RGB chromatic aberration at 6%. Above 6% it stops reading
+   as a screen artefact and starts reading as a broken stylesheet.
 
-- Content column `min(1240px, 92vw)`; the Cold Open and the season rail run full-bleed.
-- Flexbox for 1D, Grid for 2D. Responsive grids use
-  `repeat(auto-fit, minmax(280px, 1fr))` rather than breakpoints where it fits.
-- **Cards are used sparingly and never nested.** The old build reached for a card per
-  concept; the standings, the accuracy rounds, and the season rail are all better as
-  tables, rails, and lists.
-- Asymmetry is allowed and encouraged in the narrative sections. The data panels stay on
-  grid — that is where alignment carries meaning.
+## Components
 
-### Z-index scale
+**The terminal window replaces the card.** `.win` / `.win-bar` / `.win-body` /
+`.win-status`: hard border, title bar with three chrome dots, a `.dat`-style filename, and
+an optional status line. A card is a rounded rectangle with a shadow and says nothing; this
+says *you are looking at a readout*.
 
-Semantic, never arbitrary:
-
-```
---z-base 0 · --z-rail 10 · --z-sticky 20 · --z-nav 30
---z-backdrop 40 · --z-modal 50 · --z-toast 60 · --z-tooltip 70
-```
+**Skew comes in pairs.** `--skew` leans the container, `--skew-counter` un-leans the
+content. The lean is always the container's — a leaning number is unreadable.
 
 ## Motion
 
-Motion carries meaning or it does not ship. Position changes, probability shifts, and
-value updates animate. Nothing animates to decorate.
+Motion carries meaning or it does not ship. `--ease-digital` (linear) is the house curve for
+state changes: this machine responds like software from 1988, immediate and slightly
+unnatural. The exponential curves stay for anything that travels a long way.
 
-### Tokens
-
-| Token | Value | Use |
-|---|---|---|
-| `--dur-fast` | `120ms` | State feedback — hover, focus, press |
-| `--dur-base` | `240ms` | Transitions, modal open |
-| `--dur-slow` | `480ms` | Section reveals |
-| `--dur-cinematic` | `900ms` | Cold Open choreography |
-| `--ease-out` | `cubic-bezier(0.22, 1, 0.36, 1)` | Out-quint. The default. |
-| `--ease-out-expo` | `cubic-bezier(0.16, 1, 0.3, 1)` | Emphasis, large travel |
-| `--ease-in-out` | `cubic-bezier(0.65, 0, 0.35, 1)` | Reversible transitions |
-
-No bounce. No elastic. No `ease` or `linear` outside of progress indicators.
-
-### System
-
-- **Native CSS scroll-driven animations** (`animation-timeline: view()` / `scroll()`) for
-  reveals, the progress bar, and parallax. Runs off the compositor, no JS.
-- **GSAP ScrollTrigger** only for pinned, scrubbed sequences — the Cold Open car and the
-  track flythrough. Pinning and scrubbing are the two things native CSS does badly.
-- **Content is visible by default.** Reveals enhance an already-rendered page; they never
-  gate visibility behind a class. This rule exists because this project has already
-  shipped blank sections twice from exactly that mistake.
-- Reveals are **per-section, not uniform**. One identical fade-up applied to all eight
-  sections is the AI tell. The standings rows stagger; the accuracy chart draws on; the
-  Cold Open choreographs. Each reveal fits what it reveals.
-- Animate `transform`, `opacity`, `clip-path`, `filter`. Never `width`, `height`, `top`,
-  `left`, or `margin`.
+- **Reveals are typed, never uniform.** `[data-reveal="title|text|row|card"]`, each fitted
+  to what it reveals. One identical fade-up on every section is the AI tell PRODUCT.md
+  names, and this page shipped it twenty times before it was replaced.
+- **The start procedure** is the one orchestrated moment — the Cold Open, on load, gated on
+  `[data-ready]` so it does not play to an empty room before the section renders.
+- **Content is visible by default.** Reveals enhance an already-painted page. This project
+  has shipped blank sections twice from breaking that rule.
+- Reveals ride `animation-timeline: view()`, so lists cascade from their own geometry. **A
+  reveal inside a scroll container cannot use it** — `view()` binds to the nearest scroll
+  container, where the element is permanently "in view" and the animation pins at progress
+  1. `motion.js` detects those and drives them by observer instead.
 
 ### Reduced motion
 
-`@media (prefers-reduced-motion: reduce)` is a designed path, not a fallback. All
-transforms and scrubbing are removed, count-ups resolve to final values instantly, both 3D
-scenes are replaced by static imagery. The page must read as a complete, sensible document
-with every animation off.
+A designed path. The ticker stops, the caret stops, the sun and grid hold still, every
+reveal resolves to its final state, and count-ups jump to their value. The scroll-progress
+bar **keeps working** — it is a position indicator, not an animation, and the blanket
+`animation-duration: 1ms` override would otherwise pin it to full.
 
 ## Charts
 
-Plotly, styled entirely from tokens.
+Plotly, styled from tokens via `resolveToken`. **Plotly cannot parse CSS colour functions**
+— not `var()`, not `oklch()` — and does not error, it silently substitutes its own palette.
+Series colour is team colour, always. Grid lines `--surface-3`, axis text `--ink-2`, no
+chart titles inside the plot.
 
-- **Plotly cannot resolve `var(--token)` strings.** Every colour must be resolved to a
-  literal through `js/lib/charts.js` before it reaches a trace. This has already shipped as
-  a live bug once — the accuracy chart rendered invisible.
-- Series colour = team colour, always. A driver is their team's colour everywhere on the
-  page; no chart invents its own categorical palette.
-- Where two team-mates appear in the same chart, they share a hue and separate by line
-  style (solid / dashed), not by a second colour.
-- Grid lines `--surface-3`, axis text `--ink-2`, no chart borders, no chart titles inside
-  the plot — the section heading is the title.
-- Charts inside modals must be width-gated (`PLOT_WHEN_VISIBLE`); a `newPlot` at width≈0
-  crushes bars against the axis.
-- Every chart draws on first visibility only, never on re-render.
+`THREE.Color` has the same limitation; `lib/color.js` is the single conversion point for
+both.
 
 ## Verification
 
 `scripts/check-tokens.mjs` enforces this document mechanically:
 
-1. No raw hex or `px` values in `dashboard/css/sections/*.css` or `base.css`.
-2. Every ink/surface pairing in the ramps clears its WCAG threshold, computed from the
-   OKLCH values rather than assumed.
-3. Every team `-txt` variant clears 4.5:1 on `--surface-1`.
+1. No raw hex or px outside `tokens.css` — including glow radii, the sun, and the grid
+   perspective, which are design values and belong in the token file.
+2. Every ink/surface pairing clears its WCAG threshold.
+3. Every `-txt` variant — team **and neon** — clears 4.5:1 on `--surface-1`.
 
 A design standard that is only a document rots. This one fails the build.

@@ -7,13 +7,24 @@
 }
 
 .gr-team {
-  border-top: var(--space-1) solid var(--c);
-  background: var(--surface-1);
-  border-radius: 0 0 var(--radius) var(--radius);
-  padding: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  /* A team card is a terminal panel: hard border, a laser rule on top in the
+     team's own colour, and no radius. The colour on the rule is the data —
+     everything else about the frame is chrome. */
+  background: var(--panel);
+  backdrop-filter: blur(var(--panel-blur));
+  border: var(--border) solid var(--surface-3);
+  border-top: var(--border-heavy) solid var(--c, var(--neon-cyan));
+  padding: var(--space-5);
+  transition: border-color var(--dur-fast) var(--ease-digital),
+              box-shadow var(--dur-fast) var(--ease-digital),
+              transform var(--dur-fast) var(--ease-digital);
+}
+
+.gr-team:hover {
+  border-color: var(--neon-cyan);
+  border-top-color: var(--c, var(--neon-cyan));
+  box-shadow: var(--glow-area);
+  transform: translateY(-2px);
 }
 
 .gr-team-head {
@@ -52,7 +63,7 @@
   align-items: flex-start;
   gap: var(--space-1);
   background: var(--surface-2);
-  border: 1px solid var(--surface-3);
+  border: var(--border) solid var(--surface-3);
   border-radius: var(--radius);
   padding: var(--space-3);
   cursor: pointer;

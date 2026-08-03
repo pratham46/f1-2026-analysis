@@ -21,7 +21,7 @@
   column-gap: var(--space-3);
   align-items: baseline;
   background: var(--surface-1);
-  border: 1px solid var(--surface-3);
+  border: var(--border) solid var(--surface-3);
   border-radius: var(--radius);
   padding: var(--space-4);
   cursor: pointer;
@@ -35,7 +35,14 @@
   border-style: dashed;
 }
 
-.sea-round:hover { background: var(--surface-2); transform: translateY(-1px); }
+/* A round lifts off the board and its border switches to a cyan tube. Lift is
+   -2px rather than -1: at one pixel it reads as a rendering artefact. */
+.sea-round:hover {
+  background: var(--surface-2);
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
 
 .sea-n {
   grid-area: n;
@@ -44,14 +51,18 @@
   align-self: center;
 }
 
-.sea-round[data-done="true"] .sea-n { color: var(--c, var(--ink-0)); }
+.sea-round[data-done="true"] .sea-n {
+  color: var(--c, var(--ink-0));
+  text-shadow: 0 0 var(--glow-spread) var(--c, transparent);
+}
 
 .sea-name {
   grid-area: name;
   font-family: var(--font-display);
-  font-stretch: var(--stretch-display);
-  font-weight: 600;
-  font-size: var(--text-base);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
   color: var(--ink-0);
 }
 
@@ -61,7 +72,7 @@
   grid-area: w;
   margin-top: var(--space-3);
   padding-top: var(--space-2);
-  border-top: 1px solid var(--surface-3);
+  border-top: var(--border) solid var(--surface-3);
   font-size: var(--text-xs);
 }
 
@@ -72,7 +83,7 @@
 .sea-call {
   margin-top: var(--space-3);
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--surface-3);
+  border: var(--border) solid var(--surface-3);
   border-radius: var(--radius);
   font-size: var(--text-sm);
 }
@@ -95,7 +106,7 @@
   font-weight: 600;
   color: var(--ink-2);
   padding: var(--space-2) var(--space-3);
-  border-bottom: 1px solid var(--surface-3);
+  border-bottom: var(--border) solid var(--surface-3);
 }
 
 .sea-results td {
@@ -110,9 +121,8 @@
 .sea-fl {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--surface-0);
-  background: var(--ink-1);
-  border-radius: var(--radius-sm);
+  color: var(--void);
+  background: var(--neon-orange);
   padding: 0 var(--space-1);
 }
 
@@ -169,7 +179,7 @@
 .sea-tyre-dot {
   width: var(--space-3);
   height: var(--space-3);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
   flex: none;
 }
 

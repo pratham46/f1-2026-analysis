@@ -21,8 +21,11 @@
   font-size: var(--text-xs);
   color: var(--ink-2);
   padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--surface-3);
+  border-bottom: var(--border) solid var(--surface-3);
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-3);
 }
 
 .tf-table td {
@@ -34,7 +37,9 @@
 .tf-table tbody tr {
   transition: background var(--dur-fast) var(--ease-out);
 }
-.tf-table tbody tr:hover { background: var(--surface-1); }
+/* The row lights up rather than greys up. Cyan at 7% is enough to read as a
+   hover on this base without competing with the livery mark in the row. */
+.tf-table tbody tr:hover { background: color-mix(in srgb, var(--neon-cyan) 7%, transparent); }
 
 .tf-table .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .tf-table th.num, .tf-table td.num { text-align: right; }
@@ -61,7 +66,7 @@
   color: var(--ink-2);
 }
 
-.tf-real { color: var(--ink-0); font-weight: 700; }
+.tf-real { color: var(--neon-cyan); font-weight: 400; text-shadow: var(--text-glow-cyan); }
 .tf-proj { color: var(--ink-1); }
 
 /* Direction is the glyph plus lightness. Never hue — the liveries own it. */
@@ -78,7 +83,8 @@
   border-radius: var(--radius-sm);
   background: var(--c, var(--ink-2));
   width: var(--w, 0%);
-  min-width: 1px;
+  min-width: var(--hairline);
+  box-shadow: 0 0 var(--glow-spread) var(--c, transparent);
   transform-origin: 0 50%;
 }
 

@@ -24,7 +24,7 @@ function careerChart(driverId, data) {
   const colour = teamColor(data.driver_info?.[driverId]?.team);
 
   plotWhenVisible(el, (node) => {
-    window.Plotly.newPlot(node, [{
+    return window.Plotly.newPlot(node, [{
       type: "bar",
       x: form.seasons.map(String),
       y: form.points,

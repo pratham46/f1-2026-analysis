@@ -1,0 +1,182 @@
+/* Race Strategy — measured inputs, one falsifiable model. */
+
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.st-panel { min-width: 0; }
+
+.st-note {
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  max-width: var(--measure);
+  margin-bottom: var(--space-4);
+}
+
+/* --- Tyre life ------------------------------------------------------------ */
+
+.st-tyres { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+
+.st-tyres li {
+  display: grid;
+  grid-template-columns: 6rem 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.st-tyre-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-1);
+}
+
+/* Compound colour is the real F1 code and stays a data channel — the neon
+   palette does not get to overrule knowledge the audience already has. */
+.st-dot {
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-round);
+  flex: none;
+}
+
+.st-track {
+  display: block;
+  height: var(--space-4);
+  background: var(--surface-1);
+  border: var(--hairline) solid var(--surface-3);
+}
+
+.st-bar {
+  display: block;
+  height: 100%;
+  width: var(--w, 0%);
+  background: var(--c, var(--ink-2));
+  transform-origin: 0 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .st-bar {
+    animation: st-grow var(--dur-slow) var(--ease-out-expo) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+  @keyframes st-grow { from { transform: scaleX(0); } }
+}
+
+.st-figs {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.st-figs b { color: var(--neon-cyan); font-weight: 400; }
+.st-figs s { text-decoration: none; color: var(--ink-3); margin-left: var(--space-2); }
+
+/* --- Pit cost readout ----------------------------------------------------- */
+
+.st-readout {
+  margin: 0 0 var(--space-4);
+  display: grid;
+  gap: var(--space-3) var(--space-4);
+}
+
+.st-readout dt {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-2);
+}
+
+.st-readout dd {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  color: var(--neon-magenta-txt);
+  text-shadow: var(--text-glow-magenta);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.st-readout dd s {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-3);
+  text-shadow: none;
+}
+
+/* --- Model table ---------------------------------------------------------- */
+
+.st-panel--wide { grid-column: 1 / -1; }
+
+.st-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.st-table th {
+  text-align: left;
+  font-weight: 400;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-3);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border) solid var(--surface-3);
+  white-space: nowrap;
+}
+
+.st-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--hairline) solid var(--surface-3);
+  color: var(--ink-1);
+}
+
+.st-table .num { text-align: right; }
+
+.st-table tbody tr { transition: background var(--dur-fast) var(--ease-digital); }
+.st-table tbody tr:hover { background: color-mix(in srgb, var(--neon-cyan) 7%, transparent); }
+
+/* Hit and miss are carried by mark and word, never by hue alone — the same
+   rule the rest of the page follows, and the reason this reads for the ~1 in
+   12 who would lose a red/green encoding entirely. */
+.st-verdict { white-space: nowrap; letter-spacing: var(--tracking-ui); font-size: var(--text-xs); }
+.st-table tr[data-hit="true"] .st-verdict { color: var(--neon-cyan); text-shadow: var(--text-glow-cyan); }
+.st-table tr[data-hit="false"] .st-verdict { color: var(--ink-3); }
+
+/* --- Next round ----------------------------------------------------------- */
+
+.st-next {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border: var(--border) solid var(--surface-3);
+  border-left: var(--border-heavy) solid transparent;
+  border-image: var(--grad-rule) 1;
+  background: var(--void);
+}
+
+.st-next-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+@media (max-width: 40rem) {
+  .st-tyres li { grid-template-columns: 5rem 1fr; }
+  .st-figs { grid-column: 1 / -1; text-align: right; }
+}

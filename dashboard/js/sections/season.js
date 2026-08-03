@@ -126,7 +126,7 @@ function strategyChart(round, data) {
         });
       }
     }
-    window.Plotly.newPlot(el, traces, {
+    return window.Plotly.newPlot(el, traces, {
       ...baseLayout({
         barmode: "stack",
         height: Math.max(320, order.length * 22 + 80),

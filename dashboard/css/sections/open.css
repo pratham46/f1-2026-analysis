@@ -12,7 +12,8 @@
   grid-template-rows: 1fr auto;
   align-items: end;
   overflow: hidden;
-  border-bottom: 1px solid var(--surface-3);
+  border-bottom: var(--border) solid transparent;
+  border-image: var(--grad-rule) 1;
 }
 
 /* The type block is centred in its band rather than dropped to the floor of
@@ -76,9 +77,23 @@
 .open-kicker {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
   color: var(--ink-2);
   max-width: var(--measure);
   margin-bottom: var(--space-4);
+}
+/* A prompt, with a cursor that blinks the way a DOS box does. Generated, so
+   the sentence stays clean for a screen reader. */
+.open-kicker::before { content: "> "; color: var(--neon-cyan); }
+.open-kicker::after {
+  content: "_";
+  color: var(--neon-cyan);
+  margin-left: var(--space-1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .open-kicker::after { animation: caret 1.05s steps(1) infinite; }
+  @keyframes caret { 50% { opacity: 0; } }
 }
 
 .open-title {
@@ -88,28 +103,67 @@
   margin-bottom: var(--space-7);
 }
 
-.open-given { color: var(--ink-1); font-weight: 400; }
-.open-family { color: var(--open-accent, var(--ink-0)); }
+.open-title { text-transform: uppercase; }
 
+.open-given {
+  color: var(--ink-1);
+  font-weight: 400;
+  text-shadow: var(--text-glow-chrome);
+}
+
+/* The surname is the one gradient-filled word in the fold. `--open-accent` is
+   the leader's team colour and stays as the fallback: if background-clip is
+   unavailable the name is still Mercedes cyan, not transparent. */
+.open-family {
+  color: var(--open-accent, var(--neon-magenta));
+  font-weight: 900;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .open-family {
+    background: var(--grad-sunset);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(var(--text-glow-magenta));
+  }
+}
+
+/* Readouts, not a stat row. Each figure sits in a skewed cell with a magenta
+   left rule and counter-skewed content so the type stays upright — the lean is
+   the container's, never the number's. */
 .open-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, max-content));
-  gap: var(--space-3) var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(10rem, max-content));
+  gap: var(--space-3) var(--space-6);
   margin: 0;
 }
 
 .open-stats dt {
-  font-size: var(--text-xs);
-  color: var(--ink-2);
   grid-row: 1;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-2);
+  transform: skewX(var(--skew));
+  padding-inline: var(--space-3);
+  border-left: var(--border) solid var(--neon-magenta);
 }
+.open-stats dt > * { display: inline-block; transform: skewX(var(--skew-counter)); }
 
 .open-stats dd {
-  margin: 0;
   grid-row: 2;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-xl);
-  color: var(--ink-0);
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+  transform: skewX(var(--skew));
+  padding-inline: var(--space-3);
+  border-left: var(--border) solid var(--neon-cyan);
 }
+.open-stats dd > * { display: inline-block; transform: skewX(var(--skew-counter)); }
 
 /* --- The start procedure -------------------------------------------------
    The one orchestrated moment on the page. Everything else is scroll-linked;

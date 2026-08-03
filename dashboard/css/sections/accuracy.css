@@ -7,7 +7,7 @@
   gap: var(--space-3) var(--space-8);
   margin: 0 0 var(--space-7);
   padding-bottom: var(--space-6);
-  border-bottom: 1px solid var(--surface-3);
+  border-bottom: var(--border) solid var(--surface-3);
 }
 
 .acc-summary dt {
@@ -34,9 +34,9 @@
 
 .acc-round {
   padding: var(--space-4);
-  border: 1px solid var(--surface-3);
+  border: var(--border) solid var(--surface-3);
   border-radius: var(--radius);
-  background: var(--surface-1);
+  background: var(--panel);
 }
 
 /* A miss is quieter in surface but not smaller and not hidden — it is stated,
@@ -63,7 +63,7 @@
   place-items: center;
   width: var(--space-5);
   height: var(--space-5);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
   font-size: var(--text-xs);
   line-height: 1;
 }

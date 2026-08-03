@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://media.formula1.com" />
-<!-- Archivo is variable on wdth 62..125 — display type is the same family at
-     font-stretch: 125%, not a second typeface. -->
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Chivo+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Orbitron carries display; Share Tech Mono carries everything else. They
+     pair on a real contrast axis: wide geometric against narrow fixed-pitch. -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="css/tokens.css" />
 <link rel="stylesheet" href="css/base.css" />
@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="css/sections/season.css" />
 <link rel="stylesheet" href="css/sections/grid.css" />
 <link rel="stylesheet" href="css/sections/momentum.css" />
+<link rel="stylesheet" href="css/sections/strategy.css" />
 <link rel="stylesheet" href="css/sections/regs.css" />
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
@@ -37,6 +38,14 @@
 </script>
 </head>
 <body>
+
+<!-- Weather, not content: the sun, the grid it sets over, and the CRT the
+     whole thing is seen through. Fixed, inert, and hidden from the a11y tree. -->
+<div class="atmos" aria-hidden="true">
+  <div class="atmos-sun"></div>
+  <div class="atmos-grid"></div>
+</div>
+<div class="crt" aria-hidden="true"></div>
 
 <a class="skip" href="#main-content">Skip to content</a>
 
@@ -52,6 +61,7 @@
         <li><a href="#h2h">Head to Head</a></li>
         <li><a href="#accuracy">Model vs Reality</a></li>
         <li><a href="#season">The Season</a></li>
+        <li><a href="#strategy">Strategy</a></li>
         <li><a href="#grid">The Grid</a></li>
         <li><a href="#momentum">Form</a></li>
         <li><a href="#regs">2026 Regs</a></li>
@@ -138,7 +148,20 @@
     </div>
   </section>
 
-  <!-- 6 — The Grid ------------------------------------------------------- -->
+  <!-- 6 — Race Strategy --------------------------------------------------- -->
+  <section id="strategy" class="section" hidden>
+    <div class="shell">
+      <h2 class="section-title" data-reveal="title">Race Strategy</h2>
+      <p class="section-lede" data-reveal="text">
+        Naming a winner is one number. A race is decided by how long a tyre lasts and what a
+        stop costs — both measured here from the season's own stint and pit-lane data, then
+        turned into a model and scored against what the field actually did.
+      </p>
+      <div id="strategy-body"></div>
+    </div>
+  </section>
+
+  <!-- 7 — The Grid ------------------------------------------------------- -->
   <section id="grid" class="section" hidden>
     <div class="shell">
       <h2 class="section-title" data-reveal="title">The Grid</h2>
@@ -149,7 +172,7 @@
     </div>
   </section>
 
-  <!-- 7 — Form &amp; Momentum -------------------------------------------- -->
+  <!-- 8 — Form &amp; Momentum -------------------------------------------- -->
   <section id="momentum" class="section" hidden>
     <div class="shell">
       <h2 class="section-title" data-reveal="title">Form &amp; Momentum</h2>
@@ -158,7 +181,7 @@
     </div>
   </section>
 
-  <!-- 8 — What 2026 Changed ---------------------------------------------- -->
+  <!-- 9 — What 2026 Changed ---------------------------------------------- -->
   <section id="regs" class="section" hidden>
     <div class="shell">
       <h2 class="section-title" data-reveal="title">What 2026 Changed</h2>

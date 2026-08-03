@@ -13,13 +13,18 @@ html {
 
 body {
   margin: 0;
-  background: var(--surface-0);
-  color: var(--ink-0);
+  background: var(--void);
+  color: var(--ink-1);
   font-family: var(--font-body);
-  font-stretch: var(--stretch-body);
   font-size: var(--text-base);
   line-height: var(--leading-body);
-  overflow-x: hidden;
+  /* `clip`, not `hidden`. The atmosphere layers and the ticker rail are wider
+     than the viewport on purpose, and `hidden` only stops the USER scrolling to
+     them — it still permits programmatic scrolling, so anything calling
+     scrollTo or focusing an off-screen node can drag the whole page sideways.
+     `clip` forbids both, and unlike `hidden` it creates no scroll container, so
+     the sticky nav and the reveals' view() timelines are unaffected. */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -27,22 +32,92 @@ img { max-width: 100%; display: block; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
 
-::selection { background: var(--ink-0); color: var(--surface-0); }
+::selection { background: var(--neon-magenta); color: var(--void); }
 
+/* Focus is a neon tube, not a browser default. Cyan because magenta is already
+   doing structural work on most borders — the focus ring must never be
+   mistakable for a resting state. */
 :focus-visible {
-  outline: var(--space-1) solid var(--ink-0);
+  outline: var(--border) solid var(--neon-cyan);
   outline-offset: var(--space-1);
-  border-radius: var(--radius-sm);
+  box-shadow: var(--glow-cyan);
 }
 
-/* --- Type ---------------------------------------------------------------- */
+/* --- The atmosphere ------------------------------------------------------
+   Three fixed layers behind everything: the sun, the grid it sets over, and
+   the CRT the whole thing is being viewed through. All are `pointer-events:
+   none` and `aria-hidden` at the markup level — they are weather, not content.
+
+   The void is never empty. That is the register: depth comes from stacked
+   light rather than from spacing. */
+
+.atmos {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-under);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* The sun: one enormous blurred orb low on the horizon. At this blur radius it
+   is not a shape, it is a light source — it tints the bottom third of every
+   fold without ever being identifiable as an element. */
+.atmos-sun {
+  position: absolute;
+  left: 50%;
+  bottom: 18vh;
+  width: min(var(--sun-size), 90vw);
+  height: min(var(--sun-size), 90vw);
+  transform: translateX(-50%);
+  border-radius: var(--radius-round);
+  background: var(--grad-sun);
+  filter: blur(var(--sun-blur));
+  opacity: 0.28;
+}
+
+/* The grid floor. Perspective-rotated so the lines converge toward the
+   horizon; masked to nothing at the top so it emerges from the dark rather
+   than being cut off by a hard edge. */
+.atmos-grid {
+  position: absolute;
+  inset-inline: -50%;
+  bottom: -10vh;
+  height: 65vh;
+  background-image:
+    linear-gradient(transparent calc(100% - var(--hairline)), var(--neon-magenta) 0),
+    linear-gradient(90deg, transparent calc(100% - var(--hairline)), var(--neon-magenta) 0);
+  background-size: var(--grid-cell) var(--grid-cell);
+  transform: perspective(var(--grid-perspective)) rotateX(62deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to bottom, transparent, var(--void) 45%);
+  opacity: 0.4;
+}
+
+/* The CRT. Scanlines plus a barely-there RGB split — the aberration is at 6%
+   because at any more it stops reading as a screen artefact and starts
+   reading as a broken stylesheet. */
+.crt {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-scanline);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)),
+    linear-gradient(rgba(18, 16, 20, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 100%, 100% var(--space-1);
+}
+
+/* --- Type ----------------------------------------------------------------
+   Orbitron is wide and geometric; it is set in caps and tracked OUT, which is
+   how the face was drawn to be used. Tracking it in the way a grotesque wants
+   would close the counters and make it illegible at display size. */
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-stretch: var(--stretch-display);
-  font-weight: 700;
+  font-weight: 900;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
   text-wrap: balance;
   margin: 0;
 }
@@ -54,6 +129,18 @@ p { text-wrap: pretty; margin: 0; }
   font-variant-numeric: tabular-nums;
 }
 
+/* A label in this system is a terminal label: caps, tracked wide, prefixed by
+   a chevron. The chevron is generated, so the text stays clean for a screen
+   reader and for copy-paste. */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-2);
+}
+.label::before { content: "> "; color: var(--neon-magenta-txt); }
+
 /* --- Layout -------------------------------------------------------------- */
 
 .shell { width: var(--shell); margin-inline: auto; }
@@ -62,13 +149,84 @@ p { text-wrap: pretty; margin: 0; }
 .section--bleed { padding-block: 0; }
 .section[hidden] { display: none; }
 
-.section-title { font-size: var(--text-display); margin-bottom: var(--space-4); }
+/* Section headings are gradient-filled — the one place the sunset ramp is
+   allowed to touch type, because it is the page's signature and repeating it
+   anywhere smaller would turn a signature into wallpaper. Solid fallback
+   underneath, so a browser without background-clip gets cyan rather than
+   transparent text. */
+.section-title {
+  font-size: var(--text-display);
+  margin-bottom: var(--space-4);
+  color: var(--neon-cyan);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .section-title {
+    background: var(--grad-sunset);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(var(--text-glow-magenta));
+  }
+}
 
 .section-lede {
   max-width: var(--measure);
-  color: var(--ink-1);
+  color: var(--ink-2);
   font-size: var(--text-lg);
   margin-bottom: var(--space-7);
+}
+
+/* --- Terminal window -----------------------------------------------------
+   The page's structural container, replacing the card. A card is a rounded
+   rectangle with a shadow and says nothing; this says "you are looking at a
+   readout". Title bar, three chrome dots, hard neon border, optional status
+   line — the vocabulary of an OS that shipped on floppies. */
+
+.win {
+  border: var(--border) solid var(--surface-3);
+  background: var(--panel);
+  backdrop-filter: blur(var(--panel-blur));
+  box-shadow: var(--glow-area);
+}
+
+.win-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border-bottom: var(--border) solid var(--surface-3);
+  background: color-mix(in srgb, var(--neon-cyan) 8%, transparent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-1);
+}
+
+.win-dots { display: flex; gap: var(--space-2); flex: none; }
+.win-dots i {
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-round);
+  background: var(--neon-magenta);
+}
+.win-dots i:nth-child(2) { background: var(--neon-cyan); }
+.win-dots i:nth-child(3) { background: var(--neon-orange); }
+
+.win-body { padding: var(--space-5); }
+
+.win-status {
+  border-top: var(--border) solid var(--surface-3);
+  padding: var(--space-2) var(--space-4);
+  background: var(--void);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-ui);
+  color: var(--ink-3);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
 }
 
 .skip {
@@ -76,11 +234,13 @@ p { text-wrap: pretty; margin: 0; }
   left: var(--space-4);
   top: calc(-1 * var(--space-11));
   z-index: var(--z-tooltip);
-  background: var(--surface-2);
-  color: var(--ink-0);
+  background: var(--panel-solid);
+  border: var(--border) solid var(--neon-cyan);
+  color: var(--neon-cyan);
   padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
 }
 .skip:focus { top: var(--space-4); }
 
@@ -93,13 +253,14 @@ p { text-wrap: pretty; margin: 0; }
   inset-inline: 0;
   height: var(--progress-h);
   z-index: var(--z-nav);
-  background: var(--surface-2);
+  background: var(--surface-3);
 }
 
 .progress > span {
   display: block;
   height: 100%;
-  background: var(--ink-0);
+  background: var(--grad-rule);
+  box-shadow: var(--glow-magenta);
   transform-origin: 0 50%;
   transform: scaleX(var(--progress, 0));
 }
@@ -120,8 +281,9 @@ p { text-wrap: pretty; margin: 0; }
   inset-block-start: 0;
   z-index: var(--z-nav);
   height: var(--nav-h);
-  background: var(--surface-0);
-  border-bottom: 1px solid var(--surface-3);
+  background: color-mix(in srgb, var(--void) 82%, transparent);
+  backdrop-filter: blur(var(--nav-blur));
+  border-bottom: var(--border) solid var(--surface-3);
 }
 
 .nav-inner {
@@ -135,11 +297,15 @@ p { text-wrap: pretty; margin: 0; }
 
 .nav-mark {
   font-family: var(--font-display);
-  font-stretch: var(--stretch-display);
-  font-weight: 700;
+  font-weight: 900;
   text-decoration: none;
-  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+  white-space: nowrap;
 }
+.nav-mark b { color: var(--neon-magenta); }
 
 .nav-links {
   display: flex;
@@ -151,12 +317,32 @@ p { text-wrap: pretty; margin: 0; }
 }
 
 .nav-links a {
+  position: relative;
   color: var(--ink-2);
   text-decoration: none;
   font-size: var(--text-sm);
-  transition: color var(--dur-fast) var(--ease-out);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-digital);
 }
-.nav-links a:hover { color: var(--ink-0); }
+
+/* The underline is a light tube that switches on, drawn with a pseudo-element
+   so nothing in the layout shifts when it appears. */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(var(--space-1) * -1);
+  height: var(--hairline);
+  background: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--dur-fast) var(--ease-digital);
+}
+.nav-links a:hover { color: var(--neon-cyan); }
+.nav-links a:hover::after { transform: scaleX(1); }
 
 .nav-status {
   display: flex;
@@ -168,23 +354,46 @@ p { text-wrap: pretty; margin: 0; }
   white-space: nowrap;
 }
 
+.nav-status {
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+}
+
 .nav-status .dot {
   width: var(--space-2);
   height: var(--space-2);
-  border-radius: 50%;
-  background: var(--ink-2);
+  border-radius: var(--radius-round);
+  background: var(--ink-3);
 }
-.nav-status[data-source="live"] .dot { background: var(--ink-0); }
-.nav-status[data-source="seed"] .dot { background: var(--ink-2); }
+
+/* Live data pulses; a committed seed does not. The distinction is the one
+   piece of status on the page that has to be readable at a glance. */
+.nav-status[data-source="live"] .dot {
+  background: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-status[data-source="live"] .dot { animation: pulse 1.6s var(--ease-in-out) infinite; }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+}
+.nav-status[data-source="seed"] .dot { background: var(--neon-magenta); }
 
 .nav-toggle {
   display: none;
   background: none;
-  border: 1px solid var(--surface-3);
-  border-radius: var(--radius);
+  border: var(--border) solid var(--neon-magenta);
+  color: var(--neon-magenta-txt);
   padding: var(--space-2) var(--space-3);
   font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
   cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-digital);
+}
+.nav-toggle:hover {
+  background: var(--neon-magenta);
+  color: var(--void);
+  box-shadow: var(--glow-magenta-hi);
 }
 
 @media (max-width: 60rem) {
@@ -216,7 +425,8 @@ p { text-wrap: pretty; margin: 0; }
   align-items: center;
   gap: var(--space-4);
   background: var(--surface-1);
-  border-bottom: 1px solid var(--surface-3);
+  border-bottom: var(--border) solid var(--neon-magenta);
+  box-shadow: var(--glow-magenta);
   overflow: hidden;
 }
 
@@ -233,7 +443,9 @@ p { text-wrap: pretty; margin: 0; }
   padding-right: var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ui);
+  color: var(--neon-magenta-txt);
   line-height: var(--ticker-h);
 }
 
@@ -260,9 +472,12 @@ p { text-wrap: pretty; margin: 0; }
   gap: var(--space-7);
   white-space: nowrap;
   font-size: var(--text-sm);
-  color: var(--ink-1);
+  color: var(--ink-2);
   animation: ticker-slide 60s linear infinite;
 }
+.ticker-move a { text-decoration: none; transition: color var(--dur-fast) var(--ease-digital); }
+.ticker-move a::before { content: "> "; color: var(--neon-cyan); }
+.ticker-move a:hover { color: var(--neon-cyan); }
 .ticker:hover .ticker-move,
 .ticker:has(.ticker-pause[aria-pressed="true"]) .ticker-move { 
   animation-play-state: paused; 
@@ -276,45 +491,67 @@ p { text-wrap: pretty; margin: 0; }
 /* --- Footer -------------------------------------------------------------- */
 
 .foot {
-  border-top: 1px solid var(--surface-3);
+  position: relative;
+  border-top: var(--border) solid var(--neon-magenta);
   padding-block: var(--space-7);
-  color: var(--ink-2);
+  color: var(--ink-3);
   font-size: var(--text-sm);
+  background: var(--void);
 }
 .foot-note { max-width: var(--measure); margin-top: var(--space-2); }
 
-/* --- Modal --------------------------------------------------------------- */
+/* --- Modal ---------------------------------------------------------------
+   Dressed as the terminal window it now shares a vocabulary with: hard cyan
+   border, title bar with chrome dots, no radius. Native <dialog> still does
+   the focus trapping, Escape and inertness underneath. */
 
 .modal {
-  border: 1px solid var(--surface-3);
-  border-radius: var(--radius-lg);
-  background: var(--surface-1);
-  color: var(--ink-0);
+  border: var(--border) solid var(--neon-cyan);
+  background: var(--panel-solid);
+  color: var(--ink-1);
   padding: 0;
   width: min(72rem, 92vw);
   max-height: 88vh;
   overflow: hidden;
+  box-shadow: var(--glow-area);
 }
 
-.modal::backdrop { background: var(--surface-0); opacity: 0.82; }
+.modal::backdrop {
+  background: var(--void);
+  opacity: 0.88;
+  backdrop-filter: blur(var(--space-1));
+}
 
 .modal-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-5);
-  border-bottom: 1px solid var(--surface-3);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: var(--border) solid var(--neon-cyan);
+  background: color-mix(in srgb, var(--neon-cyan) 10%, transparent);
 }
 
-.modal-head h3 { font-size: var(--text-xl); }
+.modal-head h3 {
+  font-size: var(--text-lg);
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+  letter-spacing: var(--tracking-ui);
+}
 
 .modal-x {
   background: none;
-  border: 1px solid var(--surface-3);
-  border-radius: var(--radius);
-  padding: var(--space-2) var(--space-3);
+  border: var(--border) solid var(--neon-magenta);
+  color: var(--neon-magenta-txt);
+  padding: var(--space-1) var(--space-3);
   cursor: pointer;
+  line-height: 1;
+  transition: all var(--dur-fast) var(--ease-digital);
+}
+.modal-x:hover {
+  background: var(--neon-magenta);
+  color: var(--void);
+  box-shadow: var(--glow-magenta-hi);
 }
 
 .modal-body {

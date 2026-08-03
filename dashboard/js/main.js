@@ -10,7 +10,7 @@ import { dateShort } from "./lib/format.js";
 
 const SECTIONS = [
   "open", "title-fight", "h2h", "accuracy",
-  "season", "grid", "momentum", "regs",
+  "season", "strategy", "grid", "momentum", "regs",
 ];
 
 // Each section is imported once and reused across repaints.

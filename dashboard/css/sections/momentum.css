@@ -1,6 +1,14 @@
 /* Form & Momentum — one chart, team-mates separated by line style. */
 
-.mo-plot { width: 100%; min-height: 26rem; }
+/* `max-width` and `overflow: clip` are the belt to autosize's braces. A chart
+   that mis-measures itself should degrade to a clipped chart, never to a page
+   that scrolls sideways. */
+.mo-plot {
+  width: 100%;
+  max-width: 100%;
+  min-height: 26rem;
+  overflow-x: clip;
+}
 
 .mo-legend {
   list-style: none;

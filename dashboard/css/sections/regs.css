@@ -23,7 +23,7 @@
 .rg-track {
   position: relative;
   height: var(--space-5);
-  border-inline-start: 1px solid var(--surface-3);
+  border-inline-start: var(--hairline) solid var(--surface-3);
   border-inline-end: 1px solid var(--surface-3);
 }
 
@@ -32,7 +32,7 @@
   position: absolute;
   inset-block: 0;
   inset-inline-start: 50%;
-  border-inline-start: 1px solid var(--surface-3);
+  border-inline-start: var(--hairline) solid var(--surface-3);
 }
 
 .rg-bar {

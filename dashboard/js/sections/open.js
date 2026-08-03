@@ -43,22 +43,33 @@ export function render(data, root) {
     { k: "Wins", v: leader.current_wins, kind: "num" },
   ];
   rows.forEach((r, i) => {
+    // The readout cells are skewed; their contents counter-skew to stay
+    // upright. That needs a real child element, and the count-up has to write
+    // into THAT rather than into the cell — setting textContent on the cell
+    // would delete the span and leave the number leaning.
     const dt = document.createElement("dt");
-    dt.textContent = r.k;
+    const dtText = document.createElement("span");
+    dtText.textContent = r.k;
+    dt.append(dtText);
+
     const dd = document.createElement("dd");
     dd.className = "num";
+    const value = document.createElement("span");
+    dd.append(value);
+
     // Label and figure share a column index, so the start procedure resolves
     // the row left to right by column rather than as one block.
     dt.style.setProperty("--i", i);
     dd.style.setProperty("--i", i);
+
     if (!Number.isFinite(r.v)) {
-      dd.textContent = "—";
+      value.textContent = "—";
     } else if (r.kind === "pct") {
-      dd.textContent = pct(r.v);
-      countUpWhenVisible(dd, r.v * 100, { decimals: 1, suffix: "%" });
+      value.textContent = pct(r.v);
+      countUpWhenVisible(value, r.v * 100, { decimals: 1, suffix: "%" });
     } else {
-      dd.textContent = pts(r.v);
-      countUpWhenVisible(dd, r.v, { decimals: Number.isInteger(r.v) ? 0 : 1 });
+      value.textContent = pts(r.v);
+      countUpWhenVisible(value, r.v, { decimals: Number.isInteger(r.v) ? 0 : 1 });
     }
     stats.append(dt, dd);
   });

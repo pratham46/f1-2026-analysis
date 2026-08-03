@@ -9,9 +9,9 @@
 }
 
 .h2h-pick {
-  background: var(--surface-1);
+  background: var(--panel);
   color: var(--ink-0);
-  border: 1px solid var(--surface-3);
+  border: var(--border) solid var(--surface-3);
   border-radius: var(--radius);
   padding: var(--space-3) var(--space-4);
   font-size: var(--text-sm);
@@ -55,7 +55,7 @@
   object-fit: cover;
   object-position: top center;
   border-radius: var(--radius);
-  background: var(--surface-1);
+  background: var(--panel);
   margin-bottom: var(--space-3);
 }
 
@@ -196,7 +196,7 @@
   gap: var(--space-1);
   justify-items: center;
   padding: var(--space-3) var(--space-2);
-  background: var(--surface-1);
+  background: var(--panel);
   border-block-end: var(--space-1) solid var(--c);
   border-radius: var(--radius-sm);
   cursor: default;
