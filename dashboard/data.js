@@ -2,7 +2,7 @@
 // Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
-  "generated_at": "2026-08-02",
+  "generated_at": "2026-08-04",
   "model": "js-weighted-montecarlo-v2",
   "model_cv_mae": 2.71,
   "seasons_used": [
@@ -3319,7 +3319,7 @@ window.F1_DATA = {
     "name": "Dutch GP",
     "date": "2026-08-23",
     "circuit_id": "netherlands",
-    "days_until": 21
+    "days_until": 20
   },
   "next_race_weather": null,
   "real_driver_standings_2026": [
@@ -12573,6 +12573,34 @@ window.F1_DATA = {
   },
   "news": [
     {
+      "title": "5 Winners and 5 Losers from the 2026 season so far",
+      "url": "https://www.formula1.com/en/latest/article/5-winners-and-5-losers-from-the-2026-f1-season-so-far.pG84JLgJke2l9rCieMMLQ",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "Antonelli opens up on impact of 2025 struggles",
+      "url": "https://www.formula1.com/en/latest/article/i-let-the-pressure-destroy-me-antonelli-opens-up-on-2025-struggles-and-how-they-made-him-stronger.2unpygSUVSbHqMUuMiFu5A",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "Why Vowles is convinced ‘it will all come good’ at Williams",
+      "url": "https://www.formula1.com/en/latest/article/exclusive-why-james-vowles-is-convinced-it-will-all-come-good-at-williams.7j71h5kqvc0UmG3vg2gUuu",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
+      "title": "5 things we learned from the first half of 2026",
+      "url": "https://www.formula1.com/en/latest/article/from-antonellis-rise-to-a-fascinating-development-war-5-things-we-learned-from-the-first-half-of-2026.6D0nJLTfbGPmpmOWTGqDAi",
+      "image": null,
+      "date": null,
+      "tag": "F1 News"
+    },
+    {
       "title": "Our writers reflect on the 2026 season so far",
       "url": "https://www.formula1.com/en/latest/article/best-races-star-performers-and-drivers-under-scrutiny-our-writers-reflect-on-2026-so-far-and-share-their-bold-predictions.3rfEllKHGyP4kgEkT4FPSi",
       "image": null,
@@ -12599,42 +12627,14 @@ window.F1_DATA = {
       "image": null,
       "date": null,
       "tag": "F1 News"
-    },
-    {
-      "title": "What to look forward to when F1 returns after the break",
-      "url": "https://www.formula1.com/en/latest/article/antonellis-title-push-verstappens-next-move-and-the-return-of-sepang-what-to-look-forward-to-when-f1-returns.4kP1JfFCMWU1tu0CnhmXVL",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Newey assesses Aston Martin’s chances of keeping Alonso",
-      "url": "https://www.formula1.com/en/latest/article/newey-shares-update-on-aston-martins-chances-of-keeping-alonso-for-2027.63fUs8JntCR4TawvgbMZJl",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Motorcycling legend Rossi on Antonelli’s 'very special' impact",
-      "url": "https://www.formula1.com/en/latest/article/i-am-with-kimi-now-motorcycling-legend-rossi-on-antonellis-very-special-impact.3f3CasfVRuBH8rDNTnzlzZ",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
-    },
-    {
-      "title": "Haas put on a show for fans with test at Fuji Speedway",
-      "url": "https://www.formula1.com/en/latest/article/gallery-haas-put-on-another-show-for-fans-with-special-test-at-fuji-speedway.4HuQmBmgcO81EsNN2JWTPb",
-      "image": null,
-      "date": null,
-      "tag": "F1 News"
     }
   ],
   "_health": {
     "live": "jolpica:11rounds",
     "results": "jolpica:11races",
     "news": "scraped:8",
-    "scrapedAt": "2026-08-02T20:34:09.105Z",
-    "openf1": "enriched:5races",
+    "scrapedAt": "2026-08-04T09:40:54.204Z",
+    "openf1": "enriched:8races",
     "bios": "jolpica:31",
     "circuits": "jolpica:24",
     "weather": "outside_horizon",
