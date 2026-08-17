@@ -2,7 +2,7 @@
 // Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
-  "generated_at": "2026-08-04",
+  "generated_at": "2026-08-17",
   "model": "js-weighted-montecarlo-v2",
   "model_cv_mae": 2.71,
   "seasons_used": [
@@ -3319,9 +3319,16 @@ window.F1_DATA = {
     "name": "Dutch GP",
     "date": "2026-08-23",
     "circuit_id": "netherlands",
-    "days_until": 20
+    "days_until": 7
   },
-  "next_race_weather": null,
+  "next_race_weather": {
+    "circuit_id": "netherlands",
+    "date": "2026-08-23",
+    "t_max": 18.1,
+    "t_min": 15.9,
+    "rain_prob": 52,
+    "wind_max": 12.3
+  },
   "real_driver_standings_2026": [
     {
       "position": 1,
@@ -6186,7 +6193,168 @@ window.F1_DATA = {
     },
     "3": {
       "session_key": 11253,
-      "pit_stops": {},
+      "pit_stops": {
+        "norris": [
+          {
+            "lap": 16,
+            "duration": 23.32
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 16,
+            "duration": 25
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 17,
+            "duration": 22.99
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 17,
+            "duration": 23.65
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 18,
+            "duration": 23.44
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 18,
+            "duration": 26.3
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 19,
+            "duration": 24.63
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 19,
+            "duration": 23.7
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 19,
+            "duration": 25.13
+          }
+        ],
+        "russell": [
+          {
+            "lap": 21,
+            "duration": 22.94
+          }
+        ],
+        "perez": [
+          {
+            "lap": 21,
+            "duration": 27.31
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 21,
+            "duration": 25.08
+          },
+          {
+            "lap": 24,
+            "duration": 23.5
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 21,
+            "duration": 26.46
+          },
+          {
+            "lap": 23,
+            "duration": 24.01
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 22,
+            "duration": 23.29
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 22,
+            "duration": 22.89
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 22,
+            "duration": 24.3
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 22,
+            "duration": 24.49
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 22,
+            "duration": 24.1
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 22,
+            "duration": 24.63
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 22,
+            "duration": 24.4
+          }
+        ],
+        "albon": [
+          {
+            "lap": 22,
+            "duration": 24.6
+          },
+          {
+            "lap": 45,
+            "duration": 23.07
+          },
+          {
+            "lap": 46,
+            "duration": 24.1
+          },
+          {
+            "lap": 47,
+            "duration": 26
+          },
+          {
+            "lap": 48,
+            "duration": 32.7
+          },
+          {
+            "lap": 49,
+            "duration": 24.3
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 23,
+            "duration": 23.9
+          }
+        ]
+      },
       "stints": {
         "norris": [
           {
@@ -6593,134 +6761,7 @@ window.F1_DATA = {
     },
     "4": {
       "session_key": 11280,
-      "pit_stops": {
-        "hulkenberg": [
-          {
-            "lap": 1,
-            "duration": 33.71
-          }
-        ],
-        "max_verstappen": [
-          {
-            "lap": 6,
-            "duration": 22.55
-          }
-        ],
-        "bottas": [
-          {
-            "lap": 6,
-            "duration": 23.53
-          },
-          {
-            "lap": 21,
-            "duration": 23.83
-          },
-          {
-            "lap": 30,
-            "duration": 17.1
-          }
-        ],
-        "russell": [
-          {
-            "lap": 20,
-            "duration": 22
-          }
-        ],
-        "leclerc": [
-          {
-            "lap": 21,
-            "duration": 23.39
-          }
-        ],
-        "stroll": [
-          {
-            "lap": 21,
-            "duration": 22.63
-          },
-          {
-            "lap": 37,
-            "duration": 22.09
-          }
-        ],
-        "antonelli": [
-          {
-            "lap": 26,
-            "duration": 22.13
-          }
-        ],
-        "bearman": [
-          {
-            "lap": 26,
-            "duration": 23.47
-          }
-        ],
-        "norris": [
-          {
-            "lap": 27,
-            "duration": 22.57
-          }
-        ],
-        "hamilton": [
-          {
-            "lap": 27,
-            "duration": 23.78
-          }
-        ],
-        "albon": [
-          {
-            "lap": 27,
-            "duration": 23.02
-          }
-        ],
-        "piastri": [
-          {
-            "lap": 28,
-            "duration": 23.02
-          }
-        ],
-        "sainz": [
-          {
-            "lap": 28,
-            "duration": 23.59
-          }
-        ],
-        "arvid_lindblad": [
-          {
-            "lap": 28,
-            "duration": 22.73
-          }
-        ],
-        "perez": [
-          {
-            "lap": 29,
-            "duration": 23.2
-          }
-        ],
-        "colapinto": [
-          {
-            "lap": 31,
-            "duration": 23.09
-          }
-        ],
-        "ocon": [
-          {
-            "lap": 31,
-            "duration": 24.03
-          }
-        ],
-        "bortoleto": [
-          {
-            "lap": 32,
-            "duration": 23.99
-          }
-        ],
-        "alonso": [
-          {
-            "lap": 41,
-            "duration": 23.16
-          }
-        ]
-      },
+      "pit_stops": {},
       "stints": {
         "leclerc": [
           {
@@ -12573,57 +12614,57 @@ window.F1_DATA = {
   },
   "news": [
     {
-      "title": "5 Winners and 5 Losers from the 2026 season so far",
-      "url": "https://www.formula1.com/en/latest/article/5-winners-and-5-losers-from-the-2026-f1-season-so-far.pG84JLgJke2l9rCieMMLQ",
+      "title": "The biggest market movers as F1 summer break ends",
+      "url": "https://www.formula1.com/en/latest/article/the-biggest-f1-betting-market-movers-in-2026-as-the-summer-break-comes-to-an-end.7erf0pWejnFgbL95O2Kh0",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Antonelli opens up on impact of 2025 struggles",
-      "url": "https://www.formula1.com/en/latest/article/i-let-the-pressure-destroy-me-antonelli-opens-up-on-2025-struggles-and-how-they-made-him-stronger.2unpygSUVSbHqMUuMiFu5A",
+      "title": "9 times superhero movies made it onto the F1 grid",
+      "url": "https://www.formula1.com/en/latest/article/9-times-superhero-movies-made-it-onto-the-f1-grid.6qW2FZZxjZo7HUgHe34TxI",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Why Vowles is convinced ‘it will all come good’ at Williams",
-      "url": "https://www.formula1.com/en/latest/article/exclusive-why-james-vowles-is-convinced-it-will-all-come-good-at-williams.7j71h5kqvc0UmG3vg2gUuu",
+      "title": "How Red Bull’s 2026 season has played out so far",
+      "url": "https://www.formula1.com/en/latest/article/half-term-report-red-bulls-best-and-worst-moments-from-2026-so-far-and-driver-head-to-heads.4dgRezawb01d6p6NKE4T8w",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "5 things we learned from the first half of 2026",
-      "url": "https://www.formula1.com/en/latest/article/from-antonellis-rise-to-a-fascinating-development-war-5-things-we-learned-from-the-first-half-of-2026.6D0nJLTfbGPmpmOWTGqDAi",
+      "title": "How do psychologists help Formula 1 drivers be at their best?",
+      "url": "https://www.formula1.com/en/latest/article/how-do-psychologists-help-formula-1-drivers-be-at-their-best.4obpkiR3tcE0wlbyAykonN",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Our writers reflect on the 2026 season so far",
-      "url": "https://www.formula1.com/en/latest/article/best-races-star-performers-and-drivers-under-scrutiny-our-writers-reflect-on-2026-so-far-and-share-their-bold-predictions.3rfEllKHGyP4kgEkT4FPSi",
+      "title": "Can anyone stop Antonelli winning Italy’s first title since 1953?",
+      "url": "https://www.formula1.com/en/latest/article/can-anyone-stop-antonelli-winning-italys-first-title-since-1953.3ZxgLxjJ1iVRCIYafCRbnX",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How F1 drivers recharge over the summer break",
-      "url": "https://www.formula1.com/en/latest/article/how-do-f1-drivers-recharge-over-the-summer-break.6SJztdPCw3WRtPlqDlXVQq",
+      "title": "Tickets launched for 2026 Bahrain Grand Prix in Malaysia",
+      "url": "https://www.formula1.com/en/latest/article/tickets-launched-for-2026-bahrain-grand-prix-in-malaysia.6ZRHjZRSy27CeInt4lgGax",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "The 5 most dramatic storylines of 2026 so far",
-      "url": "https://www.formula1.com/en/latest/article/from-a-history-making-championship-leader-to-aston-martins-struggles-the-5-most-dramatic-storylines-of-2026-so-far.1Da1GcPXIEluDYcHYQxpba",
+      "title": "How Racing Bulls’ 2026 season has played out so far",
+      "url": "https://www.formula1.com/en/latest/article/half-term-report-racing-bulls-best-and-worst-moments-from-2026-so-far-and-driver-head-to-heads.7F7h4KHh6QrI85POwyQQHG",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How Bearman is inspiring Ferrari’s latest F1 prospect",
-      "url": "https://www.formula1.com/en/latest/article/how-ferrari-prospect-camara-is-using-bearmans-story-as-motivation-amid-f1-push.4XgAvINzIPDFTeTxqrxQ6i",
+      "title": "Inside the F1 driver’s bubble: The communications officer",
+      "url": "https://www.formula1.com/en/latest/article/inside-the-f1-drivers-bubble-mercedes-comms-chief-bradley-lord-explains-how.1RIMDwZNVkOsba3AGZ0hEN",
       "image": null,
       "date": null,
       "tag": "F1 News"
@@ -12633,12 +12674,12 @@ window.F1_DATA = {
     "live": "jolpica:11rounds",
     "results": "jolpica:11races",
     "news": "scraped:8",
-    "scrapedAt": "2026-08-04T09:40:54.204Z",
-    "openf1": "enriched:8races",
+    "scrapedAt": "2026-08-17T07:55:45.903Z",
+    "openf1": "enriched:6races",
     "bios": "jolpica:31",
     "circuits": "jolpica:24",
-    "weather": "outside_horizon",
-    "subrequests": 34
+    "weather": "open-meteo",
+    "subrequests": 35
   },
   "_sanity": {
     "drivers_full_grid": true,
