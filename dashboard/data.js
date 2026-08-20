@@ -2,7 +2,7 @@
 // Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
-  "generated_at": "2026-08-17",
+  "generated_at": "2026-08-20",
   "model": "js-weighted-montecarlo-v2",
   "model_cv_mae": 2.71,
   "seasons_used": [
@@ -3319,15 +3319,15 @@ window.F1_DATA = {
     "name": "Dutch GP",
     "date": "2026-08-23",
     "circuit_id": "netherlands",
-    "days_until": 7
+    "days_until": 4
   },
   "next_race_weather": {
     "circuit_id": "netherlands",
     "date": "2026-08-23",
-    "t_max": 18.1,
-    "t_min": 15.9,
-    "rain_prob": 52,
-    "wind_max": 12.3
+    "t_max": 17.9,
+    "t_min": 16.3,
+    "rain_prob": 27,
+    "wind_max": 25.7
   },
   "real_driver_standings_2026": [
     {
@@ -12614,57 +12614,57 @@ window.F1_DATA = {
   },
   "news": [
     {
-      "title": "The biggest market movers as F1 summer break ends",
-      "url": "https://www.formula1.com/en/latest/article/the-biggest-f1-betting-market-movers-in-2026-as-the-summer-break-comes-to-an-end.7erf0pWejnFgbL95O2Kh0",
+      "title": "Verstappen signs Red Bull contract extension until 2030",
+      "url": "https://www.formula1.com/en/latest/article/verstappen-signs-contract-extension-with-red-bull-until-the-end-of-2030.4gUd8JEkYnKmD6bNMS5syw",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "9 times superhero movies made it onto the F1 grid",
-      "url": "https://www.formula1.com/en/latest/article/9-times-superhero-movies-made-it-onto-the-f1-grid.6qW2FZZxjZo7HUgHe34TxI",
+      "title": "Our early Bet Builder picks for the Dutch Grand Prix",
+      "url": "https://www.formula1.com/en/latest/article/our-early-bet-builder-selections-made-for-the-dutch-grand-prix.7Fb6H2xno5JhXrkIQa2eQb",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How Red Bull’s 2026 season has played out so far",
-      "url": "https://www.formula1.com/en/latest/article/half-term-report-red-bulls-best-and-worst-moments-from-2026-so-far-and-driver-head-to-heads.4dgRezawb01d6p6NKE4T8w",
+      "title": "Why Lawson’s Red Bull call-up is such a huge opportunity",
+      "url": "https://www.formula1.com/en/latest/article/analysis-why-lawsons-red-bull-call-up-is-such-a-huge-opportunity.2ARsOWE56XDkDyJ7yBScFC",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How do psychologists help Formula 1 drivers be at their best?",
-      "url": "https://www.formula1.com/en/latest/article/how-do-psychologists-help-formula-1-drivers-be-at-their-best.4obpkiR3tcE0wlbyAykonN",
+      "title": "Who is the latest Brazilian prodigy eyeing a place in F1?",
+      "url": "https://www.formula1.com/en/latest/article/the-latest-brazilian-prodigy-eyeing-a-place-in-formula-1-who-is-ferrari-junior-rafael-camara.7rQS6bm1E1gdCizXn13CxK",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Can anyone stop Antonelli winning Italy’s first title since 1953?",
-      "url": "https://www.formula1.com/en/latest/article/can-anyone-stop-antonelli-winning-italys-first-title-since-1953.3ZxgLxjJ1iVRCIYafCRbnX",
+      "title": "What are the F1 Fantasy strategies for the Dutch GP?",
+      "url": "https://www.formula1.com/en/latest/article/f1-fantasy-strategist-preview-what-you-need-to-know-for-the-dutch-grand-prix.2bBlmguc36rYcXurzQcz2O",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Tickets launched for 2026 Bahrain Grand Prix in Malaysia",
-      "url": "https://www.formula1.com/en/latest/article/tickets-launched-for-2026-bahrain-grand-prix-in-malaysia.6ZRHjZRSy27CeInt4lgGax",
+      "title": "Hill opens up on ‘psychological battle’ to beat Schumacher",
+      "url": "https://www.formula1.com/en/latest/article/i-had-to-get-myself-together-hill-opens-up-on-psychological-battle-to-beat-schumacher.4UF1qBPhoUim61JYLLP6ul",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How Racing Bulls’ 2026 season has played out so far",
-      "url": "https://www.formula1.com/en/latest/article/half-term-report-racing-bulls-best-and-worst-moments-from-2026-so-far-and-driver-head-to-heads.7F7h4KHh6QrI85POwyQQHG",
+      "title": "Madring circuit shares new photos ahead of Madrid’s maiden GP",
+      "url": "https://www.formula1.com/en/latest/article/gallery-madring-circuit-shares-new-photos-ahead-of-madrids-maiden-grand-prix.vTxESDb75rcZnMyPrf9Ul",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Inside the F1 driver’s bubble: The communications officer",
-      "url": "https://www.formula1.com/en/latest/article/inside-the-f1-drivers-bubble-mercedes-comms-chief-bradley-lord-explains-how.1RIMDwZNVkOsba3AGZ0hEN",
+      "title": "How to stream the 2026 Dutch Grand Prix on F1 TV Premium",
+      "url": "https://www.formula1.com/en/latest/article/how-to-stream-the-2026-dutch-grand-prix-on-f1-tv-premium.Z5u9yxG7Nk0hT6lpvNvIS",
       "image": null,
       "date": null,
       "tag": "F1 News"
@@ -12674,8 +12674,8 @@ window.F1_DATA = {
     "live": "jolpica:11rounds",
     "results": "jolpica:11races",
     "news": "scraped:8",
-    "scrapedAt": "2026-08-17T07:55:45.903Z",
-    "openf1": "enriched:6races",
+    "scrapedAt": "2026-08-20T07:44:50.109Z",
+    "openf1": "enriched:5races",
     "bios": "jolpica:31",
     "circuits": "jolpica:24",
     "weather": "open-meteo",
