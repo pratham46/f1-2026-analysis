@@ -2,7 +2,7 @@
 // Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
-  "generated_at": "2026-08-20",
+  "generated_at": "2026-08-21",
   "model": "js-weighted-montecarlo-v2",
   "model_cv_mae": 2.71,
   "seasons_used": [
@@ -3319,15 +3319,15 @@ window.F1_DATA = {
     "name": "Dutch GP",
     "date": "2026-08-23",
     "circuit_id": "netherlands",
-    "days_until": 4
+    "days_until": 3
   },
   "next_race_weather": {
     "circuit_id": "netherlands",
     "date": "2026-08-23",
-    "t_max": 17.9,
-    "t_min": 16.3,
-    "rain_prob": 27,
-    "wind_max": 25.7
+    "t_max": 18.9,
+    "t_min": 15.4,
+    "rain_prob": 22,
+    "wind_max": 18
   },
   "real_driver_standings_2026": [
     {
@@ -12614,57 +12614,57 @@ window.F1_DATA = {
   },
   "news": [
     {
-      "title": "Verstappen signs Red Bull contract extension until 2030",
-      "url": "https://www.formula1.com/en/latest/article/verstappen-signs-contract-extension-with-red-bull-until-the-end-of-2030.4gUd8JEkYnKmD6bNMS5syw",
+      "title": "When to target in-race betting at Zandvoort",
+      "url": "https://www.formula1.com/en/latest/article/when-to-target-in-race-betting-during-the-dutch-grand-prix.6dXcgTDPXIM26mtdCXjshc",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Our early Bet Builder picks for the Dutch Grand Prix",
-      "url": "https://www.formula1.com/en/latest/article/our-early-bet-builder-selections-made-for-the-dutch-grand-prix.7Fb6H2xno5JhXrkIQa2eQb",
+      "title": "All the stories that got the Zandvoort paddock talking",
+      "url": "https://www.formula1.com/en/latest/article/paddock-insider-all-the-stories-that-got-the-zandvoort-paddock-talking.37DzrvFRPpCpNLw32gLZP7",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Why Lawson’s Red Bull call-up is such a huge opportunity",
-      "url": "https://www.formula1.com/en/latest/article/analysis-why-lawsons-red-bull-call-up-is-such-a-huge-opportunity.2ARsOWE56XDkDyJ7yBScFC",
+      "title": "Mekies on Verstappen’s new deal, Hadjar and Lawson",
+      "url": "https://www.formula1.com/en/latest/article/exclusive-mekies-on-verstappens-new-deal-hadjars-injury-and-lawsons-red-bull-return.55ojbwIp1e0ULtEQtMjGgJ",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Who is the latest Brazilian prodigy eyeing a place in F1?",
-      "url": "https://www.formula1.com/en/latest/article/the-latest-brazilian-prodigy-eyeing-a-place-in-formula-1-who-is-ferrari-junior-rafael-camara.7rQS6bm1E1gdCizXn13CxK",
+      "title": "Why Verstappen's Red Bull re-signing is so significant",
+      "url": "https://www.formula1.com/en/latest/article/analysis-why-verstappens-red-bull-re-signing-is-so-significant.5NooRr5tNRW3MdzUKnhwMU",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "What are the F1 Fantasy strategies for the Dutch GP?",
-      "url": "https://www.formula1.com/en/latest/article/f1-fantasy-strategist-preview-what-you-need-to-know-for-the-dutch-grand-prix.2bBlmguc36rYcXurzQcz2O",
+      "title": "NFL team owner acquires stake in Aston Martin",
+      "url": "https://www.formula1.com/en/latest/article/new-york-jets-owner-woody-johnson-acquires-minority-stake-in-aston-martin.12t2EpDlBOTHhSU5VmRa3h",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Hill opens up on ‘psychological battle’ to beat Schumacher",
-      "url": "https://www.formula1.com/en/latest/article/i-had-to-get-myself-together-hill-opens-up-on-psychological-battle-to-beat-schumacher.4UF1qBPhoUim61JYLLP6ul",
+      "title": "Lawson shares reaction to Red Bull opportunity",
+      "url": "https://www.formula1.com/en/latest/article/its-going-to-be-challenging-lawson-shares-reaction-to-red-bull-opportunity-in-zandvoort.5UarWqWRSPC4CRaZcvDXMO",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Madring circuit shares new photos ahead of Madrid’s maiden GP",
-      "url": "https://www.formula1.com/en/latest/article/gallery-madring-circuit-shares-new-photos-ahead-of-madrids-maiden-grand-prix.vTxESDb75rcZnMyPrf9Ul",
+      "title": "Hamilton shares hopes for Ferrari’s battle against Mercedes",
+      "url": "https://www.formula1.com/en/latest/article/i-dont-think-were-too-far-away-hamilton-shares-his-hopes-for-ferraris-battle-against-mercedes.4wdASrIW6VZGgKAtQIoa1n",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How to stream the 2026 Dutch Grand Prix on F1 TV Premium",
-      "url": "https://www.formula1.com/en/latest/article/how-to-stream-the-2026-dutch-grand-prix-on-f1-tv-premium.Z5u9yxG7Nk0hT6lpvNvIS",
+      "title": "Best value early bets for the Dutch Grand Prix",
+      "url": "https://www.formula1.com/en/latest/article/best-value-early-bets-to-consider-for-the-dutch-grand-prix.1CV3H1dBHI9CzEYCG4FZOZ",
       "image": null,
       "date": null,
       "tag": "F1 News"
@@ -12674,8 +12674,8 @@ window.F1_DATA = {
     "live": "jolpica:11rounds",
     "results": "jolpica:11races",
     "news": "scraped:8",
-    "scrapedAt": "2026-08-20T07:44:50.109Z",
-    "openf1": "enriched:5races",
+    "scrapedAt": "2026-08-21T07:46:58.205Z",
+    "openf1": "enriched:4races",
     "bios": "jolpica:31",
     "circuits": "jolpica:24",
     "weather": "open-meteo",
