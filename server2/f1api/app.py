@@ -36,7 +36,7 @@ SIMS = int(os.environ.get("SIMS", "100000"))
 FUEL_S_PER_LAP = float(os.environ.get("FUEL_S_PER_LAP", "0.055"))
 PORT = int(os.environ.get("PORT", "8080"))
 OLLAMA = os.environ.get("OLLAMA_URL", "")  # unset → no chatbot, no LLM previews
-LLM_MODEL = os.environ.get("LLM_MODEL", "qwen2.5:1.5b")
+LLM_MODEL = os.environ.get("LLM_MODEL", "qwen2.5:3b")
 # Same options on every call: a changed num_ctx makes Ollama reload the model.
 # Moderate temperature + repeat penalty: lower temps make a 1.5B model loop.
 LLM_OPTS = {"num_ctx": 4096, "temperature": 0.5, "repeat_penalty": 1.15}
@@ -408,7 +408,8 @@ def nice(name):
 def context_text(a):
     """The facts the model may use. Fixed per refresh, so Ollama can reuse its
     prompt cache across chat questions instead of re-reading it every time."""
-    pod = lambda r, i: r["podium"][i]["code"] if len(r["podium"]) > i else "-"
+    # Full names, not codes: the small model mis-maps "NOR" to whichever driver it last read.
+    pod = lambda r, i: nice(r["podium"][i]["name"]) if len(r["podium"]) > i else "-"
     L = [f"F1 {YEAR} season data, computed {a['generated_at'][:10]} from OpenF1 timing "
          f"({a['races_analysed']} races, {a['laps_analysed']} laps)."]
     # A 1.5B model cannot reliably take a min/max over a list, so the answers to
@@ -537,6 +538,22 @@ def rate_ok(ip, limit=8, window=300):
 
 # --- refresh loop + HTTP -----------------------------------------------------
 
+def publish(a):
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    tmp = OUT.with_suffix(".tmp")
+    tmp.write_text(json.dumps(a))
+    tmp.replace(OUT)
+    _state.update(analysis=json.dumps(a).encode(), error=None)
+
+
+def warm_llm():
+    """Read the new context once now, so Ollama's prompt cache holds it and no
+    visitor pays the cold prefill (minutes on 2 ARM cores for a 3B model)."""
+    with _llm:
+        llm([{"role": "system", "content": SYSTEM.format(year=YEAR, data=_state["context"])},
+             {"role": "user", "content": "Radio check."}], max_tokens=1)
+
+
 def refresh_forever():
     while True:
         _state["running"] = True
@@ -544,19 +561,20 @@ def refresh_forever():
         try:
             a = compute()
             a["compute_seconds"] = round(time.time() - t0, 1)
+            old = json.loads(PRED.read_text()) if PRED.exists() else {}
+            a["predictions"] = sorted(old.values(), key=lambda p: p["date"], reverse=True)
+            publish(a)  # data first: a cold LLM must never hold the numbers back
             _state["context"] = context_text(a)
-            try:
-                a["predictions"] = weekend_prediction(a)
-            except Exception as e:  # the LLM is a bonus; never lose the analysis to it
-                print(f"[predict] failed: {e}", flush=True)
-                old = json.loads(PRED.read_text()) if PRED.exists() else {}
-                a["predictions"] = sorted(old.values(), key=lambda p: p["date"], reverse=True)
-            DATA_DIR.mkdir(parents=True, exist_ok=True)
-            tmp = OUT.with_suffix(".tmp")
-            tmp.write_text(json.dumps(a))
-            tmp.replace(OUT)
-            _state.update(analysis=json.dumps(a).encode(), error=None)
             print(f"[analysis] ok {a['races_analysed']} races, {a['laps_analysed']} laps, {a['compute_seconds']}s", flush=True)
+            if OLLAMA:
+                try:  # the LLM is a bonus; never lose the analysis to it
+                    t1 = time.time()
+                    warm_llm()
+                    a["predictions"] = weekend_prediction(a)
+                    publish(a)
+                    print(f"[llm] warm + call {round(time.time() - t1, 1)}s", flush=True)
+                except Exception as e:
+                    print(f"[llm] failed: {e}", flush=True)
         except Exception as e:  # keep serving the last good result
             _state["error"] = f"{type(e).__name__}: {e}"
             print(f"[analysis] failed: {_state['error']}", flush=True)

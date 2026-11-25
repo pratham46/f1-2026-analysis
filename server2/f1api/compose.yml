@@ -10,7 +10,7 @@ services:
       - ANALYSIS_INTERVAL_S=21600
       - SIMS=100000
       - OLLAMA_URL=http://ollama:11434
-      - LLM_MODEL=qwen2.5:1.5b
+      - LLM_MODEL=qwen2.5:3b
     volumes:
       - ./data:/data
     networks: [coolify, llm]
