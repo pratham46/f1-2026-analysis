@@ -9,7 +9,7 @@ import { initModal } from "./lib/modal.js";
 import { dateShort } from "./lib/format.js";
 
 const SECTIONS = [
-  "open", "title-fight", "h2h", "accuracy",
+  "open", "call", "title-fight", "h2h", "accuracy",
   "season", "strategy", "lab", "grid", "momentum", "regs",
 ];
 

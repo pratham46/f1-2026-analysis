@@ -12,51 +12,51 @@
      neon owns the CHROME — frame, grid, glow, type — and team colour owns the
      DATA. Nothing that encodes a team sits on a tinted panel without its own
      mark. */
-  --void: #090014;
-  --surface-0: #090014;
-  --surface-1: #12082b;
-  --surface-2: #1a103c;
-  --surface-3: #2D1B4E;
+  --void: #121316;
+  --surface-0: #121316;
+  --surface-1: #1B1D21;
+  --surface-2: #23262B;
+  --surface-3: #3A3E45;
 
   /* Panel fill for glass chrome. Kept as a channel so backdrop-filter has
      something to blur through. */
-  --panel: rgba(26, 16, 60, 0.8);
-  --panel-solid: #1a103c;
+  --panel: rgba(27, 29, 33, 0.94);
+  --panel-solid: #1B1D21;
 
   /* --- Ink ---------------------------------------------------------------
      Chrome silver, not white. --ink-2 is the muted floor and still has to
      clear 4.5:1 on --surface-3, the lightest surface it can sit on. */
-  --ink-0: #F2F2F5;
-  --ink-1: #E0E0E0;
-  --ink-2: #A9A2C4;
-  --ink-3: #7C74A0;
+  --ink-0: #FFFFFF;
+  --ink-1: #E6E6E2;
+  --ink-2: #ADB1B8;
+  --ink-3: #8C9199;
 
   /* --- Neon ---------------------------------------------------------------
      Pure digital primaries. These are structure, never data: a magenta rule is
      a rule, a cyan heading is a heading. The moment a colour means "Mercedes"
      it comes from the livery block below instead. */
-  --neon-magenta: #FF00FF;
-  --neon-cyan: #00FFFF;
-  --neon-orange: #FF9900;
+  --neon-magenta: #E10600;
+  --neon-cyan: #2BD45A;
+  --neon-orange: #FFD12E;
 
   /* Text-safe neon. Pure #FF00FF is 3.7:1 on the void — fine for a 2px border
      or a large heading, and NOT fine for a label. These are lifted until they
      clear 4.5:1 so small type can carry the colour without lying about it. */
-  --neon-magenta-txt: #FF6BFF;
-  --neon-cyan-txt: #6BFFFF;
-  --neon-orange-txt: #FFB84D;
+  --neon-magenta-txt: #FF5A52;
+  --neon-cyan-txt: #4BE07A;
+  --neon-orange-txt: #FFD12E;
 
   /* --- Glow ---------------------------------------------------------------
      Shadows here emit light rather than block it. Two intensities: resting and
      the hover amplification, which is deliberately 2–3x rather than subtle. */
-  --glow-magenta: 0 0 10px rgba(255, 0, 255, 0.55);
-  --glow-magenta-hi: 0 0 24px rgba(255, 0, 255, 0.95);
-  --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.5);
-  --glow-cyan-hi: 0 0 24px rgba(0, 255, 255, 0.95);
-  --glow-area: 0 0 50px rgba(0, 255, 255, 0.18);
-  --text-glow-cyan: 0 0 5px rgba(0, 255, 255, 0.8);
-  --text-glow-magenta: 0 0 18px rgba(255, 0, 255, 0.6);
-  --text-glow-chrome: 0 0 10px rgba(255, 255, 255, 0.35);
+  --glow-magenta: 0 0 0 transparent;
+  --glow-magenta-hi: 0 0 0 var(--hairline) #E10600;
+  --glow-cyan: 0 0 0 transparent;
+  --glow-cyan-hi: 0 0 0 var(--hairline) #2BD45A;
+  --glow-area: 0 18px 40px -24px rgba(0, 0, 0, 0.9);
+  --text-glow-cyan: 0 0 0 transparent;
+  --text-glow-magenta: 0 0 0 transparent;
+  --text-glow-chrome: 0 0 0 transparent;
 
   /* --- Atmosphere ---------------------------------------------------------
      The sun, the grid and the panel blur are design values, not arbitrary
@@ -72,9 +72,9 @@
   --glow-spread: 8px;
 
   /* --- Gradients ---------------------------------------------------------- */
-  --grad-sunset: linear-gradient(100deg, #FF9900, #FF00FF 55%, #00FFFF);
-  --grad-sun: linear-gradient(to bottom, #FF9900, #FF00FF);
-  --grad-rule: linear-gradient(to right, #FF00FF, #00FFFF);
+  --grad-sunset: linear-gradient(100deg, #FFFFFF, #E6E6E2);
+  --grad-sun: linear-gradient(to bottom, #E10600, transparent);
+  --grad-rule: repeating-linear-gradient(90deg, #E10600 0 18px, #F4F4F0 18px 36px);
 
   /* --- Team liveries -----------------------------------------------------
      Unchanged, and deliberately so. This is the data channel: raw values for
@@ -94,7 +94,7 @@
   /* Text-safe livery variants. On a near-black base it is the DARK liveries
      that fail, not the bright ones. Lightness raised, hue held, so the team
      still reads as itself. */
-  --team-ferrari-txt: #FF1A45;
+  --team-ferrari-txt: #FF3355;
   --team-red_bull-txt: #5A8FD8;
   --team-aston_martin-txt: #4FB89A;
 
@@ -118,29 +118,29 @@
 
      They pair on a real contrast axis: Orbitron is wide, geometric and
      closed; Share Tech Mono is narrow, fixed-pitch and open. */
-  --font-display: "Orbitron", "Archivo", system-ui, sans-serif;
-  --font-body: "Share Tech Mono", ui-monospace, monospace;
+  --font-display: "Saira Extra Condensed", "Saira Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Saira", system-ui, sans-serif;
   --font-mono: "Share Tech Mono", ui-monospace, monospace;
   --stretch-display: 100%;
   --stretch-body: 100%;
 
   /* Hero ceiling stays under the 6rem shouting threshold even though the
      register invites excess — the name has to fit on a laptop. */
-  --text-hero: clamp(2.75rem, 7.5vw, 5.75rem);
-  --text-display: clamp(2rem, 4.2vw, 3.5rem);
+  --text-hero: clamp(3.25rem, 10vw, 7.5rem);
+  --text-display: clamp(2.5rem, 6vw, 4.75rem);
   --text-xl: 1.75rem;
   --text-lg: 1.3125rem;
   --text-base: 1rem;
   --text-sm: 0.875rem;
   --text-xs: 0.75rem;
 
-  --leading-tight: 1.05;
+  --leading-tight: 0.92;
   --leading-body: 1.65;
   /* Orbitron is already wide; display type is tracked OUT rather than in,
      which is the opposite of the grotesque it replaced. */
-  --tracking-display: 0.01em;
-  --tracking-ui: 0.14em;
-  --tracking-wide: 0.22em;
+  --tracking-display: 0;
+  --tracking-ui: 0.08em;
+  --tracking-wide: 0.12em;
   --measure: 68ch;
 
   /* --- Space — 4px base --------------------------------------------------- */
@@ -195,12 +195,31 @@
      Faster and flatter than the curve set it replaces. This machine responds
      like software from 1988: immediate, mechanical, slightly unnatural. The
      exponential curves stay for anything that travels a long way. */
-  --dur-fast: 120ms;
-  --dur-base: 200ms;
-  --dur-slow: 420ms;
-  --dur-cinematic: 900ms;
+  --dur-fast: 90ms;
+  --dur-base: 150ms;
+  --dur-slow: 300ms;
+  --dur-cinematic: 650ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-digital: linear;
+
+  /* --- Race day ----------------------------------------------------------
+     The 2026-11 retheme: the page is the circuit, not a 1982 screen. Red and
+     white belong to the KERB pattern only; single-colour emphasis comes from
+     the timing screen, where purple, green and yellow already mean something. */
+  --kerb-red: #E10600;
+  --kerb-white: #F4F4F0;
+  --timing-purple: #B36BFF;
+  --timing-green: #2BD45A;
+  --timing-yellow: #FFD12E;
+  --kerb: repeating-linear-gradient(-55deg, #E10600 0 14px, #F4F4F0 14px 28px);
+  --kerb-h: 10px;
+  --checker: repeating-conic-gradient(#F4F4F0 0 25%, #121316 0 50%) 0 0 / 14px 14px;
+  --checker-h: 14px;
+  --track-line: #F4F4F0;
+  --track-lane: 160px;
+  --light-size: 44px;
+  --light-off: #2A0402;
+  --speed-streak: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07) 40%, transparent);
 }

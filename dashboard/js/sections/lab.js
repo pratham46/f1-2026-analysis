@@ -7,8 +7,8 @@
 
 import { dateShort } from "../lib/format.js";
 
-let pending = null; // paint() runs twice (seed, live) — fetch once
-function fetchAnalysis() {
+let pending = null; // paint() runs twice (seed, live), and three sections share it — fetch once
+export function fetchAnalysis() {
   const url = window.F1_ANALYSIS_URL;
   if (!url) return Promise.resolve(null);
   pending ??= fetch(url, { signal: AbortSignal.timeout(10000) })

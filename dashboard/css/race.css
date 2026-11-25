@@ -1,0 +1,196 @@
+/* ============================================================================
+   Race day — the 2026-11 retheme, layered over base.css + sections.
+   The page is the circuit: asphalt underneath, kerbs at the edges, timing
+   colours for emphasis, and one start-lights sequence as the signature moment.
+   Tokens only (scripts/check-tokens.mjs).
+   ========================================================================== */
+
+/* --- Asphalt -------------------------------------------------------------- */
+
+body {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    var(--void);
+}
+
+.crt, .atmos-sun { display: none; }
+
+/* The old synthwave grid floor becomes the track running to the horizon:
+   kerbs at both edges, white lines, a dashed centre. */
+.atmos-grid {
+  inset-inline: 10%;
+  height: 70vh;
+  background:
+    linear-gradient(90deg,
+      transparent 0 calc(var(--track-lane) * 0.12),
+      var(--track-line) 0 calc(var(--track-lane) * 0.14),
+      transparent 0) 50% 0 / var(--track-lane) 100% repeat-y,
+    linear-gradient(90deg, var(--kerb-red) 0 2%, var(--kerb-white) 0 4%, transparent 0 96%,
+      var(--kerb-white) 0 98%, var(--kerb-red) 0) 0 0 / 100% var(--space-7),
+    repeating-linear-gradient(transparent 0 var(--space-6), var(--surface-3) var(--space-6) var(--space-7));
+  opacity: 0.22;
+  mask-image: linear-gradient(to bottom, transparent, var(--void) 55%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .atmos-grid { animation: track-roll 0.6s linear infinite; }
+  @keyframes track-roll { to { background-position: 50% var(--space-7), 0 var(--space-7), 0 var(--space-7); } }
+}
+
+/* --- Type: heavy, condensed, leaning into the corner ----------------------- */
+
+h1, h2, h3 { font-style: italic; }
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--space-3);
+  color: var(--ink-0);
+  filter: none;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--kerb-h);
+  background: var(--kerb);
+  transform: skewX(var(--skew));
+  transform-origin: 0 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .section-title::after {
+    animation: kerb-in var(--dur-cinematic) var(--ease-out-expo) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  @keyframes kerb-in { from { transform: skewX(var(--skew)) scaleX(0); } }
+}
+
+.label::before { content: "/ "; color: var(--kerb-red); }
+
+/* --- Windows become timing screens ----------------------------------------- */
+
+.win { border-color: var(--surface-3); border-left: var(--border-heavy) solid var(--kerb-red); }
+.win-bar {
+  background: var(--surface-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+.win-dots i { background: var(--timing-purple); }
+.win-dots i:nth-child(2) { background: var(--timing-green); }
+.win-dots i:nth-child(3) { background: var(--timing-yellow); }
+
+/* Hover is a lap: the frame fills with a speed streak, fast. */
+.win { position: relative; overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .win::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--speed-streak);
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+  .win:hover::after { transform: translateX(100%); transition: transform var(--dur-cinematic) var(--ease-out); }
+}
+
+/* --- Chequered flag at the top and the finish ------------------------------ */
+
+.nav { border-bottom: 0; }
+.nav::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(-1 * var(--progress-h));
+  height: var(--progress-h);
+  background: var(--kerb);
+}
+footer, .foot { position: relative; padding-top: calc(var(--checker-h) + var(--space-6)); }
+footer::before, .foot::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--checker-h);
+  background: var(--checker);
+}
+
+/* --- Start lights: the one orchestrated moment ----------------------------
+   Five reds come on one by one, then lights out and the page is racing. Pure
+   CSS on load; it never blocks input and never runs for reduced motion. */
+
+.start-lights {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-toast);
+  display: grid;
+  place-content: center;
+  gap: var(--space-5);
+  background: var(--void);
+  pointer-events: none;
+  animation: lights-away var(--dur-slow) var(--ease-in-out) 2.1s both;
+}
+.start-lights ol {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--surface-1);
+  border: var(--border) solid var(--surface-3);
+}
+.start-lights li {
+  width: var(--light-size);
+  height: var(--light-size);
+  border-radius: var(--radius-round);
+  background: var(--light-off);
+  animation: light-on 1ms linear both, light-out 1ms linear 1.75s both;
+}
+.start-lights li:nth-child(1) { animation-delay: 0.25s, 1.75s; }
+.start-lights li:nth-child(2) { animation-delay: 0.55s, 1.75s; }
+.start-lights li:nth-child(3) { animation-delay: 0.85s, 1.75s; }
+.start-lights li:nth-child(4) { animation-delay: 1.15s, 1.75s; }
+.start-lights li:nth-child(5) { animation-delay: 1.45s, 1.75s; }
+.start-lights p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: var(--text-xl);
+  text-align: center;
+  color: var(--ink-2);
+}
+@keyframes light-on { to { background: var(--kerb-red); box-shadow: 0 0 var(--space-5) var(--kerb-red); } }
+@keyframes light-out { to { background: var(--light-off); box-shadow: none; } }
+@keyframes lights-away { to { opacity: 0; visibility: hidden; transform: translateY(-100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .start-lights { display: none; }
+}
+
+/* Lights play once per browser session (inline script in index.html sets
+   .lights-seen); a returning visitor gets the page immediately. */
+.lights-seen .start-lights { display: none; }
+
+/* --- Lights out → the hero launches ---------------------------------------
+   The fold's own entrances (open.css) would otherwise play unseen behind the
+   lights. Pushed to lights-out, and the car launches off the line instead of
+   drifting in. */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.lights-seen) .start-lights { animation-delay: 1.85s; }
+  html:not(.lights-seen) #open[data-ready] .open-car {
+    animation: car-launch var(--dur-cinematic) var(--ease-out-expo) 1.8s backwards;
+  }
+  html:not(.lights-seen) #open[data-ready] .open-kicker { animation-delay: 2s; }
+  html:not(.lights-seen) #open[data-ready] .open-given { animation-delay: 2.05s; }
+  html:not(.lights-seen) #open[data-ready] .open-family { animation-delay: 2.15s; }
+  html:not(.lights-seen) #open[data-ready] .open-figure { animation-delay: 2.3s; }
+  html:not(.lights-seen) #open[data-ready] .open-stats > * { animation-delay: calc(2.25s + var(--i, 0) * 55ms); }
+  @keyframes car-launch {
+    from { transform: translate3d(-120%, 0, 0) skewX(var(--skew)); filter: blur(var(--space-2)); }
+    60% { filter: blur(0); }
+  }
+}

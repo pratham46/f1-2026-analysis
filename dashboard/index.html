@@ -13,7 +13,7 @@
 <link rel="dns-prefetch" href="https://media.formula1.com" />
 <!-- Orbitron carries display; Share Tech Mono carries everything else. They
      pair on a real contrast axis: wide geometric against narrow fixed-pitch. -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:ital,wght@0,700;0,900;1,800;1,900&family=Saira:ital,wght@0,400;0,600;1,600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="css/tokens.css" />
 <link rel="stylesheet" href="css/base.css" />
@@ -26,6 +26,13 @@
 <link rel="stylesheet" href="css/sections/momentum.css" />
 <link rel="stylesheet" href="css/sections/strategy.css" />
 <link rel="stylesheet" href="css/sections/lab.css" />
+<link rel="stylesheet" href="css/sections/call.css" />
+<link rel="stylesheet" href="css/race.css" />
+<script>
+  // Start lights once per session. Storage can throw (privacy mode): then they just play.
+  try { if (sessionStorage.getItem("lights")) document.documentElement.classList.add("lights-seen");
+        else sessionStorage.setItem("lights", "1"); } catch {}
+</script>
 <link rel="stylesheet" href="css/sections/regs.css" />
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
@@ -39,6 +46,10 @@
 </script>
 </head>
 <body>
+<div class="start-lights" aria-hidden="true">
+  <ol><li></li><li></li><li></li><li></li><li></li></ol>
+  <p>Lights out and away we go</p>
+</div>
 
 <!-- Weather, not content: the sun, the grid it sets over, and the CRT the
      whole thing is seen through. Fixed, inert, and hidden from the a11y tree. -->
@@ -58,6 +69,7 @@
 
     <nav aria-label="Sections">
       <ul class="nav-links" id="nav-links">
+        <li><a href="#call">Race Call</a></li>
         <li><a href="#title-fight">Title Fight</a></li>
         <li><a href="#h2h">Head to Head</a></li>
         <li><a href="#accuracy">Model vs Reality</a></li>
@@ -102,6 +114,18 @@
       <p class="open-kicker" id="open-kicker"></p>
       <h1 class="open-title" id="open-title"></h1>
       <div class="open-stats" id="open-stats"></div>
+    </div>
+  </section>
+
+  <!-- 1b — Race Weekend Call (server 2: simulation + local LLM) -------- -->
+  <section id="call" class="section" hidden>
+    <div class="shell">
+      <h2 class="section-title" data-reveal="title">Race Weekend Call</h2>
+      <p class="section-lede" data-reveal="text">
+        The next race, run a hundred thousand times before it happens. Then every race
+        already run, and who stood on the podium.
+      </p>
+      <div id="call-body"></div>
     </div>
   </section>
 

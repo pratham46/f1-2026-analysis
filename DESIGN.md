@@ -5,6 +5,18 @@ The visual system for the F1 2026 dashboard. Every value here has a token in
 
 ## Theme
 
+**Race day (since 2026-11-25).** The page is the circuit: asphalt grey, not void purple;
+red/white kerb stripes as the only use of red (section underlines, nav edge, the chat
+panel); emphasis from the timing screen, where purple, green and yellow already mean
+fastest, personal best and sector. Saira Extra Condensed in heavy italic for display, Saira
+for body, Share Tech Mono only for timing numbers. One orchestrated moment: the five start
+lights on first load (once per session, never under reduced motion), and the hero car
+launches at lights out. The neon token *names* (`--neon-cyan` etc.) survive so the section
+CSS needed no rename; their values are now circuit colours. Overrides live in
+`dashboard/css/race.css`. The Outrun notes below are history.
+
+### Previous theme
+
 **Outrun.** Not dark-because-dashboards — dark because of the scene. A synthetic
 dimension rendered on a CRT at 3am: a sun setting over an infinite wireframe grid, neon
 tubes for borders, a terminal for an interface. The room is a bedroom in 1987 running

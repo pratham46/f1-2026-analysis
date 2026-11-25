@@ -1,0 +1,234 @@
+/* Race Weekend Call + Pit wall radio. Tokens only. */
+
+.sr-only {
+  position: absolute;
+  width: var(--hairline);
+  height: var(--hairline);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+#call-body { display: grid; gap: var(--space-5); }
+
+.call-dot {
+  display: inline-block;
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-round);
+  margin-right: var(--space-2);
+  vertical-align: middle;
+  flex: none;
+}
+
+/* --- The call ------------------------------------------------------------- */
+
+.call-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-5) var(--space-7);
+  align-items: start;
+}
+
+.call-when { color: var(--ink-2); font-size: var(--text-sm); }
+
+/* The circuit name is the loudest type on the page after the hero: this is
+   the one thing a visitor came back this week to read. */
+.call-track {
+  font-size: var(--text-display);
+  color: var(--ink-0);
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.call-pick { font-size: var(--text-lg); color: var(--ink-1); }
+.call-pick strong { color: var(--timing-purple); font-style: italic; }
+
+.call-odds { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.call-odds li {
+  display: grid;
+  grid-template-columns: 10rem 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+}
+.call-odds-name { display: flex; align-items: center; font-weight: 600; }
+.call-odds-fig { font-size: var(--text-xs); color: var(--ink-2); white-space: nowrap; }
+.call-odds-fig b { font-size: var(--text-base); color: var(--timing-green); font-weight: 400; }
+.call-odds-fig s { text-decoration: none; margin-left: var(--space-2); }
+
+.call-voice {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: var(--space-5);
+  background: var(--surface-1);
+  border-left: var(--border-heavy) solid var(--timing-yellow);
+}
+.call-voice blockquote {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--ink-0);
+  max-width: var(--measure);
+}
+.call-voice figcaption, .call-wait { font-size: var(--text-sm); color: var(--ink-2); max-width: var(--measure); }
+
+.call-score { grid-column: 1 / -1; }
+.call-score-head { font-weight: 600; margin-bottom: var(--space-2); }
+.call-score ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.call-score li {
+  padding: var(--space-1) var(--space-3);
+  border: var(--hairline) solid var(--surface-3);
+  font-size: var(--text-sm);
+}
+.call-score li[data-hit="true"] { border-color: var(--timing-green); color: var(--timing-green); }
+
+/* --- Every podium --------------------------------------------------------- */
+
+.call-tally {
+  list-style: none;
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+}
+.call-tally li { display: flex; align-items: baseline; gap: var(--space-2); }
+.call-tally strong {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-xl);
+  color: var(--ink-0);
+}
+.call-tally s, .call-results s { text-decoration: none; color: var(--ink-3); font-size: var(--text-xs); }
+.call-results td { white-space: nowrap; }
+
+@media (max-width: 52rem) {
+  .call-body { grid-template-columns: 1fr; }
+  .call-odds li { grid-template-columns: 7.5rem 1fr; }
+  .call-odds-fig { grid-column: 1 / -1; text-align: right; }
+}
+
+/* --- Pit wall radio ------------------------------------------------------- */
+
+.radio-btn {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border: 0;
+  background: var(--kerb-red);
+  color: var(--ink-0);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: var(--text-lg);
+  cursor: pointer;
+  transform: skewX(var(--skew));
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.radio-btn:hover { transform: skewX(var(--skew)) translateX(calc(-1 * var(--space-1))); }
+.radio-btn[aria-expanded="true"] { display: none; }
+
+.radio-live {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-round);
+  background: var(--ink-0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .radio-live { animation: radio-blink 1.2s steps(1) infinite; }
+  @keyframes radio-blink { 50% { opacity: 0.2; } }
+}
+
+.radio {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: var(--z-modal);
+  width: min(26rem, calc(100vw - 2 * var(--space-5)));
+  max-height: min(36rem, calc(100svh - var(--nav-h) - 2 * var(--space-5)));
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-solid);
+  border: var(--border) solid var(--surface-3);
+  border-top: var(--kerb-h) solid transparent;
+  border-image: var(--kerb) 1;
+  box-shadow: var(--glow-area);
+}
+.radio[hidden] { display: none; }
+
+.radio-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  border-bottom: var(--hairline) solid var(--surface-3);
+}
+.radio-close {
+  background: none;
+  border: 0;
+  font-size: var(--text-xl);
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink-2);
+  padding: 0 var(--space-2);
+}
+
+.radio-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+.radio-msg {
+  max-width: 88%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  white-space: pre-wrap;
+}
+.radio-bot { background: var(--surface-2); border-left: var(--border) solid var(--timing-green); }
+.radio-me { justify-self: end; background: var(--surface-3); }
+.radio-wait { color: var(--ink-2); font-style: italic; }
+
+.radio-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0 var(--space-4) var(--space-3); }
+.radio-chips button {
+  background: none;
+  border: var(--hairline) solid var(--surface-3);
+  color: var(--ink-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+.radio-chips button:hover { border-color: var(--timing-green); color: var(--timing-green); }
+
+.radio-form { display: flex; border-top: var(--hairline) solid var(--surface-3); }
+.radio-form input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface-1);
+  border: 0;
+  color: var(--ink-0);
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
+}
+.radio-form button {
+  border: 0;
+  background: var(--kerb-red);
+  color: var(--ink-0);
+  padding: 0 var(--space-5);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  cursor: pointer;
+}
+.radio-form button:disabled, .radio-form input:disabled { opacity: 0.6; cursor: wait; }
+
+.radio-note { padding: var(--space-2) var(--space-4) var(--space-3); font-size: var(--text-xs); color: var(--ink-3); }
