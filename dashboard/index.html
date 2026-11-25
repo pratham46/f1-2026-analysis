@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/sections/grid.css" />
 <link rel="stylesheet" href="css/sections/momentum.css" />
 <link rel="stylesheet" href="css/sections/strategy.css" />
+<link rel="stylesheet" href="css/sections/lab.css" />
 <link rel="stylesheet" href="css/sections/regs.css" />
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
@@ -62,6 +63,7 @@
         <li><a href="#accuracy">Model vs Reality</a></li>
         <li><a href="#season">The Season</a></li>
         <li><a href="#strategy">Strategy</a></li>
+        <li><a href="#lab">Pace Lab</a></li>
         <li><a href="#grid">The Grid</a></li>
         <li><a href="#momentum">Form</a></li>
         <li><a href="#regs">2026 Regs</a></li>
@@ -158,6 +160,19 @@
         turned into a model and scored against what the field actually did.
       </p>
       <div id="strategy-body"></div>
+    </div>
+  </section>
+
+  <!-- 6b — Pace Lab (computed on free-server-2, see server2/f1api) ------- -->
+  <section id="lab" class="section" hidden>
+    <div class="shell">
+      <h2 class="section-title" data-reveal="title">Pace Lab</h2>
+      <p class="section-lede" data-reveal="text">
+        Every lap of the season, timed and filtered. Race pace, teammate gaps and tyre wear come
+        straight from the stopwatch. The run-in is simulated a hundred thousand times from them.
+      </p>
+      <p id="lab-stamp"></p>
+      <div id="lab-body"></div>
     </div>
   </section>
 

@@ -1,0 +1,6 @@
+/* Pace Lab — reuses the Race Strategy panel/row/table styles (strategy.css). */
+
+.lab-rows li { grid-template-columns: 7.5rem 1fr auto; }
+.lab-rows + .label { margin: var(--space-5) 0 var(--space-3); }
+.lab-inline-dot { display: inline-block; margin-right: var(--space-2); vertical-align: middle; }
+#lab-stamp { color: var(--ink-3); font-size: var(--text-xs); letter-spacing: var(--tracking-ui); }

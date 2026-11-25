@@ -1,0 +1,28 @@
+# free-server-2: deploy with  sudo docker compose up -d --build
+# Public via Coolify's Traefik (LE cert) — same pattern as ~/jellyfin.
+services:
+  f1api:
+    build: .
+    container_name: f1api
+    restart: unless-stopped
+    user: "1001:1001"   # ubuntu on free-server-2
+    environment:
+      - ANALYSIS_INTERVAL_S=21600
+      - SIMS=100000
+    volumes:
+      - ./data:/data
+    networks: [coolify]
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
+      - traefik.http.routers.f1api.rule=Host(`f1api.130-210-85-149.sslip.io`)
+      - traefik.http.routers.f1api.entrypoints=https
+      - traefik.http.routers.f1api.tls.certresolver=letsencrypt
+      - traefik.http.routers.f1api-http.rule=Host(`f1api.130-210-85-149.sslip.io`)
+      - traefik.http.routers.f1api-http.entrypoints=http
+      - traefik.http.routers.f1api-http.middlewares=f1api-https
+      - traefik.http.middlewares.f1api-https.redirectscheme.scheme=https
+      - traefik.http.services.f1api.loadbalancer.server.port=8080
+networks:
+  coolify:
+    external: true

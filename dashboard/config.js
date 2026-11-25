@@ -9,3 +9,7 @@
 //
 // Set to "" to disable the live upgrade and serve the static seed only.
 window.F1_WORKER_URL = "https://f1-2026-data.prathammewada46.workers.dev";
+
+// F1_ANALYSIS_URL: lap-level analysis API on free-server-2 (server2/f1api).
+// The Pace Lab section fetches it directly and hides when it is unreachable.
+window.F1_ANALYSIS_URL = "https://f1api.130-210-85-149.sslip.io/api/analysis";
