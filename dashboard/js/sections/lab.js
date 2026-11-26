@@ -123,6 +123,64 @@ function tyrePanel(a) {
   return win;
 }
 
+const short = (t) => t.replace(" F1 Team", "").replace("Racing Bulls", "RB");
+
+function leaderPanel(file, label, text, items, value, figs) {
+  const { win, body } = panel(file, label);
+  const top = items.slice(0, 10);
+  const max = Math.max(...top.map(value), 0.001);
+  body.append(note(text), list(top.map((d) => row(d.code || short(d.team), d.colour,
+    value(d) / max, figs(d)))));
+  return win;
+}
+
+function storyPanel(a) {
+  const { win, body } = panel("race_story.log", "Race by race", { wide: true });
+  body.append(note(`Race control, timing and track weather for every round. Overtakes are every pass ` +
+    `OpenF1's timing logs, pit-cycle swaps included; temperatures are race medians.`));
+  const table = document.createElement("table");
+  table.className = "st-table";
+  table.innerHTML = `<thead><tr><th>Round</th><th class="num">Passes</th><th class="num">SC</th>
+    <th class="num">VSC</th><th class="num">Red</th><th class="num">Air / track</th><th>Track</th></tr></thead>`;
+  const tb = document.createElement("tbody");
+  for (const r of a.race_story) {
+    const tr = document.createElement("tr");
+    tr.dataset.reveal = "row";
+    for (const [v, num] of [[`${r.circuit} · ${dateShort(r.date)}`], [r.overtakes, 1], [r.safety_cars || "—", 1],
+      [r.vsc || "—", 1], [r.red_flags || "—", 1],
+      [r.air_c == null ? "—" : `${r.air_c}° / ${r.track_c}°`, 1], [r.wet ? "Wet" : "Dry"]]) {
+      const td = document.createElement("td");
+      if (num) td.className = "num";
+      td.textContent = v;
+      tr.append(td);
+    }
+    tb.append(tr);
+  }
+  table.append(tb);
+  const wrap = document.createElement("div");
+  wrap.className = "scroll-x";
+  wrap.append(table);
+  body.append(wrap);
+  return win;
+}
+
+function storyPanels(a) {
+  if (!a.race_story?.length) return [];
+  const col = (d) => ({ ...d, colour: a.team_colours[d.team] });
+  const grid = document.createElement("div");
+  grid.className = "st-grid";
+  grid.append(
+    leaderPanel("overtakes.dat", "Most overtakes", "Passes made across the season, from OpenF1's overtake feed.",
+      a.overtakers.map(col), (d) => d.overtakes, (d) => `<b>${d.overtakes}</b>`),
+    leaderPanel("grid_to_flag.dat", "Places gained", "Average places gained from grid to flag, classified finishes only.",
+      a.places_gained.map(col), (d) => Math.max(d.avg, 0), (d) => `<b>${d.avg >= 0 ? "+" : ""}${d.avg.toFixed(1)}</b> <s>${d.races} races</s>`),
+    leaderPanel("pit_crews.dat", "Pit crews", "Median stationary time per stop. Median, so a served penalty does not count against the crew. Longer bar is quicker.",
+      a.pit_crews, (d) => a.pit_crews[0].median_s / d.median_s, (d) => `<b>${d.median_s.toFixed(2)}s</b> <s>best ${d.best_s.toFixed(1)}s</s>`),
+    storyPanel(a)
+  );
+  return [grid];
+}
+
 function simPanel(a) {
   const s = a.season_sim;
   const { win, body } = panel("season_sim.run", "Season simulation", { wide: true });
@@ -178,6 +236,6 @@ export async function render(_data, root) {
   const grid = document.createElement("div");
   grid.className = "st-grid";
   grid.append(pacePanel(a), matePanel(a), tyrePanel(a));
-  root.querySelector("#lab-body").replaceChildren(grid, simPanel(a));
+  root.querySelector("#lab-body").replaceChildren(grid, ...storyPanels(a), simPanel(a));
   return true;
 }

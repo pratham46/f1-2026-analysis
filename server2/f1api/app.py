@@ -96,6 +96,35 @@ def slug(name):
 
 # --- per-race analysis -----------------------------------------------------
 
+def race_extras(overtakes, rc, weather, pits, positions, result):
+    """Race story from OpenF1's side feeds: passes, neutralisations, conditions,
+    pit crews, grid→flag. Pure, so it can be tested without the network."""
+    deployed = [m["message"] for m in rc if m.get("category") == "SafetyCar" and "DEPLOYED" in (m.get("message") or "")]
+    passes = {}
+    for o in overtakes:
+        n = o.get("overtaking_driver_number")
+        if n is not None:
+            passes[n] = passes.get(n, 0) + 1
+    grid = {}
+    for p in sorted(positions, key=lambda p: p["date"]):  # first reading per car = the grid
+        grid.setdefault(p["driver_number"], p["position"])
+    gained = {r["driver_number"]: grid[r["driver_number"]] - r["position"]
+              for r in result if r.get("position") and r["driver_number"] in grid}
+    air = [w["air_temperature"] for w in weather if w.get("air_temperature") is not None]
+    trk = [w["track_temperature"] for w in weather if w.get("track_temperature") is not None]
+    return {
+        "overtakes": len(overtakes), "passes": passes, "gained": gained,
+        "safety_cars": sum("VIRTUAL" not in m for m in deployed),
+        "vsc": sum("VIRTUAL" in m for m in deployed),
+        "red_flags": sum(m.get("flag") == "RED" for m in rc),
+        "air_c": round(st.median(air), 1) if air else None,
+        "track_c": round(st.median(trk), 1) if trk else None,
+        "wet": any((w.get("rainfall") or 0) > 0 for w in weather),
+        # stop_duration = stationary time; None on older feeds, and includes served penalties
+        "stops": [(p["driver_number"], p["stop_duration"]) for p in pits if p.get("stop_duration")],
+    }
+
+
 def analyse_race(laps, stints, drivers):
     """Clean-lap race pace + per-stint degradation for one race."""
     by_drv = {}
@@ -166,7 +195,7 @@ def compute():
     done = lambda s: datetime.fromisoformat(s["date_end"]) < now - timedelta(hours=3)
 
     roster, team_colour = {}, {}
-    race_out, dnf_tally, results_out = [], {}, []
+    race_out, dnf_tally, results_out, extras = [], {}, [], []
     laps_total = 0
     last_done = None
     for s in sorted(races, key=lambda s: s["date_start"]):
@@ -199,6 +228,11 @@ def compute():
             t = dnf_tally.setdefault(r["driver_number"], [0, 0])
             t[1] += 1
             t[0] += bool(r.get("dnf") or r.get("dns"))
+        x = race_extras(*(get(e, cacheable=old, session_key=k)
+                          for e in ("overtakes", "race_control", "weather", "pit", "position")), result)
+        x.update(circuit=s.get("circuit_short_name") or s["location"], date=s["date_start"][:10],
+                 team_of={d["driver_number"]: d["team_name"] for d in drivers})
+        extras.append(x)
         a = analyse_race(laps, stints, drivers)
         if not a:
             continue
@@ -277,6 +311,8 @@ def compute():
                         for t, v in team_rel.items() if len(v) >= 5),
                        key=lambda x: x["rel_deg_s_per_lap"])
 
+    race_story, overtakers, movers, crews = season_story(extras, roster, team_colour)
+
     sprint_out = []
     for s in sorted(sprints, key=lambda s: s["date_start"]):
         if not done(s):
@@ -330,7 +366,36 @@ def compute():
         "win_tally": sorted(wins.values(), key=lambda w: (-w["wins"], -w["podiums"])),
         "driver_standings": d_stand,
         "constructor_standings": c_stand,
+        "race_story": race_story,
+        "overtakers": overtakers,
+        "places_gained": movers,
+        "pit_crews": crews,
     }
+
+
+def season_story(extras, roster, team_colour):
+    """Season roll-up of race_extras(): per-race story rows + three leaderboards."""
+    story = [{k: x[k] for k in ("date", "circuit", "overtakes", "safety_cars", "vsc", "red_flags",
+                                "air_c", "track_c", "wet")} for x in extras]
+    passes, gained, stops = {}, {}, {}
+    for x in extras:
+        for n, c in x["passes"].items():
+            passes[n] = passes.get(n, 0) + c
+        for n, g in x["gained"].items():
+            gained.setdefault(n, []).append(g)
+        for n, s in x["stops"]:
+            t = x["team_of"].get(n)
+            if t:
+                stops.setdefault(t, []).append(s)
+    who = lambda n: {"driver_number": n, **roster.get(n, {"id": str(n), "name": str(n), "code": str(n), "team": None})}
+    overtakers = sorted(({**who(n), "overtakes": c} for n, c in passes.items()), key=lambda d: -d["overtakes"])
+    movers = sorted(({**who(n), "races": len(g), "total": sum(g), "avg": round(sum(g) / len(g), 2)}
+                     for n, g in gained.items() if len(g) >= 3), key=lambda d: -d["avg"])
+    # median, not mean: one stop with a served 5s penalty would wreck a crew's mean
+    crews = sorted(({"team": t, "colour": team_colour.get(t), "stops": len(v),
+                     "median_s": round(st.median(v), 2), "best_s": min(v)}
+                    for t, v in stops.items() if len(v) >= 3), key=lambda c: c["median_s"])
+    return story, overtakers, movers, crews
 
 
 def simulate(races, sprints, race_out, roster, dnf_tally, last_done, done):
@@ -449,6 +514,16 @@ def context_text(a):
         f"{t['median_delta_pct']:.2f}% ({t['faster_won']}/{t['races']} races)" for t in mates))
     L.append("Tyre wear per lap: " + ", ".join(f"{t['compound'].lower()} {t['median_deg_s_per_lap']:.3f}s" for t in a["tyre_deg"]) +
              ". Gentlest on tyres: " + ", ".join(t["team"] for t in a["tyre_management"][:3]) + ".")
+    if a.get("overtakers"):
+        L.append("Most overtakes: " + ", ".join(f"{nice(d['name'])} {d['overtakes']}" for d in a["overtakers"][:5]) +
+                 ". Most places gained per race (grid to flag): " +
+                 ", ".join(f"{nice(d['name'])} {d['avg']:+.1f}" for d in a["places_gained"][:3]) +
+                 ". Fastest pit crews (median stop): " +
+                 ", ".join(f"{c['team']} {c['median_s']}s" for c in a["pit_crews"][:3]) + ".")
+        rs = a["race_story"]
+        L.append(f"Safety cars this season: {sum(r['safety_cars'] for r in rs)}, VSCs {sum(r['vsc'] for r in rs)}, "
+                 f"red flags {sum(r['red_flags'] for r in rs)}; wet races: " +
+                 (", ".join(r["circuit"] for r in rs if r["wet"]) or "none") + ".")
     sim = a["season_sim"]
     n = sim.get("next_race")
     if n:
