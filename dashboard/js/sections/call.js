@@ -1,10 +1,11 @@
 // Race Weekend Call — the next race, called before it happens.
 //
 // Server 2 (server2/f1api) simulates the next race 100,000 times from measured
-// race pace and, once the race is close, has a small local LLM write the call.
-// The PICKS are the simulation's; the words are the model's. Every call is
-// kept and scored against the real podium afterwards, so this section can be
-// wrong in public, which is the point.
+// race pace (the odds), and a small local LLM calls the podium itself from a
+// brief of every OpenF1 feed: grid, form, pace, DNFs, overtakes, pit crews,
+// tyre wear, weather. Past rounds are walk-forward backtests: each call only
+// saw races run before it. Every call is scored against the real podium, so
+// this section can be wrong in public, which is the point.
 //
 // Also renders every podium of the season (#call-results) from the same fetch.
 
@@ -49,27 +50,47 @@ function oddsList(odds, colours) {
   return ul;
 }
 
-function scoreboard(preds) {
-  const done = preds.filter((p) => p.actual);
+function scorePanel(preds) {
+  const done = preds.filter((p) => p.actual).sort((a, b) => a.date.localeCompare(b.date));
   if (!done.length) return null;
   const hits = done.filter((p) => p.hit_winner).length;
-  const box = el("div", "call-score");
-  box.append(el("p", "call-score-head", `Calls scored so far: ${hits} of ${done.length} winners right`));
-  const ul = el("ul");
+  const onPodium = done.reduce((n, p) => n + (p.podium_hits || 0), 0);
+  const win = el("section", "win st-panel st-panel--wide");
+  win.setAttribute("aria-label", "Every LLM race call, scored");
+  win.innerHTML = `<header class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span>
+    <span aria-hidden="true">llm_calls_scored.log</span></header>`;
+  const body = el("div", "win-body");
+  body.append(el("p", "call-score-head",
+    `${hits} of ${done.length} winners called · ${onPodium} of ${done.length * 3} podium places right`));
+  body.append(el("p", "st-note", `${done[0].model} called each race from only what OpenF1 had published ` +
+    `before it: the qualifying grid and weather, then every earlier race's results, pace, DNFs, overtakes, ` +
+    `pit stops and tyre wear. Backtests were run after the season, but blind to their own race.`));
+  const table = el("table", "st-table call-results");
+  table.innerHTML = `<thead><tr><th>Race</th><th>Called</th><th>Actual</th><th class="num">Podium</th>
+    <th>Why</th></tr></thead>`;
+  const tb = el("tbody");
   for (const p of done) {
-    const li = el("li");
-    li.dataset.hit = String(!!p.hit_winner);
-    li.textContent = `${p.circuit}: called ${p.picks[0]}, won by ${p.actual[0]} ${p.hit_winner ? "✓" : "✗"}`;
-    ul.append(li);
+    const tr = el("tr");
+    tr.dataset.reveal = "row";
+    tr.dataset.hit = String(!!p.hit_winner);
+    const race = el("td");
+    race.append(el("strong", null, p.circuit), el("s", null, ` ${dateShort(p.date)}${p.mode === "live" ? " · live" : ""}`));
+    tr.append(race, el("td", null, `${p.picks.join(" ")} ${p.hit_winner ? "✓" : "✗"}`),
+      el("td", null, p.actual.join(" ")), el("td", "num", `${p.podium_hits || 0}/3`), el("td", "call-why", p.text));
+    tb.append(tr);
   }
-  box.append(ul);
-  return box;
+  table.append(tb);
+  const wrap = el("div", "scroll-x");
+  wrap.append(table);
+  body.append(wrap);
+  win.append(body);
+  return win;
 }
 
 function callPanel(a) {
   const next = a.season_sim?.next_race;
   const preds = a.predictions || [];
-  const call = next && preds.find((p) => p.date === next.date);
+  const call = next && preds.find((p) => p.date === next.date && !p.actual);
   if (!next) return null;
 
   const win = el("section", "win call-panel");
@@ -83,10 +104,13 @@ function callPanel(a) {
     el("p", "call-when", `${next.country || ""} · ${dateShort(next.date)}`),
     el("h3", "call-track", next.circuit),
   );
-  const pick = next.odds[0];
-  if (pick) {
+  if (call) {
     const p = el("p", "call-pick");
-    p.append("Our pick: ", el("strong", null, nice(pick.name)));
+    p.append("LLM podium: ", el("strong", null, call.picks.join(" · ")));
+    head.append(p, el("p", "call-when", call.grid_used ? "Called from the qualifying grid." : "Called before qualifying."));
+  } else if (next.odds[0]) {
+    const p = el("p", "call-pick");
+    p.append("Simulation pick: ", el("strong", null, nice(next.odds[0].name)));
     head.append(p);
   }
   body.append(head, oddsList(next.odds, a.team_colours));
@@ -95,15 +119,13 @@ function callPanel(a) {
   if (call?.text) {
     voice.append(el("blockquote", null, call.text));
     voice.append(el("figcaption", null,
-      `Race call written by ${call.model} running on our own server. It is a small AI model and can get details wrong; the odds above are the simulation's.`));
+      `Called by ${call.model} running on our own server, from OpenF1 data only. It is a small AI model and can be wrong; the odds above are the separate 100,000-run simulation.`));
   } else {
     voice.append(el("p", "call-wait",
-      "The written race call drops on race week, once the weekend is five days out. The odds above update every six hours."));
+      "The LLM makes its call on race week, five days out, and again once the qualifying grid is set. The odds above update every six hours."));
   }
   body.append(voice);
 
-  const sb = scoreboard(preds);
-  if (sb) body.append(sb);
   win.append(body);
   return win;
 }
@@ -159,7 +181,7 @@ export async function render(_data, root) {
   const a = await fetchAnalysis();
   if (!a?.season_sim) return false;
   mountChat(); // server 2 answered, so the radio has someone on the other end
-  const parts = [callPanel(a), resultsPanel(a)].filter(Boolean);
+  const parts = [callPanel(a), scorePanel(a.predictions || []), resultsPanel(a)].filter(Boolean);
   if (!parts.length) return false;
   root.querySelector("#call-body").replaceChildren(...parts);
   return true;
