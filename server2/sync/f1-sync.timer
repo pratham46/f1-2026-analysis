@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily F1 2026 seed sync
+
+[Timer]
+# 07:00 UTC, as the old GitHub workflow; Persistent catches up after a reboot.
+OnCalendar=*-*-* 07:00:00 UTC
+Persistent=true
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target

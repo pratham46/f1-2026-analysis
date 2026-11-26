@@ -1,0 +1,11 @@
+[Unit]
+Description=F1 2026 seed sync (OpenF1 + Jolpica -> dashboard/data.js -> GitHub)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+ExecStart=/home/ubuntu/f1-sync/sync-data.sh
+Nice=10
+TimeoutStartSec=45min

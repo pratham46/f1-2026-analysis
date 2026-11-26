@@ -11,9 +11,10 @@ name: Sync F1 data
 # Needs no Cloudflare secrets to do its main job, and works whether or not
 # anything is deployed.
 
+# The daily run moved to server 2 (server2/sync/, systemd timer 07:00 UTC):
+# GitHub disabled this schedule for inactivity, and its runners kept losing to
+# OpenF1 rate limits. Kept as a manual fallback.
 on:
-  schedule:
-    - cron: "0 7 * * *" # 07:00 UTC daily
   workflow_dispatch: {}
 
 concurrency:
