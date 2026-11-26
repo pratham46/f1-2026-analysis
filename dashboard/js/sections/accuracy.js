@@ -99,6 +99,18 @@ export function render(data, root) {
   list.className = "acc-rounds";
   list.append(...rows.map((r) => roundCard(r, data)));
 
-  body.replaceChildren(summary, list);
+  // Rounds the model never called before the flag (pipeline down): say so
+  // rather than score a hindsight pick or leave the grid looking stalled.
+  const scored = new Set(rows.map((r) => r.round));
+  const uncalled = completedRounds(data).filter((r) => !scored.has(r.round)).map((r) => `R${r.round}`);
+  const parts = [summary, list];
+  if (uncalled.length) {
+    const p = document.createElement("p");
+    p.className = "st-note";
+    p.textContent = `No pre-race call was recorded for ${uncalled.join(", ")}, so they are not scored. ` +
+      `The Race Weekend Call section has the LLM's walk-forward call for every round.`;
+    parts.push(p);
+  }
+  body.replaceChildren(...parts);
   return true;
 }

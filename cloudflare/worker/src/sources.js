@@ -50,9 +50,14 @@ export const normCircuit = (id) => CIRCUIT_ALIAS[id] || id;
 // ponytail: module-level counter reset per assemble() run — fine while one
 // refresh runs at a time; thread a ctx object through the fetchers if
 // concurrent refreshes ever become real.
-const SUBREQUEST_BUDGET = 40;
+// The offline seed (scripts/gen-seed.mjs, plain Node) has no Cloudflare cap and
+// raises it via SUBREQUEST_BUDGET so every round gets fetched.
+let SUBREQUEST_BUDGET = 40;
 let budgetLeft = SUBREQUEST_BUDGET;
-export function resetSubrequestBudget() { budgetLeft = SUBREQUEST_BUDGET; }
+export function resetSubrequestBudget() {
+  SUBREQUEST_BUDGET = Number(globalThis.process?.env?.SUBREQUEST_BUDGET) || 40;
+  budgetLeft = SUBREQUEST_BUDGET;
+}
 export function subrequestsUsed() { return SUBREQUEST_BUDGET - budgetLeft; }
 
 async function getJSON(url, timeoutMs = 8000) {
@@ -175,16 +180,22 @@ export async function fetchCircuitData() {
  * @returns {{ok:boolean, races?:Array}}
  */
 export async function fetchRaceResults(racesCompleted = 0) {
-  const r = await getJSON(`${JOLPICA}/results.json?limit=600`);
-  const races = [];
-  const seen = new Set();
-  if (r.ok) {
+  // Jolpica caps a page at 100 result ROWS (~4.5 races) whatever `limit` says, so
+  // `limit=600` silently returned 5 races and the season stalled at round ~11.
+  // Page through; a race split across two pages is merged by round.
+  const byRound = new Map();
+  for (let offset = 0, total = 1; offset < total && offset < 1000; offset += 100) {
+    const r = await getJSON(`${JOLPICA}/results.json?limit=100&offset=${offset}`);
+    if (!r.ok) break;
+    total = parseInt(r.json?.MRData?.total, 10) || 0;
     for (const race of r.json?.MRData?.RaceTable?.Races || []) {
-      const m = mapRace(race);
-      races.push(m);
-      seen.add(m.round);
+      const prev = byRound.get(race.round);
+      if (prev) prev.Results = [...(prev.Results || []), ...(race.Results || [])];
+      else byRound.set(race.round, { ...race, Results: [...(race.Results || [])] });
     }
   }
+  const races = [...byRound.values()].map(mapRace);
+  const seen = new Set(races.map((m) => m.round));
   // Backfill any completed round the bulk endpoint dropped (max 6 extra calls).
   const missing = [];
   for (let round = 1; round <= racesCompleted; round++) if (!seen.has(round)) missing.push(round);
@@ -258,7 +269,7 @@ const OPENF1_CIRCUIT_MAP = {
   "Monza": "italy",               "Baku": "azerbaijan",         "Madring": "madrid",
   "Madrid": "madrid",             "Singapore": "singapore",     "Austin": "americas",
   "Mexico City": "mexico",        "Interlagos": "brazil",       "São Paulo": "brazil",
-  "Las Vegas": "las_vegas",       "Lusail": "qatar",            "Yas Marina Circuit": "abu_dhabi",
+  "Las Vegas": "las_vegas",       "Lusail": "qatar",            "Kuala Lumpur": "sepang", "Sepang": "sepang", "Yas Marina Circuit": "abu_dhabi",
   "Yas Island": "abu_dhabi",
 };
 const normOF1Circuit = (n) => OPENF1_CIRCUIT_MAP[n] || (n || "").toLowerCase().replace(/[^a-z]/g, "_");

@@ -287,8 +287,8 @@ function modelPanel(races, hardest, data) {
     const note = document.createElement("p");
     note.className = "st-note";
     note.textContent =
-      `Zandvoort has not been run under these regulations, so there is no 2026 tyre data for it ` +
-      `and the payload carries no race distance. What the model does say: at ${hardest}-lap stints, ` +
+      `${next.name.replace(" GP", "")} has not been run under these regulations yet, so there is no 2026 ` +
+      `tyre data for it and the payload carries no race distance. What the model does say: at ${hardest}-lap stints, ` +
       `anything up to ${hardest} laps is a one-stopper and past ${hardest * 2} it is a three. ` +
       `The distance decides it, and that number is not something this page has measured.`;
     box.append(h, note);

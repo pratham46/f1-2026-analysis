@@ -1,4 +1,4 @@
-// The Season So Far — one rail of 22 rounds; a round opens the race modal.
+// The Season So Far — one rail of 23 rounds; a round opens the race modal.
 //
 // Merges the old timeline and calendar sections, which were two renderings of
 // the same list. Completed rounds are solid, upcoming are outlined.

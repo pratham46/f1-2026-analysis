@@ -2,7 +2,7 @@
 // Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
-  "generated_at": "2026-08-25",
+  "generated_at": "2026-11-26",
   "model": "js-weighted-montecarlo-v2",
   "model_cv_mae": 2.71,
   "seasons_used": [
@@ -235,22 +235,45 @@ window.F1_DATA = {
       "team_name": "Mercedes",
       "color": "#27F4D2",
       "number": 12,
-      "predicted_points": 391.6,
+      "predicted_points": 433.3,
       "win_probability": 0.2709,
-      "championship_win_probability": 0.817,
-      "podium_probability": 0.5777,
+      "championship_win_probability": 1,
+      "podium_probability": 0.6233,
       "avg_predicted_position": 1,
-      "current_real_points": 242,
+      "current_real_points": 402,
       "current_real_position": 1,
-      "current_wins": 6,
-      "max_possible_points": 492,
+      "current_wins": 9,
+      "max_possible_points": 452,
       "points_behind_leader": 0,
       "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "expected_dnfs": 0.4,
       "experience_seasons": 1
     },
     {
       "rank": 2,
+      "driver_id": "max_verstappen",
+      "name": "Max Verstappen",
+      "short": "VER",
+      "team": "red_bull",
+      "team_name": "Red Bull Racing",
+      "color": "#3671C6",
+      "number": 3,
+      "predicted_points": 331.8,
+      "win_probability": 0.1355,
+      "championship_win_probability": 0,
+      "podium_probability": 0.577,
+      "avg_predicted_position": 2,
+      "current_real_points": 304,
+      "current_real_position": 2,
+      "current_wins": 4,
+      "max_possible_points": 354,
+      "points_behind_leader": 98,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 6
+    },
+    {
+      "rank": 3,
       "driver_id": "russell",
       "name": "George Russell",
       "short": "RUS",
@@ -258,22 +281,22 @@ window.F1_DATA = {
       "team_name": "Mercedes",
       "color": "#27F4D2",
       "number": 63,
-      "predicted_points": 315.1,
-      "win_probability": 0.1355,
-      "championship_win_probability": 0.114,
-      "podium_probability": 0.5296,
-      "avg_predicted_position": 2,
-      "current_real_points": 183,
-      "current_real_position": 2,
-      "current_wins": 2,
-      "max_possible_points": 433,
-      "points_behind_leader": 59,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "predicted_points": 288.2,
+      "win_probability": 0.0903,
+      "championship_win_probability": 0,
+      "podium_probability": 0.4825,
+      "avg_predicted_position": 3,
+      "current_real_points": 264,
+      "current_real_position": 4,
+      "current_wins": 3,
+      "max_possible_points": 314,
+      "points_behind_leader": 138,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
-      "rank": 3,
+      "rank": 4,
       "driver_id": "hamilton",
       "name": "Lewis Hamilton",
       "short": "HAM",
@@ -281,41 +304,18 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 44,
-      "predicted_points": 299.2,
-      "win_probability": 0.0903,
-      "championship_win_probability": 0.0555,
-      "podium_probability": 0.4515,
-      "avg_predicted_position": 3,
-      "current_real_points": 183,
+      "predicted_points": 285.9,
+      "win_probability": 0.0542,
+      "championship_win_probability": 0,
+      "podium_probability": 0.2965,
+      "avg_predicted_position": 5,
+      "current_real_points": 267,
       "current_real_position": 3,
       "current_wins": 1,
-      "max_possible_points": 433,
-      "points_behind_leader": 59,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
-      "experience_seasons": 6
-    },
-    {
-      "rank": 4,
-      "driver_id": "leclerc",
-      "name": "Charles Leclerc",
-      "short": "LEC",
-      "team": "ferrari",
-      "team_name": "Ferrari",
-      "color": "#E8002D",
-      "number": 16,
-      "predicted_points": 258,
-      "win_probability": 0.0677,
-      "championship_win_probability": 0.0085,
-      "podium_probability": 0.3667,
-      "avg_predicted_position": 4,
-      "current_real_points": 155,
-      "current_real_position": 5,
-      "current_wins": 1,
-      "max_possible_points": 405,
-      "points_behind_leader": 87,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.8,
+      "max_possible_points": 317,
+      "points_behind_leader": 135,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
@@ -327,41 +327,41 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 1,
-      "predicted_points": 249.9,
-      "win_probability": 0.0542,
-      "championship_win_probability": 0.0045,
-      "podium_probability": 0.2905,
-      "avg_predicted_position": 5,
-      "current_real_points": 159,
-      "current_real_position": 4,
-      "current_wins": 2,
-      "max_possible_points": 409,
-      "points_behind_leader": 83,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "predicted_points": 285.4,
+      "win_probability": 0.0677,
+      "championship_win_probability": 0,
+      "podium_probability": 0.3873,
+      "avg_predicted_position": 4,
+      "current_real_points": 264,
+      "current_real_position": 5,
+      "current_wins": 3,
+      "max_possible_points": 314,
+      "points_behind_leader": 138,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
       "rank": 6,
-      "driver_id": "max_verstappen",
-      "name": "Max Verstappen",
-      "short": "VER",
-      "team": "red_bull",
-      "team_name": "Red Bull Racing",
-      "color": "#3671C6",
-      "number": 3,
-      "predicted_points": 190.6,
+      "driver_id": "leclerc",
+      "name": "Charles Leclerc",
+      "short": "LEC",
+      "team": "ferrari",
+      "team_name": "Ferrari",
+      "color": "#E8002D",
+      "number": 16,
+      "predicted_points": 266.3,
       "win_probability": 0.0452,
-      "championship_win_probability": 0.0005,
-      "podium_probability": 0.22,
+      "championship_win_probability": 0,
+      "podium_probability": 0.2138,
       "avg_predicted_position": 6,
-      "current_real_points": 112,
+      "current_real_points": 250,
       "current_real_position": 6,
-      "current_wins": 0,
-      "max_possible_points": 362,
-      "points_behind_leader": 130,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "current_wins": 1,
+      "max_possible_points": 300,
+      "points_behind_leader": 152,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
@@ -373,18 +373,18 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 81,
-      "predicted_points": 173,
+      "predicted_points": 180.8,
       "win_probability": 0.0387,
       "championship_win_probability": 0,
-      "podium_probability": 0.1743,
+      "podium_probability": 0.159,
       "avg_predicted_position": 7,
-      "current_real_points": 104,
+      "current_real_points": 167,
       "current_real_position": 7,
       "current_wins": 0,
-      "max_possible_points": 354,
-      "points_behind_leader": 138,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 217,
+      "points_behind_leader": 235,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 3
     },
     {
@@ -396,18 +396,18 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 6,
-      "predicted_points": 127.3,
+      "predicted_points": 133.6,
       "win_probability": 0.0339,
       "championship_win_probability": 0,
-      "podium_probability": 0.1414,
+      "podium_probability": 0.1045,
       "avg_predicted_position": 8,
-      "current_real_points": 68,
+      "current_real_points": 122,
       "current_real_position": 8,
       "current_wins": 0,
-      "max_possible_points": 318,
-      "points_behind_leader": 174,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 172,
+      "points_behind_leader": 280,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 1
     },
     {
@@ -419,18 +419,18 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 30,
-      "predicted_points": 97.9,
+      "predicted_points": 98.6,
       "win_probability": 0.0301,
       "championship_win_probability": 0,
-      "podium_probability": 0.0881,
+      "podium_probability": 0.0695,
       "avg_predicted_position": 9,
-      "current_real_points": 49,
+      "current_real_points": 89,
       "current_real_position": 9,
       "current_wins": 0,
-      "max_possible_points": 299,
-      "points_behind_leader": 193,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 139,
+      "points_behind_leader": 313,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 3
     },
     {
@@ -442,114 +442,22 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 10,
-      "predicted_points": 83.7,
+      "predicted_points": 59.5,
       "win_probability": 0.0271,
       "championship_win_probability": 0,
-      "podium_probability": 0.0576,
+      "podium_probability": 0.0378,
       "avg_predicted_position": 10,
-      "current_real_points": 44,
+      "current_real_points": 52,
       "current_real_position": 10,
       "current_wins": 0,
-      "max_possible_points": 294,
-      "points_behind_leader": 198,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 102,
+      "points_behind_leader": 350,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
       "rank": 11,
-      "driver_id": "sainz",
-      "name": "Carlos Sainz",
-      "short": "SAI",
-      "team": "williams",
-      "team_name": "Williams",
-      "color": "#64C4FF",
-      "number": 55,
-      "predicted_points": 37.8,
-      "win_probability": 0.0246,
-      "championship_win_probability": 0,
-      "podium_probability": 0.0388,
-      "avg_predicted_position": 11,
-      "current_real_points": 6,
-      "current_real_position": 16,
-      "current_wins": 0,
-      "max_possible_points": 256,
-      "points_behind_leader": 236,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
-      "experience_seasons": 6
-    },
-    {
-      "rank": 12,
-      "driver_id": "bearman",
-      "name": "Oliver Bearman",
-      "short": "BEA",
-      "team": "haas",
-      "team_name": "Haas",
-      "color": "#B6BABD",
-      "number": 87,
-      "predicted_points": 37.6,
-      "win_probability": 0.0208,
-      "championship_win_probability": 0,
-      "podium_probability": 0.0183,
-      "avg_predicted_position": 13,
-      "current_real_points": 18,
-      "current_real_position": 13,
-      "current_wins": 0,
-      "max_possible_points": 268,
-      "points_behind_leader": 224,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
-      "experience_seasons": 2
-    },
-    {
-      "rank": 13,
-      "driver_id": "colapinto",
-      "name": "Franco Colapinto",
-      "short": "COL",
-      "team": "alpine",
-      "team_name": "Alpine",
-      "color": "#FF87BC",
-      "number": 43,
-      "predicted_points": 30.6,
-      "win_probability": 0.0181,
-      "championship_win_probability": 0,
-      "podium_probability": 0.0075,
-      "avg_predicted_position": 15,
-      "current_real_points": 19,
-      "current_real_position": 12,
-      "current_wins": 0,
-      "max_possible_points": 269,
-      "points_behind_leader": 223,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
-      "experience_seasons": 1
-    },
-    {
-      "rank": 14,
-      "driver_id": "albon",
-      "name": "Alex Albon",
-      "short": "ALB",
-      "team": "williams",
-      "team_name": "Williams",
-      "color": "#64C4FF",
-      "number": 23,
-      "predicted_points": 29,
-      "win_probability": 0.0226,
-      "championship_win_probability": 0,
-      "podium_probability": 0.0231,
-      "avg_predicted_position": 12,
-      "current_real_points": 5,
-      "current_real_position": 17,
-      "current_wins": 0,
-      "max_possible_points": 255,
-      "points_behind_leader": 237,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
-      "experience_seasons": 5
-    },
-    {
-      "rank": 15,
       "driver_id": "arvid_lindblad",
       "name": "Arvid Lindblad",
       "short": "LIN",
@@ -557,45 +465,114 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "predicted_points": 28.2,
-      "win_probability": 0.0151,
+      "predicted_points": 39.1,
+      "win_probability": 0.0169,
       "championship_win_probability": 0,
-      "podium_probability": 0.0027,
-      "avg_predicted_position": 18,
-      "current_real_points": 23,
+      "podium_probability": 0.0008,
+      "avg_predicted_position": 16,
+      "current_real_points": 38,
       "current_real_position": 11,
       "current_wins": 0,
-      "max_possible_points": 273,
-      "points_behind_leader": 219,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 88,
+      "points_behind_leader": 364,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 0
     },
     {
-      "rank": 16,
-      "driver_id": "alonso",
-      "name": "Fernando Alonso",
-      "short": "ALO",
-      "team": "aston_martin",
-      "team_name": "Aston Martin",
-      "color": "#358C75",
-      "number": 14,
-      "predicted_points": 16.8,
-      "win_probability": 0.0194,
+      "rank": 12,
+      "driver_id": "colapinto",
+      "name": "Franco Colapinto",
+      "short": "COL",
+      "team": "alpine",
+      "team_name": "Alpine",
+      "color": "#FF87BC",
+      "number": 43,
+      "predicted_points": 38.1,
+      "win_probability": 0.0208,
       "championship_win_probability": 0,
-      "podium_probability": 0.0084,
-      "avg_predicted_position": 14,
-      "current_real_points": 3,
-      "current_real_position": 19,
+      "podium_probability": 0.0058,
+      "avg_predicted_position": 13,
+      "current_real_points": 35,
+      "current_real_position": 12,
       "current_wins": 0,
-      "max_possible_points": 253,
-      "points_behind_leader": 239,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.8,
-      "experience_seasons": 5
+      "max_possible_points": 85,
+      "points_behind_leader": 367,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 1
     },
     {
-      "rank": 17,
+      "rank": 13,
+      "driver_id": "bearman",
+      "name": "Oliver Bearman",
+      "short": "BEA",
+      "team": "haas",
+      "team_name": "Haas",
+      "color": "#B6BABD",
+      "number": 87,
+      "predicted_points": 27.4,
+      "win_probability": 0.0226,
+      "championship_win_probability": 0,
+      "podium_probability": 0.0143,
+      "avg_predicted_position": 12,
+      "current_real_points": 23,
+      "current_real_position": 13,
+      "current_wins": 0,
+      "max_possible_points": 73,
+      "points_behind_leader": 379,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 2
+    },
+    {
+      "rank": 14,
+      "driver_id": "sainz",
+      "name": "Carlos Sainz",
+      "short": "SAI",
+      "team": "williams",
+      "team_name": "Williams",
+      "color": "#64C4FF",
+      "number": 55,
+      "predicted_points": 16.8,
+      "win_probability": 0.0246,
+      "championship_win_probability": 0,
+      "podium_probability": 0.0238,
+      "avg_predicted_position": 11,
+      "current_real_points": 11,
+      "current_real_position": 16,
+      "current_wins": 0,
+      "max_possible_points": 61,
+      "points_behind_leader": 391,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 6
+    },
+    {
+      "rank": 15,
+      "driver_id": "hulkenberg",
+      "name": "Nico Hulkenberg",
+      "short": "HUL",
+      "team": "audi",
+      "team_name": "Audi",
+      "color": "#00E701",
+      "number": 27,
+      "predicted_points": 14.2,
+      "win_probability": 0.0143,
+      "championship_win_probability": 0,
+      "podium_probability": 0,
+      "avg_predicted_position": 19,
+      "current_real_points": 14,
+      "current_real_position": 15,
+      "current_wins": 0,
+      "max_possible_points": 64,
+      "points_behind_leader": 388,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 4
+    },
+    {
+      "rank": 16,
       "driver_id": "bortoleto",
       "name": "Gabriel Bortoleto",
       "short": "BOR",
@@ -603,19 +580,42 @@ window.F1_DATA = {
       "team_name": "Audi",
       "color": "#00E701",
       "number": 5,
-      "predicted_points": 11.2,
-      "win_probability": 0.0129,
+      "predicted_points": 14.1,
+      "win_probability": 0.0135,
       "championship_win_probability": 0,
-      "podium_probability": 0.0001,
-      "avg_predicted_position": 21,
-      "current_real_points": 10,
+      "podium_probability": 0,
+      "avg_predicted_position": 20,
+      "current_real_points": 14,
       "current_real_position": 14,
       "current_wins": 0,
-      "max_possible_points": 260,
-      "points_behind_leader": 232,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 64,
+      "points_behind_leader": 388,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 1
+    },
+    {
+      "rank": 17,
+      "driver_id": "alonso",
+      "name": "Fernando Alonso",
+      "short": "ALO",
+      "team": "aston_martin",
+      "team_name": "Aston Martin",
+      "color": "#358C75",
+      "number": 14,
+      "predicted_points": 8.6,
+      "win_probability": 0.0181,
+      "championship_win_probability": 0,
+      "podium_probability": 0.001,
+      "avg_predicted_position": 15,
+      "current_real_points": 7,
+      "current_real_position": 18,
+      "current_wins": 0,
+      "max_possible_points": 57,
+      "points_behind_leader": 395,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 5
     },
     {
       "rank": 18,
@@ -626,42 +626,42 @@ window.F1_DATA = {
       "team_name": "Haas",
       "color": "#B6BABD",
       "number": 31,
-      "predicted_points": 9.9,
-      "win_probability": 0.0169,
+      "predicted_points": 7.7,
+      "win_probability": 0.0159,
       "championship_win_probability": 0,
-      "podium_probability": 0.0026,
-      "avg_predicted_position": 16,
-      "current_real_points": 3,
-      "current_real_position": 18,
+      "podium_probability": 0,
+      "avg_predicted_position": 17,
+      "current_real_points": 7,
+      "current_real_position": 17,
       "current_wins": 0,
-      "max_possible_points": 253,
-      "points_behind_leader": 239,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 57,
+      "points_behind_leader": 395,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
       "rank": 19,
-      "driver_id": "hulkenberg",
-      "name": "Nico Hulkenberg",
-      "short": "HUL",
-      "team": "audi",
-      "team_name": "Audi",
-      "color": "#00E701",
-      "number": 27,
+      "driver_id": "albon",
+      "name": "Alex Albon",
+      "short": "ALB",
+      "team": "williams",
+      "team_name": "Williams",
+      "color": "#64C4FF",
+      "number": 23,
       "predicted_points": 7.3,
-      "win_probability": 0.0135,
+      "win_probability": 0.0194,
       "championship_win_probability": 0,
-      "podium_probability": 0.0001,
-      "avg_predicted_position": 20,
-      "current_real_points": 6,
-      "current_real_position": 15,
+      "podium_probability": 0.0035,
+      "avg_predicted_position": 14,
+      "current_real_points": 5,
+      "current_real_position": 19,
       "current_wins": 0,
-      "max_possible_points": 256,
-      "points_behind_leader": 236,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
-      "experience_seasons": 4
+      "max_possible_points": 55,
+      "points_behind_leader": 397,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
+      "experience_seasons": 5
     },
     {
       "rank": 20,
@@ -672,18 +672,18 @@ window.F1_DATA = {
       "team_name": "Cadillac",
       "color": "#C8A464",
       "number": 11,
-      "predicted_points": 4.7,
-      "win_probability": 0.0159,
+      "predicted_points": 0.3,
+      "win_probability": 0.0151,
       "championship_win_probability": 0,
-      "podium_probability": 0.0011,
-      "avg_predicted_position": 17,
+      "podium_probability": 0,
+      "avg_predicted_position": 18,
       "current_real_points": 0,
-      "current_real_position": 23,
+      "current_real_position": 24,
       "current_wins": 0,
-      "max_possible_points": 250,
-      "points_behind_leader": 242,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.8,
+      "max_possible_points": 50,
+      "points_behind_leader": 402,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 5
     },
     {
@@ -695,18 +695,18 @@ window.F1_DATA = {
       "team_name": "Aston Martin",
       "color": "#358C75",
       "number": 18,
-      "predicted_points": 2,
-      "win_probability": 0.0143,
+      "predicted_points": 0.1,
+      "win_probability": 0.0129,
       "championship_win_probability": 0,
-      "podium_probability": 0.0002,
-      "avg_predicted_position": 19,
+      "podium_probability": 0,
+      "avg_predicted_position": 21,
       "current_real_points": 0,
-      "current_real_position": 21,
+      "current_real_position": 22,
       "current_wins": 0,
-      "max_possible_points": 250,
-      "points_behind_leader": 242,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 50,
+      "points_behind_leader": 402,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 6
     },
     {
@@ -718,18 +718,18 @@ window.F1_DATA = {
       "team_name": "Cadillac",
       "color": "#C8A464",
       "number": 77,
-      "predicted_points": 0.5,
+      "predicted_points": 0,
       "win_probability": 0.0123,
       "championship_win_probability": 0,
-      "podium_probability": 0.0001,
+      "podium_probability": 0,
       "avg_predicted_position": 22,
       "current_real_points": 0,
-      "current_real_position": 22,
+      "current_real_position": 23,
       "current_wins": 0,
-      "max_possible_points": 250,
-      "points_behind_leader": 242,
-      "mathematically_eliminated": false,
-      "expected_dnfs": 1.9,
+      "max_possible_points": 50,
+      "points_behind_leader": 402,
+      "mathematically_eliminated": true,
+      "expected_dnfs": 0.4,
       "experience_seasons": 4
     }
   ],
@@ -739,19 +739,19 @@ window.F1_DATA = {
       "constructor_id": "mercedes",
       "name": "Mercedes",
       "color": "#27F4D2",
-      "predicted_points": 706.7,
-      "championship_win_probability": 0.931,
-      "current_real_points": 425,
-      "current_wins": 8
+      "predicted_points": 721.5,
+      "championship_win_probability": 1,
+      "current_real_points": 666,
+      "current_wins": 12
     },
     {
       "rank": 2,
       "constructor_id": "ferrari",
       "name": "Ferrari",
       "color": "#E8002D",
-      "predicted_points": 557.2,
-      "championship_win_probability": 0.064,
-      "current_real_points": 338,
+      "predicted_points": 552.2,
+      "championship_win_probability": 0,
+      "current_real_points": 517,
       "current_wins": 2
     },
     {
@@ -759,29 +759,29 @@ window.F1_DATA = {
       "constructor_id": "mclaren",
       "name": "McLaren",
       "color": "#FF8000",
-      "predicted_points": 422.9,
-      "championship_win_probability": 0.0045,
-      "current_real_points": 263,
-      "current_wins": 2
+      "predicted_points": 466.2,
+      "championship_win_probability": 0,
+      "current_real_points": 431,
+      "current_wins": 3
     },
     {
       "rank": 4,
       "constructor_id": "red_bull",
       "name": "Red Bull Racing",
       "color": "#3671C6",
-      "predicted_points": 317.9,
-      "championship_win_probability": 0.0005,
-      "current_real_points": 186,
-      "current_wins": 0
+      "predicted_points": 465.4,
+      "championship_win_probability": 0,
+      "current_real_points": 440,
+      "current_wins": 4
     },
     {
       "rank": 5,
       "constructor_id": "rb",
       "name": "Racing Bulls",
       "color": "#6692FF",
-      "predicted_points": 126.1,
+      "predicted_points": 137.7,
       "championship_win_probability": 0,
-      "current_real_points": 66,
+      "current_real_points": 114,
       "current_wins": 0
     },
     {
@@ -789,49 +789,49 @@ window.F1_DATA = {
       "constructor_id": "alpine",
       "name": "Alpine",
       "color": "#FF87BC",
-      "predicted_points": 114.3,
+      "predicted_points": 97.6,
       "championship_win_probability": 0,
-      "current_real_points": 63,
+      "current_real_points": 87,
       "current_wins": 0
     },
     {
       "rank": 7,
-      "constructor_id": "williams",
-      "name": "Williams",
-      "color": "#64C4FF",
-      "predicted_points": 66.8,
+      "constructor_id": "haas",
+      "name": "Haas",
+      "color": "#B6BABD",
+      "predicted_points": 35.1,
       "championship_win_probability": 0,
-      "current_real_points": 11,
+      "current_real_points": 31,
       "current_wins": 0
     },
     {
       "rank": 8,
-      "constructor_id": "haas",
-      "name": "Haas",
-      "color": "#B6BABD",
-      "predicted_points": 47.5,
+      "constructor_id": "audi",
+      "name": "Audi",
+      "color": "#00E701",
+      "predicted_points": 28.3,
       "championship_win_probability": 0,
-      "current_real_points": 21,
+      "current_real_points": 28,
       "current_wins": 0
     },
     {
       "rank": 9,
-      "constructor_id": "aston_martin",
-      "name": "Aston Martin",
-      "color": "#358C75",
-      "predicted_points": 18.8,
+      "constructor_id": "williams",
+      "name": "Williams",
+      "color": "#64C4FF",
+      "predicted_points": 24.1,
       "championship_win_probability": 0,
-      "current_real_points": 3,
+      "current_real_points": 16,
       "current_wins": 0
     },
     {
       "rank": 10,
-      "constructor_id": "audi",
-      "name": "Audi",
-      "color": "#00E701",
-      "predicted_points": 18.5,
+      "constructor_id": "aston_martin",
+      "name": "Aston Martin",
+      "color": "#358C75",
+      "predicted_points": 8.7,
       "championship_win_probability": 0,
-      "current_real_points": 16,
+      "current_real_points": 7,
       "current_wins": 0
     },
     {
@@ -839,7 +839,7 @@ window.F1_DATA = {
       "constructor_id": "cadillac",
       "name": "Cadillac",
       "color": "#C8A464",
-      "predicted_points": 5.2,
+      "predicted_points": 0.3,
       "championship_win_probability": 0,
       "current_real_points": 0,
       "current_wins": 0
@@ -1168,17 +1168,17 @@ window.F1_DATA = {
           "position": 2
         },
         {
-          "driver_id": "gasly",
+          "driver_id": "hadjar",
           "win_prob": null,
           "position": 3
         },
         {
-          "driver_id": "hadjar",
+          "driver_id": "piastri",
           "win_prob": null,
           "position": 4
         },
         {
-          "driver_id": "piastri",
+          "driver_id": "lawson",
           "win_prob": null,
           "position": 5
         }
@@ -1333,7 +1333,7 @@ window.F1_DATA = {
       "race_name": "British GP",
       "date": "2026-07-05",
       "race_date": "2026-07-05",
-      "sprint": false,
+      "sprint": true,
       "completed": true,
       "winner": "leclerc",
       "top5": [
@@ -1513,7 +1513,7 @@ window.F1_DATA = {
       "race_name": "Dutch GP",
       "date": "2026-08-23",
       "race_date": "2026-08-23",
-      "sprint": false,
+      "sprint": true,
       "completed": true,
       "winner": "norris",
       "top5": [
@@ -1574,52 +1574,36 @@ window.F1_DATA = {
       "date": "2026-09-06",
       "race_date": "2026-09-06",
       "sprint": false,
-      "completed": false,
+      "completed": true,
       "winner": "antonelli",
       "top5": [
         {
           "driver_id": "antonelli",
-          "win_prob": 0.2709
+          "win_prob": null,
+          "position": 1
         },
         {
           "driver_id": "russell",
-          "win_prob": 0.1355
+          "win_prob": null,
+          "position": 2
         },
         {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 3
         },
         {
           "driver_id": "norris",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 4
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
       "round": 14,
@@ -1629,52 +1613,36 @@ window.F1_DATA = {
       "date": "2026-09-13",
       "race_date": "2026-09-13",
       "sprint": false,
-      "completed": false,
+      "completed": true,
       "winner": "antonelli",
       "top5": [
         {
           "driver_id": "antonelli",
-          "win_prob": 0.2709
+          "win_prob": null,
+          "position": 1
         },
         {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 2
         },
         {
           "driver_id": "norris",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 3
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": null,
+          "position": 4
+        },
+        {
+          "driver_id": "russell",
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
       "round": 15,
@@ -1684,303 +1652,267 @@ window.F1_DATA = {
       "date": "2026-09-26",
       "race_date": "2026-09-26",
       "sprint": false,
-      "completed": false,
-      "winner": "antonelli",
+      "completed": true,
+      "winner": "russell",
       "top5": [
         {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
           "driver_id": "russell",
-          "win_prob": 0.1355
+          "win_prob": null,
+          "position": 1
         },
         {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "hadjar",
+          "win_prob": null,
+          "position": 3
         },
         {
           "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "win_prob": null,
+          "position": 4
         },
         {
-          "driver_id": "norris",
-          "win_prob": 0.0542
+          "driver_id": "antonelli",
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
       "round": 16,
+      "circuit_id": "sepang",
+      "name": "Bahrain GP (Sepang)",
+      "race_name": "Bahrain GP (Sepang)",
+      "date": "2026-10-04",
+      "race_date": "2026-10-04",
+      "sprint": false,
+      "completed": true,
+      "winner": "max_verstappen",
+      "top5": [
+        {
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 1
+        },
+        {
+          "driver_id": "antonelli",
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": null,
+          "position": 3
+        },
+        {
+          "driver_id": "leclerc",
+          "win_prob": null,
+          "position": 4
+        },
+        {
+          "driver_id": "hadjar",
+          "win_prob": null,
+          "position": 5
+        }
+      ],
+      "predicted_top5": null
+    },
+    {
+      "round": 17,
       "circuit_id": "singapore",
       "name": "Singapore GP",
       "race_name": "Singapore GP",
       "date": "2026-10-11",
       "race_date": "2026-10-11",
-      "sprint": false,
-      "completed": false,
-      "winner": "antonelli",
+      "sprint": true,
+      "completed": true,
+      "winner": "max_verstappen",
       "top5": [
         {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 1
         },
         {
           "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "antonelli",
+          "win_prob": null,
+          "position": 3
         },
         {
           "driver_id": "norris",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 4
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
-      "round": 17,
+      "round": 18,
       "circuit_id": "americas",
       "name": "United States GP",
       "race_name": "United States GP",
       "date": "2026-10-25",
       "race_date": "2026-10-25",
       "sprint": false,
-      "completed": false,
+      "completed": true,
       "winner": "antonelli",
       "top5": [
         {
           "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
+          "win_prob": null,
+          "position": 1
         },
         {
           "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 3
+        },
+        {
+          "driver_id": "hamilton",
+          "win_prob": null,
+          "position": 4
         },
         {
           "driver_id": "norris",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
-      "round": 18,
+      "round": 19,
       "circuit_id": "mexico",
       "name": "Mexico City GP",
       "race_name": "Mexico City GP",
       "date": "2026-11-01",
       "race_date": "2026-11-01",
       "sprint": false,
-      "completed": false,
-      "winner": "antonelli",
+      "completed": true,
+      "winner": "max_verstappen",
       "top5": [
         {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 1
         },
         {
           "driver_id": "hamilton",
-          "win_prob": 0.0903
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "antonelli",
+          "win_prob": null,
+          "position": 3
         },
         {
           "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "win_prob": null,
+          "position": 4
         },
         {
           "driver_id": "norris",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
-      "round": 19,
+      "round": 20,
       "circuit_id": "brazil",
       "name": "São Paulo GP",
       "race_name": "São Paulo GP",
       "date": "2026-11-08",
       "race_date": "2026-11-08",
       "sprint": false,
-      "completed": false,
-      "winner": "antonelli",
+      "completed": true,
+      "winner": "norris",
       "top5": [
         {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
+          "driver_id": "norris",
+          "win_prob": null,
+          "position": 1
+        },
+        {
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "hadjar",
+          "win_prob": null,
+          "position": 3
         },
         {
           "driver_id": "russell",
-          "win_prob": 0.1355
+          "win_prob": null,
+          "position": 4
         },
         {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
+          "driver_id": "antonelli",
+          "win_prob": null,
+          "position": 5
         }
       ],
-      "predicted_top5": [
-        {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
-        },
-        {
-          "driver_id": "norris",
-          "win_prob": 0.0542
-        }
-      ]
+      "predicted_top5": null
     },
     {
-      "round": 20,
+      "round": 21,
       "circuit_id": "las_vegas",
       "name": "Las Vegas GP",
       "race_name": "Las Vegas GP",
       "date": "2026-11-22",
       "race_date": "2026-11-22",
       "sprint": false,
-      "completed": false,
-      "winner": "antonelli",
+      "completed": true,
+      "winner": "max_verstappen",
       "top5": [
         {
-          "driver_id": "antonelli",
-          "win_prob": 0.2709
-        },
-        {
-          "driver_id": "russell",
-          "win_prob": 0.1355
-        },
-        {
-          "driver_id": "hamilton",
-          "win_prob": 0.0903
-        },
-        {
-          "driver_id": "leclerc",
-          "win_prob": 0.0677
+          "driver_id": "max_verstappen",
+          "win_prob": null,
+          "position": 1
         },
         {
           "driver_id": "norris",
-          "win_prob": 0.0542
+          "win_prob": null,
+          "position": 2
+        },
+        {
+          "driver_id": "piastri",
+          "win_prob": null,
+          "position": 3
+        },
+        {
+          "driver_id": "antonelli",
+          "win_prob": null,
+          "position": 4
+        },
+        {
+          "driver_id": "gasly",
+          "win_prob": null,
+          "position": 5
         }
       ],
       "predicted_top5": [
@@ -1989,25 +1921,25 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "max_verstappen",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "norris",
           "win_prob": 0.0677
         },
         {
-          "driver_id": "norris",
+          "driver_id": "hamilton",
           "win_prob": 0.0542
         }
       ]
     },
     {
-      "round": 21,
+      "round": 22,
       "circuit_id": "qatar",
       "name": "Qatar GP",
       "race_name": "Qatar GP",
@@ -2022,19 +1954,19 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "max_verstappen",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "norris",
           "win_prob": 0.0677
         },
         {
-          "driver_id": "norris",
+          "driver_id": "hamilton",
           "win_prob": 0.0542
         }
       ],
@@ -2044,25 +1976,25 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "max_verstappen",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "norris",
           "win_prob": 0.0677
         },
         {
-          "driver_id": "norris",
+          "driver_id": "hamilton",
           "win_prob": 0.0542
         }
       ]
     },
     {
-      "round": 22,
+      "round": 23,
       "circuit_id": "abu_dhabi",
       "name": "Abu Dhabi GP",
       "race_name": "Abu Dhabi GP",
@@ -2077,19 +2009,19 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "max_verstappen",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "norris",
           "win_prob": 0.0677
         },
         {
-          "driver_id": "norris",
+          "driver_id": "hamilton",
           "win_prob": 0.0542
         }
       ],
@@ -2099,19 +2031,19 @@ window.F1_DATA = {
           "win_prob": 0.2709
         },
         {
-          "driver_id": "russell",
+          "driver_id": "max_verstappen",
           "win_prob": 0.1355
         },
         {
-          "driver_id": "hamilton",
+          "driver_id": "russell",
           "win_prob": 0.0903
         },
         {
-          "driver_id": "leclerc",
+          "driver_id": "norris",
           "win_prob": 0.0677
         },
         {
-          "driver_id": "norris",
+          "driver_id": "hamilton",
           "win_prob": 0.0542
         }
       ]
@@ -2379,6 +2311,28 @@ window.F1_DATA = {
       },
       {
         "driver_id": "norris",
+        "win_prob": 0.0542
+      }
+    ],
+    "21": [
+      {
+        "driver_id": "antonelli",
+        "win_prob": 0.2709
+      },
+      {
+        "driver_id": "max_verstappen",
+        "win_prob": 0.1355
+      },
+      {
+        "driver_id": "russell",
+        "win_prob": 0.0903
+      },
+      {
+        "driver_id": "norris",
+        "win_prob": 0.0677
+      },
+      {
+        "driver_id": "hamilton",
         "win_prob": 0.0542
       }
     ]
@@ -3246,7 +3200,8 @@ window.F1_DATA = {
       "round": 9,
       "id": "britain",
       "name": "British GP",
-      "date": "2026-07-05"
+      "date": "2026-07-05",
+      "sprint": true
     },
     {
       "round": 10,
@@ -3264,7 +3219,8 @@ window.F1_DATA = {
       "round": 12,
       "id": "netherlands",
       "name": "Dutch GP",
-      "date": "2026-08-23"
+      "date": "2026-08-23",
+      "sprint": true
     },
     {
       "round": 13,
@@ -3286,42 +3242,49 @@ window.F1_DATA = {
     },
     {
       "round": 16,
-      "id": "singapore",
-      "name": "Singapore GP",
-      "date": "2026-10-11"
+      "id": "sepang",
+      "name": "Bahrain GP (Sepang)",
+      "date": "2026-10-04"
     },
     {
       "round": 17,
+      "id": "singapore",
+      "name": "Singapore GP",
+      "date": "2026-10-11",
+      "sprint": true
+    },
+    {
+      "round": 18,
       "id": "americas",
       "name": "United States GP",
       "date": "2026-10-25"
     },
     {
-      "round": 18,
+      "round": 19,
       "id": "mexico",
       "name": "Mexico City GP",
       "date": "2026-11-01"
     },
     {
-      "round": 19,
+      "round": 20,
       "id": "brazil",
       "name": "São Paulo GP",
       "date": "2026-11-08"
     },
     {
-      "round": 20,
+      "round": 21,
       "id": "las_vegas",
       "name": "Las Vegas GP",
       "date": "2026-11-22"
     },
     {
-      "round": 21,
+      "round": 22,
       "id": "qatar",
       "name": "Qatar GP",
       "date": "2026-11-29"
     },
     {
-      "round": 22,
+      "round": 23,
       "id": "abu_dhabi",
       "name": "Abu Dhabi GP",
       "date": "2026-12-06"
@@ -3339,22 +3302,22 @@ window.F1_DATA = {
       "date": "2026-04-19"
     }
   ],
-  "races_completed_2026": 12,
+  "races_completed_2026": 21,
   "next_race": {
-    "round": 13,
-    "id": "italy",
-    "name": "Italian GP",
-    "date": "2026-09-06",
-    "circuit_id": "italy",
-    "days_until": 13
+    "round": 22,
+    "id": "qatar",
+    "name": "Qatar GP",
+    "date": "2026-11-29",
+    "circuit_id": "qatar",
+    "days_until": 4
   },
   "next_race_weather": {
-    "circuit_id": "italy",
-    "date": "2026-09-06",
-    "t_max": 29,
-    "t_min": 18.7,
-    "rain_prob": 12,
-    "wind_max": 6.3
+    "circuit_id": "qatar",
+    "date": "2026-11-29",
+    "t_max": 27.6,
+    "t_min": 18.8,
+    "rain_prob": 0,
+    "wind_max": 12.3
   },
   "real_driver_standings_2026": [
     {
@@ -3367,21 +3330,21 @@ window.F1_DATA = {
       "team_name": "Mercedes",
       "color": "#27F4D2",
       "number": 12,
-      "points": 242,
-      "wins": 6
+      "points": 402,
+      "wins": 9
     },
     {
       "position": 2,
-      "driver_id": "russell",
-      "name": "George Russell",
-      "short": "RUS",
-      "constructor_id": "mercedes",
-      "team": "mercedes",
-      "team_name": "Mercedes",
-      "color": "#27F4D2",
-      "number": 63,
-      "points": 183,
-      "wins": 2
+      "driver_id": "max_verstappen",
+      "name": "Max Verstappen",
+      "short": "VER",
+      "constructor_id": "red_bull",
+      "team": "red_bull",
+      "team_name": "Red Bull Racing",
+      "color": "#3671C6",
+      "number": 3,
+      "points": 304,
+      "wins": 4
     },
     {
       "position": 3,
@@ -3393,11 +3356,24 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 44,
-      "points": 183,
+      "points": 267,
       "wins": 1
     },
     {
       "position": 4,
+      "driver_id": "russell",
+      "name": "George Russell",
+      "short": "RUS",
+      "constructor_id": "mercedes",
+      "team": "mercedes",
+      "team_name": "Mercedes",
+      "color": "#27F4D2",
+      "number": 63,
+      "points": 264,
+      "wins": 3
+    },
+    {
+      "position": 5,
       "driver_id": "norris",
       "name": "Lando Norris",
       "short": "NOR",
@@ -3406,11 +3382,11 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 1,
-      "points": 159,
-      "wins": 2
+      "points": 264,
+      "wins": 3
     },
     {
-      "position": 5,
+      "position": 6,
       "driver_id": "leclerc",
       "name": "Charles Leclerc",
       "short": "LEC",
@@ -3419,21 +3395,8 @@ window.F1_DATA = {
       "team_name": "Ferrari",
       "color": "#E8002D",
       "number": 16,
-      "points": 155,
+      "points": 250,
       "wins": 1
-    },
-    {
-      "position": 6,
-      "driver_id": "max_verstappen",
-      "name": "Max Verstappen",
-      "short": "VER",
-      "constructor_id": "red_bull",
-      "team": "red_bull",
-      "team_name": "Red Bull Racing",
-      "color": "#3671C6",
-      "number": 3,
-      "points": 112,
-      "wins": 0
     },
     {
       "position": 7,
@@ -3445,7 +3408,7 @@ window.F1_DATA = {
       "team_name": "McLaren",
       "color": "#FF8000",
       "number": 81,
-      "points": 104,
+      "points": 167,
       "wins": 0
     },
     {
@@ -3458,7 +3421,7 @@ window.F1_DATA = {
       "team_name": "Red Bull Racing",
       "color": "#3671C6",
       "number": 6,
-      "points": 68,
+      "points": 122,
       "wins": 0
     },
     {
@@ -3471,7 +3434,7 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 30,
-      "points": 49,
+      "points": 89,
       "wins": 0
     },
     {
@@ -3484,7 +3447,7 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 10,
-      "points": 44,
+      "points": 52,
       "wins": 0
     },
     {
@@ -3497,7 +3460,7 @@ window.F1_DATA = {
       "team_name": "Racing Bulls",
       "color": "#6692FF",
       "number": 41,
-      "points": 23,
+      "points": 38,
       "wins": 0
     },
     {
@@ -3510,7 +3473,7 @@ window.F1_DATA = {
       "team_name": "Alpine",
       "color": "#FF87BC",
       "number": 43,
-      "points": 19,
+      "points": 35,
       "wins": 0
     },
     {
@@ -3523,7 +3486,7 @@ window.F1_DATA = {
       "team_name": "Haas",
       "color": "#B6BABD",
       "number": 87,
-      "points": 18,
+      "points": 23,
       "wins": 0
     },
     {
@@ -3536,7 +3499,7 @@ window.F1_DATA = {
       "team_name": "Audi",
       "color": "#00E701",
       "number": 5,
-      "points": 10,
+      "points": 14,
       "wins": 0
     },
     {
@@ -3549,7 +3512,7 @@ window.F1_DATA = {
       "team_name": "Audi",
       "color": "#00E701",
       "number": 27,
-      "points": 6,
+      "points": 14,
       "wins": 0
     },
     {
@@ -3562,11 +3525,37 @@ window.F1_DATA = {
       "team_name": "Williams",
       "color": "#64C4FF",
       "number": 55,
-      "points": 6,
+      "points": 11,
       "wins": 0
     },
     {
       "position": 17,
+      "driver_id": "ocon",
+      "name": "Esteban Ocon",
+      "short": "OCO",
+      "constructor_id": "haas",
+      "team": "haas",
+      "team_name": "Haas",
+      "color": "#B6BABD",
+      "number": 31,
+      "points": 7,
+      "wins": 0
+    },
+    {
+      "position": 18,
+      "driver_id": "alonso",
+      "name": "Fernando Alonso",
+      "short": "ALO",
+      "constructor_id": "aston_martin",
+      "team": "aston_martin",
+      "team_name": "Aston Martin",
+      "color": "#358C75",
+      "number": 14,
+      "points": 7,
+      "wins": 0
+    },
+    {
+      "position": 19,
       "driver_id": "albon",
       "name": "Alex Albon",
       "short": "ALB",
@@ -3579,32 +3568,6 @@ window.F1_DATA = {
       "wins": 0
     },
     {
-      "position": 18,
-      "driver_id": "ocon",
-      "name": "Esteban Ocon",
-      "short": "OCO",
-      "constructor_id": "haas",
-      "team": "haas",
-      "team_name": "Haas",
-      "color": "#B6BABD",
-      "number": 31,
-      "points": 3,
-      "wins": 0
-    },
-    {
-      "position": 19,
-      "driver_id": "alonso",
-      "name": "Fernando Alonso",
-      "short": "ALO",
-      "constructor_id": "aston_martin",
-      "team": "aston_martin",
-      "team_name": "Aston Martin",
-      "color": "#358C75",
-      "number": 14,
-      "points": 3,
-      "wins": 0
-    },
-    {
       "position": 20,
       "driver_id": "tsunoda",
       "name": "tsunoda",
@@ -3614,11 +3577,24 @@ window.F1_DATA = {
       "team_name": "rb",
       "color": "#6692FF",
       "number": 0,
-      "points": 0,
+      "points": 1,
       "wins": 0
     },
     {
       "position": 21,
+      "driver_id": "ryo_hirakawa",
+      "name": "ryo_hirakawa",
+      "short": "RYO",
+      "constructor_id": "haas",
+      "team": "haas",
+      "team_name": "haas",
+      "color": "#B6BABD",
+      "number": 0,
+      "points": 1,
+      "wins": 0
+    },
+    {
+      "position": 22,
       "driver_id": "stroll",
       "name": "Lance Stroll",
       "short": "STR",
@@ -3631,7 +3607,7 @@ window.F1_DATA = {
       "wins": 0
     },
     {
-      "position": 22,
+      "position": 23,
       "driver_id": "bottas",
       "name": "Valtteri Bottas",
       "short": "BOT",
@@ -3644,7 +3620,7 @@ window.F1_DATA = {
       "wins": 0
     },
     {
-      "position": 23,
+      "position": 24,
       "driver_id": "perez",
       "name": "Sergio Perez",
       "short": "PER",
@@ -3655,67 +3631,80 @@ window.F1_DATA = {
       "number": 11,
       "points": 0,
       "wins": 0
+    },
+    {
+      "position": 25,
+      "driver_id": "rafael_camara",
+      "name": "rafael_camara",
+      "short": "RAF",
+      "constructor_id": "haas",
+      "team": "haas",
+      "team_name": "haas",
+      "color": "#B6BABD",
+      "number": 0,
+      "points": 0,
+      "wins": 0
     }
   ],
   "real_constructor_standings_2026": [
     {
       "position": 1,
       "constructor_id": "mercedes",
-      "points": 425,
-      "wins": 8
+      "points": 666,
+      "wins": 12
     },
     {
       "position": 2,
       "constructor_id": "ferrari",
-      "points": 338,
+      "points": 517,
       "wins": 2
     },
     {
       "position": 3,
-      "constructor_id": "mclaren",
-      "points": 263,
-      "wins": 2
+      "constructor_id": "red_bull",
+      "points": 440,
+      "wins": 4
     },
     {
       "position": 4,
-      "constructor_id": "red_bull",
-      "points": 186,
-      "wins": 0
+      "constructor_id": "mclaren",
+      "points": 431,
+      "wins": 3
     },
     {
       "position": 5,
       "constructor_id": "rb",
-      "points": 66,
+      "points": 114,
       "wins": 0
     },
     {
       "position": 6,
       "constructor_id": "alpine",
-      "points": 63,
+      "points": 87,
       "wins": 0
     },
     {
       "position": 7,
       "constructor_id": "haas",
-      "points": 21,
+      "points": 31,
       "wins": 0
     },
     {
       "position": 8,
       "constructor_id": "audi",
-      "points": 16,
+      "points": 28,
       "wins": 0
     },
     {
       "position": 9,
       "constructor_id": "williams",
-      "points": 11,
+      "points": 16,
       "wins": 0
     },
     {
       "position": 10,
       "constructor_id": "aston_martin",
-      "points": 3,
+      "points": 7,
       "wins": 0
     },
     {
@@ -4242,47 +4231,47 @@ window.F1_DATA = {
         },
         {
           "position": 3,
-          "driver_id": "gasly",
-          "constructor_id": "alpine",
-          "points": 15,
-          "status": "Finished",
-          "time_or_gap": "+20.369",
-          "fastest_lap": false
-        },
-        {
-          "position": 4,
           "driver_id": "hadjar",
           "constructor_id": "red_bull",
-          "points": 12,
+          "points": 15,
           "status": "Finished",
           "time_or_gap": "+23.394",
           "fastest_lap": false
         },
         {
-          "position": 5,
+          "position": 4,
           "driver_id": "piastri",
           "constructor_id": "mclaren",
-          "points": 10,
+          "points": 12,
           "status": "Finished",
           "time_or_gap": "+24.261",
           "fastest_lap": false
         },
         {
-          "position": 6,
+          "position": 5,
           "driver_id": "lawson",
           "constructor_id": "rb",
-          "points": 8,
+          "points": 10,
           "status": "Finished",
           "time_or_gap": "+26.553",
           "fastest_lap": false
         },
         {
-          "position": 7,
+          "position": 6,
           "driver_id": "arvid_lindblad",
           "constructor_id": "rb",
-          "points": 6,
+          "points": 8,
           "status": "Finished",
           "time_or_gap": "+29.010",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "gasly",
+          "constructor_id": "alpine",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+30.369",
           "fastest_lap": false
         },
         {
@@ -4806,7 +4795,7 @@ window.F1_DATA = {
     },
     {
       "round": 12,
-      "name": "Dutch GP",
+      "name": "Dutch Grand Prix",
       "date": "2026-08-23",
       "circuit_id": "netherlands",
       "results": [
@@ -4816,9 +4805,8 @@ window.F1_DATA = {
           "constructor_id": "mclaren",
           "points": 25,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "2:04:44.859",
+          "fastest_lap": false
         },
         {
           "position": 2,
@@ -4826,9 +4814,8 @@ window.F1_DATA = {
           "constructor_id": "mercedes",
           "points": 18,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+11.536",
+          "fastest_lap": false
         },
         {
           "position": 3,
@@ -4836,9 +4823,8 @@ window.F1_DATA = {
           "constructor_id": "mercedes",
           "points": 15,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+15.906",
+          "fastest_lap": false
         },
         {
           "position": 4,
@@ -4846,9 +4832,8 @@ window.F1_DATA = {
           "constructor_id": "ferrari",
           "points": 12,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+16.755",
+          "fastest_lap": false
         },
         {
           "position": 5,
@@ -4856,9 +4841,8 @@ window.F1_DATA = {
           "constructor_id": "ferrari",
           "points": 10,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+17.258",
+          "fastest_lap": true
         },
         {
           "position": 6,
@@ -4866,19 +4850,507 @@ window.F1_DATA = {
           "constructor_id": "mclaren",
           "points": 8,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+32.332",
+          "fastest_lap": false
         },
         {
           "position": 7,
           "driver_id": "lawson",
-          "constructor_id": "red_bull_racing",
+          "constructor_id": "red_bull",
           "points": 6,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+1:19.915",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "hulkenberg",
+          "constructor_id": "audi",
+          "points": 4,
+          "status": "Lapped",
+          "time_or_gap": "+36.049",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "alonso",
+          "constructor_id": "aston_martin",
+          "points": 2,
+          "status": "Lapped",
+          "time_or_gap": "+48.393",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "gasly",
+          "constructor_id": "alpine",
+          "points": 1,
+          "status": "Lapped",
+          "time_or_gap": "+49.640",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 13,
+      "name": "Italian Grand Prix",
+      "date": "2026-09-06",
+      "circuit_id": "italy",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:51:15.281",
+          "fastest_lap": true
+        },
+        {
+          "position": 2,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+3.857",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+14.718",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+19.056",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+19.253",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+24.655",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "gasly",
+          "constructor_id": "alpine",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+27.351",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "arvid_lindblad",
+          "constructor_id": "rb",
+          "points": 4,
+          "status": "Finished",
+          "time_or_gap": "+45.136",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "colapinto",
+          "constructor_id": "alpine",
+          "points": 2,
+          "status": "Finished",
+          "time_or_gap": "+47.353",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "tsunoda",
+          "constructor_id": "rb",
+          "points": 1,
+          "status": "Finished",
+          "time_or_gap": "+58.187",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 14,
+      "name": "Spanish Grand Prix",
+      "date": "2026-09-13",
+      "circuit_id": "madrid",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:34:23.754",
+          "fastest_lap": false
+        },
+        {
+          "position": 2,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+4.351",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+5.089",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+29.116",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+29.829",
+          "fastest_lap": true
+        },
+        {
+          "position": 6,
+          "driver_id": "lawson",
+          "constructor_id": "red_bull",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+1:26.746",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "colapinto",
+          "constructor_id": "alpine",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+1:34.281",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 4,
+          "status": "Finished",
+          "time_or_gap": "+1:35.839",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "arvid_lindblad",
+          "constructor_id": "rb",
+          "points": 2,
+          "status": "Lapped",
+          "time_or_gap": "+10.408",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "hulkenberg",
+          "constructor_id": "audi",
+          "points": 1,
+          "status": "Lapped",
+          "time_or_gap": "+11.298",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 15,
+      "name": "Azerbaijan Grand Prix",
+      "date": "2026-09-26",
+      "circuit_id": "azerbaijan",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:38:02.143",
+          "fastest_lap": true
+        },
+        {
+          "position": 2,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+0.196",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+10.704",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+14.136",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+14.512",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+22.382",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "arvid_lindblad",
+          "constructor_id": "rb",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+31.159",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "ocon",
+          "constructor_id": "haas",
+          "points": 4,
+          "status": "Finished",
+          "time_or_gap": "+31.189",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "bearman",
+          "constructor_id": "haas",
+          "points": 2,
+          "status": "Finished",
+          "time_or_gap": "+31.929",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "sainz",
+          "constructor_id": "williams",
+          "points": 1,
+          "status": "Finished",
+          "time_or_gap": "+32.416",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 16,
+      "name": "Bahrain Grand Prix in Malaysia",
+      "date": "2026-10-04",
+      "circuit_id": "sepang",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:47:14.808",
+          "fastest_lap": true
+        },
+        {
+          "position": 2,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+2.307",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+4.919",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+7.258",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+8.571",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+9.454",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "lawson",
+          "constructor_id": "rb",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+12.753",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "alonso",
+          "constructor_id": "aston_martin",
+          "points": 4,
+          "status": "Finished",
+          "time_or_gap": "+13.372",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 2,
+          "status": "Finished",
+          "time_or_gap": "+13.993",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "arvid_lindblad",
+          "constructor_id": "rb",
+          "points": 1,
+          "status": "Finished",
+          "time_or_gap": "+15.928",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 17,
+      "name": "Singapore Grand Prix",
+      "date": "2026-10-11",
+      "circuit_id": "singapore",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:42:00.785",
+          "fastest_lap": false
+        },
+        {
+          "position": 2,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+7.335",
+          "fastest_lap": true
+        },
+        {
+          "position": 3,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+24.573",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+40.506",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+49.644",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+53.188",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "lawson",
+          "constructor_id": "rb",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+1:21.666",
+          "fastest_lap": false
         },
         {
           "position": 8,
@@ -4886,19 +5358,115 @@ window.F1_DATA = {
           "constructor_id": "audi",
           "points": 4,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+1:23.386",
+          "fastest_lap": false
         },
         {
           "position": 9,
-          "driver_id": "alonso",
-          "constructor_id": "aston_martin",
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
           "points": 2,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+1:24.677",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 1,
+          "status": "Finished",
+          "time_or_gap": "+1:30.862",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 18,
+      "name": "United States Grand Prix",
+      "date": "2026-10-25",
+      "circuit_id": "americas",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:35:16.650",
+          "fastest_lap": false
+        },
+        {
+          "position": 2,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+13.078",
+          "fastest_lap": true
+        },
+        {
+          "position": 3,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+17.485",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+18.515",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+30.521",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+34.373",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+52.674",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 4,
+          "status": "Finished",
+          "time_or_gap": "+54.303",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "lawson",
+          "constructor_id": "rb",
+          "points": 2,
+          "status": "Finished",
+          "time_or_gap": "+1:19.183",
+          "fastest_lap": false
         },
         {
           "position": 10,
@@ -4906,122 +5474,304 @@ window.F1_DATA = {
           "constructor_id": "alpine",
           "points": 1,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
-        },
+          "time_or_gap": "+1:27.516",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 19,
+      "name": "Mexico City Grand Prix",
+      "date": "2026-11-01",
+      "circuit_id": "mexico",
+      "results": [
         {
-          "position": 12,
-          "driver_id": "arvid_lindblad",
-          "constructor_id": "rb",
-          "points": 0,
+          "position": 1,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 25,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "2:20:28.772",
+          "fastest_lap": false
         },
         {
-          "position": 13,
+          "position": 2,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+0.799",
+          "fastest_lap": true
+        },
+        {
+          "position": 3,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+4.006",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+10.707",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+11.778",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+12.263",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "lawson",
+          "constructor_id": "rb",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+20.899",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
           "driver_id": "bortoleto",
           "constructor_id": "audi",
-          "points": 0,
+          "points": 4,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+22.041",
+          "fastest_lap": false
         },
         {
-          "position": 14,
+          "position": 9,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 2,
+          "status": "Finished",
+          "time_or_gap": "+22.503",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "ryo_hirakawa",
+          "constructor_id": "haas",
+          "points": 1,
+          "status": "Finished",
+          "time_or_gap": "+25.373",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 20,
+      "name": "Brazilian Grand Prix",
+      "date": "2026-11-08",
+      "circuit_id": "brazil",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:35:23.504",
+          "fastest_lap": false
+        },
+        {
+          "position": 2,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+14.602",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "hadjar",
+          "constructor_id": "red_bull",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+24.485",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+33.991",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+41.017",
+          "fastest_lap": true
+        },
+        {
+          "position": 6,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 8,
+          "status": "Finished",
+          "time_or_gap": "+56.475",
+          "fastest_lap": false
+        },
+        {
+          "position": 7,
+          "driver_id": "lawson",
+          "constructor_id": "rb",
+          "points": 6,
+          "status": "Finished",
+          "time_or_gap": "+1:15.402",
+          "fastest_lap": false
+        },
+        {
+          "position": 8,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 4,
+          "status": "Finished",
+          "time_or_gap": "+1:18.586",
+          "fastest_lap": false
+        },
+        {
+          "position": 9,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 2,
+          "status": "Lapped",
+          "time_or_gap": "+4.427",
+          "fastest_lap": false
+        },
+        {
+          "position": 10,
+          "driver_id": "hulkenberg",
+          "constructor_id": "audi",
+          "points": 1,
+          "status": "Lapped",
+          "time_or_gap": "+17.105",
+          "fastest_lap": false
+        }
+      ]
+    },
+    {
+      "round": 21,
+      "name": "Las Vegas Grand Prix",
+      "date": "2026-11-22",
+      "circuit_id": "las_vegas",
+      "results": [
+        {
+          "position": 1,
+          "driver_id": "max_verstappen",
+          "constructor_id": "red_bull",
+          "points": 25,
+          "status": "Finished",
+          "time_or_gap": "1:27:39.624",
+          "fastest_lap": false
+        },
+        {
+          "position": 2,
+          "driver_id": "norris",
+          "constructor_id": "mclaren",
+          "points": 18,
+          "status": "Finished",
+          "time_or_gap": "+0.639",
+          "fastest_lap": false
+        },
+        {
+          "position": 3,
+          "driver_id": "piastri",
+          "constructor_id": "mclaren",
+          "points": 15,
+          "status": "Finished",
+          "time_or_gap": "+1.529",
+          "fastest_lap": false
+        },
+        {
+          "position": 4,
+          "driver_id": "antonelli",
+          "constructor_id": "mercedes",
+          "points": 12,
+          "status": "Finished",
+          "time_or_gap": "+2.574",
+          "fastest_lap": false
+        },
+        {
+          "position": 5,
+          "driver_id": "gasly",
+          "constructor_id": "alpine",
+          "points": 10,
+          "status": "Finished",
+          "time_or_gap": "+2.927",
+          "fastest_lap": false
+        },
+        {
+          "position": 6,
           "driver_id": "colapinto",
           "constructor_id": "alpine",
-          "points": 0,
+          "points": 8,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+7.955",
+          "fastest_lap": false
         },
         {
-          "position": 15,
-          "driver_id": "perez",
-          "constructor_id": "cadillac",
-          "points": 0,
+          "position": 7,
+          "driver_id": "hamilton",
+          "constructor_id": "ferrari",
+          "points": 6,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+12.795",
+          "fastest_lap": false
         },
         {
-          "position": 16,
+          "position": 8,
           "driver_id": "sainz",
           "constructor_id": "williams",
-          "points": 0,
+          "points": 4,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+12.938",
+          "fastest_lap": false
         },
         {
-          "position": 17,
-          "driver_id": "albon",
-          "constructor_id": "williams",
-          "points": 0,
+          "position": 9,
+          "driver_id": "russell",
+          "constructor_id": "mercedes",
+          "points": 2,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+13.192",
+          "fastest_lap": false
         },
         {
-          "position": 18,
-          "driver_id": "bottas",
-          "constructor_id": "cadillac",
-          "points": 0,
+          "position": 10,
+          "driver_id": "leclerc",
+          "constructor_id": "ferrari",
+          "points": 1,
           "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
-        },
-        {
-          "position": 19,
-          "driver_id": "ocon",
-          "constructor_id": "haas_f1_team",
-          "points": 0,
-          "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
-        },
-        {
-          "position": 20,
-          "driver_id": "stroll",
-          "constructor_id": "aston_martin",
-          "points": 0,
-          "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
-        },
-        {
-          "position": 21,
-          "driver_id": "bearman",
-          "constructor_id": "haas_f1_team",
-          "points": 0,
-          "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
-        },
-        {
-          "position": 22,
-          "driver_id": "max_verstappen",
-          "constructor_id": "red_bull_racing",
-          "points": 0,
-          "status": "Finished",
-          "time_or_gap": null,
-          "fastest_lap": false,
-          "_source": "openf1"
+          "time_or_gap": "+17.554",
+          "fastest_lap": false
         }
-      ],
-      "_source": "openf1"
+      ]
     }
   ],
   "driver_bios_2026": {
@@ -5041,9 +5791,9 @@ window.F1_DATA = {
       "wiki": "https://en.wikipedia.org/wiki/Andrea_Kimi_Antonelli"
     },
     "paul_aron": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2004-02-04",
+      "nationality": "Estonian",
+      "wiki": "https://en.wikipedia.org/wiki/Paul_Aron"
     },
     "bearman": {
       "dob": "2005-05-08",
@@ -5051,9 +5801,9 @@ window.F1_DATA = {
       "wiki": "http://en.wikipedia.org/wiki/Oliver_Bearman"
     },
     "dino_beganovic": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2004-01-19",
+      "nationality": "Swedish",
+      "wiki": "https://en.wikipedia.org/wiki/Dino_Beganovic"
     },
     "bortoleto": {
       "dob": "2004-10-14",
@@ -5066,9 +5816,14 @@ window.F1_DATA = {
       "wiki": "http://en.wikipedia.org/wiki/Valtteri_Bottas"
     },
     "luke_browning": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2002-01-31",
+      "nationality": "British",
+      "wiki": "https://en.wikipedia.org/wiki/Luke_Browning"
+    },
+    "rafael_camara": {
+      "dob": "2005-05-05",
+      "nationality": "Brazilian",
+      "wiki": "https://en.wikipedia.org/wiki/Rafael_C%C3%A2mara"
     },
     "colapinto": {
       "dob": "2003-05-27",
@@ -5076,14 +5831,14 @@ window.F1_DATA = {
       "wiki": "http://en.wikipedia.org/wiki/Franco_Colapinto"
     },
     "jak_crawford": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2005-05-02",
+      "nationality": "American",
+      "wiki": "https://en.wikipedia.org/wiki/Jak_Crawford"
     },
     "leonardo_fornaroli": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2004-12-03",
+      "nationality": "Italian",
+      "wiki": "https://en.wikipedia.org/wiki/Leonardo_Fornaroli"
     },
     "gasly": {
       "dob": "1996-02-07",
@@ -5101,14 +5856,14 @@ window.F1_DATA = {
       "wiki": "http://en.wikipedia.org/wiki/Lewis_Hamilton"
     },
     "colton_herta": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2000-03-30",
+      "nationality": "American",
+      "wiki": "https://en.wikipedia.org/wiki/Colton_Herta"
     },
     "ryo_hirakawa": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "1994-03-07",
+      "nationality": "Japanese",
+      "wiki": "https://en.wikipedia.org/wiki/Ryo_Hirakawa"
     },
     "hulkenberg": {
       "dob": "1987-08-19",
@@ -5116,9 +5871,9 @@ window.F1_DATA = {
       "wiki": "http://en.wikipedia.org/wiki/Nico_H%C3%BClkenberg"
     },
     "ayumu_iwasa": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2001-09-22",
+      "nationality": "Japanese",
+      "wiki": "https://en.wikipedia.org/wiki/Ayumu_Iwasa"
     },
     "lawson": {
       "dob": "2002-02-11",
@@ -5134,6 +5889,11 @@ window.F1_DATA = {
       "dob": "2007-08-08",
       "nationality": "British",
       "wiki": "https://en.wikipedia.org/wiki/Arvid_Lindblad"
+    },
+    "gabriele_mini": {
+      "dob": "2005-03-20",
+      "nationality": "Italian",
+      "wiki": "https://en.wikipedia.org/wiki/Gabriele_Mini"
     },
     "norris": {
       "dob": "1999-11-13",
@@ -5165,10 +5925,20 @@ window.F1_DATA = {
       "nationality": "Spanish",
       "wiki": "http://en.wikipedia.org/wiki/Carlos_Sainz_Jr."
     },
+    "freddie_slater": {
+      "dob": "2008-08-09",
+      "nationality": "British",
+      "wiki": "https://en.wikipedia.org/wiki/Freddie_Slater_(racing_driver)"
+    },
     "stroll": {
       "dob": "1998-10-29",
       "nationality": "Canadian",
       "wiki": "http://en.wikipedia.org/wiki/Lance_Stroll"
+    },
+    "nikola_tsolov": {
+      "dob": "2006-12-21",
+      "nationality": "Bulgarian",
+      "wiki": "https://en.wikipedia.org/wiki/Nikola_Tsolov"
     },
     "tsunoda": {
       "dob": "2000-05-11",
@@ -5181,9 +5951,9 @@ window.F1_DATA = {
       "wiki": "http://en.wikipedia.org/wiki/Max_Verstappen"
     },
     "frederik_vesti": {
-      "dob": null,
-      "nationality": null,
-      "wiki": null
+      "dob": "2002-01-13",
+      "nationality": "Danish",
+      "wiki": "https://en.wikipedia.org/wiki/Frederik_Vesti"
     }
   },
   "circuit_data_2026": {
@@ -5251,7 +6021,7 @@ window.F1_DATA = {
       "wiki": "https://en.wikipedia.org/wiki/Jeddah_Corniche_Circuit"
     },
     "qatar": {
-      "name": "Losail International Circuit",
+      "name": "Lusail International Circuit",
       "locality": "Lusail",
       "country": "Qatar",
       "lat": 25.49,
@@ -13653,6 +14423,6046 @@ window.F1_DATA = {
           }
         ]
       }
+    },
+    "13": {
+      "session_key": 11361,
+      "pit_stops": {
+        "russell": [
+          {
+            "lap": 3,
+            "duration": 1846.2
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 3,
+            "duration": 1844.6
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 3,
+            "duration": 1844.1
+          },
+          {
+            "lap": 28,
+            "duration": 24.93
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 3,
+            "duration": 1844.9
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 3,
+            "duration": 1840.4
+          }
+        ],
+        "norris": [
+          {
+            "lap": 3,
+            "duration": 1840.7
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 3,
+            "duration": 1842.6
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 3,
+            "duration": 1845.2
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 3,
+            "duration": 1843.4
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 3,
+            "duration": 1842.6
+          },
+          {
+            "lap": 27,
+            "duration": 27.2
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 3,
+            "duration": 1842.7
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 3,
+            "duration": 1842.6
+          },
+          {
+            "lap": 28,
+            "duration": 24.96
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 3,
+            "duration": 1844.1
+          },
+          {
+            "lap": 27,
+            "duration": 24.25
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 3,
+            "duration": 1841.5
+          },
+          {
+            "lap": 12,
+            "duration": 31.2
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 3,
+            "duration": 1842.7
+          },
+          {
+            "lap": 27,
+            "duration": 24.57
+          }
+        ],
+        "perez": [
+          {
+            "lap": 3,
+            "duration": 1842.5
+          },
+          {
+            "lap": 27,
+            "duration": 28.46
+          }
+        ],
+        "albon": [
+          {
+            "lap": 3,
+            "duration": 1842.5
+          },
+          {
+            "lap": 46,
+            "duration": 26.39
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 3,
+            "duration": 1841.8
+          },
+          {
+            "lap": 27,
+            "duration": 35.25
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 3,
+            "duration": 1842
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 3,
+            "duration": 1839.4
+          }
+        ]
+      },
+      "stints": {
+        "bottas": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 4,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 28,
+            "lap_end": 51,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 28,
+            "lap_end": 53,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 4,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 28,
+            "lap_end": 52,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "albon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 46,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 47,
+            "lap_end": 52,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 4,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 29,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 4,
+            "lap_end": 23,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 4,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 29,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 28,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 12,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 13,
+            "lap_end": 53,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 4,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 4,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 28,
+            "lap_end": 52,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ]
+      }
+    },
+    "14": {
+      "session_key": 11369,
+      "pit_stops": {
+        "antonelli": [
+          {
+            "lap": 14,
+            "duration": 31.84
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 14,
+            "duration": 31.07
+          }
+        ],
+        "russell": [
+          {
+            "lap": 14,
+            "duration": 30.74
+          },
+          {
+            "lap": 28,
+            "duration": 30.62
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 14,
+            "duration": 31.67
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 14,
+            "duration": 31.85
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 14,
+            "duration": 31.04
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 14,
+            "duration": 32.17
+          }
+        ],
+        "albon": [
+          {
+            "lap": 14,
+            "duration": 31.16
+          }
+        ],
+        "perez": [
+          {
+            "lap": 14,
+            "duration": 32.22
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 14,
+            "duration": 43.84
+          },
+          {
+            "lap": 37,
+            "duration": 32
+          }
+        ],
+        "norris": [
+          {
+            "lap": 15,
+            "duration": 35.1
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 23,
+            "duration": 46.37
+          },
+          {
+            "lap": 31,
+            "duration": 31.43
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 29,
+            "duration": 31.71
+          },
+          {
+            "lap": 43,
+            "duration": 31.67
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 33,
+            "duration": 33.31
+          },
+          {
+            "lap": 43,
+            "duration": 31.44
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 42,
+            "duration": 31.41
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 44,
+            "duration": 30.9
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 47,
+            "duration": 30.84
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 48,
+            "duration": 31.32
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 55,
+            "duration": 31.48
+          }
+        ]
+      },
+      "stints": {
+        "russell": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 15,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 29,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "albon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 23,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 24,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 32,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 15,
+            "lap_end": 37,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 38,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 56,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 47,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 48,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 43,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 16,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 12,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 48,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 49,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 34,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 44,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "perez": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 6,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 45,
+            "lap_end": 57,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 15,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 30,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 44,
+            "lap_end": 54,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ]
+      }
+    },
+    "15": {
+      "session_key": 11377,
+      "pit_stops": {
+        "sainz": [
+          {
+            "lap": 20,
+            "duration": 20.66
+          },
+          {
+            "lap": 30,
+            "duration": 21.43
+          },
+          {
+            "lap": 36,
+            "duration": 15.9
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 26,
+            "duration": 23.02
+          },
+          {
+            "lap": 36,
+            "duration": 15
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 30,
+            "duration": 20.74
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 30,
+            "duration": 20.77
+          },
+          {
+            "lap": 36,
+            "duration": 16.3
+          }
+        ],
+        "norris": [
+          {
+            "lap": 30,
+            "duration": 20.8
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 30,
+            "duration": 20.73
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 30,
+            "duration": 21.28
+          },
+          {
+            "lap": 36,
+            "duration": 16.3
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 30,
+            "duration": 21.42
+          },
+          {
+            "lap": 36,
+            "duration": 16.1
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 30,
+            "duration": 22.18
+          },
+          {
+            "lap": 36,
+            "duration": 16
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 30,
+            "duration": 20.39
+          },
+          {
+            "lap": 36,
+            "duration": 15.2
+          }
+        ],
+        "perez": [
+          {
+            "lap": 30,
+            "duration": 22.27
+          },
+          {
+            "lap": 36,
+            "duration": 15.3
+          }
+        ],
+        "russell": [
+          {
+            "lap": 31,
+            "duration": 20.68
+          },
+          {
+            "lap": 36,
+            "duration": 15.1
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 31,
+            "duration": 20.54
+          },
+          {
+            "lap": 36,
+            "duration": 15.1
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 31,
+            "duration": 20.8
+          },
+          {
+            "lap": 36,
+            "duration": 15.2
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 31,
+            "duration": 21.9
+          },
+          {
+            "lap": 36,
+            "duration": 15.2
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 31,
+            "duration": 22
+          },
+          {
+            "lap": 36,
+            "duration": 15.5
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 31,
+            "duration": 22.11
+          },
+          {
+            "lap": 36,
+            "duration": 16.5
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 31,
+            "duration": 21.72
+          },
+          {
+            "lap": 36,
+            "duration": 23.7
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 32,
+            "duration": 20.11
+          },
+          {
+            "lap": 36,
+            "duration": 15.3
+          }
+        ]
+      },
+      "stints": {
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 5,
+            "stint_number": 3
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 5,
+            "stint_number": 3
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 21,
+            "lap_end": 30,
+            "tyre_age": 4,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 4,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 10,
+            "stint_number": 4
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 6,
+            "stint_number": 3
+          }
+        ],
+        "albon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 33,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 4,
+            "stint_number": 3
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 6,
+            "stint_number": 3
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 7,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "perez": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 6,
+            "stint_number": 3
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 35,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 5,
+            "stint_number": 3
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 6,
+            "stint_number": 3
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 6,
+            "stint_number": 3
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 5,
+            "stint_number": 3
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 27,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 49,
+            "tyre_age": 10,
+            "stint_number": 3
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 35,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 5,
+            "stint_number": 3
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 6,
+            "stint_number": 3
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 51,
+            "tyre_age": 5,
+            "stint_number": 3
+          }
+        ]
+      }
+    },
+    "16": {
+      "session_key": 11731,
+      "pit_stops": {
+        "perez": [
+          {
+            "lap": 1,
+            "duration": 38.03
+          },
+          {
+            "lap": 2,
+            "duration": 41.72
+          },
+          {
+            "lap": 9,
+            "duration": 29.87
+          },
+          {
+            "lap": 18,
+            "duration": 28.89
+          },
+          {
+            "lap": 21,
+            "duration": 29.2
+          },
+          {
+            "lap": 39,
+            "duration": 31.34
+          },
+          {
+            "lap": 44,
+            "duration": 28.94
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 2,
+            "duration": 81.4
+          },
+          {
+            "lap": 9,
+            "duration": 29.2
+          },
+          {
+            "lap": 33,
+            "duration": 28.3
+          },
+          {
+            "lap": 45,
+            "duration": 27.4
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 2,
+            "duration": 73.87
+          },
+          {
+            "lap": 9,
+            "duration": 27.87
+          },
+          {
+            "lap": 15,
+            "duration": 36.77
+          },
+          {
+            "lap": 34,
+            "duration": 51.82
+          },
+          {
+            "lap": 44,
+            "duration": 27.7
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 2,
+            "duration": 60.45
+          },
+          {
+            "lap": 9,
+            "duration": 28
+          },
+          {
+            "lap": 28,
+            "duration": 28.3
+          },
+          {
+            "lap": 43,
+            "duration": 27.4
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 2,
+            "duration": 61.18
+          },
+          {
+            "lap": 8,
+            "duration": 27.59
+          },
+          {
+            "lap": 32,
+            "duration": 28.42
+          },
+          {
+            "lap": 45,
+            "duration": 28.28
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 3,
+            "duration": 38.01
+          },
+          {
+            "lap": 9,
+            "duration": 28.65
+          },
+          {
+            "lap": 28,
+            "duration": 27.96
+          },
+          {
+            "lap": 43,
+            "duration": 28.18
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 9,
+            "duration": 27.7
+          },
+          {
+            "lap": 33,
+            "duration": 27.6
+          },
+          {
+            "lap": 44,
+            "duration": 27.2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 9,
+            "duration": 27.64
+          },
+          {
+            "lap": 33,
+            "duration": 27.83
+          },
+          {
+            "lap": 43,
+            "duration": 27.64
+          }
+        ],
+        "russell": [
+          {
+            "lap": 9,
+            "duration": 28.8
+          },
+          {
+            "lap": 32,
+            "duration": 27.6
+          },
+          {
+            "lap": 44,
+            "duration": 27.7
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 9,
+            "duration": 28.13
+          },
+          {
+            "lap": 31,
+            "duration": 28.5
+          },
+          {
+            "lap": 44,
+            "duration": 27.3
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 9,
+            "duration": 28.6
+          },
+          {
+            "lap": 30,
+            "duration": 28.03
+          },
+          {
+            "lap": 45,
+            "duration": 29.62
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 9,
+            "duration": 28.69
+          },
+          {
+            "lap": 29,
+            "duration": 29
+          },
+          {
+            "lap": 41,
+            "duration": 28.4
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 9,
+            "duration": 28.6
+          },
+          {
+            "lap": 28,
+            "duration": 29.25
+          },
+          {
+            "lap": 43,
+            "duration": 28.07
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 9,
+            "duration": 32.06
+          },
+          {
+            "lap": 26,
+            "duration": 28.23
+          },
+          {
+            "lap": 42,
+            "duration": 39.69
+          }
+        ],
+        "albon": [
+          {
+            "lap": 9,
+            "duration": 32.47
+          },
+          {
+            "lap": 16,
+            "duration": 27.61
+          },
+          {
+            "lap": 29,
+            "duration": 27.86
+          }
+        ],
+        "norris": [
+          {
+            "lap": 9,
+            "duration": 30.79
+          },
+          {
+            "lap": 34,
+            "duration": 28.25
+          },
+          {
+            "lap": 45,
+            "duration": 27.87
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 9,
+            "duration": 28.31
+          },
+          {
+            "lap": 31,
+            "duration": 27.61
+          },
+          {
+            "lap": 45,
+            "duration": 27.81
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 9,
+            "duration": 28.15
+          },
+          {
+            "lap": 25,
+            "duration": 27.76
+          },
+          {
+            "lap": 37,
+            "duration": 27.85
+          },
+          {
+            "lap": 45,
+            "duration": 28.34
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 9,
+            "duration": 27.95
+          },
+          {
+            "lap": 31,
+            "duration": 27.63
+          },
+          {
+            "lap": 42,
+            "duration": 28.21
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 10,
+            "duration": 28.55
+          },
+          {
+            "lap": 24,
+            "duration": 29.05
+          },
+          {
+            "lap": 38,
+            "duration": 28.02
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 31,
+            "duration": 27.8
+          },
+          {
+            "lap": 43,
+            "duration": 28.05
+          }
+        ]
+      },
+      "stints": {
+        "max_verstappen": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "albon": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 27,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 43,
+            "tyre_age": 3,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 44,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 25,
+            "tyre_age": 6,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 26,
+            "lap_end": 55,
+            "tyre_age": 6,
+            "stint_number": 5
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 3,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 10,
+            "lap_end": 34,
+            "tyre_age": 2,
+            "stint_number": 5
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 35,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 6
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 2,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 16,
+            "lap_end": 44,
+            "tyre_age": 8,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 55,
+            "tyre_age": 6,
+            "stint_number": 6
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 29,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 45,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 4,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 43,
+            "tyre_age": 3,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 44,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 5
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 10,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 11,
+            "lap_end": 24,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 25,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 42,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 18,
+            "tyre_age": 0,
+            "stint_number": 5
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 19,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 6
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 22,
+            "lap_end": 39,
+            "tyre_age": 0,
+            "stint_number": 7
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 40,
+            "lap_end": 55,
+            "tyre_age": 1,
+            "stint_number": 8
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 9,
+            "tyre_age": 3,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 44,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 10,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 34,
+            "lap_end": 44,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 7,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 10,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "russell": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 49,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 10,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 29,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 5
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 3,
+            "lap_end": 8,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 9,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 33,
+            "lap_end": 55,
+            "tyre_age": 2,
+            "stint_number": 5
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 2,
+            "lap_end": 2,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 3,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ]
+      }
+    },
+    "17": {
+      "session_key": 11388,
+      "pit_stops": {
+        "hamilton": [
+          {
+            "lap": 18,
+            "duration": 24.05
+          }
+        ],
+        "perez": [
+          {
+            "lap": 21,
+            "duration": 25.29
+          },
+          {
+            "lap": 38,
+            "duration": 24.85
+          }
+        ],
+        "albon": [
+          {
+            "lap": 22,
+            "duration": 24.09
+          },
+          {
+            "lap": 37,
+            "duration": 25.87
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 23,
+            "duration": 24.11
+          },
+          {
+            "lap": 39,
+            "duration": 23.59
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 24,
+            "duration": 24.64
+          },
+          {
+            "lap": 39,
+            "duration": 24.11
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 26,
+            "duration": 24.37
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 26,
+            "duration": 23.6
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 28,
+            "duration": 24.93
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 28,
+            "duration": 29.27
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 29,
+            "duration": 24.58
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 30,
+            "duration": 24.38
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 31,
+            "duration": 24.66
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 31,
+            "duration": 24.2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 32,
+            "duration": 23.7
+          }
+        ],
+        "norris": [
+          {
+            "lap": 32,
+            "duration": 23.92
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 33,
+            "duration": 25.71
+          },
+          {
+            "lap": 41,
+            "duration": 24.08
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 33,
+            "duration": 24.87
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 33,
+            "duration": 24.55
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 35,
+            "duration": 24.33
+          }
+        ],
+        "russell": [
+          {
+            "lap": 39,
+            "duration": 23.65
+          }
+        ]
+      },
+      "stints": {
+        "hadjar": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 23,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 24,
+            "lap_end": 39,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 40,
+            "lap_end": 62,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 29,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 39,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 40,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 22,
+            "lap_end": 38,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 39,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 2,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 33,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "albon": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 23,
+            "lap_end": 37,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 38,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 18,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 19,
+            "lap_end": 62,
+            "tyre_age": 3,
+            "stint_number": 2
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 30,
+            "lap_end": 61,
+            "tyre_age": 3,
+            "stint_number": 2
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 34,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 42,
+            "lap_end": 62,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 7,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "norris": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 33,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 27,
+            "lap_end": 61,
+            "tyre_age": 3,
+            "stint_number": 2
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 24,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 25,
+            "lap_end": 39,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 40,
+            "lap_end": 62,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 33,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 34,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 29,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
+    },
+    "18": {
+      "session_key": 11396,
+      "pit_stops": {
+        "max_verstappen": [
+          {
+            "lap": 13,
+            "duration": 23.96
+          },
+          {
+            "lap": 31,
+            "duration": 25.39
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 13,
+            "duration": 24.22
+          },
+          {
+            "lap": 22,
+            "duration": 34.74
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 14,
+            "duration": 24.12
+          },
+          {
+            "lap": 38,
+            "duration": 23.95
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 15,
+            "duration": 24.07
+          },
+          {
+            "lap": 39,
+            "duration": 24.23
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 15,
+            "duration": 23.41
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 15,
+            "duration": 24.34
+          },
+          {
+            "lap": 41,
+            "duration": 23.82
+          }
+        ],
+        "norris": [
+          {
+            "lap": 16,
+            "duration": 25.76
+          }
+        ],
+        "albon": [
+          {
+            "lap": 16,
+            "duration": 24.43
+          },
+          {
+            "lap": 31,
+            "duration": 23.7
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 17,
+            "duration": 33.69
+          },
+          {
+            "lap": 38,
+            "duration": 24.38
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 18,
+            "duration": 23.79
+          },
+          {
+            "lap": 40,
+            "duration": 24.5
+          }
+        ],
+        "ocon": [
+          {
+            "lap": 21,
+            "duration": 24.94
+          }
+        ],
+        "russell": [
+          {
+            "lap": 22,
+            "duration": 29.76
+          }
+        ],
+        "perez": [
+          {
+            "lap": 23,
+            "duration": 25.18
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 24,
+            "duration": 23.59
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 24,
+            "duration": 26.98
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 25,
+            "duration": 24.07
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 25,
+            "duration": 24.23
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 26,
+            "duration": 24.08
+          },
+          {
+            "lap": 50,
+            "duration": 23.97
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 28,
+            "duration": 24.2
+          },
+          {
+            "lap": 42,
+            "duration": 40.42
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 29,
+            "duration": 23.93
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 29,
+            "duration": 24.24
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 30,
+            "duration": 25.37
+          }
+        ]
+      },
+      "stints": {
+        "bearman": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 13,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 14,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 23,
+            "lap_end": 24,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 18,
+            "lap_end": 38,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 39,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "ocon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 21,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 22,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 23,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 24,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 16,
+            "lap_end": 39,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 40,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 15,
+            "lap_end": 38,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 39,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 25,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 26,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 30,
+            "lap_end": 48,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 24,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 25,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 13,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 14,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 32,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "russell": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 22,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 23,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "norris": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 17,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 16,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 29,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 43,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 25,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 26,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 18,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 19,
+            "lap_end": 40,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 41,
+            "lap_end": 55,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "HARD",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 31,
+            "lap_end": 35,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 29,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 30,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 27,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 51,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 24,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 25,
+            "lap_end": 56,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 42,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "albon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "HARD",
+            "lap_start": 32,
+            "lap_end": 55,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ]
+      }
+    },
+    "19": {
+      "session_key": 11404,
+      "pit_stops": {
+        "gasly": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 17,
+            "duration": 22.96
+          },
+          {
+            "lap": 44,
+            "duration": 22.8
+          },
+          {
+            "lap": 45,
+            "duration": 2256.2
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 30,
+            "duration": 26.71
+          }
+        ],
+        "perez": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 59,
+            "duration": 29.8
+          },
+          {
+            "lap": 30,
+            "duration": 28.9
+          },
+          {
+            "lap": 43,
+            "duration": 24.1
+          },
+          {
+            "lap": 44,
+            "duration": 2172.9
+          },
+          {
+            "lap": 45,
+            "duration": 57
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 3,
+            "duration": 27.18
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 11,
+            "duration": 22.86
+          },
+          {
+            "lap": 42,
+            "duration": 22.58
+          },
+          {
+            "lap": 44,
+            "duration": 2191.6
+          },
+          {
+            "lap": 45,
+            "duration": 60.51
+          }
+        ],
+        "norris": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 39,
+            "duration": 24.71
+          },
+          {
+            "lap": 45,
+            "duration": 2312.4
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 3,
+            "duration": 23.96
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 43,
+            "duration": 23.74
+          },
+          {
+            "lap": 45,
+            "duration": 2315.3
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 1,
+            "duration": null
+          },
+          {
+            "lap": 35,
+            "duration": 22.82
+          },
+          {
+            "lap": 45,
+            "duration": 2284.6
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 59,
+            "duration": 34.5
+          },
+          {
+            "lap": 31,
+            "duration": 21.93
+          },
+          {
+            "lap": 45,
+            "duration": 2272.9
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 7,
+            "duration": 23.9
+          },
+          {
+            "lap": 41,
+            "duration": 22.61
+          },
+          {
+            "lap": 45,
+            "duration": 2265.56
+          }
+        ],
+        "albon": [
+          {
+            "lap": 18,
+            "duration": 22.01
+          },
+          {
+            "lap": 41,
+            "duration": 25.43
+          },
+          {
+            "lap": 44,
+            "duration": 2181.8
+          },
+          {
+            "lap": 45,
+            "duration": 54.82
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 26,
+            "duration": 22.68
+          },
+          {
+            "lap": 44,
+            "duration": 24.56
+          },
+          {
+            "lap": 45,
+            "duration": 2272
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 27,
+            "duration": 22.47
+          },
+          {
+            "lap": 45,
+            "duration": 2314.94
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 27,
+            "duration": 28.71
+          },
+          {
+            "lap": 45,
+            "duration": 2315.8
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 28,
+            "duration": 22.73
+          },
+          {
+            "lap": 44,
+            "duration": 23.81
+          },
+          {
+            "lap": 45,
+            "duration": 2309.6
+          }
+        ],
+        "russell": [
+          {
+            "lap": 33,
+            "duration": 33.93
+          },
+          {
+            "lap": 44,
+            "duration": 22.26
+          },
+          {
+            "lap": 45,
+            "duration": 2295.3
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 34,
+            "duration": 23.34
+          },
+          {
+            "lap": 45,
+            "duration": 2274.5
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 36,
+            "duration": 22.57
+          },
+          {
+            "lap": 44,
+            "duration": 2192.4
+          },
+          {
+            "lap": 45,
+            "duration": 58.65
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 38,
+            "duration": 22.55
+          },
+          {
+            "lap": 45,
+            "duration": 2270
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 40,
+            "duration": 22.59
+          },
+          {
+            "lap": 45,
+            "duration": 2268.4
+          }
+        ]
+      },
+      "stints": {
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 42,
+            "tyre_age": 3,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 43,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 3,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 4,
+            "stint_number": 5
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 4,
+            "lap_end": 5,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 3,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "UNKNOWN",
+            "lap_start": 4,
+            "lap_end": 5,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 7,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 8,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 42,
+            "lap_end": 45,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 18,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "albon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 18,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 19,
+            "lap_end": 41,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 42,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 4,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 5,
+            "stint_number": 5
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 27,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 28,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 27,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 28,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 28,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 29,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 4
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 31,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 44,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 1,
+            "stint_number": 4
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 59,
+            "tyre_age": 2,
+            "stint_number": 5
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 6
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 31,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 31,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 32,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 59,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 60,
+            "lap_end": 71,
+            "tyre_age": 17,
+            "stint_number": 4
+          }
+        ],
+        "russell": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 33,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 34,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 3,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 4,
+            "stint_number": 4
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 34,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 35,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 2,
+            "stint_number": 3
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 35,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 36,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 58,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 36,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 37,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 1,
+            "stint_number": 4
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 38,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 39,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "norris": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 39,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 40,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 2,
+            "stint_number": 3
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 40,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 41,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 47,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 43,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 44,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 71,
+            "tyre_age": 4,
+            "stint_number": 3
+          }
+        ]
+      }
+    },
+    "20": {
+      "session_key": 11412,
+      "pit_stops": {
+        "hamilton": [
+          {
+            "lap": 14,
+            "duration": 24.39
+          },
+          {
+            "lap": 38,
+            "duration": 24.58
+          },
+          {
+            "lap": 62,
+            "duration": 25.52
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 14,
+            "duration": 25.07
+          },
+          {
+            "lap": 45,
+            "duration": 23.78
+          },
+          {
+            "lap": 61,
+            "duration": 24.46
+          }
+        ],
+        "albon": [
+          {
+            "lap": 15,
+            "duration": 24.45
+          },
+          {
+            "lap": 42,
+            "duration": 30.72
+          },
+          {
+            "lap": 60,
+            "duration": 24.29
+          }
+        ],
+        "perez": [
+          {
+            "lap": 15,
+            "duration": 32.16
+          },
+          {
+            "lap": 59,
+            "duration": 25.87
+          }
+        ],
+        "norris": [
+          {
+            "lap": 16,
+            "duration": 24
+          },
+          {
+            "lap": 49,
+            "duration": 23.96
+          },
+          {
+            "lap": 62,
+            "duration": 24.92
+          }
+        ],
+        "russell": [
+          {
+            "lap": 16,
+            "duration": 24.99
+          },
+          {
+            "lap": 61,
+            "duration": 24.1
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 16,
+            "duration": 24.1
+          },
+          {
+            "lap": 50,
+            "duration": 23.81
+          },
+          {
+            "lap": 62,
+            "duration": 23.9
+          }
+        ],
+        "lawson": [
+          {
+            "lap": 16,
+            "duration": 23.74
+          },
+          {
+            "lap": 48,
+            "duration": 23.75
+          },
+          {
+            "lap": 61,
+            "duration": 24.74
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 16,
+            "duration": 25.63
+          },
+          {
+            "lap": 51,
+            "duration": 23.94
+          },
+          {
+            "lap": 62,
+            "duration": 24.7
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 16,
+            "duration": 24.7
+          },
+          {
+            "lap": 44,
+            "duration": 24.71
+          },
+          {
+            "lap": 61,
+            "duration": 35.3
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 16,
+            "duration": 23.92
+          },
+          {
+            "lap": 45,
+            "duration": 24.8
+          },
+          {
+            "lap": 61,
+            "duration": 24.59
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 16,
+            "duration": 24.82
+          },
+          {
+            "lap": 61,
+            "duration": 24.89
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 16,
+            "duration": 24.14
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 16,
+            "duration": 39.77
+          },
+          {
+            "lap": 48,
+            "duration": 27.55
+          },
+          {
+            "lap": 60,
+            "duration": 25.36
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 16,
+            "duration": 24.36
+          },
+          {
+            "lap": 32,
+            "duration": 23.35
+          },
+          {
+            "lap": 60,
+            "duration": 24.18
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 17,
+            "duration": 24.46
+          },
+          {
+            "lap": 53,
+            "duration": 23.63
+          },
+          {
+            "lap": 62,
+            "duration": 24.82
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 17,
+            "duration": 23.75
+          },
+          {
+            "lap": 45,
+            "duration": 23.35
+          },
+          {
+            "lap": 62,
+            "duration": 23.89
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 17,
+            "duration": 24
+          },
+          {
+            "lap": 46,
+            "duration": 24.35
+          },
+          {
+            "lap": 60,
+            "duration": 23.89
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 17,
+            "duration": 24.68
+          },
+          {
+            "lap": 37,
+            "duration": 24.19
+          },
+          {
+            "lap": 61,
+            "duration": 31.12
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 17,
+            "duration": 25.68
+          },
+          {
+            "lap": 53,
+            "duration": 23.65
+          },
+          {
+            "lap": 61,
+            "duration": 26.63
+          }
+        ]
+      },
+      "stints": {
+        "bottas": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 9,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 10,
+            "lap_end": 30,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 15,
+            "lap_end": 38,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 39,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 63,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 14,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 15,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 69,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "albon": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 16,
+            "lap_end": 42,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 43,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 61,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "perez": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 15,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 16,
+            "lap_end": 59,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 60,
+            "lap_end": 69,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "norris": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 49,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 50,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 63,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "russell": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 51,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 63,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "lawson": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 48,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 49,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 51,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 52,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 63,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 44,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 45,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 48,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 49,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 61,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 16,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 17,
+            "lap_end": 32,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 33,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 61,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 18,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 54,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 63,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 18,
+            "lap_end": 45,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 46,
+            "lap_end": 62,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 63,
+            "lap_end": 71,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 18,
+            "lap_end": 46,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 47,
+            "lap_end": 60,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 61,
+            "lap_end": 70,
+            "tyre_age": 1,
+            "stint_number": 4
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 18,
+            "lap_end": 37,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 38,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 18,
+            "lap_end": 53,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 54,
+            "lap_end": 61,
+            "tyre_age": 0,
+            "stint_number": 3
+          },
+          {
+            "compound": "INTERMEDIATE",
+            "lap_start": 62,
+            "lap_end": 70,
+            "tyre_age": 0,
+            "stint_number": 4
+          }
+        ]
+      }
+    },
+    "21": {
+      "session_key": 11420,
+      "pit_stops": {
+        "lawson": [
+          {
+            "lap": 17,
+            "duration": 21.68
+          }
+        ],
+        "max_verstappen": [
+          {
+            "lap": 19,
+            "duration": 21.22
+          }
+        ],
+        "russell": [
+          {
+            "lap": 19,
+            "duration": 22.09
+          }
+        ],
+        "hadjar": [
+          {
+            "lap": 19,
+            "duration": 23.34
+          },
+          {
+            "lap": 26,
+            "duration": 33.13
+          }
+        ],
+        "gasly": [
+          {
+            "lap": 19,
+            "duration": 22.64
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "lap": 19,
+            "duration": 24.43
+          }
+        ],
+        "antonelli": [
+          {
+            "lap": 19,
+            "duration": 26.3
+          }
+        ],
+        "norris": [
+          {
+            "lap": 19,
+            "duration": 24.81
+          }
+        ],
+        "leclerc": [
+          {
+            "lap": 19,
+            "duration": 22.16
+          }
+        ],
+        "bortoleto": [
+          {
+            "lap": 19,
+            "duration": 21.78
+          }
+        ],
+        "colapinto": [
+          {
+            "lap": 19,
+            "duration": 23.34
+          }
+        ],
+        "sainz": [
+          {
+            "lap": 19,
+            "duration": 22.16
+          }
+        ],
+        "piastri": [
+          {
+            "lap": 19,
+            "duration": 27.48
+          }
+        ],
+        "hulkenberg": [
+          {
+            "lap": 19,
+            "duration": 21.89
+          }
+        ],
+        "bearman": [
+          {
+            "lap": 19,
+            "duration": 22.86
+          }
+        ],
+        "alonso": [
+          {
+            "lap": 19,
+            "duration": 21.49
+          }
+        ],
+        "bottas": [
+          {
+            "lap": 19,
+            "duration": 22.07
+          },
+          {
+            "lap": 20,
+            "duration": 21.76
+          }
+        ],
+        "hamilton": [
+          {
+            "lap": 20,
+            "duration": 32.47
+          }
+        ],
+        "stroll": [
+          {
+            "lap": 20,
+            "duration": 22.31
+          }
+        ]
+      },
+      "stints": {
+        "lawson": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 2,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "albon": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 1,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "perez": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 17,
+            "tyre_age": 0,
+            "stint_number": 1
+          }
+        ],
+        "max_verstappen": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hadjar": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 2,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 26,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 27,
+            "lap_end": 50,
+            "tyre_age": 3,
+            "stint_number": 3
+          }
+        ],
+        "russell": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 3,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "antonelli": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 3,
+            "stint_number": 2
+          }
+        ],
+        "arvid_lindblad": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "gasly": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 4,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "norris": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "piastri": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "leclerc": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "colapinto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 4,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bortoleto": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "sainz": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "hulkenberg": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bearman": [
+          {
+            "compound": "MEDIUM",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 20,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "alonso": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 49,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "bottas": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 19,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 20,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 2
+          },
+          {
+            "compound": "SOFT",
+            "lap_start": 21,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 3
+          }
+        ],
+        "hamilton": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 21,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ],
+        "stroll": [
+          {
+            "compound": "SOFT",
+            "lap_start": 1,
+            "lap_end": 20,
+            "tyre_age": 0,
+            "stint_number": 1
+          },
+          {
+            "compound": "MEDIUM",
+            "lap_start": 21,
+            "lap_end": 50,
+            "tyre_age": 0,
+            "stint_number": 2
+          }
+        ]
+      }
     }
   },
   "driver_images": {
@@ -13762,72 +20572,72 @@ window.F1_DATA = {
   },
   "news": [
     {
-      "title": "Tsunoda puts himself back on the F1 radar after Dutch GP",
-      "url": "https://www.formula1.com/en/latest/article/tsunoda-puts-himself-back-on-the-f1-radar-after-just-missing-the-points-in-zandvoort.5w7F5YHfJRJNwl5DxaffPb",
+      "title": "2027 line-ups confirmed: Who is on the grid for next season?",
+      "url": "https://www.formula1.com/en/latest/article/2027-f1-line-ups-confirmed-in-full-who-is-on-the-grid-for-next-season.4CSw0BzYUotJ459iJ8jEGX",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "7 moments you might have missed at the 2026 Dutch Grand Prix",
-      "url": "https://www.formula1.com/en/latest/article/7-moments-you-might-have-missed-at-the-2026-dutch-grand-prix.4t3kCjgPEAW6I7xS6ILPT4",
+      "title": "Why Bearman’s new Haas deal took so long to get over the line",
+      "url": "https://www.formula1.com/en/latest/article/analysis-why-bearmans-new-haas-deal-took-so-long-to-get-over-the-line.M0No4qdgSUFPFMgGKkNKv",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "How Lawson rose to the challenge of driving this year's Red Bull",
-      "url": "https://www.formula1.com/en/latest/article/how-super-sub-lawson-rose-to-the-challenge-of-driving-this-years-red-bull.4EkibOrkZOGpCYiVCIE24I",
+      "title": "Bearman to continue with Haas for 2027",
+      "url": "https://www.formula1.com/en/latest/article/bearman-to-continue-with-haas-for-2027-as-he-completes-next-years-grid.dRq9fWh9OGjhXuShgGnqE",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "6 Winners and 5 Losers from Zandvoort",
-      "url": "https://www.formula1.com/en/latest/article/5-winners-and-5-losers-from-zandvoort-2026-dutch-grand-prix.6BMtP66ox9UVKyds6XJjQG",
+      "title": "FIA confirm Williams’ minor overspend breach of 2025 Cost Cap",
+      "url": "https://www.formula1.com/en/latest/article/fia-confirm-williams-minor-overspend-breach-in-2025-cost-cap-review.12rGorQ1pzc6aH0LX2WdLZ",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "F1 ACADEMY unveils expanded 2026 Rookie Test",
-      "url": "https://www.formula1.com/en/latest/article/f1-academy-unveils-expanded-2026-rookie-test-with-new-training-camp.5iNMKzRqTBhLSpehfq0JZZ",
+      "title": "5 storylines we're excited about ahead of the Qatar GP",
+      "url": "https://www.formula1.com/en/latest/article/its-race-week-5-storylines-were-excited-about-ahead-of-the-2026-qatar-grand-prix.1bXINUYO8R8X3K7DjINr1A",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Why F1 team markets are about to become more popular",
-      "url": "https://www.formula1.com/en/latest/article/why-f1-team-betting-markets-are-about-to-become-more-popular-after-the-dutch-grand-prix.dSe6rOkQ5cQQr90sYOIMa",
+      "title": "QUIZ: 10 tricky questions on F1 driver bust-ups",
+      "url": "https://www.formula1.com/en/latest/article/quiz-10-tricky-questions-on-f1-driver-bust-ups.L5pATOFep8eOxnoTZTjjf",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Netflix announce Drive to Survive Season 9",
-      "url": "https://www.formula1.com/en/latest/article/netflix-confirm-formula-1-drive-to-survive-returning-for-season-9.dNByELAp2FCp1kSulHrVd",
+      "title": "Jack Whitehall on why Antonelli surprised him in first meeting",
+      "url": "https://www.formula1.com/en/latest/article/hes-not-like-any-sportsman-ive-interacted-with-jack-whitehall-on-why-antonelli-surprised-him-in-first-meeting.2AZ1Cm2uN2NeNKwiQknWZY",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Vasseur reveals strategy intentions after Hamilton criticism",
-      "url": "https://www.formula1.com/en/latest/article/vasseur-reveals-ferraris-dutch-grand-prix-strategy-intentions-after-hamilton-criticism.qGLPx8JvariTOrpSjrayR",
+      "title": "From Monza mayhem to Suzuka showdowns – 10 dramatic F1 rivalry flashpoints",
+      "url": "https://www.formula1.com/en/latest/article/from-monza-mayhem-to-suzuka-showdowns-10-dramatic-rivalry-flashpoints-in-f1-history.3tetZNSgL2jM1F3THX3k1M",
       "image": null,
       "date": null,
       "tag": "F1 News"
     }
   ],
   "_health": {
-    "live": "jolpica:12rounds",
-    "results": "jolpica:11races+of1:r12",
+    "live": "jolpica:21rounds",
+    "results": "jolpica:21races",
     "news": "scraped:8",
-    "scrapedAt": "2026-08-25T07:49:00.630Z",
-    "openf1": "enriched:5races",
-    "bios": "jolpica:32",
+    "scrapedAt": "2026-11-26T11:31:47.936Z",
+    "openf1": "enriched:16races",
+    "bios": "jolpica:36",
     "circuits": "jolpica:24",
     "weather": "open-meteo",
-    "subrequests": 39
+    "subrequests": 29
   },
   "_sanity": {
     "drivers_full_grid": true,
@@ -13836,7 +20646,7 @@ window.F1_DATA = {
     "points_cap_ok": true,
     "champion_prob_ok": true,
     "prob_sum": 1,
-    "max_points": 391.6,
+    "max_points": 433.3,
     "passed": true
   },
   "circuit_paths": {
@@ -20527,6 +27337,5478 @@ window.F1_DATA = {
       "closure": 0.026,
       "driver_number": 1,
       "lap": 49
+    },
+    "italy": {
+      "points": [
+        [
+          -6143,
+          -5541
+        ],
+        [
+          -6101,
+          -5066
+        ],
+        [
+          -6054,
+          -4537
+        ],
+        [
+          -6008,
+          -4005
+        ],
+        [
+          -5978,
+          -3656
+        ],
+        [
+          -5945,
+          -3271
+        ],
+        [
+          -5896,
+          -2701
+        ],
+        [
+          -5877,
+          -2477
+        ],
+        [
+          -5830,
+          -1938
+        ],
+        [
+          -5799,
+          -1569
+        ],
+        [
+          -5775,
+          -1292
+        ],
+        [
+          -5721,
+          -664
+        ],
+        [
+          -5674,
+          -128
+        ],
+        [
+          -5635,
+          334
+        ],
+        [
+          -5601,
+          719
+        ],
+        [
+          -5548,
+          1347
+        ],
+        [
+          -5518,
+          1708
+        ],
+        [
+          -5477,
+          2200
+        ],
+        [
+          -5453,
+          2484
+        ],
+        [
+          -5430,
+          2752
+        ],
+        [
+          -5415,
+          2883
+        ],
+        [
+          -5371,
+          3071
+        ],
+        [
+          -5302,
+          3189
+        ],
+        [
+          -5142,
+          3271
+        ],
+        [
+          -5046,
+          3294
+        ],
+        [
+          -4966,
+          3356
+        ],
+        [
+          -4931,
+          3460
+        ],
+        [
+          -4955,
+          3744
+        ],
+        [
+          -5046,
+          4089
+        ],
+        [
+          -5108,
+          4342
+        ],
+        [
+          -5165,
+          4625
+        ],
+        [
+          -5200,
+          4924
+        ],
+        [
+          -5211,
+          5283
+        ],
+        [
+          -5206,
+          5608
+        ],
+        [
+          -5181,
+          5992
+        ],
+        [
+          -5119,
+          6469
+        ],
+        [
+          -5008,
+          6926
+        ],
+        [
+          -4896,
+          7227
+        ],
+        [
+          -4671,
+          7663
+        ],
+        [
+          -4223,
+          8222
+        ],
+        [
+          -3829,
+          8546
+        ],
+        [
+          -3497,
+          8753
+        ],
+        [
+          -3031,
+          8971
+        ],
+        [
+          -2505,
+          9129
+        ],
+        [
+          -2116,
+          9203
+        ],
+        [
+          -1430,
+          9289
+        ],
+        [
+          -1032,
+          9321
+        ],
+        [
+          -343,
+          9377
+        ],
+        [
+          174,
+          9409
+        ],
+        [
+          825,
+          9437
+        ],
+        [
+          1415,
+          9459
+        ],
+        [
+          1671,
+          9475
+        ],
+        [
+          1850,
+          9514
+        ],
+        [
+          2031,
+          9598
+        ],
+        [
+          2094,
+          9663
+        ],
+        [
+          2173,
+          9819
+        ],
+        [
+          2278,
+          9932
+        ],
+        [
+          2488,
+          10043
+        ],
+        [
+          2605,
+          10076
+        ],
+        [
+          2870,
+          10128
+        ],
+        [
+          3024,
+          10157
+        ],
+        [
+          3342,
+          10246
+        ],
+        [
+          3743,
+          10374
+        ],
+        [
+          3977,
+          10463
+        ],
+        [
+          4528,
+          10664
+        ],
+        [
+          4905,
+          10787
+        ],
+        [
+          5129,
+          10836
+        ],
+        [
+          5524,
+          10802
+        ],
+        [
+          5709,
+          10714
+        ],
+        [
+          5971,
+          10441
+        ],
+        [
+          6041,
+          10295
+        ],
+        [
+          6132,
+          9908
+        ],
+        [
+          6152,
+          9738
+        ],
+        [
+          6188,
+          9280
+        ],
+        [
+          6203,
+          9036
+        ],
+        [
+          6227,
+          8753
+        ],
+        [
+          6256,
+          8447
+        ],
+        [
+          6279,
+          8176
+        ],
+        [
+          6222,
+          7681
+        ],
+        [
+          6054,
+          7448
+        ],
+        [
+          5821,
+          7287
+        ],
+        [
+          5582,
+          7163
+        ],
+        [
+          5307,
+          7025
+        ],
+        [
+          4909,
+          6811
+        ],
+        [
+          4482,
+          6581
+        ],
+        [
+          4267,
+          6458
+        ],
+        [
+          3873,
+          6233
+        ],
+        [
+          3489,
+          6018
+        ],
+        [
+          3124,
+          5807
+        ],
+        [
+          2467,
+          5348
+        ],
+        [
+          2020,
+          4978
+        ],
+        [
+          1696,
+          4695
+        ],
+        [
+          1410,
+          4446
+        ],
+        [
+          1135,
+          4207
+        ],
+        [
+          649,
+          3785
+        ],
+        [
+          239,
+          3429
+        ],
+        [
+          -13,
+          3210
+        ],
+        [
+          -305,
+          2956
+        ],
+        [
+          -650,
+          2656
+        ],
+        [
+          -936,
+          2407
+        ],
+        [
+          -1390,
+          2012
+        ],
+        [
+          -1693,
+          1749
+        ],
+        [
+          -1888,
+          1576
+        ],
+        [
+          -2075,
+          1392
+        ],
+        [
+          -2202,
+          1186
+        ],
+        [
+          -2237,
+          1003
+        ],
+        [
+          -2240,
+          631
+        ],
+        [
+          -2247,
+          501
+        ],
+        [
+          -2300,
+          254
+        ],
+        [
+          -2425,
+          -15
+        ],
+        [
+          -2679,
+          -314
+        ],
+        [
+          -2830,
+          -487
+        ],
+        [
+          -3010,
+          -953
+        ],
+        [
+          -3055,
+          -1293
+        ],
+        [
+          -3078,
+          -1554
+        ],
+        [
+          -3118,
+          -1949
+        ],
+        [
+          -3154,
+          -2355
+        ],
+        [
+          -3207,
+          -2932
+        ],
+        [
+          -3250,
+          -3396
+        ],
+        [
+          -3299,
+          -3930
+        ],
+        [
+          -3334,
+          -4307
+        ],
+        [
+          -3362,
+          -4620
+        ],
+        [
+          -3397,
+          -5002
+        ],
+        [
+          -3447,
+          -5536
+        ],
+        [
+          -3505,
+          -6170
+        ],
+        [
+          -3547,
+          -6629
+        ],
+        [
+          -3577,
+          -6953
+        ],
+        [
+          -3619,
+          -7415
+        ],
+        [
+          -3680,
+          -8070
+        ],
+        [
+          -3709,
+          -8396
+        ],
+        [
+          -3736,
+          -8683
+        ],
+        [
+          -3780,
+          -9128
+        ],
+        [
+          -3854,
+          -9738
+        ],
+        [
+          -3906,
+          -10010
+        ],
+        [
+          -4099,
+          -10501
+        ],
+        [
+          -4243,
+          -10659
+        ],
+        [
+          -4466,
+          -10790
+        ],
+        [
+          -4844,
+          -10836
+        ],
+        [
+          -5152,
+          -10757
+        ],
+        [
+          -5502,
+          -10546
+        ],
+        [
+          -5780,
+          -10252
+        ],
+        [
+          -5921,
+          -10034
+        ],
+        [
+          -6076,
+          -9697
+        ],
+        [
+          -6165,
+          -9416
+        ],
+        [
+          -6225,
+          -9136
+        ],
+        [
+          -6277,
+          -8601
+        ],
+        [
+          -6278,
+          -7759
+        ],
+        [
+          -6270,
+          -7482
+        ],
+        [
+          -6244,
+          -6917
+        ],
+        [
+          -6167,
+          -5826
+        ]
+      ],
+      "length": 21672,
+      "closure": 0.013,
+      "driver_number": 1,
+      "lap": 48
+    },
+    "madrid": {
+      "points": [
+        [
+          3675,
+          -7760
+        ],
+        [
+          3352,
+          -7813
+        ],
+        [
+          2861,
+          -7893
+        ],
+        [
+          2408,
+          -7966
+        ],
+        [
+          1842,
+          -8057
+        ],
+        [
+          1036,
+          -8173
+        ],
+        [
+          699,
+          -8219
+        ],
+        [
+          142,
+          -8296
+        ],
+        [
+          -138,
+          -8346
+        ],
+        [
+          -356,
+          -8458
+        ],
+        [
+          -450,
+          -8606
+        ],
+        [
+          -631,
+          -8969
+        ],
+        [
+          -786,
+          -9033
+        ],
+        [
+          -974,
+          -9061
+        ],
+        [
+          -1142,
+          -9078
+        ],
+        [
+          -1346,
+          -9075
+        ],
+        [
+          -1578,
+          -9027
+        ],
+        [
+          -1911,
+          -8856
+        ],
+        [
+          -2152,
+          -8640
+        ],
+        [
+          -2403,
+          -8297
+        ],
+        [
+          -2734,
+          -7759
+        ],
+        [
+          -2895,
+          -7489
+        ],
+        [
+          -3242,
+          -6923
+        ],
+        [
+          -3469,
+          -6563
+        ],
+        [
+          -3922,
+          -5841
+        ],
+        [
+          -4143,
+          -5481
+        ],
+        [
+          -4538,
+          -4750
+        ],
+        [
+          -4708,
+          -4305
+        ],
+        [
+          -4882,
+          -3682
+        ],
+        [
+          -4961,
+          -3240
+        ],
+        [
+          -4992,
+          -2604
+        ],
+        [
+          -4964,
+          -2264
+        ],
+        [
+          -4836,
+          -1719
+        ],
+        [
+          -4713,
+          -1388
+        ],
+        [
+          -4558,
+          -1046
+        ],
+        [
+          -4531,
+          -866
+        ],
+        [
+          -4613,
+          -665
+        ],
+        [
+          -4604,
+          -566
+        ],
+        [
+          -4572,
+          -451
+        ],
+        [
+          -4571,
+          -150
+        ],
+        [
+          -4618,
+          17
+        ],
+        [
+          -4704,
+          318
+        ],
+        [
+          -4806,
+          606
+        ],
+        [
+          -4962,
+          899
+        ],
+        [
+          -5158,
+          1329
+        ],
+        [
+          -5291,
+          1845
+        ],
+        [
+          -5356,
+          2081
+        ],
+        [
+          -5456,
+          2293
+        ],
+        [
+          -5573,
+          2463
+        ],
+        [
+          -5476,
+          2655
+        ],
+        [
+          -5389,
+          2738
+        ],
+        [
+          -5211,
+          2975
+        ],
+        [
+          -5193,
+          3195
+        ],
+        [
+          -5308,
+          3481
+        ],
+        [
+          -5397,
+          3661
+        ],
+        [
+          -5539,
+          4031
+        ],
+        [
+          -5574,
+          4295
+        ],
+        [
+          -5595,
+          4641
+        ],
+        [
+          -5587,
+          5149
+        ],
+        [
+          -5513,
+          5546
+        ],
+        [
+          -5168,
+          5941
+        ],
+        [
+          -4914,
+          6132
+        ],
+        [
+          -4720,
+          6547
+        ],
+        [
+          -4744,
+          6843
+        ],
+        [
+          -4935,
+          7342
+        ],
+        [
+          -5028,
+          7594
+        ],
+        [
+          -5160,
+          8084
+        ],
+        [
+          -4824,
+          8842
+        ],
+        [
+          -4438,
+          9043
+        ],
+        [
+          -4201,
+          9079
+        ],
+        [
+          -3743,
+          9012
+        ],
+        [
+          -3421,
+          8839
+        ],
+        [
+          -2995,
+          8229
+        ],
+        [
+          -2959,
+          7666
+        ],
+        [
+          -3092,
+          7213
+        ],
+        [
+          -3290,
+          6830
+        ],
+        [
+          -3470,
+          6559
+        ],
+        [
+          -3967,
+          5969
+        ],
+        [
+          -4151,
+          5757
+        ],
+        [
+          -4596,
+          5208
+        ],
+        [
+          -4734,
+          4977
+        ],
+        [
+          -4890,
+          4616
+        ],
+        [
+          -4918,
+          4427
+        ],
+        [
+          -4858,
+          4223
+        ],
+        [
+          -4755,
+          4115
+        ],
+        [
+          -4486,
+          3909
+        ],
+        [
+          -4323,
+          3788
+        ],
+        [
+          -3963,
+          3514
+        ],
+        [
+          -3717,
+          3267
+        ],
+        [
+          -3573,
+          2918
+        ],
+        [
+          -3541,
+          2504
+        ],
+        [
+          -3520,
+          1891
+        ],
+        [
+          -3474,
+          1625
+        ],
+        [
+          -3232,
+          1120
+        ],
+        [
+          -2913,
+          809
+        ],
+        [
+          -2539,
+          625
+        ],
+        [
+          -1784,
+          555
+        ],
+        [
+          -1503,
+          558
+        ],
+        [
+          -1134,
+          594
+        ],
+        [
+          -942,
+          668
+        ],
+        [
+          -678,
+          797
+        ],
+        [
+          -538,
+          815
+        ],
+        [
+          -360,
+          697
+        ],
+        [
+          -294,
+          614
+        ],
+        [
+          -128,
+          367
+        ],
+        [
+          -29,
+          206
+        ],
+        [
+          128,
+          -70
+        ],
+        [
+          418,
+          -592
+        ],
+        [
+          649,
+          -956
+        ],
+        [
+          831,
+          -1106
+        ],
+        [
+          1289,
+          -1172
+        ],
+        [
+          1614,
+          -1123
+        ],
+        [
+          2017,
+          -1099
+        ],
+        [
+          2373,
+          -1167
+        ],
+        [
+          2576,
+          -1257
+        ],
+        [
+          2960,
+          -1725
+        ],
+        [
+          3086,
+          -2200
+        ],
+        [
+          3146,
+          -2557
+        ],
+        [
+          3187,
+          -2871
+        ],
+        [
+          3235,
+          -3266
+        ],
+        [
+          3294,
+          -3740
+        ],
+        [
+          3364,
+          -4164
+        ],
+        [
+          3405,
+          -4360
+        ],
+        [
+          3458,
+          -4517
+        ],
+        [
+          3531,
+          -4613
+        ],
+        [
+          3743,
+          -4619
+        ],
+        [
+          3794,
+          -4589
+        ],
+        [
+          3988,
+          -4476
+        ],
+        [
+          4107,
+          -4451
+        ],
+        [
+          4379,
+          -4417
+        ],
+        [
+          4513,
+          -4400
+        ],
+        [
+          4895,
+          -4386
+        ],
+        [
+          5017,
+          -4433
+        ],
+        [
+          5107,
+          -4525
+        ],
+        [
+          5220,
+          -4789
+        ],
+        [
+          5268,
+          -4954
+        ],
+        [
+          5341,
+          -5272
+        ],
+        [
+          5368,
+          -5420
+        ],
+        [
+          5425,
+          -5764
+        ],
+        [
+          5466,
+          -6011
+        ],
+        [
+          5538,
+          -6409
+        ],
+        [
+          5589,
+          -6826
+        ],
+        [
+          5596,
+          -7037
+        ],
+        [
+          5567,
+          -7238
+        ],
+        [
+          5467,
+          -7392
+        ],
+        [
+          5374,
+          -7452
+        ],
+        [
+          4974,
+          -7543
+        ],
+        [
+          4709,
+          -7590
+        ],
+        [
+          4375,
+          -7645
+        ],
+        [
+          3788,
+          -7742
+        ]
+      ],
+      "length": 18157,
+      "closure": 0.006,
+      "driver_number": 1,
+      "lap": 52
+    },
+    "azerbaijan": {
+      "points": [
+        [
+          7807,
+          3191
+        ],
+        [
+          8202,
+          3355
+        ],
+        [
+          8752,
+          3586
+        ],
+        [
+          9370,
+          3847
+        ],
+        [
+          9752,
+          4001
+        ],
+        [
+          10068,
+          4128
+        ],
+        [
+          10227,
+          4257
+        ],
+        [
+          10312,
+          4425
+        ],
+        [
+          10294,
+          4664
+        ],
+        [
+          10165,
+          4970
+        ],
+        [
+          10008,
+          5339
+        ],
+        [
+          9916,
+          5554
+        ],
+        [
+          9718,
+          5992
+        ],
+        [
+          9591,
+          6279
+        ],
+        [
+          9499,
+          6486
+        ],
+        [
+          9338,
+          6849
+        ],
+        [
+          9233,
+          7086
+        ],
+        [
+          9178,
+          7209
+        ],
+        [
+          9049,
+          7384
+        ],
+        [
+          8919,
+          7411
+        ],
+        [
+          8703,
+          7356
+        ],
+        [
+          8595,
+          7316
+        ],
+        [
+          8250,
+          7181
+        ],
+        [
+          7417,
+          6873
+        ],
+        [
+          6993,
+          6715
+        ],
+        [
+          6461,
+          6515
+        ],
+        [
+          5731,
+          6233
+        ],
+        [
+          5430,
+          6105
+        ],
+        [
+          4858,
+          5857
+        ],
+        [
+          4232,
+          5587
+        ],
+        [
+          3726,
+          5369
+        ],
+        [
+          3411,
+          5232
+        ],
+        [
+          2932,
+          5021
+        ],
+        [
+          2512,
+          4834
+        ],
+        [
+          2150,
+          4673
+        ],
+        [
+          1735,
+          4488
+        ],
+        [
+          1298,
+          4292
+        ],
+        [
+          1167,
+          4224
+        ],
+        [
+          1010,
+          4023
+        ],
+        [
+          1054,
+          3847
+        ],
+        [
+          1153,
+          3648
+        ],
+        [
+          1228,
+          3478
+        ],
+        [
+          1352,
+          3104
+        ],
+        [
+          1478,
+          2803
+        ],
+        [
+          1619,
+          2502
+        ],
+        [
+          1729,
+          2213
+        ],
+        [
+          1743,
+          2031
+        ],
+        [
+          1699,
+          1936
+        ],
+        [
+          1565,
+          1836
+        ],
+        [
+          1386,
+          1758
+        ],
+        [
+          1113,
+          1656
+        ],
+        [
+          831,
+          1534
+        ],
+        [
+          362,
+          1334
+        ],
+        [
+          17,
+          1155
+        ],
+        [
+          -236,
+          1003
+        ],
+        [
+          -613,
+          786
+        ],
+        [
+          -1005,
+          533
+        ],
+        [
+          -1108,
+          406
+        ],
+        [
+          -1146,
+          215
+        ],
+        [
+          -1066,
+          25
+        ],
+        [
+          -1011,
+          -140
+        ],
+        [
+          -1033,
+          -231
+        ],
+        [
+          -1184,
+          -374
+        ],
+        [
+          -1345,
+          -476
+        ],
+        [
+          -1531,
+          -599
+        ],
+        [
+          -1784,
+          -798
+        ],
+        [
+          -2101,
+          -1040
+        ],
+        [
+          -2329,
+          -1212
+        ],
+        [
+          -2695,
+          -1491
+        ],
+        [
+          -3055,
+          -1765
+        ],
+        [
+          -3434,
+          -2051
+        ],
+        [
+          -3947,
+          -2448
+        ],
+        [
+          -4097,
+          -2516
+        ],
+        [
+          -4217,
+          -2480
+        ],
+        [
+          -4268,
+          -2417
+        ],
+        [
+          -4333,
+          -2282
+        ],
+        [
+          -4425,
+          -2002
+        ],
+        [
+          -4477,
+          -1826
+        ],
+        [
+          -4641,
+          -1283
+        ],
+        [
+          -4747,
+          -927
+        ],
+        [
+          -4831,
+          -672
+        ],
+        [
+          -4916,
+          -606
+        ],
+        [
+          -5190,
+          -500
+        ],
+        [
+          -5405,
+          -465
+        ],
+        [
+          -5526,
+          -456
+        ],
+        [
+          -5759,
+          -408
+        ],
+        [
+          -5913,
+          -272
+        ],
+        [
+          -5936,
+          -121
+        ],
+        [
+          -6001,
+          94
+        ],
+        [
+          -6211,
+          135
+        ],
+        [
+          -6588,
+          80
+        ],
+        [
+          -6817,
+          1
+        ],
+        [
+          -7141,
+          -147
+        ],
+        [
+          -7589,
+          -340
+        ],
+        [
+          -7836,
+          -467
+        ],
+        [
+          -8475,
+          -789
+        ],
+        [
+          -8980,
+          -1078
+        ],
+        [
+          -9367,
+          -1293
+        ],
+        [
+          -9827,
+          -1880
+        ],
+        [
+          -10046,
+          -2592
+        ],
+        [
+          -10264,
+          -3323
+        ],
+        [
+          -10311,
+          -3751
+        ],
+        [
+          -10287,
+          -4301
+        ],
+        [
+          -10235,
+          -5054
+        ],
+        [
+          -10249,
+          -5302
+        ],
+        [
+          -10276,
+          -5681
+        ],
+        [
+          -10212,
+          -5888
+        ],
+        [
+          -10098,
+          -5954
+        ],
+        [
+          -9892,
+          -6058
+        ],
+        [
+          -9635,
+          -6192
+        ],
+        [
+          -9390,
+          -6314
+        ],
+        [
+          -9059,
+          -6480
+        ],
+        [
+          -8308,
+          -6905
+        ],
+        [
+          -7897,
+          -7121
+        ],
+        [
+          -7589,
+          -7297
+        ],
+        [
+          -7275,
+          -7411
+        ],
+        [
+          -6987,
+          -7334
+        ],
+        [
+          -6887,
+          -7203
+        ],
+        [
+          -6766,
+          -6971
+        ],
+        [
+          -6638,
+          -6716
+        ],
+        [
+          -6397,
+          -6223
+        ],
+        [
+          -6212,
+          -5902
+        ],
+        [
+          -5897,
+          -5481
+        ],
+        [
+          -5506,
+          -5114
+        ],
+        [
+          -5323,
+          -4957
+        ],
+        [
+          -4828,
+          -4461
+        ],
+        [
+          -4444,
+          -4084
+        ],
+        [
+          -4232,
+          -3647
+        ],
+        [
+          -4071,
+          -2976
+        ],
+        [
+          -3771,
+          -2432
+        ],
+        [
+          -3147,
+          -1957
+        ],
+        [
+          -2792,
+          -1683
+        ],
+        [
+          -2247,
+          -1266
+        ],
+        [
+          -1705,
+          -853
+        ],
+        [
+          -1248,
+          -528
+        ],
+        [
+          -574,
+          -223
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          508,
+          213
+        ],
+        [
+          916,
+          382
+        ],
+        [
+          1420,
+          591
+        ],
+        [
+          1967,
+          820
+        ],
+        [
+          2512,
+          1051
+        ],
+        [
+          3199,
+          1341
+        ],
+        [
+          4089,
+          1719
+        ],
+        [
+          4504,
+          1893
+        ],
+        [
+          5065,
+          2111
+        ],
+        [
+          5725,
+          2357
+        ],
+        [
+          6189,
+          2530
+        ],
+        [
+          6697,
+          2724
+        ],
+        [
+          7720,
+          3155
+        ]
+      ],
+      "length": 20623,
+      "closure": 0.005,
+      "driver_number": 1,
+      "lap": 28
+    },
+    "sepang": {
+      "points": [
+        [
+          27,
+          -220
+        ],
+        [
+          -758,
+          -289
+        ],
+        [
+          -1334,
+          -339
+        ],
+        [
+          -2122,
+          -408
+        ],
+        [
+          -2566,
+          -447
+        ],
+        [
+          -3340,
+          -515
+        ],
+        [
+          -4056,
+          -578
+        ],
+        [
+          -4744,
+          -638
+        ],
+        [
+          -5141,
+          -672
+        ],
+        [
+          -5456,
+          -659
+        ],
+        [
+          -5580,
+          -618
+        ],
+        [
+          -5715,
+          -492
+        ],
+        [
+          -5774,
+          -344
+        ],
+        [
+          -5760,
+          -167
+        ],
+        [
+          -5707,
+          -71
+        ],
+        [
+          -5570,
+          21
+        ],
+        [
+          -5449,
+          22
+        ],
+        [
+          -5242,
+          -46
+        ],
+        [
+          -5133,
+          -78
+        ],
+        [
+          -4960,
+          -95
+        ],
+        [
+          -4817,
+          22
+        ],
+        [
+          -4798,
+          92
+        ],
+        [
+          -4790,
+          220
+        ],
+        [
+          -4806,
+          303
+        ],
+        [
+          -4939,
+          509
+        ],
+        [
+          -5046,
+          647
+        ],
+        [
+          -5147,
+          873
+        ],
+        [
+          -5185,
+          1037
+        ],
+        [
+          -5217,
+          1343
+        ],
+        [
+          -5204,
+          1760
+        ],
+        [
+          -5128,
+          2305
+        ],
+        [
+          -5057,
+          2530
+        ],
+        [
+          -4785,
+          2934
+        ],
+        [
+          -4593,
+          3098
+        ],
+        [
+          -3894,
+          3432
+        ],
+        [
+          -3450,
+          3566
+        ],
+        [
+          -2881,
+          3753
+        ],
+        [
+          -2552,
+          3873
+        ],
+        [
+          -2102,
+          4046
+        ],
+        [
+          -1473,
+          4314
+        ],
+        [
+          -1193,
+          4439
+        ],
+        [
+          -728,
+          4642
+        ],
+        [
+          -505,
+          4687
+        ],
+        [
+          -177,
+          4470
+        ],
+        [
+          -109,
+          4306
+        ],
+        [
+          -75,
+          4110
+        ],
+        [
+          -57,
+          3906
+        ],
+        [
+          -20,
+          3597
+        ],
+        [
+          17,
+          3333
+        ],
+        [
+          83,
+          2941
+        ],
+        [
+          144,
+          2668
+        ],
+        [
+          373,
+          2093
+        ],
+        [
+          528,
+          1875
+        ],
+        [
+          920,
+          1588
+        ],
+        [
+          1122,
+          1519
+        ],
+        [
+          1467,
+          1477
+        ],
+        [
+          1733,
+          1522
+        ],
+        [
+          2115,
+          1707
+        ],
+        [
+          2364,
+          1951
+        ],
+        [
+          2593,
+          2132
+        ],
+        [
+          3193,
+          2261
+        ],
+        [
+          3500,
+          2199
+        ],
+        [
+          3991,
+          1877
+        ],
+        [
+          4242,
+          1592
+        ],
+        [
+          4476,
+          1300
+        ],
+        [
+          4687,
+          1059
+        ],
+        [
+          4988,
+          719
+        ],
+        [
+          5232,
+          445
+        ],
+        [
+          5543,
+          86
+        ],
+        [
+          5672,
+          -86
+        ],
+        [
+          5774,
+          -513
+        ],
+        [
+          5697,
+          -809
+        ],
+        [
+          5519,
+          -1081
+        ],
+        [
+          4924,
+          -1350
+        ],
+        [
+          4558,
+          -1400
+        ],
+        [
+          4108,
+          -1418
+        ],
+        [
+          3830,
+          -1430
+        ],
+        [
+          3388,
+          -1459
+        ],
+        [
+          2916,
+          -1489
+        ],
+        [
+          2237,
+          -1545
+        ],
+        [
+          1921,
+          -1577
+        ],
+        [
+          1393,
+          -1638
+        ],
+        [
+          1125,
+          -1674
+        ],
+        [
+          854,
+          -1722
+        ],
+        [
+          640,
+          -1810
+        ],
+        [
+          571,
+          -1934
+        ],
+        [
+          587,
+          -2036
+        ],
+        [
+          701,
+          -2183
+        ],
+        [
+          997,
+          -2370
+        ],
+        [
+          1272,
+          -2537
+        ],
+        [
+          1472,
+          -2723
+        ],
+        [
+          1622,
+          -3092
+        ],
+        [
+          1642,
+          -3416
+        ],
+        [
+          1589,
+          -3739
+        ],
+        [
+          1483,
+          -4039
+        ],
+        [
+          1375,
+          -4252
+        ],
+        [
+          1091,
+          -4602
+        ],
+        [
+          911,
+          -4686
+        ],
+        [
+          519,
+          -4634
+        ],
+        [
+          367,
+          -4539
+        ],
+        [
+          128,
+          -4324
+        ],
+        [
+          21,
+          -4228
+        ],
+        [
+          -302,
+          -3939
+        ],
+        [
+          -557,
+          -3710
+        ],
+        [
+          -988,
+          -3325
+        ],
+        [
+          -1296,
+          -3072
+        ],
+        [
+          -1564,
+          -2940
+        ],
+        [
+          -2023,
+          -2905
+        ],
+        [
+          -2747,
+          -3201
+        ],
+        [
+          -3044,
+          -3322
+        ],
+        [
+          -3615,
+          -3378
+        ],
+        [
+          -3903,
+          -3328
+        ],
+        [
+          -4192,
+          -3227
+        ],
+        [
+          -4439,
+          -3060
+        ],
+        [
+          -4645,
+          -2786
+        ],
+        [
+          -4700,
+          -2534
+        ],
+        [
+          -4656,
+          -2361
+        ],
+        [
+          -4539,
+          -2212
+        ],
+        [
+          -4369,
+          -2121
+        ],
+        [
+          -3986,
+          -2027
+        ],
+        [
+          -3643,
+          -1962
+        ],
+        [
+          -3269,
+          -1901
+        ],
+        [
+          -3001,
+          -1860
+        ],
+        [
+          -2578,
+          -1793
+        ],
+        [
+          -2281,
+          -1743
+        ],
+        [
+          -1120,
+          -1547
+        ],
+        [
+          -754,
+          -1485
+        ],
+        [
+          22,
+          -1342
+        ],
+        [
+          410,
+          -1269
+        ],
+        [
+          1349,
+          -1097
+        ],
+        [
+          1761,
+          -1023
+        ],
+        [
+          2368,
+          -928
+        ],
+        [
+          2838,
+          -855
+        ],
+        [
+          3332,
+          -781
+        ],
+        [
+          3750,
+          -702
+        ],
+        [
+          3925,
+          -646
+        ],
+        [
+          4108,
+          -465
+        ],
+        [
+          4139,
+          -368
+        ],
+        [
+          4116,
+          -111
+        ],
+        [
+          4090,
+          -63
+        ],
+        [
+          3944,
+          70
+        ],
+        [
+          3788,
+          103
+        ],
+        [
+          3598,
+          98
+        ],
+        [
+          3367,
+          78
+        ],
+        [
+          3051,
+          43
+        ],
+        [
+          2836,
+          22
+        ],
+        [
+          2280,
+          -26
+        ],
+        [
+          1893,
+          -59
+        ],
+        [
+          1273,
+          -112
+        ],
+        [
+          371,
+          -190
+        ]
+      ],
+      "length": 11548,
+      "closure": 0.03,
+      "driver_number": 1,
+      "lap": 54
+    },
+    "singapore": {
+      "points": [
+        [
+          7050,
+          122
+        ],
+        [
+          6975,
+          591
+        ],
+        [
+          6921,
+          952
+        ],
+        [
+          6806,
+          1772
+        ],
+        [
+          6735,
+          2339
+        ],
+        [
+          6689,
+          2729
+        ],
+        [
+          6616,
+          3346
+        ],
+        [
+          6575,
+          3566
+        ],
+        [
+          6430,
+          3889
+        ],
+        [
+          6331,
+          3970
+        ],
+        [
+          6136,
+          4036
+        ],
+        [
+          5813,
+          4124
+        ],
+        [
+          5646,
+          4241
+        ],
+        [
+          5395,
+          4444
+        ],
+        [
+          5243,
+          4495
+        ],
+        [
+          5126,
+          4473
+        ],
+        [
+          5004,
+          4372
+        ],
+        [
+          4876,
+          3919
+        ],
+        [
+          4872,
+          3788
+        ],
+        [
+          4944,
+          3334
+        ],
+        [
+          5023,
+          3108
+        ],
+        [
+          5209,
+          2657
+        ],
+        [
+          5338,
+          2341
+        ],
+        [
+          5451,
+          2016
+        ],
+        [
+          5544,
+          1619
+        ],
+        [
+          5568,
+          1375
+        ],
+        [
+          5549,
+          1030
+        ],
+        [
+          5428,
+          791
+        ],
+        [
+          5301,
+          698
+        ],
+        [
+          5024,
+          605
+        ],
+        [
+          4790,
+          571
+        ],
+        [
+          4600,
+          561
+        ],
+        [
+          4027,
+          596
+        ],
+        [
+          3654,
+          630
+        ],
+        [
+          3176,
+          670
+        ],
+        [
+          2832,
+          696
+        ],
+        [
+          2508,
+          721
+        ],
+        [
+          2026,
+          759
+        ],
+        [
+          1652,
+          790
+        ],
+        [
+          1125,
+          850
+        ],
+        [
+          726,
+          941
+        ],
+        [
+          386,
+          1077
+        ],
+        [
+          -10,
+          1295
+        ],
+        [
+          -412,
+          1537
+        ],
+        [
+          -846,
+          1803
+        ],
+        [
+          -1173,
+          2015
+        ],
+        [
+          -1592,
+          2295
+        ],
+        [
+          -1942,
+          2487
+        ],
+        [
+          -2127,
+          2541
+        ],
+        [
+          -2310,
+          2545
+        ],
+        [
+          -2525,
+          2427
+        ],
+        [
+          -2626,
+          2320
+        ],
+        [
+          -2772,
+          2124
+        ],
+        [
+          -2886,
+          1953
+        ],
+        [
+          -3026,
+          1678
+        ],
+        [
+          -3205,
+          1265
+        ],
+        [
+          -3268,
+          1143
+        ],
+        [
+          -3365,
+          1004
+        ],
+        [
+          -3472,
+          935
+        ],
+        [
+          -3566,
+          938
+        ],
+        [
+          -3682,
+          1005
+        ],
+        [
+          -3784,
+          1102
+        ],
+        [
+          -3876,
+          1207
+        ],
+        [
+          -4025,
+          1403
+        ],
+        [
+          -4167,
+          1578
+        ],
+        [
+          -4330,
+          1756
+        ],
+        [
+          -4767,
+          2039
+        ],
+        [
+          -4909,
+          2064
+        ],
+        [
+          -5127,
+          2010
+        ],
+        [
+          -5240,
+          1937
+        ],
+        [
+          -5477,
+          1644
+        ],
+        [
+          -5602,
+          1429
+        ],
+        [
+          -5744,
+          1143
+        ],
+        [
+          -5876,
+          872
+        ],
+        [
+          -5998,
+          640
+        ],
+        [
+          -6253,
+          197
+        ],
+        [
+          -6563,
+          -340
+        ],
+        [
+          -6777,
+          -709
+        ],
+        [
+          -7106,
+          -1230
+        ],
+        [
+          -7192,
+          -1442
+        ],
+        [
+          -7189,
+          -1624
+        ],
+        [
+          -7072,
+          -1940
+        ],
+        [
+          -6940,
+          -2094
+        ],
+        [
+          -6735,
+          -2225
+        ],
+        [
+          -6489,
+          -2317
+        ],
+        [
+          -6341,
+          -2391
+        ],
+        [
+          -6192,
+          -2732
+        ],
+        [
+          -6161,
+          -2913
+        ],
+        [
+          -6093,
+          -3204
+        ],
+        [
+          -5947,
+          -3379
+        ],
+        [
+          -5717,
+          -3567
+        ],
+        [
+          -5386,
+          -3849
+        ],
+        [
+          -5260,
+          -3981
+        ],
+        [
+          -5094,
+          -4216
+        ],
+        [
+          -4949,
+          -4415
+        ],
+        [
+          -4821,
+          -4495
+        ],
+        [
+          -4676,
+          -4449
+        ],
+        [
+          -4622,
+          -4366
+        ],
+        [
+          -4594,
+          -4294
+        ],
+        [
+          -4545,
+          -4084
+        ],
+        [
+          -4517,
+          -3913
+        ],
+        [
+          -4486,
+          -3676
+        ],
+        [
+          -4437,
+          -3326
+        ],
+        [
+          -4397,
+          -3105
+        ],
+        [
+          -4294,
+          -2570
+        ],
+        [
+          -4257,
+          -2359
+        ],
+        [
+          -4202,
+          -2047
+        ],
+        [
+          -4091,
+          -1482
+        ],
+        [
+          -4015,
+          -1125
+        ],
+        [
+          -3835,
+          -496
+        ],
+        [
+          -3729,
+          -190
+        ],
+        [
+          -3636,
+          59
+        ],
+        [
+          -3509,
+          355
+        ],
+        [
+          -3388,
+          499
+        ],
+        [
+          -2955,
+          398
+        ],
+        [
+          -2796,
+          269
+        ],
+        [
+          -2650,
+          144
+        ],
+        [
+          -2348,
+          -138
+        ],
+        [
+          -2117,
+          -337
+        ],
+        [
+          -1685,
+          -685
+        ],
+        [
+          -1507,
+          -802
+        ],
+        [
+          -912,
+          -1013
+        ],
+        [
+          -198,
+          -1068
+        ],
+        [
+          275,
+          -1099
+        ],
+        [
+          607,
+          -1121
+        ],
+        [
+          1084,
+          -1152
+        ],
+        [
+          1443,
+          -1172
+        ],
+        [
+          1918,
+          -1190
+        ],
+        [
+          2283,
+          -1197
+        ],
+        [
+          2591,
+          -1206
+        ],
+        [
+          2897,
+          -1220
+        ],
+        [
+          3167,
+          -1241
+        ],
+        [
+          3365,
+          -1280
+        ],
+        [
+          3492,
+          -1368
+        ],
+        [
+          3553,
+          -1532
+        ],
+        [
+          3682,
+          -1855
+        ],
+        [
+          3769,
+          -1966
+        ],
+        [
+          3969,
+          -2106
+        ],
+        [
+          4500,
+          -2201
+        ],
+        [
+          4771,
+          -2204
+        ],
+        [
+          5511,
+          -2227
+        ],
+        [
+          5771,
+          -2244
+        ],
+        [
+          6103,
+          -2264
+        ],
+        [
+          6500,
+          -2234
+        ],
+        [
+          6780,
+          -2071
+        ],
+        [
+          7056,
+          -1672
+        ],
+        [
+          7156,
+          -1385
+        ],
+        [
+          7192,
+          -1126
+        ],
+        [
+          7179,
+          -709
+        ],
+        [
+          7047,
+          144
+        ]
+      ],
+      "length": 14384,
+      "closure": 0.002,
+      "driver_number": 1,
+      "lap": 42
+    },
+    "americas": {
+      "points": [
+        [
+          -7517,
+          -1825
+        ],
+        [
+          -7213,
+          -2057
+        ],
+        [
+          -6566,
+          -2553
+        ],
+        [
+          -6255,
+          -2792
+        ],
+        [
+          -5799,
+          -3141
+        ],
+        [
+          -5377,
+          -3463
+        ],
+        [
+          -4711,
+          -3973
+        ],
+        [
+          -4213,
+          -4358
+        ],
+        [
+          -3766,
+          -4702
+        ],
+        [
+          -3543,
+          -4887
+        ],
+        [
+          -3214,
+          -5155
+        ],
+        [
+          -3069,
+          -5231
+        ],
+        [
+          -2859,
+          -5246
+        ],
+        [
+          -2743,
+          -5160
+        ],
+        [
+          -2702,
+          -5036
+        ],
+        [
+          -2715,
+          -4860
+        ],
+        [
+          -2746,
+          -4674
+        ],
+        [
+          -2802,
+          -4492
+        ],
+        [
+          -2915,
+          -4247
+        ],
+        [
+          -3044,
+          -3956
+        ],
+        [
+          -3140,
+          -3661
+        ],
+        [
+          -3154,
+          -3080
+        ],
+        [
+          -3059,
+          -2779
+        ],
+        [
+          -2552,
+          -2186
+        ],
+        [
+          -2188,
+          -1967
+        ],
+        [
+          -1677,
+          -1691
+        ],
+        [
+          -1350,
+          -1447
+        ],
+        [
+          -970,
+          -986
+        ],
+        [
+          -797,
+          -685
+        ],
+        [
+          -543,
+          -366
+        ],
+        [
+          -3,
+          -39
+        ],
+        [
+          168,
+          241
+        ],
+        [
+          332,
+          837
+        ],
+        [
+          548,
+          1174
+        ],
+        [
+          894,
+          1435
+        ],
+        [
+          1073,
+          1519
+        ],
+        [
+          1492,
+          1566
+        ],
+        [
+          1734,
+          1501
+        ],
+        [
+          2213,
+          1266
+        ],
+        [
+          2549,
+          1161
+        ],
+        [
+          2818,
+          1179
+        ],
+        [
+          3100,
+          1348
+        ],
+        [
+          3337,
+          1589
+        ],
+        [
+          3461,
+          1742
+        ],
+        [
+          3674,
+          1968
+        ],
+        [
+          3920,
+          2081
+        ],
+        [
+          4077,
+          2084
+        ],
+        [
+          4322,
+          1998
+        ],
+        [
+          4520,
+          1836
+        ],
+        [
+          4677,
+          1695
+        ],
+        [
+          5031,
+          1636
+        ],
+        [
+          5399,
+          1683
+        ],
+        [
+          5587,
+          1729
+        ],
+        [
+          5917,
+          1814
+        ],
+        [
+          6190,
+          1894
+        ],
+        [
+          6556,
+          2054
+        ],
+        [
+          6859,
+          2244
+        ],
+        [
+          7177,
+          2574
+        ],
+        [
+          7346,
+          2785
+        ],
+        [
+          7747,
+          3284
+        ],
+        [
+          8109,
+          3722
+        ],
+        [
+          8364,
+          4045
+        ],
+        [
+          8708,
+          4452
+        ],
+        [
+          8917,
+          4696
+        ],
+        [
+          9022,
+          4875
+        ],
+        [
+          9068,
+          5042
+        ],
+        [
+          8949,
+          5220
+        ],
+        [
+          8866,
+          5247
+        ],
+        [
+          8662,
+          5247
+        ],
+        [
+          8536,
+          5227
+        ],
+        [
+          8238,
+          5137
+        ],
+        [
+          8076,
+          5077
+        ],
+        [
+          7597,
+          4903
+        ],
+        [
+          7391,
+          4830
+        ],
+        [
+          6780,
+          4619
+        ],
+        [
+          6167,
+          4431
+        ],
+        [
+          5819,
+          4333
+        ],
+        [
+          4993,
+          4114
+        ],
+        [
+          4679,
+          4036
+        ],
+        [
+          3935,
+          3860
+        ],
+        [
+          3486,
+          3761
+        ],
+        [
+          2808,
+          3622
+        ],
+        [
+          2311,
+          3528
+        ],
+        [
+          1865,
+          3449
+        ],
+        [
+          1327,
+          3360
+        ],
+        [
+          321,
+          3234
+        ],
+        [
+          -338,
+          3168
+        ],
+        [
+          -1144,
+          3089
+        ],
+        [
+          -1620,
+          3041
+        ],
+        [
+          -2106,
+          2995
+        ],
+        [
+          -2359,
+          2924
+        ],
+        [
+          -2454,
+          2856
+        ],
+        [
+          -2527,
+          2684
+        ],
+        [
+          -2511,
+          2569
+        ],
+        [
+          -2451,
+          2432
+        ],
+        [
+          -2362,
+          2299
+        ],
+        [
+          -2238,
+          2162
+        ],
+        [
+          -2092,
+          2021
+        ],
+        [
+          -1879,
+          1818
+        ],
+        [
+          -1670,
+          1592
+        ],
+        [
+          -1521,
+          1343
+        ],
+        [
+          -1485,
+          1130
+        ],
+        [
+          -1532,
+          938
+        ],
+        [
+          -1602,
+          843
+        ],
+        [
+          -1792,
+          756
+        ],
+        [
+          -1981,
+          755
+        ],
+        [
+          -2116,
+          792
+        ],
+        [
+          -2318,
+          924
+        ],
+        [
+          -2415,
+          1024
+        ],
+        [
+          -2569,
+          1270
+        ],
+        [
+          -2709,
+          1534
+        ],
+        [
+          -2940,
+          1807
+        ],
+        [
+          -3059,
+          1904
+        ],
+        [
+          -3316,
+          2003
+        ],
+        [
+          -3450,
+          1994
+        ],
+        [
+          -3578,
+          1938
+        ],
+        [
+          -3680,
+          1796
+        ],
+        [
+          -3658,
+          1623
+        ],
+        [
+          -3589,
+          1485
+        ],
+        [
+          -3507,
+          1367
+        ],
+        [
+          -3310,
+          1109
+        ],
+        [
+          -3125,
+          882
+        ],
+        [
+          -2875,
+          449
+        ],
+        [
+          -2806,
+          187
+        ],
+        [
+          -2794,
+          -245
+        ],
+        [
+          -2920,
+          -631
+        ],
+        [
+          -3396,
+          -1084
+        ],
+        [
+          -3798,
+          -1237
+        ],
+        [
+          -4391,
+          -1220
+        ],
+        [
+          -4604,
+          -1163
+        ],
+        [
+          -5197,
+          -800
+        ],
+        [
+          -5370,
+          -586
+        ],
+        [
+          -5832,
+          177
+        ],
+        [
+          -6085,
+          473
+        ],
+        [
+          -6461,
+          704
+        ],
+        [
+          -6912,
+          699
+        ],
+        [
+          -7212,
+          576
+        ],
+        [
+          -7514,
+          433
+        ],
+        [
+          -7909,
+          254
+        ],
+        [
+          -8348,
+          76
+        ],
+        [
+          -8552,
+          -9
+        ],
+        [
+          -8798,
+          -129
+        ],
+        [
+          -8903,
+          -204
+        ],
+        [
+          -9051,
+          -398
+        ],
+        [
+          -9067,
+          -479
+        ],
+        [
+          -8998,
+          -697
+        ],
+        [
+          -8871,
+          -855
+        ],
+        [
+          -8594,
+          -1073
+        ],
+        [
+          -8328,
+          -1241
+        ],
+        [
+          -7714,
+          -1674
+        ]
+      ],
+      "length": 18135,
+      "closure": 0.014,
+      "driver_number": 1,
+      "lap": 43
+    },
+    "mexico": {
+      "points": [
+        [
+          -4462,
+          5009
+        ],
+        [
+          -3944,
+          4922
+        ],
+        [
+          -3576,
+          4862
+        ],
+        [
+          -3233,
+          4808
+        ],
+        [
+          -2761,
+          4737
+        ],
+        [
+          -2281,
+          4664
+        ],
+        [
+          -1844,
+          4598
+        ],
+        [
+          -1481,
+          4544
+        ],
+        [
+          -875,
+          4458
+        ],
+        [
+          -431,
+          4404
+        ],
+        [
+          16,
+          4354
+        ],
+        [
+          512,
+          4297
+        ],
+        [
+          1318,
+          4203
+        ],
+        [
+          1750,
+          4154
+        ],
+        [
+          2104,
+          4111
+        ],
+        [
+          2737,
+          4029
+        ],
+        [
+          3331,
+          3950
+        ],
+        [
+          3811,
+          3887
+        ],
+        [
+          4204,
+          3836
+        ],
+        [
+          4603,
+          3784
+        ],
+        [
+          5117,
+          3716
+        ],
+        [
+          5520,
+          3664
+        ],
+        [
+          6003,
+          3602
+        ],
+        [
+          6217,
+          3568
+        ],
+        [
+          6403,
+          3523
+        ],
+        [
+          6509,
+          3481
+        ],
+        [
+          6647,
+          3394
+        ],
+        [
+          6711,
+          3331
+        ],
+        [
+          6798,
+          3168
+        ],
+        [
+          6821,
+          3035
+        ],
+        [
+          6800,
+          2832
+        ],
+        [
+          6778,
+          2687
+        ],
+        [
+          6797,
+          2522
+        ],
+        [
+          6877,
+          2396
+        ],
+        [
+          7022,
+          2291
+        ],
+        [
+          7122,
+          2216
+        ],
+        [
+          7212,
+          2061
+        ],
+        [
+          7223,
+          1867
+        ],
+        [
+          7181,
+          1648
+        ],
+        [
+          7145,
+          1518
+        ],
+        [
+          7083,
+          1330
+        ],
+        [
+          7021,
+          1166
+        ],
+        [
+          6905,
+          905
+        ],
+        [
+          6798,
+          696
+        ],
+        [
+          6610,
+          379
+        ],
+        [
+          6380,
+          20
+        ],
+        [
+          6164,
+          -308
+        ],
+        [
+          5982,
+          -601
+        ],
+        [
+          5749,
+          -993
+        ],
+        [
+          5482,
+          -1446
+        ],
+        [
+          5214,
+          -1895
+        ],
+        [
+          4943,
+          -2333
+        ],
+        [
+          4687,
+          -2719
+        ],
+        [
+          4469,
+          -3038
+        ],
+        [
+          4317,
+          -3252
+        ],
+        [
+          4226,
+          -3378
+        ],
+        [
+          4117,
+          -3543
+        ],
+        [
+          4038,
+          -3708
+        ],
+        [
+          4012,
+          -3825
+        ],
+        [
+          4013,
+          -3914
+        ],
+        [
+          4074,
+          -4057
+        ],
+        [
+          4170,
+          -4136
+        ],
+        [
+          4309,
+          -4212
+        ],
+        [
+          4395,
+          -4277
+        ],
+        [
+          4461,
+          -4386
+        ],
+        [
+          4449,
+          -4538
+        ],
+        [
+          4399,
+          -4607
+        ],
+        [
+          4327,
+          -4672
+        ],
+        [
+          4211,
+          -4753
+        ],
+        [
+          4025,
+          -4883
+        ],
+        [
+          3839,
+          -5024
+        ],
+        [
+          3756,
+          -5084
+        ],
+        [
+          3537,
+          -5164
+        ],
+        [
+          3334,
+          -5115
+        ],
+        [
+          3203,
+          -4853
+        ],
+        [
+          3204,
+          -4663
+        ],
+        [
+          3221,
+          -4515
+        ],
+        [
+          3254,
+          -4333
+        ],
+        [
+          3320,
+          -3976
+        ],
+        [
+          3361,
+          -3747
+        ],
+        [
+          3420,
+          -3428
+        ],
+        [
+          3484,
+          -3100
+        ],
+        [
+          3525,
+          -2890
+        ],
+        [
+          3596,
+          -2473
+        ],
+        [
+          3598,
+          -2085
+        ],
+        [
+          3543,
+          -1909
+        ],
+        [
+          3421,
+          -1723
+        ],
+        [
+          3234,
+          -1568
+        ],
+        [
+          3010,
+          -1418
+        ],
+        [
+          2809,
+          -1239
+        ],
+        [
+          2511,
+          -801
+        ],
+        [
+          2213,
+          -484
+        ],
+        [
+          2043,
+          -381
+        ],
+        [
+          1731,
+          -278
+        ],
+        [
+          1406,
+          -249
+        ],
+        [
+          1011,
+          -235
+        ],
+        [
+          700,
+          -155
+        ],
+        [
+          517,
+          -30
+        ],
+        [
+          381,
+          135
+        ],
+        [
+          249,
+          390
+        ],
+        [
+          87,
+          749
+        ],
+        [
+          -22,
+          896
+        ],
+        [
+          -250,
+          1082
+        ],
+        [
+          -503,
+          1226
+        ],
+        [
+          -696,
+          1323
+        ],
+        [
+          -1198,
+          1532
+        ],
+        [
+          -1444,
+          1609
+        ],
+        [
+          -1745,
+          1691
+        ],
+        [
+          -2173,
+          1780
+        ],
+        [
+          -2486,
+          1832
+        ],
+        [
+          -2937,
+          1894
+        ],
+        [
+          -3330,
+          1939
+        ],
+        [
+          -3659,
+          1975
+        ],
+        [
+          -4021,
+          2015
+        ],
+        [
+          -4425,
+          2060
+        ],
+        [
+          -4672,
+          2088
+        ],
+        [
+          -4955,
+          2138
+        ],
+        [
+          -5211,
+          2274
+        ],
+        [
+          -5303,
+          2376
+        ],
+        [
+          -5389,
+          2573
+        ],
+        [
+          -5415,
+          2925
+        ],
+        [
+          -5400,
+          3153
+        ],
+        [
+          -5387,
+          3429
+        ],
+        [
+          -5394,
+          3660
+        ],
+        [
+          -5443,
+          3845
+        ],
+        [
+          -5501,
+          3913
+        ],
+        [
+          -5582,
+          3954
+        ],
+        [
+          -5678,
+          3958
+        ],
+        [
+          -5765,
+          3921
+        ],
+        [
+          -5846,
+          3858
+        ],
+        [
+          -5930,
+          3791
+        ],
+        [
+          -6032,
+          3735
+        ],
+        [
+          -6168,
+          3709
+        ],
+        [
+          -6329,
+          3718
+        ],
+        [
+          -6566,
+          3763
+        ],
+        [
+          -6830,
+          3802
+        ],
+        [
+          -6931,
+          3817
+        ],
+        [
+          -7117,
+          3891
+        ],
+        [
+          -7199,
+          4021
+        ],
+        [
+          -7222,
+          4180
+        ],
+        [
+          -7201,
+          4335
+        ],
+        [
+          -7109,
+          4566
+        ],
+        [
+          -7027,
+          4685
+        ],
+        [
+          -6879,
+          4837
+        ],
+        [
+          -6781,
+          4911
+        ],
+        [
+          -6574,
+          5025
+        ],
+        [
+          -6410,
+          5084
+        ],
+        [
+          -6145,
+          5142
+        ],
+        [
+          -5818,
+          5164
+        ],
+        [
+          -5045,
+          5098
+        ]
+      ],
+      "length": 14445,
+      "closure": 0.041,
+      "driver_number": 3,
+      "lap": 50
+    },
+    "brazil": {
+      "points": [
+        [
+          -2787,
+          -2027
+        ],
+        [
+          -2783,
+          -2044
+        ],
+        [
+          -2682,
+          -2437
+        ],
+        [
+          -2570,
+          -2861
+        ],
+        [
+          -2489,
+          -3162
+        ],
+        [
+          -2371,
+          -3604
+        ],
+        [
+          -2231,
+          -4109
+        ],
+        [
+          -2193,
+          -4238
+        ],
+        [
+          -2117,
+          -4479
+        ],
+        [
+          -1936,
+          -4895
+        ],
+        [
+          -1840,
+          -5034
+        ],
+        [
+          -1661,
+          -5174
+        ],
+        [
+          -1553,
+          -5201
+        ],
+        [
+          -1499,
+          -5202
+        ],
+        [
+          -1328,
+          -5145
+        ],
+        [
+          -1218,
+          -5063
+        ],
+        [
+          -1096,
+          -4955
+        ],
+        [
+          -933,
+          -4828
+        ],
+        [
+          -787,
+          -4765
+        ],
+        [
+          -773,
+          -4762
+        ],
+        [
+          -511,
+          -4804
+        ],
+        [
+          -36,
+          -4987
+        ],
+        [
+          356,
+          -5038
+        ],
+        [
+          671,
+          -5000
+        ],
+        [
+          909,
+          -4918
+        ],
+        [
+          1081,
+          -4829
+        ],
+        [
+          1307,
+          -4664
+        ],
+        [
+          1626,
+          -4290
+        ],
+        [
+          1792,
+          -3961
+        ],
+        [
+          1897,
+          -3623
+        ],
+        [
+          2021,
+          -3133
+        ],
+        [
+          2098,
+          -2833
+        ],
+        [
+          2195,
+          -2427
+        ],
+        [
+          2262,
+          -2145
+        ],
+        [
+          2352,
+          -1777
+        ],
+        [
+          2438,
+          -1435
+        ],
+        [
+          2564,
+          -942
+        ],
+        [
+          2608,
+          -772
+        ],
+        [
+          2745,
+          -245
+        ],
+        [
+          2816,
+          21
+        ],
+        [
+          2913,
+          387
+        ],
+        [
+          3005,
+          732
+        ],
+        [
+          3113,
+          1125
+        ],
+        [
+          3146,
+          1240
+        ],
+        [
+          3219,
+          1503
+        ],
+        [
+          3272,
+          1803
+        ],
+        [
+          3267,
+          1989
+        ],
+        [
+          3212,
+          2209
+        ],
+        [
+          3107,
+          2365
+        ],
+        [
+          3010,
+          2445
+        ],
+        [
+          2748,
+          2563
+        ],
+        [
+          2449,
+          2629
+        ],
+        [
+          2156,
+          2647
+        ],
+        [
+          1984,
+          2644
+        ],
+        [
+          1640,
+          2587
+        ],
+        [
+          1463,
+          2517
+        ],
+        [
+          1089,
+          2266
+        ],
+        [
+          870,
+          2055
+        ],
+        [
+          643,
+          1745
+        ],
+        [
+          531,
+          1587
+        ],
+        [
+          255,
+          1197
+        ],
+        [
+          169,
+          1074
+        ],
+        [
+          -52,
+          754
+        ],
+        [
+          -243,
+          469
+        ],
+        [
+          -467,
+          137
+        ],
+        [
+          -616,
+          -84
+        ],
+        [
+          -800,
+          -342
+        ],
+        [
+          -966,
+          -520
+        ],
+        [
+          -1317,
+          -720
+        ],
+        [
+          -1611,
+          -769
+        ],
+        [
+          -1877,
+          -743
+        ],
+        [
+          -2084,
+          -661
+        ],
+        [
+          -2259,
+          -544
+        ],
+        [
+          -2341,
+          -464
+        ],
+        [
+          -2560,
+          -131
+        ],
+        [
+          -2649,
+          136
+        ],
+        [
+          -2697,
+          364
+        ],
+        [
+          -2726,
+          560
+        ],
+        [
+          -2737,
+          760
+        ],
+        [
+          -2732,
+          842
+        ],
+        [
+          -2702,
+          1008
+        ],
+        [
+          -2646,
+          1148
+        ],
+        [
+          -2577,
+          1228
+        ],
+        [
+          -2483,
+          1267
+        ],
+        [
+          -2277,
+          1238
+        ],
+        [
+          -2198,
+          1200
+        ],
+        [
+          -2047,
+          1121
+        ],
+        [
+          -1872,
+          1047
+        ],
+        [
+          -1686,
+          1023
+        ],
+        [
+          -1551,
+          1056
+        ],
+        [
+          -1423,
+          1158
+        ],
+        [
+          -1394,
+          1201
+        ],
+        [
+          -1355,
+          1308
+        ],
+        [
+          -1369,
+          1550
+        ],
+        [
+          -1433,
+          1702
+        ],
+        [
+          -1537,
+          1862
+        ],
+        [
+          -1670,
+          2014
+        ],
+        [
+          -1805,
+          2156
+        ],
+        [
+          -2214,
+          2718
+        ],
+        [
+          -2320,
+          2981
+        ],
+        [
+          -2360,
+          3179
+        ],
+        [
+          -2337,
+          3422
+        ],
+        [
+          -2233,
+          3562
+        ],
+        [
+          -2129,
+          3587
+        ],
+        [
+          -1963,
+          3537
+        ],
+        [
+          -1846,
+          3456
+        ],
+        [
+          -1743,
+          3354
+        ],
+        [
+          -1654,
+          3249
+        ],
+        [
+          -1548,
+          3109
+        ],
+        [
+          -1492,
+          3036
+        ],
+        [
+          -1385,
+          2911
+        ],
+        [
+          -1076,
+          2681
+        ],
+        [
+          -769,
+          2610
+        ],
+        [
+          -554,
+          2603
+        ],
+        [
+          -95,
+          2732
+        ],
+        [
+          51,
+          2820
+        ],
+        [
+          327,
+          3094
+        ],
+        [
+          505,
+          3367
+        ],
+        [
+          759,
+          3797
+        ],
+        [
+          890,
+          4023
+        ],
+        [
+          1040,
+          4306
+        ],
+        [
+          1056,
+          4344
+        ],
+        [
+          1092,
+          4621
+        ],
+        [
+          1033,
+          4768
+        ],
+        [
+          934,
+          4881
+        ],
+        [
+          848,
+          4941
+        ],
+        [
+          653,
+          5035
+        ],
+        [
+          123,
+          5187
+        ],
+        [
+          -81,
+          5202
+        ],
+        [
+          -421,
+          5187
+        ],
+        [
+          -806,
+          5116
+        ],
+        [
+          -1084,
+          5038
+        ],
+        [
+          -1677,
+          4778
+        ],
+        [
+          -1780,
+          4717
+        ],
+        [
+          -2154,
+          4428
+        ],
+        [
+          -2464,
+          4071
+        ],
+        [
+          -2689,
+          3685
+        ],
+        [
+          -2816,
+          3387
+        ],
+        [
+          -2995,
+          2786
+        ],
+        [
+          -3024,
+          2655
+        ],
+        [
+          -3130,
+          2170
+        ],
+        [
+          -3204,
+          1758
+        ],
+        [
+          -3257,
+          1265
+        ],
+        [
+          -3271,
+          926
+        ],
+        [
+          -3258,
+          386
+        ],
+        [
+          -3234,
+          122
+        ],
+        [
+          -3183,
+          -255
+        ],
+        [
+          -3084,
+          -792
+        ],
+        [
+          -2998,
+          -1176
+        ],
+        [
+          -2792,
+          -2005
+        ]
+      ],
+      "length": 10404,
+      "closure": 0.002,
+      "driver_number": 1,
+      "lap": 52
+    },
+    "las_vegas": {
+      "points": [
+        [
+          4188,
+          -8429
+        ],
+        [
+          4394,
+          -8199
+        ],
+        [
+          4608,
+          -7961
+        ],
+        [
+          5108,
+          -7401
+        ],
+        [
+          5287,
+          -7202
+        ],
+        [
+          5682,
+          -6723
+        ],
+        [
+          5708,
+          -6408
+        ],
+        [
+          5651,
+          -6285
+        ],
+        [
+          5537,
+          -6161
+        ],
+        [
+          5307,
+          -6055
+        ],
+        [
+          5113,
+          -6035
+        ],
+        [
+          4965,
+          -6054
+        ],
+        [
+          4659,
+          -6186
+        ],
+        [
+          4354,
+          -6423
+        ],
+        [
+          4130,
+          -6644
+        ],
+        [
+          3524,
+          -6866
+        ],
+        [
+          3170,
+          -6762
+        ],
+        [
+          2949,
+          -6630
+        ],
+        [
+          2660,
+          -6303
+        ],
+        [
+          2540,
+          -6004
+        ],
+        [
+          2469,
+          -5438
+        ],
+        [
+          2407,
+          -4436
+        ],
+        [
+          2393,
+          -4081
+        ],
+        [
+          2371,
+          -3532
+        ],
+        [
+          2349,
+          -2975
+        ],
+        [
+          2333,
+          -2496
+        ],
+        [
+          2309,
+          -1830
+        ],
+        [
+          2296,
+          -1462
+        ],
+        [
+          2279,
+          -977
+        ],
+        [
+          2248,
+          -89
+        ],
+        [
+          2233,
+          351
+        ],
+        [
+          2217,
+          794
+        ],
+        [
+          2198,
+          1348
+        ],
+        [
+          2190,
+          1581
+        ],
+        [
+          2178,
+          1913
+        ],
+        [
+          2213,
+          2308
+        ],
+        [
+          2263,
+          2451
+        ],
+        [
+          2317,
+          2546
+        ],
+        [
+          2546,
+          2675
+        ],
+        [
+          2816,
+          2680
+        ],
+        [
+          3034,
+          2680
+        ],
+        [
+          3354,
+          2683
+        ],
+        [
+          3560,
+          2685
+        ],
+        [
+          3802,
+          2686
+        ],
+        [
+          4238,
+          2701
+        ],
+        [
+          4567,
+          2785
+        ],
+        [
+          4991,
+          3001
+        ],
+        [
+          5386,
+          3342
+        ],
+        [
+          5613,
+          3667
+        ],
+        [
+          5801,
+          4186
+        ],
+        [
+          5756,
+          4572
+        ],
+        [
+          5691,
+          4665
+        ],
+        [
+          5493,
+          4764
+        ],
+        [
+          5382,
+          4810
+        ],
+        [
+          5253,
+          4964
+        ],
+        [
+          5231,
+          5099
+        ],
+        [
+          5262,
+          5238
+        ],
+        [
+          5320,
+          5358
+        ],
+        [
+          5477,
+          5639
+        ],
+        [
+          5537,
+          5798
+        ],
+        [
+          5542,
+          6000
+        ],
+        [
+          5428,
+          6211
+        ],
+        [
+          5314,
+          6256
+        ],
+        [
+          5153,
+          6262
+        ],
+        [
+          4782,
+          6253
+        ],
+        [
+          4399,
+          6245
+        ],
+        [
+          4087,
+          6238
+        ],
+        [
+          3674,
+          6229
+        ],
+        [
+          3301,
+          6228
+        ],
+        [
+          2895,
+          6230
+        ],
+        [
+          2178,
+          6240
+        ],
+        [
+          1743,
+          6302
+        ],
+        [
+          1300,
+          6428
+        ],
+        [
+          781,
+          6702
+        ],
+        [
+          592,
+          6865
+        ],
+        [
+          112,
+          7577
+        ],
+        [
+          -51,
+          7934
+        ],
+        [
+          -227,
+          8313
+        ],
+        [
+          -444,
+          8694
+        ],
+        [
+          -732,
+          9022
+        ],
+        [
+          -1161,
+          9347
+        ],
+        [
+          -1589,
+          9539
+        ],
+        [
+          -1937,
+          9632
+        ],
+        [
+          -2285,
+          9701
+        ],
+        [
+          -2607,
+          9745
+        ],
+        [
+          -2758,
+          9685
+        ],
+        [
+          -2866,
+          9540
+        ],
+        [
+          -2922,
+          9327
+        ],
+        [
+          -2958,
+          9203
+        ],
+        [
+          -3072,
+          8942
+        ],
+        [
+          -3236,
+          8595
+        ],
+        [
+          -3342,
+          8370
+        ],
+        [
+          -3476,
+          8113
+        ],
+        [
+          -3744,
+          7642
+        ],
+        [
+          -3896,
+          7372
+        ],
+        [
+          -4084,
+          7019
+        ],
+        [
+          -4375,
+          6476
+        ],
+        [
+          -4545,
+          6147
+        ],
+        [
+          -4697,
+          5818
+        ],
+        [
+          -4930,
+          5242
+        ],
+        [
+          -5059,
+          4845
+        ],
+        [
+          -5247,
+          4189
+        ],
+        [
+          -5448,
+          3408
+        ],
+        [
+          -5532,
+          3010
+        ],
+        [
+          -5647,
+          2300
+        ],
+        [
+          -5714,
+          1695
+        ],
+        [
+          -5749,
+          1145
+        ],
+        [
+          -5762,
+          77
+        ],
+        [
+          -5758,
+          -374
+        ],
+        [
+          -5755,
+          -748
+        ],
+        [
+          -5749,
+          -1566
+        ],
+        [
+          -5748,
+          -2654
+        ],
+        [
+          -5750,
+          -3002
+        ],
+        [
+          -5754,
+          -3634
+        ],
+        [
+          -5755,
+          -3944
+        ],
+        [
+          -5758,
+          -4399
+        ],
+        [
+          -5763,
+          -5252
+        ],
+        [
+          -5768,
+          -5832
+        ],
+        [
+          -5774,
+          -6303
+        ],
+        [
+          -5784,
+          -7178
+        ],
+        [
+          -5788,
+          -7535
+        ],
+        [
+          -5793,
+          -7980
+        ],
+        [
+          -5800,
+          -8521
+        ],
+        [
+          -5797,
+          -8696
+        ],
+        [
+          -5761,
+          -8943
+        ],
+        [
+          -5665,
+          -9138
+        ],
+        [
+          -5586,
+          -9222
+        ],
+        [
+          -5402,
+          -9295
+        ],
+        [
+          -5208,
+          -9335
+        ],
+        [
+          -5036,
+          -9445
+        ],
+        [
+          -4594,
+          -9716
+        ],
+        [
+          -4262,
+          -9741
+        ],
+        [
+          -4108,
+          -9745
+        ],
+        [
+          -3552,
+          -9741
+        ],
+        [
+          -3243,
+          -9733
+        ],
+        [
+          -2830,
+          -9723
+        ],
+        [
+          -2224,
+          -9706
+        ],
+        [
+          -1755,
+          -9692
+        ],
+        [
+          -1460,
+          -9683
+        ],
+        [
+          -645,
+          -9674
+        ],
+        [
+          -54,
+          -9683
+        ],
+        [
+          313,
+          -9684
+        ],
+        [
+          875,
+          -9680
+        ],
+        [
+          1280,
+          -9673
+        ],
+        [
+          1526,
+          -9669
+        ],
+        [
+          2235,
+          -9638
+        ],
+        [
+          2655,
+          -9588
+        ],
+        [
+          3079,
+          -9443
+        ],
+        [
+          3516,
+          -9166
+        ],
+        [
+          4117,
+          -8512
+        ]
+      ],
+      "length": 19490,
+      "closure": 0.006,
+      "driver_number": 1,
+      "lap": 50
     }
   },
   "race_classification_2026": {
@@ -24265,6 +36547,2340 @@ window.F1_DATA = {
           "points": 0,
           "laps": 7,
           "status": "F"
+        }
+      ]
+    },
+    "13": {
+      "circuit_id": "italy",
+      "race": [
+        {
+          "driver_id": "antonelli",
+          "position": 1,
+          "points": 25,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 2,
+          "points": 18,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 3,
+          "points": 15,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 4,
+          "points": 12,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 5,
+          "points": 10,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 6,
+          "points": 8,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 7,
+          "points": 6,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 8,
+          "points": 4,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 9,
+          "points": 2,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 11,
+          "points": 0,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 12,
+          "points": 0,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 13,
+          "points": 0,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 14,
+          "points": 0,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 15,
+          "points": 0,
+          "laps": 53,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 16,
+          "points": 0,
+          "laps": 52,
+          "status": "F"
+        },
+        {
+          "driver_id": "albon",
+          "position": 17,
+          "points": 0,
+          "laps": 52,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 18,
+          "points": 0,
+          "laps": 52,
+          "status": "F"
+        },
+        {
+          "driver_id": "bottas",
+          "position": 19,
+          "points": 0,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 26,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "alonso",
+          "position": null,
+          "points": 0,
+          "laps": 23,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": null,
+          "points": 0,
+          "laps": 1,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "gasly",
+          "position": 1
+        },
+        {
+          "driver_id": "russell",
+          "position": 2
+        },
+        {
+          "driver_id": "piastri",
+          "position": 3
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 5
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 6
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 7
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 8
+        },
+        {
+          "driver_id": "norris",
+          "position": 9
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 10
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 11
+        },
+        {
+          "driver_id": "bearman",
+          "position": 12
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 13
+        },
+        {
+          "driver_id": "lawson",
+          "position": 14
+        },
+        {
+          "driver_id": "sainz",
+          "position": 15
+        },
+        {
+          "driver_id": "ocon",
+          "position": 16
+        },
+        {
+          "driver_id": "albon",
+          "position": 18
+        },
+        {
+          "driver_id": "bottas",
+          "position": 19
+        },
+        {
+          "driver_id": "perez",
+          "position": 20
+        },
+        {
+          "driver_id": "alonso",
+          "position": 21
+        },
+        {
+          "driver_id": "stroll",
+          "position": 22
+        }
+      ]
+    },
+    "14": {
+      "circuit_id": "madrid",
+      "race": [
+        {
+          "driver_id": "antonelli",
+          "position": 1,
+          "points": 25,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 2,
+          "points": 18,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 3,
+          "points": 15,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4,
+          "points": 12,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 5,
+          "points": 10,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 6,
+          "points": 8,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 7,
+          "points": 6,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 8,
+          "points": 4,
+          "laps": 57,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 9,
+          "points": 2,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 10,
+          "points": 1,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 11,
+          "points": 0,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 12,
+          "points": 0,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 13,
+          "points": 0,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "albon",
+          "position": 15,
+          "points": 0,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 16,
+          "points": 0,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 17,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "bottas",
+          "position": 18,
+          "points": 0,
+          "laps": 54,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": null,
+          "points": 0,
+          "laps": 43,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "perez",
+          "position": null,
+          "points": 0,
+          "laps": 31,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 12,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": null,
+          "points": 0,
+          "laps": 6,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "norris",
+          "position": 1
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 2
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 3
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 4
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 5
+        },
+        {
+          "driver_id": "russell",
+          "position": 6
+        },
+        {
+          "driver_id": "piastri",
+          "position": 7
+        },
+        {
+          "driver_id": "lawson",
+          "position": 8
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 9
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 10
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 11
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 12
+        },
+        {
+          "driver_id": "ocon",
+          "position": 13
+        },
+        {
+          "driver_id": "gasly",
+          "position": 14
+        },
+        {
+          "driver_id": "albon",
+          "position": 16
+        },
+        {
+          "driver_id": "sainz",
+          "position": 17
+        },
+        {
+          "driver_id": "alonso",
+          "position": 18
+        },
+        {
+          "driver_id": "perez",
+          "position": 19
+        },
+        {
+          "driver_id": "bottas",
+          "position": 20
+        }
+      ]
+    },
+    "15": {
+      "circuit_id": "azerbaijan",
+      "race": [
+        {
+          "driver_id": "russell",
+          "position": 1,
+          "points": 25,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 2,
+          "points": 18,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 3,
+          "points": 15,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4,
+          "points": 12,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 5,
+          "points": 10,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 6,
+          "points": 8,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 7,
+          "points": 6,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 8,
+          "points": 4,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 9,
+          "points": 2,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 10,
+          "points": 1,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 11,
+          "points": 0,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 12,
+          "points": 0,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 13,
+          "points": 0,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 14,
+          "points": 0,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 15,
+          "points": 0,
+          "laps": 51,
+          "status": "F"
+        },
+        {
+          "driver_id": "bottas",
+          "position": 16,
+          "points": 0,
+          "laps": 49,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": null,
+          "points": 0,
+          "laps": 36,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "gasly",
+          "position": null,
+          "points": 0,
+          "laps": 35,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "norris",
+          "position": null,
+          "points": 0,
+          "laps": 35,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "albon",
+          "position": null,
+          "points": 0,
+          "laps": 29,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "alonso",
+          "position": null,
+          "points": 0,
+          "laps": 20,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 7,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "russell",
+          "position": 1
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 2
+        },
+        {
+          "driver_id": "piastri",
+          "position": 3
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 4
+        },
+        {
+          "driver_id": "norris",
+          "position": 5
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 6
+        },
+        {
+          "driver_id": "gasly",
+          "position": 7
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 8
+        },
+        {
+          "driver_id": "sainz",
+          "position": 9
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 10
+        },
+        {
+          "driver_id": "bearman",
+          "position": 11
+        },
+        {
+          "driver_id": "lawson",
+          "position": 12
+        },
+        {
+          "driver_id": "albon",
+          "position": 13
+        },
+        {
+          "driver_id": "ocon",
+          "position": 14
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 15
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 16
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 17
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 18
+        },
+        {
+          "driver_id": "alonso",
+          "position": 19
+        },
+        {
+          "driver_id": "perez",
+          "position": 20
+        },
+        {
+          "driver_id": "stroll",
+          "position": 21
+        },
+        {
+          "driver_id": "bottas",
+          "position": 22
+        }
+      ]
+    },
+    "16": {
+      "circuit_id": "sepang",
+      "race": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1,
+          "points": 25,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 2,
+          "points": 18,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 3,
+          "points": 15,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4,
+          "points": 12,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 5,
+          "points": 10,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 6,
+          "points": 8,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 7,
+          "points": 6,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 8,
+          "points": 4,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 9,
+          "points": 2,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 10,
+          "points": 1,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 11,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "stroll",
+          "position": 12,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 13,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 14,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 15,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 16,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 17,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 18,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 19,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 20,
+          "points": 0,
+          "laps": 49,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "albon",
+          "position": null,
+          "points": 0,
+          "laps": 41,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bottas",
+          "position": null,
+          "points": 0,
+          "laps": 7,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 2
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 3
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 4
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 5
+        },
+        {
+          "driver_id": "norris",
+          "position": 6
+        },
+        {
+          "driver_id": "piastri",
+          "position": 7
+        },
+        {
+          "driver_id": "russell",
+          "position": 8
+        },
+        {
+          "driver_id": "gasly",
+          "position": 9
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 10
+        },
+        {
+          "driver_id": "lawson",
+          "position": 11
+        },
+        {
+          "driver_id": "alonso",
+          "position": 12
+        },
+        {
+          "driver_id": "sainz",
+          "position": 13
+        },
+        {
+          "driver_id": "stroll",
+          "position": 14
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 15
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 16
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 17
+        },
+        {
+          "driver_id": "bearman",
+          "position": 18
+        },
+        {
+          "driver_id": "ocon",
+          "position": 19
+        },
+        {
+          "driver_id": "albon",
+          "position": 20
+        },
+        {
+          "driver_id": "bottas",
+          "position": 21
+        },
+        {
+          "driver_id": "perez",
+          "position": 22
+        }
+      ]
+    },
+    "17": {
+      "circuit_id": "singapore",
+      "race": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1,
+          "points": 25,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 2,
+          "points": 18,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 3,
+          "points": 15,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 4,
+          "points": 12,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 5,
+          "points": 10,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 6,
+          "points": 8,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 7,
+          "points": 6,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 8,
+          "points": 4,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 9,
+          "points": 2,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 10,
+          "points": 1,
+          "laps": 62,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 11,
+          "points": 0,
+          "laps": 61,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 12,
+          "points": 0,
+          "laps": 61,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 13,
+          "points": 0,
+          "laps": 61,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 14,
+          "points": 0,
+          "laps": 61,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 15,
+          "points": 0,
+          "laps": 61,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 16,
+          "points": 0,
+          "laps": 61,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 17,
+          "points": 0,
+          "laps": 60,
+          "status": "F"
+        },
+        {
+          "driver_id": "albon",
+          "position": 18,
+          "points": 0,
+          "laps": 59,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bottas",
+          "position": 19,
+          "points": 0,
+          "laps": 59,
+          "status": "F"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 36,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": null,
+          "points": 0,
+          "laps": 29,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": null,
+          "points": 0,
+          "laps": 7,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 2
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 3
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 4
+        },
+        {
+          "driver_id": "norris",
+          "position": 5
+        },
+        {
+          "driver_id": "russell",
+          "position": 6
+        },
+        {
+          "driver_id": "piastri",
+          "position": 7
+        },
+        {
+          "driver_id": "gasly",
+          "position": 8
+        },
+        {
+          "driver_id": "lawson",
+          "position": 9
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 10
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 11
+        },
+        {
+          "driver_id": "bearman",
+          "position": 12
+        },
+        {
+          "driver_id": "ocon",
+          "position": 13
+        },
+        {
+          "driver_id": "sainz",
+          "position": 14
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 15
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 16
+        },
+        {
+          "driver_id": "alonso",
+          "position": 17
+        },
+        {
+          "driver_id": "albon",
+          "position": 18
+        },
+        {
+          "driver_id": "stroll",
+          "position": 19
+        },
+        {
+          "driver_id": "perez",
+          "position": 20
+        },
+        {
+          "driver_id": "bottas",
+          "position": 21
+        },
+        {
+          "driver_id": "hadjar",
+          "position": "RT"
+        }
+      ],
+      "sprint": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1,
+          "points": 8,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 2,
+          "points": 7,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 3,
+          "points": 6,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 4,
+          "points": 5,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 5,
+          "points": 4,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 6,
+          "points": 3,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 7,
+          "points": 2,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 8,
+          "points": 1,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 9,
+          "points": 0,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 10,
+          "points": 0,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 11,
+          "points": 0,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 12,
+          "points": 0,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 13,
+          "points": 0,
+          "laps": 20,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 14,
+          "points": 0,
+          "laps": 19,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "albon",
+          "position": null,
+          "points": 0,
+          "laps": 14,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": null,
+          "points": 0,
+          "laps": 6,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bottas",
+          "position": null,
+          "points": 0,
+          "laps": 6,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": null,
+          "points": 0,
+          "laps": 2,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": null,
+          "points": 0,
+          "laps": 2,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "russell",
+          "position": null,
+          "points": 0,
+          "laps": 1,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "perez",
+          "position": null,
+          "points": 0,
+          "laps": 1,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 0,
+          "status": "DNF"
+        }
+      ]
+    },
+    "18": {
+      "circuit_id": "americas",
+      "race": [
+        {
+          "driver_id": "antonelli",
+          "position": 1,
+          "points": 25,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 2,
+          "points": 18,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 3,
+          "points": 15,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 4,
+          "points": 12,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 5,
+          "points": 10,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 6,
+          "points": 8,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 7,
+          "points": 6,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 8,
+          "points": 4,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 9,
+          "points": 2,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 10,
+          "points": 1,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 11,
+          "points": 0,
+          "laps": 56,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 12,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 13,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "ocon",
+          "position": 14,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "stroll",
+          "position": 15,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 16,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "albon",
+          "position": 17,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 18,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 19,
+          "points": 0,
+          "laps": 55,
+          "status": "F"
+        },
+        {
+          "driver_id": "bottas",
+          "position": null,
+          "points": 0,
+          "laps": 48,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": null,
+          "points": 0,
+          "laps": 35,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bearman",
+          "position": null,
+          "points": 0,
+          "laps": 24,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "antonelli",
+          "position": 1
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 2
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 3
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 5
+        },
+        {
+          "driver_id": "russell",
+          "position": 6
+        },
+        {
+          "driver_id": "piastri",
+          "position": 7
+        },
+        {
+          "driver_id": "norris",
+          "position": 8
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 9
+        },
+        {
+          "driver_id": "lawson",
+          "position": 10
+        },
+        {
+          "driver_id": "gasly",
+          "position": 11
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 12
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 13
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 14
+        },
+        {
+          "driver_id": "alonso",
+          "position": 15
+        },
+        {
+          "driver_id": "bearman",
+          "position": 16
+        },
+        {
+          "driver_id": "ocon",
+          "position": 17
+        },
+        {
+          "driver_id": "stroll",
+          "position": 18
+        },
+        {
+          "driver_id": "sainz",
+          "position": 19
+        },
+        {
+          "driver_id": "albon",
+          "position": 20
+        },
+        {
+          "driver_id": "perez",
+          "position": 21
+        },
+        {
+          "driver_id": "bottas",
+          "position": 22
+        }
+      ]
+    },
+    "19": {
+      "circuit_id": "mexico",
+      "race": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1,
+          "points": 25,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 2,
+          "points": 18,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 3,
+          "points": 15,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4,
+          "points": 12,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 5,
+          "points": 10,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 6,
+          "points": 8,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 7,
+          "points": 6,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 8,
+          "points": 4,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 9,
+          "points": 2,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "albon",
+          "position": 11,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 12,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 13,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 14,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 15,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 16,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 17,
+          "points": 0,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": null,
+          "points": 0,
+          "laps": 58,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bearman",
+          "position": null,
+          "points": 0,
+          "laps": 47,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bottas",
+          "position": null,
+          "points": 0,
+          "laps": 42,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 5,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "alonso",
+          "position": null,
+          "points": 0,
+          "laps": 5,
+          "status": "DNF"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "hamilton",
+          "position": 1
+        },
+        {
+          "driver_id": "russell",
+          "position": 2
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 3
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 4
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 5
+        },
+        {
+          "driver_id": "norris",
+          "position": 6
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 7
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 8
+        },
+        {
+          "driver_id": "gasly",
+          "position": 9
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 10
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 11
+        },
+        {
+          "driver_id": "piastri",
+          "position": 12
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 13
+        },
+        {
+          "driver_id": "bearman",
+          "position": 14
+        },
+        {
+          "driver_id": "sainz",
+          "position": 15
+        },
+        {
+          "driver_id": "albon",
+          "position": 16
+        },
+        {
+          "driver_id": "alonso",
+          "position": 17
+        },
+        {
+          "driver_id": "stroll",
+          "position": 19
+        },
+        {
+          "driver_id": "perez",
+          "position": 20
+        },
+        {
+          "driver_id": "bottas",
+          "position": 21
+        },
+        {
+          "driver_id": "lawson",
+          "position": null
+        }
+      ]
+    },
+    "20": {
+      "circuit_id": "brazil",
+      "race": [
+        {
+          "driver_id": "norris",
+          "position": 1,
+          "points": 25,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 2,
+          "points": 18,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 3,
+          "points": 15,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 4,
+          "points": 12,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 5,
+          "points": 10,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 6,
+          "points": 8,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 7,
+          "points": 6,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 8,
+          "points": 4,
+          "laps": 71,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 9,
+          "points": 2,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 10,
+          "points": 1,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 11,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 12,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 13,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 14,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "albon",
+          "position": 15,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 16,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 17,
+          "points": 0,
+          "laps": 70,
+          "status": "F"
+        },
+        {
+          "driver_id": "perez",
+          "position": 18,
+          "points": 0,
+          "laps": 69,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 19,
+          "points": 0,
+          "laps": 69,
+          "status": "F"
+        },
+        {
+          "driver_id": "stroll",
+          "position": null,
+          "points": 0,
+          "laps": 30,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "bottas",
+          "position": null,
+          "points": 0,
+          "laps": 0,
+          "status": "DNS"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "norris",
+          "position": 1
+        },
+        {
+          "driver_id": "russell",
+          "position": 2
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 3
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 4
+        },
+        {
+          "driver_id": "lawson",
+          "position": 5
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 6
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 7
+        },
+        {
+          "driver_id": "bearman",
+          "position": 8
+        },
+        {
+          "driver_id": "alonso",
+          "position": 9
+        },
+        {
+          "driver_id": "albon",
+          "position": 10
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 11
+        },
+        {
+          "driver_id": "piastri",
+          "position": 12
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 14
+        },
+        {
+          "driver_id": "sainz",
+          "position": 15
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 16
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 17
+        },
+        {
+          "driver_id": "gasly",
+          "position": 18
+        },
+        {
+          "driver_id": "stroll",
+          "position": 19
+        },
+        {
+          "driver_id": "bottas",
+          "position": 20
+        },
+        {
+          "driver_id": "perez",
+          "position": 21
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 22
+        }
+      ]
+    },
+    "21": {
+      "circuit_id": "las_vegas",
+      "race": [
+        {
+          "driver_id": "max_verstappen",
+          "position": 1,
+          "points": 25,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "norris",
+          "position": 2,
+          "points": 18,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "piastri",
+          "position": 3,
+          "points": 15,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "antonelli",
+          "position": 4,
+          "points": 12,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "gasly",
+          "position": 5,
+          "points": 10,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 6,
+          "points": 8,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 7,
+          "points": 6,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "sainz",
+          "position": 8,
+          "points": 4,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "russell",
+          "position": 9,
+          "points": 2,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 10,
+          "points": 1,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 11,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 12,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "bearman",
+          "position": 13,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "lawson",
+          "position": 14,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 15,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "stroll",
+          "position": 17,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "bottas",
+          "position": 18,
+          "points": 0,
+          "laps": 50,
+          "status": "F"
+        },
+        {
+          "driver_id": "alonso",
+          "position": 19,
+          "points": 0,
+          "laps": 49,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": null,
+          "points": 0,
+          "laps": 19,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "perez",
+          "position": null,
+          "points": 0,
+          "laps": 17,
+          "status": "DNF"
+        },
+        {
+          "driver_id": "albon",
+          "position": null,
+          "points": 0,
+          "laps": 0,
+          "status": "DNS"
+        }
+      ],
+      "qualifying": [
+        {
+          "driver_id": "antonelli",
+          "position": 1
+        },
+        {
+          "driver_id": "max_verstappen",
+          "position": 2
+        },
+        {
+          "driver_id": "russell",
+          "position": 3
+        },
+        {
+          "driver_id": "norris",
+          "position": 4
+        },
+        {
+          "driver_id": "hadjar",
+          "position": 5
+        },
+        {
+          "driver_id": "arvid_lindblad",
+          "position": 6
+        },
+        {
+          "driver_id": "piastri",
+          "position": 7
+        },
+        {
+          "driver_id": "lawson",
+          "position": 8
+        },
+        {
+          "driver_id": "gasly",
+          "position": 9
+        },
+        {
+          "driver_id": "colapinto",
+          "position": 10
+        },
+        {
+          "driver_id": "leclerc",
+          "position": 11
+        },
+        {
+          "driver_id": "hamilton",
+          "position": 12
+        },
+        {
+          "driver_id": "hulkenberg",
+          "position": 13
+        },
+        {
+          "driver_id": "sainz",
+          "position": 14
+        },
+        {
+          "driver_id": "bortoleto",
+          "position": 15
+        },
+        {
+          "driver_id": "albon",
+          "position": 16
+        },
+        {
+          "driver_id": "perez",
+          "position": 18
+        },
+        {
+          "driver_id": "alonso",
+          "position": 19
+        },
+        {
+          "driver_id": "stroll",
+          "position": 20
+        },
+        {
+          "driver_id": "bottas",
+          "position": 21
+        },
+        {
+          "driver_id": "bearman",
+          "position": null
         }
       ]
     }

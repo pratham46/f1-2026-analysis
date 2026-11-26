@@ -88,6 +88,7 @@ function toConstructorStandings2026(pred, liveConstructors) {
 // must be persisted in the KV payload so completed rounds stay frozen forever.
 // prevArchive comes from lastGood.predictions_archive so we never overwrite a
 // round that was already snapshotted on a prior refresh.
+const FREEZE_WINDOW_DAYS = 7; // ponytail: daily cron + slack; widen if refreshes get rarer
 function toRacePredictions(pred, realRaces, racesCompleted, prevArchive = {}) {
   const currentModelTop5 = pred.race_predictions[0].drivers
     .slice()
@@ -100,10 +101,14 @@ function toRacePredictions(pred, realRaces, racesCompleted, prevArchive = {}) {
 
   // Build updated archive: first time a round appears as completed → freeze it.
   // Already-frozen rounds keep their original value unchanged.
+  // Only freeze a FRESH result: if the pipeline was down for weeks, the current
+  // model already knows the outcome, and freezing it now would be a call made in
+  // hindsight. Such rounds stay unarchived — "no call recorded", not a fake hit.
   const archive = { ...prevArchive };
+  const freshSince = new Date(Date.now() - FREEZE_WINDOW_DAYS * 864e5).toISOString().slice(0, 10);
   for (const race of CALENDAR_2026) {
     const completed = !!realByRound[race.round] || race.round <= racesCompleted;
-    if (completed && !archive[race.round]) {
+    if (completed && !archive[race.round] && race.date >= freshSince) {
       archive[race.round] = currentModelTop5;
     }
   }
@@ -129,7 +134,7 @@ function toRacePredictions(pred, realRaces, racesCompleted, prevArchive = {}) {
       completed,
       winner: top5[0] ? top5[0].driver_id : null,
       top5,
-      predicted_top5: archive[race.round] || currentModelTop5,
+      predicted_top5: archive[race.round] || (completed ? null : currentModelTop5),
     };
   });
 

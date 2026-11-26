@@ -177,9 +177,9 @@ export const DRIVER_ROLLING_FORM = {
   perez:          { seasons: SEASONS_USED, points: [125, 190, 305, 285, 152, 0] },
 };
 
-// 2026 race calendar — the REAL 22-round season (Jolpica /2026/races, 2026-06-12).
-// Bahrain (Apr 12) and Saudi Arabia (Apr 19) were cancelled and removed from the
-// official table; rounds are numbered as actually run. `sprint` marks confirmed
+// 2026 race calendar — the REAL 23-round season (Jolpica /2026/races, re-checked
+// 2026-11-26). Bahrain (Apr 12) and Saudi Arabia (Apr 19) were cancelled; Bahrain
+// was later re-run at Sepang as round 16 (Oct 4). Rounds are numbered as run. `sprint` marks confirmed
 // sprint weekends (completed ones verified via Jolpica /2026/sprint).
 export const CALENDAR_2026 = [
   { round: 1,  id: "australia",   name: "Australian GP",      date: "2026-03-08" },
@@ -190,20 +190,21 @@ export const CALENDAR_2026 = [
   { round: 6,  id: "monaco",      name: "Monaco GP",          date: "2026-06-07" },
   { round: 7,  id: "spain",       name: "Barcelona GP",       date: "2026-06-14" },
   { round: 8,  id: "austria",     name: "Austrian GP",        date: "2026-06-28" },
-  { round: 9,  id: "britain",     name: "British GP",         date: "2026-07-05" },
+  { round: 9,  id: "britain",     name: "British GP",         date: "2026-07-05", sprint: true },
   { round: 10, id: "belgium",     name: "Belgian GP",         date: "2026-07-19" },
   { round: 11, id: "hungary",     name: "Hungarian GP",       date: "2026-07-26" },
-  { round: 12, id: "netherlands", name: "Dutch GP",           date: "2026-08-23" },
+  { round: 12, id: "netherlands", name: "Dutch GP",           date: "2026-08-23", sprint: true },
   { round: 13, id: "italy",       name: "Italian GP",         date: "2026-09-06" },
   { round: 14, id: "madrid",      name: "Madrid GP",          date: "2026-09-13" },
   { round: 15, id: "azerbaijan",  name: "Azerbaijan GP",      date: "2026-09-26" },
-  { round: 16, id: "singapore",   name: "Singapore GP",       date: "2026-10-11" },
-  { round: 17, id: "americas",    name: "United States GP",   date: "2026-10-25" },
-  { round: 18, id: "mexico",      name: "Mexico City GP",     date: "2026-11-01" },
-  { round: 19, id: "brazil",      name: "São Paulo GP",       date: "2026-11-08" },
-  { round: 20, id: "las_vegas",   name: "Las Vegas GP",       date: "2026-11-22" },
-  { round: 21, id: "qatar",       name: "Qatar GP",           date: "2026-11-29" },
-  { round: 22, id: "abu_dhabi",   name: "Abu Dhabi GP",       date: "2026-12-06" },
+  { round: 16, id: "sepang",      name: "Bahrain GP (Sepang)", date: "2026-10-04" },
+  { round: 17, id: "singapore",   name: "Singapore GP",       date: "2026-10-11", sprint: true },
+  { round: 18, id: "americas",    name: "United States GP",   date: "2026-10-25" },
+  { round: 19, id: "mexico",      name: "Mexico City GP",     date: "2026-11-01" },
+  { round: 20, id: "brazil",      name: "São Paulo GP",       date: "2026-11-08" },
+  { round: 21, id: "las_vegas",   name: "Las Vegas GP",       date: "2026-11-22" },
+  { round: 22, id: "qatar",       name: "Qatar GP",           date: "2026-11-29" },
+  { round: 23, id: "abu_dhabi",   name: "Abu Dhabi GP",       date: "2026-12-06" },
 ];
 
 // Cancelled 2026 rounds (shown as a note in the UI, excluded from predictions).

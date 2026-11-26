@@ -57,7 +57,7 @@ ok(real.champion === "antonelli", `live champion is antonelli (got ${real.champi
 const antRow = real.driver_standings.find((d) => d.driver === "antonelli");
 ok(antRow.predicted_points >= 156, `antonelli projection respects banked points (${antRow.predicted_points})`);
 ok(antRow.championship_win_probability > 0.5, `antonelli title prob > 50% (${antRow.championship_win_probability})`);
-ok(real.metadata.n_races === 22, `season simulated over 22 real rounds (got ${real.metadata.n_races})`);
+ok(real.metadata.n_races === 23, `season simulated over 23 real rounds (got ${real.metadata.n_races})`);
 
 console.log(failures === 0 ? "\nALL PREDICT TESTS PASSED" : `\n${failures} TEST(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);

@@ -15,6 +15,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { getJSON } from "./openf1-get.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SEED = resolve(__dirname, "../../../dashboard/data.js");
@@ -38,20 +39,10 @@ const CIRCUIT_MAP = {
   "Monza": "italy", "Baku": "azerbaijan", "Madring": "madrid", "Madrid": "madrid",
   "Singapore": "singapore", "Austin": "americas", "Mexico City": "mexico",
   "Interlagos": "brazil", "São Paulo": "brazil", "Las Vegas": "las_vegas",
-  "Lusail": "qatar", "Yas Marina Circuit": "abu_dhabi", "Yas Island": "abu_dhabi",
+  "Lusail": "qatar", "Kuala Lumpur": "sepang", "Sepang": "sepang", "Yas Marina Circuit": "abu_dhabi", "Yas Island": "abu_dhabi",
 };
 const normCircuit = (n) => CIRCUIT_MAP[n] || (n || "").toLowerCase().replace(/[^a-z]/g, "_");
 
-async function getJSON(url, { tries = 4, timeout = 20000 } = {}) {
-  for (let i = 0; i < tries; i++) {
-    try {
-      const r = await fetch(url, { signal: AbortSignal.timeout(timeout) });
-      if (r.ok) return await r.json();
-    } catch { /* retry */ }
-    await new Promise((res) => setTimeout(res, 600 * (i + 1)));
-  }
-  return null;
-}
 
 /** One /session_result row -> seed shape. Returns null for unmapped drivers. */
 export function classifyRow(row) {

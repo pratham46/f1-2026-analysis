@@ -15,6 +15,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { getJSON } from "./openf1-get.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SEED = resolve(__dirname, "../../../dashboard/data.js");
@@ -49,16 +50,6 @@ export function normalise(points) {
   };
 }
 
-async function getJSON(url, { tries = 4, timeout = 25000 } = {}) {
-  for (let i = 0; i < tries; i++) {
-    try {
-      const r = await fetch(url, { signal: AbortSignal.timeout(timeout) });
-      if (r.ok) return await r.json();
-    } catch { /* retry */ }
-    await new Promise((res) => setTimeout(res, 700 * (i + 1)));
-  }
-  return null;
-}
 
 // Trace one flying lap. Tries a handful of drivers because any single one may
 // have no clean lap (retirement, no telemetry coverage) in a given session.

@@ -101,8 +101,10 @@ ok(p.driver_standings.find((d) => d.driver === "bottas").points_behind_leader ==
   "points_behind_leader is measured against the current leader");
 
 // --- Sprints ----------------------------------------------------------------
-ok(remainingSprintCount(0) === 3, `2026 has 3 sprints in total (got ${remainingSprintCount(0)})`);
-ok(remainingSprintCount(11) === 0, `all sprints are already run by round 11 (got ${remainingSprintCount(11)})`);
+// China, Miami, Canada, Britain, Netherlands, Singapore (Jolpica /2026 schedule).
+ok(remainingSprintCount(0) === 6, `2026 has 6 sprints in total (got ${remainingSprintCount(0)})`);
+ok(remainingSprintCount(11) === 2, `Zandvoort + Singapore remain after round 11 (got ${remainingSprintCount(11)})`);
+ok(remainingSprintCount(17) === 0, `all sprints are run by round 17 (got ${remainingSprintCount(17)})`);
 
 // --- Determinism ------------------------------------------------------------
 const again = predict({ liveStandings: live, racesCompleted: 11 });

@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { getJSON } from "./openf1-get.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SEED = resolve(__dirname, "../../../dashboard/data.js");
@@ -32,21 +33,10 @@ const CIRCUIT_MAP = {
   "Monza": "italy", "Baku": "azerbaijan", "Madring": "madrid", "Madrid": "madrid",
   "Singapore": "singapore", "Austin": "americas", "Mexico City": "mexico",
   "Interlagos": "brazil", "São Paulo": "brazil", "Las Vegas": "las_vegas",
-  "Lusail": "qatar", "Yas Marina Circuit": "abu_dhabi", "Yas Island": "abu_dhabi",
+  "Lusail": "qatar", "Kuala Lumpur": "sepang", "Sepang": "sepang", "Yas Marina Circuit": "abu_dhabi", "Yas Island": "abu_dhabi",
 };
 const normCircuit = (n) => CIRCUIT_MAP[n] || (n || "").toLowerCase().replace(/[^a-z]/g, "_");
 
-async function getJSON(url, { tries = 4, timeout = 20000 } = {}) {
-  for (let i = 0; i < tries; i++) {
-    try {
-      const ctl = AbortSignal.timeout(timeout);
-      const r = await fetch(url, { signal: ctl });
-      if (r.ok) return await r.json();
-    } catch { /* retry */ }
-    await new Promise((res) => setTimeout(res, 600 * (i + 1)));
-  }
-  return null;
-}
 
 function stintsByDriver(rows) {
   const by = {};
@@ -93,10 +83,8 @@ for (const race of completed) {
   if (existing && existing.stints && Object.keys(existing.stints).length > 0) { kept++; continue; }
   const sk = skByCircuit[race.circuit_id];
   if (!sk) { missed.push(`${race.round}:${race.circuit_id}(no-session)`); continue; }
-  const [stintRows, pitRows] = await Promise.all([
-    getJSON(`${OPENF1}/stints?session_key=${sk}`),
-    getJSON(`${OPENF1}/pit?session_key=${sk}`),
-  ]);
+  const stintRows = await getJSON(`${OPENF1}/stints?session_key=${sk}`);
+  const pitRows = await getJSON(`${OPENF1}/pit?session_key=${sk}`);
   const stints = stintsByDriver(stintRows);
   const pit_stops = pitsByDriver(pitRows);
   if (Object.keys(stints).length) {

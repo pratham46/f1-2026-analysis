@@ -31,7 +31,7 @@ for (const f of ["rank", "driver_id", "name", "short", "team", "color", "number"
   ok(f in s0, `driver_standings_2026 entry has "${f}"`);
 }
 ok(d.constructor_standings_2026.length === 11, `11 constructors (got ${d.constructor_standings_2026.length})`);
-ok(d.race_predictions.length === 22, `22 race_predictions — real 2026 calendar (got ${d.race_predictions.length})`);
+ok(d.race_predictions.length === 23, `23 race_predictions — real 2026 calendar (got ${d.race_predictions.length})`);
 ok(d.race_predictions[0].top5.length === 5, "race_predictions top5 has 5 drivers");
 ok(d.race_predictions.every(r => r.race_date === r.date && r.race_name === r.name),
    "race_predictions carry race_date/race_name aliases for the dashboard");
