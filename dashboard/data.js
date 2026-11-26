@@ -20632,12 +20632,12 @@ window.F1_DATA = {
     "live": "jolpica:21rounds",
     "results": "jolpica:21races",
     "news": "scraped:8",
-    "scrapedAt": "2026-11-26T11:31:47.936Z",
-    "openf1": "enriched:16races",
+    "scrapedAt": "2026-11-26T11:36:19.298Z",
+    "openf1": "enriched:21races",
     "bios": "jolpica:36",
     "circuits": "jolpica:24",
     "weather": "open-meteo",
-    "subrequests": 29
+    "subrequests": 11
   },
   "_sanity": {
     "drivers_full_grid": true,
