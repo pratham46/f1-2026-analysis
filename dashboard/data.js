@@ -2,7 +2,7 @@
 // Source: cloudflare/worker assemble() — regenerate with: npm run seed.
 // The live dashboard prefers the Worker /api/data; this is the fallback when offline.
 window.F1_DATA = {
-  "generated_at": "2026-11-27",
+  "generated_at": "2026-11-28",
   "model": "js-weighted-montecarlo-v2",
   "model_cv_mae": 2.71,
   "seasons_used": [
@@ -3309,15 +3309,15 @@ window.F1_DATA = {
     "name": "Qatar GP",
     "date": "2026-11-29",
     "circuit_id": "qatar",
-    "days_until": 3
+    "days_until": 2
   },
   "next_race_weather": {
     "circuit_id": "qatar",
     "date": "2026-11-29",
-    "t_max": 27.3,
-    "t_min": 19.7,
+    "t_max": 27.2,
+    "t_min": 19.4,
     "rain_prob": 0,
-    "wind_max": 14.1
+    "wind_max": 13
   },
   "real_driver_standings_2026": [
     {
@@ -20572,57 +20572,57 @@ window.F1_DATA = {
   },
   "news": [
     {
-      "title": "All the stories that got the Qatar paddock talking",
-      "url": "https://www.formula1.com/en/latest/article/all-the-stories-that-got-the-qatar-paddock-talking.7oePpDkNxzG1j0359UuyOo",
+      "title": "Are Mercedes the team to beat in Qatar?",
+      "url": "https://www.formula1.com/en/latest/article/are-mercedes-the-team-to-beat-in-qatar.6iRbqa3JJ85o0bWNYQTlTl",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "What could shake up the Qatar betting markets?",
-      "url": "https://www.formula1.com/en/latest/article/what-could-turn-the-race-on-its-head-during-the-qatar-grand-prix.4En8C9V0hDrmUFFiwxjmu1",
+      "title": "Leclerc searching for answers after tricky Friday in Qatar",
+      "url": "https://www.formula1.com/en/latest/article/it-looks-like-a-very-difficult-weekend-leclerc-searching-for-answers-after-tricky-friday-in-qatar.34CxxcaWerPPLl84sU9cZq",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Russell reacts to Verstappen’s Las Vegas comments",
-      "url": "https://www.formula1.com/en/latest/article/it-was-quite-amusing-russell-shares-his-reaction-to-verstappens-las-vegas-comments.6sv6Xkop4lBcCxge8ZgxXv",
+      "title": "What the teams said – Friday in Qatar",
+      "url": "https://www.formula1.com/en/latest/article/what-the-teams-said-friday-in-qatar-2026.4NjrvUy3Zc6X6YN4i896S6",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Leclerc and Hamilton address aftermath of Las Vegas clash",
-      "url": "https://www.formula1.com/en/latest/article/were-all-disappointed-leclerc-and-hamilton-address-aftermath-of-las-vegas-clash.34d9bV1J0varyAnDCWPAjU",
+      "title": "Verstappen and Red Bull left looking for car balance in Qatar",
+      "url": "https://www.formula1.com/en/latest/article/a-bit-of-a-difficult-day-verstappen-and-red-bull-left-looking-for-car-balance-after-friday-in-qatar.zvqj1nQ6dBT2PSxEzzKWP",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Lindblad left ‘trying to hold back tears’ after Las Vegas spin",
-      "url": "https://www.formula1.com/en/latest/article/lindblad-left-trying-to-hold-back-tears-after-las-vegas-spin-as-he-reflects-on-emotional-social-media-post.6eGFigwGZhsbeR31PHHf4j",
+      "title": "Racing Bulls lead midfield in Qatar after 'really big step'",
+      "url": "https://www.formula1.com/en/latest/article/racing-bulls-lead-the-midfield-charge-in-qatar-after-changes-pay-off.11wtPFM25qXm0dPTocDHRn",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Camara reacts to decision to sacrifice F2 title challenge",
-      "url": "https://www.formula1.com/en/latest/article/obviously-not-easy-camara-reacts-to-decision-to-sacrifice-f2-title-challenge-for-haas-drive.ltxdSbb5ibvHqIXHBAMId",
+      "title": "Best Qualifying bets for the Qatar Grand Prix",
+      "url": "https://www.formula1.com/en/latest/article/best-qualifying-bets-available-in-the-markets-for-the-qatar-grand-prix.2mQLEJUkKJHjLj8bHzNnaI",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Bearman reflects on new Haas deal and Ferrari hopes",
-      "url": "https://www.formula1.com/en/latest/article/im-looking-forward-to-the-future-bearman-reflects-on-new-haas-deal-and-hopes-of-dream-ferrari-drive.2HEQCXu8ItvVTJrmYBR5H1",
+      "title": "'It's never nice' – Gasly explains dramatic FP2 spin",
+      "url": "https://www.formula1.com/en/latest/article/its-never-nice-gasly-explains-dramatic-high-speed-spin-during-qatar-practice.11hIcFNT6zuvEG0mwAggDn",
       "image": null,
       "date": null,
       "tag": "F1 News"
     },
     {
-      "title": "Norris concedes 2026 ‘certainly not been our finest’ year",
-      "url": "https://www.formula1.com/en/latest/article/you-cant-win-them-all-norris-concedes-it-hasnt-been-mclarens-finest-year-in-2026-assessment.bJdxL08P1IOeV8wzQkUsX",
+      "title": "Norris worried by McLaren’s deficit to Mercedes in Qatar",
+      "url": "https://www.formula1.com/en/latest/article/i-dont-think-weve-been-further-off-norris-worried-by-mclarens-deficit-to-mercedes-in-qatar.6mwnUPpxnOsIv6YJ7O6Lgm",
       "image": null,
       "date": null,
       "tag": "F1 News"
@@ -20632,7 +20632,7 @@ window.F1_DATA = {
     "live": "jolpica:21rounds",
     "results": "jolpica:21races",
     "news": "scraped:8",
-    "scrapedAt": "2026-11-27T07:03:32.688Z",
+    "scrapedAt": "2026-11-28T07:01:56.249Z",
     "openf1": "enriched:21races",
     "bios": "jolpica:36",
     "circuits": "jolpica:24",
